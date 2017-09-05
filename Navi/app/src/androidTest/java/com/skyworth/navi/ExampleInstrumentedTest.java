@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.skyworth.navi", appContext.getPackageName());
+        assertEquals("com.skyworth.navi_.navi", appContext.getPackageName());
     }
 }
