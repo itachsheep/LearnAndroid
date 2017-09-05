@@ -1,26 +1,53 @@
 package map_.activity;
 
-import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
+import android.widget.ListView;
 
-import com.amap.api.maps.MapsInitializer;
 import com.skyworth.navi.R;
+
+import map_.view.FeatureView;
 
 /**
  * Created by SDT14324 on 2017/9/5.
  */
 
-public class MapMainActivity extends Activity {
+public class MapMainActivity extends ListActivity {
+    private static final DemoDetails[] demos = {
+            //创建地图
+            new DemoDetails(R.string.map_create, R.string.blank, null),
+            //6种实现地图方式
+            new DemoDetails(R.string.basic_map_6, R.string.basic_description_temp,
+                    MapImpMethodActivity.class),
+    };
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        System.exit(0);
+    }
+
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        DemoDetails demo = (DemoDetails) getListAdapter().getItem(position);
+        if (demo.activityClass != null) {
+            Log.i("MY","demo!=null");
+            startActivity(new Intent(this.getApplicationContext(),
+                    demo.activityClass));
+        }
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        setTitle("3D地图Demo" + MapsInitializer.getVersion());
+        setContentView(R.layout.main_activity);
         ListAdapter adapter = new CustomArrayAdapter(
                 this.getApplicationContext(), demos);
         setListAdapter(adapter);
@@ -56,5 +83,6 @@ public class MapMainActivity extends Activity {
             return featureView;
         }
     }
+
 
 }
