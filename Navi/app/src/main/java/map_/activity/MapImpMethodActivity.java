@@ -67,7 +67,8 @@ public class MapImpMethodActivity extends Activity {
      * @param view
      */
     public void forwardTextureMapView(View view) {
-//        startActivity(new Intent(this, TextureMapViewActivity.class));
+        startActivity(new Intent(this, TextureMapViewActivity.class));
+        finish();
     }
 
     /**

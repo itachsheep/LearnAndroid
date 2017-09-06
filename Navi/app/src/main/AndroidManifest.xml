@@ -27,7 +27,7 @@
         <activity android:name="map_.activity.MapMainActivity"/>
         <activity android:name="map_.activity.MapImpMethodActivity"/>
         <activity android:name="map_.activity.BaseMapFragmentActivity"/>
-
+        <activity android:name="map_.activity.TextureMapViewActivity"/>
         <!--导航相关-->
         <activity android:name="navi_.activity.NaviMainActivity"/>
         <activity android:name="navi_.activity.ComponentActivity"/>
