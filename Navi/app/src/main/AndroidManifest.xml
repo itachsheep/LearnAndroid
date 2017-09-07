@@ -23,6 +23,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--rocker-->
+        <activity android:name="rocker.RockerActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="landscape"
+            />
+        <activity android:name="rocker.MapRockerActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="landscape"/>
         <!--地图相关-->
         <activity android:name="map_.activity.MapMainActivity"/>
         <activity android:name="map_.activity.MapImpMethodActivity"/>

@@ -55,6 +55,11 @@ android {
     productFlavors {
     }
 }
+repositories {
+    flatDir {
+        dirs 'libs'   // aar目录
+    }
+}
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
@@ -66,4 +71,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile files('libs/AMap3DMap_5.3.0_AMapNavi_5.3.0_20170815.jar')
     compile files('libs/android-support-v4.jar')
+    compile(name: 'ViewSupport-v1.0.6', ext: 'aar')
+    compile project(':library')
 }

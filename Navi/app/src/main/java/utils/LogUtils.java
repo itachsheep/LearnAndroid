@@ -10,6 +10,6 @@ import android.util.Log;
 public class LogUtils {
     private static String tag = "NaviTao";
     public static void i(String mes){
-        Log.i(tag,mes + " : "+ SystemClock.uptimeMillis());
+        Log.i(tag,mes + ", time:"+ SystemClock.uptimeMillis()/1000);
     }
 }
