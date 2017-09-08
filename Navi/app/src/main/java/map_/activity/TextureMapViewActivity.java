@@ -20,7 +20,7 @@ public class TextureMapViewActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.basic_texturemap_activity);
-        mapView = findViewById(R.id.map);
+        mapView = (TextureMapView) findViewById(R.id.map);
         mapView.onCreate(savedInstanceState);
         if(aMap == null){
             aMap = mapView.getMap();

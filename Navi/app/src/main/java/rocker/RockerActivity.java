@@ -1,19 +1,19 @@
 package rocker;
 
 import android.app.Activity;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
+import android.graphics.Point;
 import android.location.Location;
 import android.location.LocationManager;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.annotation.Nullable;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.amap.api.maps.AMap;
+import com.amap.api.maps.CameraUpdateFactory;
+import com.amap.api.maps.model.LatLng;
+import com.amap.api.maps.model.Marker;
 import com.amap.api.navi.AMapNavi;
 import com.amap.api.navi.AMapNaviListener;
 import com.amap.api.navi.AMapNaviView;
@@ -23,6 +23,7 @@ import com.amap.api.navi.model.AMapNaviCameraInfo;
 import com.amap.api.navi.model.AMapNaviCross;
 import com.amap.api.navi.model.AMapNaviInfo;
 import com.amap.api.navi.model.AMapNaviLocation;
+import com.amap.api.navi.model.AMapNaviPath;
 import com.amap.api.navi.model.AMapNaviTrafficFacilityInfo;
 import com.amap.api.navi.model.AMapServiceAreaInfo;
 import com.amap.api.navi.model.AimLessModeCongestionInfo;
@@ -55,13 +56,17 @@ public class RockerActivity extends Activity implements AMapNaviListener {
     private NaviLatLng mStartLatLng = new NaviLatLng(39.825934,116.342972);
     private NaviLatLng mEndLatLng = new NaviLatLng(40.084894,116.603039);
     private Object lockObj = new Object();
+    private ImageView mIcon;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rocker);
+        mIcon = (ImageView) findViewById(R.id.myicon);
         mRockerView = (RockerView) findViewById(R.id.rocker);
         mAmapNaviView = (AMapNaviView) findViewById(R.id.navi_view);
         mAmap = mAmapNaviView.getMap();
+
+
         mAmapNaviView.onCreate(savedInstanceState);
 
         //AMapNaviViewOptions viewOptions = mAmapNaviView.getViewOptions();
@@ -78,46 +83,50 @@ public class RockerActivity extends Activity implements AMapNaviListener {
 
         initListener();
     }
-
+    private int strategyConvert;
     @Override
     public void onInitNaviSuccess() {
         //caculate route
         LogUtils.i("RockerActivity.onInitNaviSuccess");
-        if(isFirst){
-            int strategyConvert = mAmapNavi.strategyConvert(false, false, false, false, false);
-            mAmapNavi.calculateDriveRoute(slist,elist,wlist,strategyConvert);
-        }
+
+        strategyConvert = mAmapNavi.strategyConvert(false, false, false, false, false);
+        mAmapNavi.calculateDriveRoute(slist,elist,wlist,strategyConvert);
     }
 
-    private boolean isFirst = true;
+
     @Override
     public void onCalculateRouteSuccess(int[] ints) {
         //show route or start navi
         LogUtils.i("RockerActivity.onCalculateRouteSuccess");
-        if(isFirst){
-            mAmapNavi.startNavi(NaviType.GPS);
-            isFirst = false;
-            /*synchronized (RockerActivity.this){
-                LogUtils.i("onCalculateRouteSuccess gps isOpen: "+isGPSEnable());
-                toggleGPS();
-                LogUtils.i("onCalculateRouteSuccess gps isOpen: "+isGPSEnable());
-            }*/
-        }
+        mAmapNavi.startNavi(NaviType.GPS);
+
     }
 
     //accurate parameters
-    private double lng = 0.00001;
-    private double lat = 0.00001;
-    private double        x ;
-    private double        y ;
-    private float  accuracy =  100.0f;
-    private float     speed =  5.0f;
-    private double startLat =  39.825934;
-    private double startLng = 116.342972;
-    private double    multi =   0.0000001;
+    private double lng ;
+    private double lat ;
+    private float  accuracy =  1000.0f;
+    private float     speed =  2.0f;
+    private double startLat ;
+    private double startLng ;
+    private double    multi =   0.00000000000001;
+    private double    multiX =   0.000001;
+    private double    multiY =   0.000001;
+//                             39.8260630099283
 //    private Location location = new Location("gps");
 
     private double radian;
+    private LatLng newLatLng;
+    private Marker marker;
+    private int i = 1;
+    private boolean isFirst = true;
+    private long time = 0;
+
+    private double y;
+    private double x;
+
+    private float pivotX;
+    private float pivotY;
 
     private void initListener() {
         mRockerView.setListener(new RockerView.RockerListener() {
@@ -126,46 +135,139 @@ public class RockerActivity extends Activity implements AMapNaviListener {
                 switch (eventType) {
                     case RockerView.EVENT_ACTION:
 
-                        if(angle == -1){
-                            return;
-                        }
                         synchronized (lockObj){
-                            radian = Math.toRadians(angle);
-                            y = currentDistance * Math.sin(radian);
-                            x = currentDistance * Math.cos(radian);
-
-                            LogUtils.i("### y "+y+", x: "+x);
-                            // add longtitude,East West
-                            lng = x * multi;
-                            //add latitude,North South
-                            lat = y * multi;
-                            //East West
-                            startLng = startLng + lng;
-                            //North South
-                            startLat = startLat + lat;
-                            Location location = new Location("gps");
-                            location.setLongitude(startLng);
-                            location.setLatitude(startLat);
-                            location.setSpeed(speed);
-                            location.setAccuracy(accuracy);
-                            location.setBearing(5);
-                            location.setTime(System.currentTimeMillis());
-                            //use gaode pivot = 2, use system pivot = 1
-
-                            mAmapNavi.setExtraGPSData(2,location);
-
+                            getScreenPivotAndNavi(angle, currentDistance);
                         }
-
                         break;
-                   /* case RockerView.EVENT_CLOCK:
-                        // 定时回调
-                        Log.e("EVENT_CLOCK", " angle : "+currentAngle+" - distance"+currentDistance);
-                        break;*/
                 }
             }
         });
     }
 
+    /**
+     * base on screen pivot to location, and then navi
+     * @param angle
+     * @param currentDistance
+     */
+    private void getScreenPivotAndNavi(int angle, float currentDistance) {
+        if(angle != -1){
+            radian = Math.toRadians(angle);
+            y = currentDistance * Math.sin(radian);
+            x = currentDistance * Math.cos(radian);
+
+
+            if(isFirst){
+                NaviLatLng startPoint = mAmapNavi.getNaviPath().getStartPoint();
+                startLat = startPoint.getLatitude();
+                startLng = startPoint.getLongitude();
+
+                if(null == mAmap){
+                    mAmap = mAmapNaviView.getMap();
+                }
+
+                Point point = mAmap.getProjection().toScreenLocation(new LatLng(startLat, startLng));
+                pivotX = point.x;
+                pivotY = point.y;
+                mIcon.setX(pivotX);
+                mIcon.setY(pivotY);
+                mIcon.setVisibility(View.VISIBLE);
+
+                isFirst = false;
+            }
+        }else {
+//                                LogUtils.i("x: "+x+", y: "+y);
+            pivotX = (float) (pivotX + x);
+            pivotY = (float) (pivotY - y);
+            mIcon.setX(pivotX);
+            mIcon.setY(pivotY);
+
+            LatLng latLng = mAmap.getProjection().fromScreenLocation(new Point((int)pivotX, (int)pivotY));
+            time++;
+
+            LogUtils.i("time : "+time+
+                    ", x: "+pivotX+
+                    ", y: "+pivotY+
+                    ", newLat: "+latLng.latitude+
+                    ", newLng: "+latLng.longitude);
+
+            Location location = new Location(LocationManager.GPS_PROVIDER);
+            location.setLongitude(latLng.longitude);
+            location.setLatitude(latLng.latitude);
+            location.setSpeed(speed);
+            location.setAccuracy(accuracy);
+            location.setBearing(5);
+            location.setTime(System.currentTimeMillis());
+
+
+            //use gaode pivot = 2, use GPS pivot = 1
+            mAmapNavi.setExtraGPSData(2,location);
+        }
+    }
+
+    /**
+     * move as coordlist pivot
+     * @param angle
+     */
+    private void moveAsCoordlist(int angle) {
+        if(angle == -1){
+            AMapNaviPath naviPath = mAmapNavi.getNaviPath();
+            NaviLatLng startPoint = naviPath.getStartPoint();
+            List<NaviLatLng> coordList = naviPath.getCoordList();
+
+            int size = naviPath.getCoordList().size();
+            if(i > size){
+                i = size;
+            }
+            i++;
+            NaviLatLng naviLatLng = naviPath.getCoordList().get(i);
+            String name = "gps"+i;
+            Location location = new Location(name);
+            location.setLongitude(naviLatLng.getLongitude());
+            location.setLatitude(naviLatLng.getLatitude());
+            LogUtils.i("i : "+i+ ", lat: "+naviLatLng.getLatitude()+
+                    ", lng: "+naviLatLng.getLongitude());
+            location.setSpeed(speed);
+            location.setAccuracy(accuracy);
+            location.setBearing(5);
+            location.setTime(System.currentTimeMillis());
+
+
+            //use gaode pivot = 2, use GPS pivot = 1
+            mAmapNavi.setExtraGPSData(2,location);
+        }
+    }
+
+    /**
+     * move map marker, and then recalculate the route
+     * @param angle
+     * @param currentDistance
+     */
+    private void selefModeNavi(int angle, float currentDistance) {
+        if(angle == -1){
+            //set extra gps dat
+            slist.clear();
+            NaviLatLng latlng = new NaviLatLng(newLatLng.latitude,newLatLng.longitude);
+            slist.add(latlng);
+            LogUtils.i("calcuate route once again...");
+            mAmapNavi.calculateDriveRoute(slist,elist,wlist,strategyConvert);
+
+        }else {
+            if(null == mAmap){
+                mAmap = mAmapNaviView.getMap();
+            }
+            radian = Math.toRadians(angle);
+//                                LogUtils.i(" y: "+ currentDistance* Math.sin(radian)+ ", x: "+currentDistance * Math.cos(radian));
+            lat = currentDistance * Math.sin(radian) * multi;
+            lng = currentDistance * Math.cos(radian) * multi;
+            List<Marker> markers = mAmap.getMapScreenMarkers();
+            marker = markers.get(0);
+            LatLng latLng = marker.getPosition();
+            newLatLng = new LatLng(latLng.latitude+lat,latLng.longitude+lng);
+            marker.setPosition(newLatLng);
+            //设置中心点和缩放比例
+            mAmap.moveCamera(CameraUpdateFactory.changeLatLng(newLatLng));
+        }
+    }
 
     @Override
     protected void onResume() {
@@ -182,52 +284,20 @@ public class RockerActivity extends Activity implements AMapNaviListener {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        mAmapNavi.removeAMapNaviListener(this);
         mAmapNaviView.onDestroy();
+        mAmapNavi = null;
+        mAmapNaviView = null;
+        System.gc();
+
     }
 
-    private void toggleGPS() {
-        Intent gpsIntent = new Intent();
-        gpsIntent.setClassName("com.android.settings",
-                "com.android.settings.widget.SettingsAppWidgetProvider");
-        gpsIntent.addCategory("android.intent.category.ALTERNATIVE");
-        gpsIntent.setData(Uri.parse("custom:3"));
-        try{
-            PendingIntent.getBroadcast(this, 0, gpsIntent, 0).send();
-        }catch(PendingIntent.CanceledException e) {
-            e.printStackTrace();
-        }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 
-
-    //判断gps是否处于打开状态
-    public boolean isOpen() {
-        if (Build.VERSION.SDK_INT <19) {
-            LocationManager myLocationManager = (LocationManager  )getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
-            return myLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-        }else{
-            int state = Settings.Secure.getInt(getApplicationContext().getContentResolver(), Settings.Secure.LOCATION_MODE, Settings.Secure.LOCATION_MODE_OFF);
-            if(state==Settings.Secure.LOCATION_MODE_OFF){
-                return false;
-            }else{
-                return true;
-            }
-        }
-    }
-
-    private boolean isGPSEnable() {
-        /*
-        用Setting.System来读取也可以，只是这是更旧的用法
-        Stringstr = Settings.System.getString(getContentResolver(),Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
-        */
-        String str = Settings.Secure.getString(getContentResolver(),
-                Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
-        LogUtils.i("GPS : "+ str);
-        if(str != null) {
-            return str.contains("gps");
-        } else{
-            return false;
-        }
-    }
 
     /************************************************************************
      * **********************************************************************
@@ -395,5 +465,6 @@ public class RockerActivity extends Activity implements AMapNaviListener {
     public void onPlayRing(int i) {
         LogUtils.i("RockerActivity.onPlayRing  ");
     }
+
 
 }

@@ -54,8 +54,8 @@ public class MapRockerActivity extends Activity implements AMap.OnMyLocationChan
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_rocker);
-        mapView = findViewById(R.id.map);
-        rockerView = findViewById(R.id.rocker);
+        mapView = (MapView) findViewById(R.id.map);
+        rockerView = (RockerView) findViewById(R.id.rocker);
 
         mapView.onCreate(savedInstanceState);
         aMap = mapView.getMap();
