@@ -231,7 +231,6 @@ public class RockerActivity extends Activity implements AMapNaviListener {
             location.setBearing(5);
             location.setTime(System.currentTimeMillis());
 
-
             //use gaode pivot = 2, use GPS pivot = 1
             mAmapNavi.setExtraGPSData(2,location);
         }

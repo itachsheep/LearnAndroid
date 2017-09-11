@@ -42,7 +42,8 @@ public class MapImpMethodActivity extends Activity {
      * @param view
      */
     public void forwardMapView(View view) {
-//        startActivity(new Intent(this, BasicMapActivity.class));
+        startActivity(new Intent(this, BasicMapActivity.class));
+        finish();
     }
 
     /**

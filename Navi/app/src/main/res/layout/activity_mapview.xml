@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" 
-    android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    >
     <Button
 
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:textSize="20sp"
-        android:text="TextureMapView"/>
-    <com.amap.api.maps.TextureMapView
-        android:id="@+id/map"
+        android:text="MapView"/>
+    <com.amap.api.maps.MapView
+        android:id="@+id/basic_mapview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="4"/>
@@ -23,13 +22,13 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:textSize="20sp"
-        android:text="TextureMapFragment"/>
+        android:text="MapFragment"/>
     <fragment
         android:id="@+id/texture_map_fragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="4"
-        class="com.amap.api.maps.TextureMapFragment"/>
+        class="com.amap.api.maps.MapFragment"/>
     <!--<FrameLayout
         android:id="@+id/texture_fl"
         android:layout_width="match_parent"
