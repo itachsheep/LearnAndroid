@@ -1,0 +1,447 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:2:1-243:12
+	package
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:3:5-34
+		INJECTED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml
+		INJECTED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml
+	android:versionName
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:5:5-30
+		INJECTED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml
+		INJECTED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml
+	android:versionCode
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:4:5-28
+		INJECTED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml
+		INJECTED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:2:11-69
+uses-sdk
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:appcompat-v7:25.0.1] C:\Users\sdt14324\.android\build-cache\0cf2b0eac7179e30625a8b28bfddb001a3180670\output\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:support-v4:25.0.1] C:\Users\sdt14324\.android\build-cache\914e56abfe54ccef91867479e41fb0e0632720b2\output\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.0.1] C:\Users\sdt14324\.android\build-cache\6f628721104e90bc3800846b26cb4b50b3e3345d\output\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.0.1] C:\Users\sdt14324\.android\build-cache\005528d0882f48ac7429ed60f813c29c62aee848\output\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:25.0.1] C:\Users\sdt14324\.android\build-cache\9d765222be38b229d3b97ab65065f6ef538fcde9\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.0.1] C:\Users\sdt14324\.android\build-cache\89b4581519db45ccb48569bbed30784a8e82c8fe\output\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:animated-vector-drawable:25.0.1] C:\Users\sdt14324\.android\build-cache\067a8b0eaf3d0a2d7d83ac8a8941a1bf1b1c4081\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.0.1] C:\Users\sdt14324\.android\build-cache\ed3d5eb2eb275bb7d88836ffc6820afb72641024\output\AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:support-compat:25.0.1] C:\Users\sdt14324\.android\build-cache\8f20327414dfad836feed428d7b8c83ddc786dac\output\AndroidManifest.xml:21:5-23:58
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:25.0.1] C:\Users\sdt14324\.android\build-cache\0cf2b0eac7179e30625a8b28bfddb001a3180670\output\AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:9:9-38
+		INJECTED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml
+		INJECTED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:8:9-34
+		INJECTED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml
+		INJECTED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml
+application
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:11:5-231:19
+MERGED from [com.android.support:appcompat-v7:25.0.1] C:\Users\sdt14324\.android\build-cache\0cf2b0eac7179e30625a8b28bfddb001a3180670\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-v4:25.0.1] C:\Users\sdt14324\.android\build-cache\914e56abfe54ccef91867479e41fb0e0632720b2\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:25.0.1] C:\Users\sdt14324\.android\build-cache\6f628721104e90bc3800846b26cb4b50b3e3345d\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:25.0.1] C:\Users\sdt14324\.android\build-cache\005528d0882f48ac7429ed60f813c29c62aee848\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:25.0.1] C:\Users\sdt14324\.android\build-cache\9d765222be38b229d3b97ab65065f6ef538fcde9\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:25.0.1] C:\Users\sdt14324\.android\build-cache\89b4581519db45ccb48569bbed30784a8e82c8fe\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.0.1] C:\Users\sdt14324\.android\build-cache\067a8b0eaf3d0a2d7d83ac8a8941a1bf1b1c4081\output\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:25.0.1] C:\Users\sdt14324\.android\build-cache\ed3d5eb2eb275bb7d88836ffc6820afb72641024\output\AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:support-compat:25.0.1] C:\Users\sdt14324\.android\build-cache\8f20327414dfad836feed428d7b8c83ddc786dac\output\AndroidManifest.xml:25:5-20
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:16:9-41
+	android:allowBackup
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:14:9-36
+	android:icon
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:15:9-45
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:17:9-51
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:13:9-48
+meta-data#com.amap.api.v2.apikey
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:18:9-20:63
+	android:value
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:20:13-61
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:19:13-50
+activity#com.amap.navi.demo.activity.IndexActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:22:9-30:20
+	android:screenOrientation
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:25:13-49
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:24:13-45
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:23:13-69
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:26:13-29:29
+action#android.intent.action.MAIN
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:27:17-69
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:27:25-66
+category#android.intent.category.LAUNCHER
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:28:17-77
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:28:27-74
+activity#com.amap.api.navi.AmapRouteActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:32:9-34:77
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:34:13-74
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:33:13-63
+activity#com.amap.navi.demo.activity.BasicNaviActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:37:9-41:69
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:40:13-45
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:39:13-74
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:41:13-66
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:38:13-73
+activity#com.amap.navi.demo.activity.custom.ComponentActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:42:9-46:69
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:45:13-45
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:44:13-74
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:46:13-66
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:43:13-80
+activity#com.amap.navi.demo.activity.CustomZoomInIntersectionViewActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:48:9-52:69
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:51:13-45
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:50:13-74
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:52:13-66
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:49:13-92
+activity#com.amap.navi.demo.activity.CustomRouteActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:55:9-59:69
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:58:13-45
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:57:13-74
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:59:13-66
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:56:13-75
+activity#com.amap.navi.demo.activity.CustomDriveWayViewActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:61:9-65:69
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:64:13-45
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:63:13-74
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:65:13-66
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:62:13-82
+activity#com.amap.navi.demo.activity.HudDisplayActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:67:9-71:69
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:70:13-45
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:69:13-74
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:71:13-66
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:68:13-74
+activity#com.amap.navi.demo.activity.IntelligentBroadcastActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:73:9-77:69
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:76:13-45
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:75:13-74
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:77:13-66
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:74:13-84
+activity#com.amap.navi.demo.activity.RoutePlanningActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:78:9-83:63
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:81:13-45
+	android:windowSoftInputMode
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:83:13-60
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:80:13-74
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:82:13-66
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:79:13-77
+activity#com.amap.navi.demo.activity.GPSNaviActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:84:9-88:69
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:87:13-45
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:86:13-74
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:88:13-66
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:85:13-71
+activity#com.amap.navi.demo.activity.CustomTrafficBarViewActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:90:9-94:69
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:93:13-45
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:92:13-74
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:94:13-66
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:91:13-84
+activity#com.amap.navi.demo.activity.SimpleNaviActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:96:9-100:69
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:99:13-45
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:98:13-74
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:100:13-66
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:97:13-74
+activity#com.amap.navi.demo.activity.GetNaviStepsAndLinksActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:102:9-106:69
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:105:13-45
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:104:13-74
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:106:13-66
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:103:13-84
+activity#com.amap.navi.demo.activity.NorthModeActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:107:9-111:69
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:110:13-45
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:109:13-74
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:111:13-66
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:108:13-73
+activity#com.amap.navi.demo.activity.OverviewModeActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:112:9-116:69
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:115:13-45
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:114:13-74
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:116:13-66
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:113:13-76
+activity#com.amap.navi.demo.activity.BasicWalkNaviActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:118:9-122:69
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:121:13-45
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:120:13-74
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:122:13-66
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:119:13-77
+activity#com.amap.navi.demo.activity.UseExtraGpsDataActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:125:9-129:69
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:128:13-45
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:127:13-74
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:129:13-66
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:126:13-79
+activity#com.amap.navi.demo.activity.CustomCarActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:132:9-136:69
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:135:13-45
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:134:13-74
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:136:13-66
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:133:13-73
+activity#com.amap.navi.demo.activity.CustomRouteTextureInAMapNaviViewActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:138:9-142:69
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:141:13-45
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:140:13-74
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:142:13-66
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:139:13-96
+activity#com.amap.navi.demo.activity.CustomDirectionViewActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:145:9-149:69
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:148:13-45
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:147:13-74
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:149:13-66
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:146:13-83
+activity#com.amap.navi.demo.activity.CustomTrafficButtonViewActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:151:9-155:69
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:154:13-45
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:153:13-74
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:155:13-66
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:152:13-87
+activity#com.amap.navi.demo.activity.CustomNextTurnTipViewActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:158:9-162:69
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:161:13-45
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:160:13-74
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:162:13-66
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:159:13-85
+activity#com.amap.navi.demo.activity.CustomZoomButtonViewActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:165:9-169:69
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:168:13-45
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:167:13-74
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:169:13-66
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:166:13-84
+activity#com.amap.navi.demo.activity.CustomOverviewButtonViewActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:172:9-176:69
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:175:13-45
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:174:13-74
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:176:13-66
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:173:13-88
+activity#com.amap.navi.demo.activity.RestRouteShowActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:177:9-181:69
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:180:13-45
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:179:13-74
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:181:13-66
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:178:13-77
+activity#com.amap.navi.demo.activity.RouteNaviActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:182:9-186:69
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:185:13-45
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:184:13-74
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:186:13-66
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:183:13-73
+activity#com.amap.navi.demo.activity.SingleRouteCalculateActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:188:9-192:69
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:191:13-45
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:190:13-74
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:192:13-66
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:189:13-84
+activity#com.amap.navi.demo.activity.WalkRouteCalculateActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:194:9-198:69
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:197:13-45
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:196:13-74
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:198:13-66
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:195:13-82
+activity#com.amap.navi.demo.activity.RideRouteCalculateActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:200:9-204:69
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:203:13-45
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:202:13-74
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:204:13-66
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:201:13-82
+activity#com.amap.navi.demo.activity.EmulatorActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:206:9-210:69
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:209:13-45
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:208:13-74
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:210:13-66
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:207:13-72
+activity#com.amap.navi.demo.activity.custom.CustomUiActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:212:9-216:69
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:215:13-45
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:214:13-74
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:216:13-66
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:213:13-79
+activity#com.amap.navi.demo.activity.DriverListActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:218:9-222:69
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:221:13-45
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:220:13-74
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:222:13-66
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:219:13-74
+activity#com.amap.navi.demo.activity.NaviInfoActivity
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:224:9-228:69
+	android:label
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:227:13-45
+	android:configChanges
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:226:13-74
+	android:theme
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:228:13-66
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:225:13-72
+uses-permission#android.permission.INTERNET
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:233:5-67
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:233:22-64
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:234:5-81
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:234:22-78
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:235:5-81
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:235:22-78
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:236:5-79
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:236:22-76
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:237:5-79
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:237:22-76
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:238:5-75
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:238:22-72
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:239:5-76
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:239:22-73
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:240:5-76
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:240:22-73
+uses-permission#android.permission.WAKE_LOCK
+ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:241:5-68
+	android:name
+		ADDED from D:\as_workspace\AMap_Android_Demo\AMap_Android_API_Navi_Demo\android_studio\NaviDemo\app\src\main\AndroidManifest.xml:241:22-65

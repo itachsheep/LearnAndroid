@@ -1,0 +1,266 @@
+[
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\select_dialog_item_material.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\abc_action_bar_title_item.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\abc_screen_simple.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_index.xml",
+        "source": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\src\\main\\res\\layout\\activity_index.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\abc_activity_chooser_view.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_display_north_mode.xml",
+        "source": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\src\\main\\res\\layout\\activity_display_north_mode.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_custom_zoom_button_view.xml",
+        "source": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\src\\main\\res\\layout\\activity_custom_zoom_button_view.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_view.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\abc_search_view.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_basic_navi.xml",
+        "source": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\src\\main\\res\\layout\\activity_basic_navi.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\abc_action_mode_bar.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\support_simple_spinner_dropdown_item.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_custom_overview_button_view.xml",
+        "source": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\src\\main\\res\\layout\\activity_custom_overview_button_view.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_action.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\notification_media_action.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media_narrow.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_custom_traffic_button_view.xml",
+        "source": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\src\\main\\res\\layout\\activity_custom_traffic_button_view.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media_narrow_custom.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\notification_template_big_media_narrow_custom.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_item_layout.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\abc_list_menu_item_layout.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media_custom.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\notification_template_media_custom.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media_custom.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\notification_template_big_media_custom.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_simple_list_item.xml",
+        "source": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\src\\main\\res\\layout\\activity_simple_list_item.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\notification_template_media.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\notification_action.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\abc_expanded_menu_layout.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\notification_template_custom_big.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_custom_traffic_bar_view.xml",
+        "source": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\src\\main\\res\\layout\\activity_custom_traffic_bar_view.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\abc_action_bar_up_container.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_display_overview_mode.xml",
+        "source": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\src\\main\\res\\layout\\activity_display_overview_mode.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_intelligent_broadcast.xml",
+        "source": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\src\\main\\res\\layout\\activity_intelligent_broadcast.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\client_popwindow.xml",
+        "source": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\src\\main\\res\\layout\\client_popwindow.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_cancel_action.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\notification_media_cancel_action.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\client_show_route.xml",
+        "source": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\src\\main\\res\\layout\\client_show_route.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_header_item_layout.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\abc_popup_menu_header_item_layout.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_route_planning.xml",
+        "source": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\src\\main\\res\\layout\\activity_route_planning.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_custom_drive_way_view.xml",
+        "source": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\src\\main\\res\\layout\\activity_custom_drive_way_view.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\notification_template_part_time.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_rest_calculate.xml",
+        "source": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\src\\main\\res\\layout\\activity_rest_calculate.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\select_dialog_singlechoice_material.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_content_include.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\abc_screen_content_include.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_custom_zoomin_intersection_view.xml",
+        "source": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\src\\main\\res\\layout\\activity_custom_zoomin_intersection_view.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines_media.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\notification_template_lines_media.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_hud.xml",
+        "source": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\src\\main\\res\\layout\\activity_hud.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\client_show_setting.xml",
+        "source": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\src\\main\\res\\layout\\client_show_setting.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_custom_next_turn_tip_view.xml",
+        "source": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\src\\main\\res\\layout\\activity_custom_next_turn_tip_view.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\client_show_map.xml",
+        "source": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\src\\main\\res\\layout\\client_show_map.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media.xml",
+        "source": "C:\\Users\\sdt14324\\.android\\build-cache\\0cf2b0eac7179e30625a8b28bfddb001a3180670\\output\\res\\layout\\notification_template_big_media.xml"
+    },
+    {
+        "merged": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_custom_direction_view.xml",
+        "source": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\src\\main\\res\\layout\\activity_custom_direction_view.xml"
+    }
+]

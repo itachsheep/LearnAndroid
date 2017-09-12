@@ -1,0 +1,26 @@
+[
+    {
+        "outputFile": "D:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 45,
+                    "endOffset": 96
+                },
+                "from": {
+                    "file": "C:\\Users\\sdt14324\\.android\\build-cache\\f3d1aee383dde05a75439f9752797b1f36e13b4c\\output\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 229,
+                        "endColumn": 45,
+                        "endOffset": 270
+                    }
+                }
+            }
+        ]
+    }
+]
