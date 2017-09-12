@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/skyworth"
         android:supportsRtl="true"
-        android:theme="@android:style/Theme.Light" >
+        android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         <!--@style/AppTheme-->
         <meta-data
             android:name="com.amap.api.v2.apikey"
@@ -30,7 +30,8 @@
             />
         <activity android:name="rocker.MapRockerActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"/>
         <!--创维导航-->
         <activity android:name="skyworth.activity.SkyworthActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"

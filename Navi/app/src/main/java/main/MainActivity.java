@@ -40,7 +40,8 @@ public class MainActivity extends Activity {
             "导航sdk",
             "定位sdk",
             "模拟摇杆",
-            "地图摇杆"
+            "地图摇杆",
+            "创维导航"
             };
 
     private AdapterView.OnItemClickListener mItemClickListener = new AdapterView.OnItemClickListener(){
