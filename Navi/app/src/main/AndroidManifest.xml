@@ -23,12 +23,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--rocker-->
+        <!--摇杆rocker-->
         <activity android:name="rocker.RockerActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="landscape"
             />
         <activity android:name="rocker.MapRockerActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="landscape"/>
+        <!--创维导航-->
+        <activity android:name="skyworth.activity.SkyworthActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="landscape"/>
         <!--地图相关-->

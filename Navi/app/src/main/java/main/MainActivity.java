@@ -21,6 +21,7 @@ import map_.activity.MapMainActivity;
 import navi_.activity.NaviMainActivity;
 import rocker.MapRockerActivity;
 import rocker.RockerActivity;
+import skyworth.activity.SkyworthActivity;
 
 /**
  * Created by SDT14324 on 2017/9/5.
@@ -39,7 +40,8 @@ public class MainActivity extends Activity {
             "导航sdk",
             "定位sdk",
             "模拟摇杆",
-            "地图摇杆"};
+            "地图摇杆"
+            };
 
     private AdapterView.OnItemClickListener mItemClickListener = new AdapterView.OnItemClickListener(){
 
@@ -55,6 +57,8 @@ public class MainActivity extends Activity {
                 startActivity(new Intent(MainActivity.this, RockerActivity.class));
             }else if(position == 4){
                 startActivity(new Intent(MainActivity.this, MapRockerActivity.class));
+            }else if(position == 5){
+                startActivity(new Intent(MainActivity.this, SkyworthActivity.class));
             }
         }
     };

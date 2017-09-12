@@ -31,7 +31,8 @@ public class MapMainActivity extends ListActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        System.exit(0);
+//        System.exit(0);
+        finish();
     }
 
     @Override
