@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.skyworthauto.navi.focus.MainMapView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageButton
+        android:id="@+id/iv_more_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/auto_dimen2_28"
+        android:layout_marginTop="@dimen/auto_dimen2_28"
+        android:background="@drawable/auto_bg_map_btn_selector"
+        android:scaleType="centerInside"
+        android:src="@drawable/auto_map_more" />
+
+    <ImageButton
+        android:id="@+id/ib_go_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/auto_map_go_slc"
+        android:src="@drawable/auto_map_ic_go_content">
+    </ImageButton>
+
+    <include
+        android:id="@+id/control_status_top_bar"
+        layout="@layout/view_status_bar_topbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true" />
+
+    <include layout="@layout/map_interactive_view" />
+
+    <Button
+        android:id="@+id/ib_my_local"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/auto_dimen2_79"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/auto_dimen2_21"
+        android:background="@drawable/auto_gocar_btn_slc"
+        android:gravity="center"
+        android:paddingLeft="@dimen/auto_dimen2_24"
+        android:paddingRight="@dimen/auto_dimen2_24"
+        android:text="@string/my_location"
+        android:textColor="@color/auto_color_ffffff"
+        android:textSize="@dimen/auto_font_size_30"
+        android:visibility="gone" />
+
+</com.skyworthauto.navi.focus.MainMapView>

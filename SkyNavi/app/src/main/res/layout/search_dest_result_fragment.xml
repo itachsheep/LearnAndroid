@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.skyworthauto.navi.focus.DestSelectView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/search_left_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/auto_dimen2_28"
+        android:layout_marginLeft="@dimen/auto_dimen2_18"
+        android:layout_marginTop="@dimen/auto_dimen2_21"
+        android:clickable="true">
+
+        <RelativeLayout
+            android:id="@+id/shadow_panel"
+            android:layout_width="@dimen/auto_dimen2_350"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/auto_dimen2_20"
+            android:background="@drawable/auto_bg_route_panel_shadow">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/auto_bg_corner_route_panel"
+                android:clickable="true"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/left_layout_title_panel"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/auto_dimen2_80"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <include
+                        android:id="@+id/auto_loading_left_bar_top"
+                        layout="@layout/search_back"
+                        android:layout_width="@dimen/auto_dimen2_76"
+                        android:layout_height="match_parent" />
+
+                    <TextView
+                        android:id="@+id/auto_search_keyword"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clickable="true"
+                        android:ellipsize="middle"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/auto_dimen_15"
+                        android:paddingRight="@dimen/auto_dimen_15"
+                        android:singleLine="true"
+                        android:textColor="@color/auto_color_212125"
+                        android:textSize="@dimen/auto_font_size_30"
+                        tools:text="@string/auto_search_dest_title_edit_hint_text" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/auto_dimen2_1"
+                    android:background="@color/auto_color_c0ccdc" />
+
+                <FrameLayout
+                    android:id="@+id/search_card_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.skyworthauto.navi.focus.FocusRecyclerView
+                        android:id="@+id/dest_listview"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:divider="@null"
+                        android:listSelector="@drawable/focused_state_bg" />
+
+                    <include
+                        android:id="@+id/auto_poi_detail_root_view"
+                        layout="@layout/auto_search_poi_detail_view"
+                        android:visibility="gone" />
+
+                </FrameLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/search_result_navi"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/auto_dimen2_68"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/auto_bg_btn_navi_selector"
+            android:focusable="true"
+            android:gravity="center"
+            android:paddingLeft="@dimen/auto_dimen2_38"
+            android:paddingRight="@dimen/auto_dimen2_38">
+
+            <ImageView
+                android:id="@+id/search_result_navi_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/auto_dimen2_12"
+                android:src="@drawable/auto_route_start_navi_icon" />
+
+            <TextView
+                android:id="@+id/search_result_navi_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/go_here"
+                android:textColor="@color/auto_color_search_navi"
+                android:textSize="@dimen/auto_font_size_26" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/auto_navi_status_bar_panel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="@dimen/auto_dimen2_21"
+        android:layout_marginTop="@dimen/auto_dimen2_21" />
+
+    <RelativeLayout
+        android:id="@+id/search_grandson_tip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/auto_dimen2_17"
+        android:layout_marginRight="@dimen/auto_dimen2_20"
+        android:layout_marginTop="@dimen/auto_dimen2_21"
+        android:layout_toRightOf="@id/search_left_layout"
+        android:visibility="gone" />
+
+    <com.skyworthauto.navi.view.ClockTip
+        android:id="@+id/tv_current_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/auto_dimen2_18"
+        android:layout_marginTop="@dimen/auto_dimen2_12"
+        android:background="@drawable/auto_selector_status_bar_top_bar"
+        android:gravity="center"
+        android:textColor="@color/auto_color_586c7f"
+        android:textSize="@dimen/auto_dimen2_26"
+        android:textStyle="bold" />
+
+    <include layout="@layout/map_interactive_view" />
+</com.skyworthauto.navi.focus.DestSelectView>
