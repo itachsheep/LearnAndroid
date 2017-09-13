@@ -13,7 +13,7 @@
     <string name="camera_description">介绍在地图中操作Camera各种功能</string>
     <string name="heatmap_demo">热力图功能</string>
     <string name="heatmap_description">介绍在地图中如何绘制热力图</string>
-
+    <string name="no_result_found">未查找到结果</string>
     <string name="viewpager_map">ViewPager TextureMapView</string>
     <string name="viewpger_map_description">介绍如何在ViewPager中添加Map(防止滑动时黑屏)</string>
     <string name="clear_map">Clear</string>
@@ -35,7 +35,7 @@
     <string name="gpsfollow">追随</string>
     <string name="gpslocate">定位</string>
     <string name="gpsrotate">旋转</string>
-
+    <string name="com_taobao_tae_sdk_loading_progress_message">加载中</string>
     <string-array name="layers_array">
         <item>@string/normal</item>
         <item>@string/satellite</item>
@@ -1409,4 +1409,17 @@ ISBN978-7-89416-454-4
     <string name="autonavi_speed_default_value">0</string>
     <string name="autonavi_start_navi">开始导航</string>
     <string name="autonavi_suggest_movie">高德为您推荐最近就影计划</string>
+
+    <string name="progress_message">路线规划中…</string>
+    <string name="search_item_separator">·</string>
+    <string name="route_planing">路线规划中…</string>
+    <string name="car_method_no_block">躲避拥堵</string>
+    <string name="car_method_no_fee">避免收费</string>
+    <string name="car_method_no_highway">不走高速</string>
+    <string name="car_method_using_highway">高速优先</string>
+    <string name="go_here">去这里</string>
+    <string name="common_add_home_btn_text">设置为家</string>
+    <string name="common_add_company_btn_text">设置为公司</string>
+    <string name="search_result_map_add_waypoi">设为途经点</string>
+    <string name="searching">正在搜索...</string>
 </resources>

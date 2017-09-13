@@ -4,11 +4,15 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 
 import com.amap.api.navi.AMapNavi;
 import com.amap.api.navi.AMapNaviView;
 import com.skyworth.base.BaseActivity;
+import com.skyworth.base.BaseFragment;
+import com.skyworth.base.DebugApplication;
+import com.skyworth.fragment.MainMapFragment;
 import com.skyworth.map.MapController;
 import com.skyworth.navi.R;
 import com.skyworth.protocol.IVoiceControl;
@@ -19,6 +23,7 @@ import com.skyworth.route.RoutePlanInfo;
  */
 
 public class SkyworthActivity extends BaseActivity implements IVoiceControl {
+    String tag = SkyworthActivity.class.getSimpleName();
     private MapController mMapController;
     private RoutePlanInfo mRoutePlanInfo;
     @Override
@@ -35,6 +40,18 @@ public class SkyworthActivity extends BaseActivity implements IVoiceControl {
         mMapController.onCreate(savedInstanceState);
 
         AMapNavi.getInstance(this).startGPS();
+
+//        L.i(tag,"file dir: "+this.getFilesDir().toString()+
+//        ", external dir: "+this.getExternalCacheDir().toString());
+        try {
+            Thread.sleep(10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        BaseFragment newFragment = MainMapFragment.newInstance();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.add(R.id.map_fragment_container, newFragment);
+        ft.commit();
     }
 
     @Override
@@ -81,6 +98,8 @@ public class SkyworthActivity extends BaseActivity implements IVoiceControl {
     protected void onDestroy() {
         super.onDestroy();
         mMapController.onDestroy();
+        // TODO: 2017/9/13
+        DebugApplication.getRefWatcher(this).watch(this);
     }
 
 

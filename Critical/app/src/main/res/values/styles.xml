@@ -7,5 +7,38 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="no_trans_dlg" parent="@android:style/Theme.Dialog">
+        <item name="android:backgroundDimAmount">0.6</item>
+        <item name="android:windowBackground">@drawable/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:background">@drawable/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
 
+    <style name="auto_search_btn">
+        <item name="android:textSize">@dimen/search_default_text_size</item>
+        <item name="android:textColor">@color/search_default_text_color</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/auto_search_button_selector</item>
+        <item name="android:paddingLeft">@dimen/auto_dimen2_20</item>
+        <item name="android:paddingRight">@dimen/auto_dimen2_20</item>
+        <item name="android:text">搜索</item>
+        <item name="android:drawableLeft">@drawable/auto_search_button_glass</item>
+        <item name="android:drawablePadding">@dimen/auto_dimen2_15</item>
+    </style>
+
+    <style name="auto_dest_no_history_text">
+        <item name="android:textSize">@dimen/auto_font_size_24</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/auto_dest_around_space_height</item>
+        <item name="android:paddingTop">@dimen/auto_dest_no_history_text_padding_top</item>
+        <item name="android:paddingRight">@dimen/auto_dest_around_space_height</item>
+        <item name="android:paddingBottom">@dimen/auto_dest_no_history_text_padding_top</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 </resources>

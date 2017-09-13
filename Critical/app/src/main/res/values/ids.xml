@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item type="id" name="search_detail_mid_line"/>
+    <item type="id" name="search_detail_tip_collect_view">false</item>
+    <item type="id" name="search_detail_tip_collect_image">false</item>
+    <item type="id" name="search_detail_tip_collect_text">false</item>
+    <item type="id" name="search_detail_tip_arround_view">false</item>
+    <item type="id" name="around_icon">false</item>
+    <item type="id" name="around_text">false</item>
+    <item type="id" name="auto_search_switch_city">false</item>
+    <item type="id" name="auto_search_title_bottom_divider">false</item>
+    <item type="id" name="ll_his_clear_container">false</item>
+    <item type="id" name="tv_his_clear">false</item>
+</resources>

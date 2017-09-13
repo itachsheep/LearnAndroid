@@ -155,6 +155,33 @@ public abstract class BaseFragment extends Fragment implements IKeyEvent,
         return false;
     }
 
+    // TODO: 2017/9/13
+    private BaseFragment mCurrentFragment;
+    private String FRAGMENT_TAG = "all";
+    public void showFragment(BaseFragment fragment){
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        if(!fragment.isAdded()){
+            ft.add(R.id.map_fragment_container,fragment,FRAGMENT_TAG);
+        }
+
+        if(mCurrentFragment != null){
+            ft.hide(mCurrentFragment);
+        }
+
+        ft.show(fragment);
+        ft.commitAllowingStateLoss();
+        mCurrentFragment = fragment;
+    }
+
+    public void hideFragment(){
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        if(null != mCurrentFragment){
+            ft.hide(mCurrentFragment);
+        }
+        ft.commitAllowingStateLoss();
+        mCurrentFragment = null;
+    }
+
     public int replaceFragmentToActivity(BaseFragment fragment) {
         return replaceFragmentToActivity(fragment, null);
     }

@@ -82,6 +82,8 @@ public class BaseActivity extends CheckPermissionActivity {
         mAMapNavi.destroy();
 
         mTtsManager.destroy();
+        // TODO: 2017/9/13
+        DebugApplication.getRefWatcher(this).watch(this);
     }
 
     @Override
