@@ -7,6 +7,7 @@ import com.skyworth.base.BaseFragment;
 import com.skyworth.navi.R;
 import com.skyworth.view.MapInteractiveView;
 
+import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
@@ -35,16 +36,16 @@ public class MainMapFragment extends BaseFragment {
     }
 
 
-//    @BindView(R.id.map_interactive_view)
+    @BindView(R.id.map_interactive_view)
     public MapInteractiveView mMapInteractiveView;
 
     @Override
     public void init(View rootView, Bundle savedInstanceState) {
         mMapInteractiveView = (MapInteractiveView) rootView.findViewById(R.id.map_interactive_view);
-//        mMapInteractiveView.setMapController(mMapController);
-//        mMapInteractiveView.showTrafficLineBtn(true);
-//        mMapInteractiveView.showVisualModeBtn(true);
-//        mMapInteractiveView.showZoomLayout(true);
+        mMapInteractiveView.setMapController(mMapController);
+        mMapInteractiveView.showTrafficLineBtn(true);
+        mMapInteractiveView.showVisualModeBtn(true);
+        mMapInteractiveView.showZoomLayout(true);
     }
 
     @OnClick(R.id.ib_go_search)
