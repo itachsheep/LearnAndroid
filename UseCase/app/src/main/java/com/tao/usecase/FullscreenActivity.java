@@ -1,21 +1,30 @@
 package com.tao.usecase;
 
 import android.annotation.SuppressLint;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.tao.usecase.fragment.AddFragment1;
+import com.tao.usecase.fragment.AddFragment2;
+import com.tao.usecase.fragment.BaseFragment;
+import com.tao.usecase.fragment.TestButterKnifeFragment;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+import static com.tao.usecase.R.id.fullscreen_content;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class FullscreenActivity extends AppCompatActivity {
+public class FullscreenActivity extends Activity {
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -57,10 +66,10 @@ public class FullscreenActivity extends AppCompatActivity {
         @Override
         public void run() {
             // Delayed display of UI elements
-            ActionBar actionBar = getSupportActionBar();
+           /* ActionBar actionBar = getSupportActionBar();
             if (actionBar != null) {
                 actionBar.show();
-            }
+            }*/
 //            mControlsView.setVisibility(View.VISIBLE);
         }
     };
@@ -85,7 +94,7 @@ public class FullscreenActivity extends AppCompatActivity {
             return false;
         }
     };
-    @BindView(R.id.fullscreen_content) View mContentView;
+    @BindView(fullscreen_content) View mContentView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,24 +105,86 @@ public class FullscreenActivity extends AppCompatActivity {
 //        mControlsView = findViewById(R.id.fullscreen_content_controls);
         ButterKnife.bind(this);
 
-        mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
-                | View.SYSTEM_UI_FLAG_FULLSCREEN
-                | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+
         // Set up the user interaction to manually show or hide the system UI.
-//        mContentView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
+        mContentView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 //                toggle();
-//            }
-//        });
+
+               /* FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                TestButterKnifeFragment fragment = new TestButterKnifeFragment();
+                ft.replace(R.id.container_fragment,fragment);
+                ft.addToBackStack("tag");
+                ft.commit();*/
+                showFragment(new TestButterKnifeFragment());
+            }
+        });
 
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
 //        findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
+    }
+
+    private BaseFragment fragment1 = new AddFragment1();
+    private BaseFragment fragment2 = new AddFragment2();
+
+    @OnClick(R.id.main_pop)
+    public void pop(){
+        android.app.FragmentManager fm = getFragmentManager();
+        /*final List<Fragment> list = fm.getFragments();
+        for (Fragment frg : list) {
+            Log.i("Test","Activity pop frg: "+frg);
+        }*/
+//        hideFragment();
+        /*FragmentManager fm = getSupportFragmentManager();
+        fm.popBackStack();*/
+        showFragment(fragment1);
+    }
+    protected BaseFragment mCurrentFragment;
+    private String FRAGMENT_TAG = "simple";
+    public void showFragment(BaseFragment fragment){
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        if(!fragment.isAdded()){
+            ft.add(R.id.container_fragment,fragment,FRAGMENT_TAG);
+        }
+
+        if(mCurrentFragment != null){
+            ft.hide(mCurrentFragment);
+        }
+
+        ft.show(fragment);
+        ft.commitAllowingStateLoss();
+        Log.i("Test","showFragment mCurr: "+mCurrentFragment);
+        mCurrentFragment = fragment;
+    }
+
+    public void hideFragment(){
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Log.i("Test","hideFragment mCurr: "+mCurrentFragment);
+        if(null != mCurrentFragment){
+            ft.hide(mCurrentFragment);
+        }
+        ft.commitAllowingStateLoss();
+        mCurrentFragment = null;
+
+    }
+
+    @OnClick(R.id.main_detail)
+    public void detail(){
+//        FragmentManager fm = getFragmentManager();
+//        final List<Fragment> list = fm.getFragments();
+//        for (Fragment frg : list) {
+//            Log.i("Test","Activity detail frg: "+frg);
+//        }
+        showFragment(fragment2);
+//        Log.i("Test","Activity detail set invisible 33");
+//        FrameLayout layout = findViewById(R.id.container_fragment);
+//        layout.setVisibility(View.INVISIBLE);
+
+
+
     }
 
     @Override
@@ -123,7 +194,7 @@ public class FullscreenActivity extends AppCompatActivity {
         // Trigger the initial hide() shortly after the activity has been
         // created, to briefly hint to the user that UI controls
         // are available.
-        delayedHide(100);
+//        delayedHide(100);
     }
 
     private void toggle() {
@@ -136,10 +207,10 @@ public class FullscreenActivity extends AppCompatActivity {
 
     private void hide() {
         // Hide UI first
-        ActionBar actionBar = getSupportActionBar();
+       /* ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.hide();
-        }
+        }*/
 //        mControlsView.setVisibility(View.GONE);
         mVisible = false;
 

@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true" />
 
-   <!-- <include layout="@layout/map_interactive_view" />-->
+    <include layout="@layout/map_interactive_view" />
 
     <Button
         android:id="@+id/ib_my_local"

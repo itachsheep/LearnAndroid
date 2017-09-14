@@ -60,13 +60,14 @@ public abstract class BaseFragment extends Fragment implements IKeyEvent,
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
         L.d(TAG, getClass().getSimpleName() + ": " + this + " , " + "onCreateView");
-        L.d(TAG, "mRootView=" + mRootView);
-        if (mRootView == null) {
-            mRootView = inflater.inflate(getLayoutId(), container, false);
-            ButterKnife.bind(this, mRootView);
+        mRootView = inflater.inflate(getLayoutId(), container, false);
+        ButterKnife.bind(this, mRootView);
 
-            init(mRootView, savedInstanceState);
-        }
+        init(mRootView, savedInstanceState);
+//        L.d(TAG, "mRootView=" + mRootView);
+//        if (mRootView == null) {
+//
+//        }
 
         return mRootView;
     }
@@ -142,7 +143,9 @@ public abstract class BaseFragment extends Fragment implements IKeyEvent,
 
     @Override
     public boolean onBackPressed() {
+        L.i(TAG,"onBackPressed ");
         if (!isRootFragment()) {
+            L.i(TAG,"onBackPressed not rootfragment, pop backStack ");
             GlobalContext.getFragmentManager().popBackStack();
             return true;
         }

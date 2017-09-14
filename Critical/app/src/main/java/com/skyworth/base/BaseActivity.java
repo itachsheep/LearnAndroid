@@ -9,8 +9,10 @@ import android.view.Window;
 
 import com.amap.api.navi.AMapNavi;
 import com.amap.api.navi.AMapNaviView;
+import com.skyworth.utils.Constant;
 import com.skyworth.utils.L;
 import com.skyworth.utils.TTSController;
+import com.skyworth.utils.ToastUtils;
 
 import java.io.PrintWriter;
 import java.util.List;
@@ -18,7 +20,7 @@ import java.util.List;
 
 public class BaseActivity extends CheckPermissionActivity {
 
-    private static final String TAG = "BaseActivity";
+    private static final String tag = "BaseActivity";
 
     protected AMapNaviView mAMapNaviView;
     protected AMapNavi mAMapNavi;
@@ -67,13 +69,13 @@ public class BaseActivity extends CheckPermissionActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        L.d(TAG, "onStop");
+        L.d(tag, "onStop");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        L.d(TAG, "onDestroy");
+        L.d(tag, "onDestroy");
         GlobalContext.removeActivity(this);
 
         mAMapNaviView.onDestroy();
@@ -88,19 +90,43 @@ public class BaseActivity extends CheckPermissionActivity {
 
     @Override
     public void onBackPressed() {
+//        L.i(tag,"onBackPressed ");
+//        if (!handleBackPress()) {
+//            L.i(tag,"onBackPressed exit");
+//            super.onBackPressed();
+//        }
         if (!handleBackPress()) {
+            checkExit();
+        }
+    }
+    private boolean mNeedExit = false;
+    protected void checkExit() {
+        if (mNeedExit) {
             super.onBackPressed();
+        } else {
+            ToastUtils.show("再按一次退出地图");
+            mNeedExit = true;
+            GlobalContext.postOnUIThread(new Runnable() {
+
+                @Override
+                public void run() {
+                    mNeedExit = false;
+                }
+            }, Constant.SECOND_2);
         }
     }
 
     public boolean handleBackPress() {
+        L.i(tag,"handleBackPress ");
         List<Fragment> fragmentList = getSupportFragmentManager().getFragments();
         if (fragmentList == null) {
+            L.i(tag,"handleBackPress frg null");
             return false;
         }
-
+        L.i(tag,"handleBackPress frg list size: "+fragmentList.size());
         for (Fragment fragment : fragmentList) {
             if (isFragmentVisible(fragment)) {
+                L.i(tag,"handleBackPress frg deal backpressed");
                 return ((BaseFragment) fragment).onBackPressed();
             }
         }
@@ -112,7 +138,7 @@ public class BaseActivity extends CheckPermissionActivity {
     public boolean isFragmentVisible(Fragment fragment) {
         boolean isFragmentVisible =
                 fragment != null && fragment.isVisible() && fragment.getUserVisibleHint();
-        L.d(TAG, "Fragment=" + fragment + ", isFragmentVisible=" + isFragmentVisible);
+        L.i(tag, "Fragment=" + fragment + ", isFragmentVisible=" + isFragmentVisible);
         return isFragmentVisible;
     }
 
@@ -141,8 +167,8 @@ public class BaseActivity extends CheckPermissionActivity {
     }
 
     public void dump() {
-        Log.e(TAG, "Activity state:");
-        LogWriter logw = new LogWriter(TAG);
+        Log.e(tag, "Activity state:");
+        LogWriter logw = new LogWriter(tag);
         PrintWriter pw = new PrintWriter(logw);
         dump("  ", null, pw, new String[]{});
     }

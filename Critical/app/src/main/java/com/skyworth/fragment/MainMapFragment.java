@@ -36,12 +36,10 @@ public class MainMapFragment extends BaseFragment {
     }
 
 
-    @BindView(R.id.map_interactive_view)
-    public MapInteractiveView mMapInteractiveView;
+    @BindView(R.id.map_interactive_view) MapInteractiveView mMapInteractiveView;
 
     @Override
     public void init(View rootView, Bundle savedInstanceState) {
-        mMapInteractiveView = (MapInteractiveView) rootView.findViewById(R.id.map_interactive_view);
         mMapInteractiveView.setMapController(mMapController);
         mMapInteractiveView.showTrafficLineBtn(true);
         mMapInteractiveView.showVisualModeBtn(true);
@@ -50,13 +48,21 @@ public class MainMapFragment extends BaseFragment {
 
     @OnClick(R.id.ib_go_search)
     public void goToSearch(){
-        showFragment(MajorSearchFragment.newInstance());
+//        showFragment(MajorSearchFragment.newInstance());
+        // TODO: 2017/9/14
+        replaceFragmentToActivity(MajorSearchFragment.newInstance());
     }
+
 
     @Override
     public void onStart() {
         super.onStart();
         mMapController.showMyLocation();
+    }
+
+    @Override
+    protected boolean isRootFragment() {
+        return true;
     }
 
     @Override
