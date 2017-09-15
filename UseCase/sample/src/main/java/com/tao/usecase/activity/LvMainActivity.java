@@ -1,14 +1,17 @@
 package com.tao.usecase.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.tao.adapter_lib.CommonAdapter;
 import com.tao.adapter_lib.ViewHolder;
 import com.tao.usecase.R;
+import com.tao.usecase.activity.view_activity.RecycleActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -45,5 +48,21 @@ public class LvMainActivity extends AppCompatActivity {
         });
 
         mListView.setEmptyView(emptyView);
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+                    case 0:
+//                        startActivity(new Intent(LvMainActivity.this,));
+                        break;
+                    case 1:
+                        startActivity(new Intent(LvMainActivity.this, RecycleActivity.class));
+                        break;
+                    case 2:
+                        break;
+                }
+            }
+        });
     }
 }
