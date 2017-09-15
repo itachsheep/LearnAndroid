@@ -13,10 +13,9 @@
         <!-- android:theme="@style/AppTheme"-->
         <!--android:theme="@style/FullscreenTheme"-->
         <activity
-            android:name=".FullscreenActivity"
+            android:name=".activity.FullscreenAndFragmentActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/app_name"
-            >
+            android:label="@string/app_name">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

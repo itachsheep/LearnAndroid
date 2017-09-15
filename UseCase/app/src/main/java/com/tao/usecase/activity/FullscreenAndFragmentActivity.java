@@ -1,18 +1,23 @@
-package com.tao.usecase;
+package com.tao.usecase.activity;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.tao.usecase.R;
+import com.tao.usecase.fragment.AddFragment0;
 import com.tao.usecase.fragment.AddFragment1;
 import com.tao.usecase.fragment.AddFragment2;
 import com.tao.usecase.fragment.BaseFragment;
-import com.tao.usecase.fragment.TestButterKnifeFragment;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,7 +29,7 @@ import static com.tao.usecase.R.id.fullscreen_content;
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class FullscreenActivity extends Activity {
+public class FullscreenAndFragmentActivity extends FragmentActivity {
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -110,14 +115,14 @@ public class FullscreenActivity extends Activity {
         mContentView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                toggle();
+//               toggle();
 
-               /* FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                TestButterKnifeFragment fragment = new TestButterKnifeFragment();
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                AddFragment0 fragment = new AddFragment0();
                 ft.replace(R.id.container_fragment,fragment);
-                ft.addToBackStack("tag");
-                ft.commit();*/
-                showFragment(new TestButterKnifeFragment());
+                ft.addToBackStack("tag0");
+                ft.commit();
+//                showFragment(new AddFragment0());
             }
         });
 
@@ -132,20 +137,40 @@ public class FullscreenActivity extends Activity {
 
     @OnClick(R.id.main_pop)
     public void pop(){
-        android.app.FragmentManager fm = getFragmentManager();
+
         /*final List<Fragment> list = fm.getFragments();
         for (Fragment frg : list) {
             Log.i("Test","Activity pop frg: "+frg);
         }*/
 //        hideFragment();
-        /*FragmentManager fm = getSupportFragmentManager();
-        fm.popBackStack();*/
-        showFragment(fragment1);
+        FragmentManager fm = getSupportFragmentManager();
+//        fm.popBackStack("tag0",0);
+        fm.popBackStack("tag0",FragmentManager.POP_BACK_STACK_INCLUSIVE);
+//        showFragment(fragment1);
+    }
+
+    @OnClick(R.id.main_detail)
+    public void detail(){
+        FragmentManager fm = getSupportFragmentManager();
+        List<Fragment> list = fm.getFragments();
+        for (Fragment frg : list) {
+            Log.i("Test","Activity detail frg: "+frg);
+        }
+
+
+//        showFragment(fragment2);
+
+//        Log.i("Test","Activity detail set invisible 33");
+//        FrameLayout layout = findViewById(R.id.container_fragment);
+//        layout.setVisibility(View.INVISIBLE);
+
+
+
     }
     protected BaseFragment mCurrentFragment;
     private String FRAGMENT_TAG = "simple";
     public void showFragment(BaseFragment fragment){
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         if(!fragment.isAdded()){
             ft.add(R.id.container_fragment,fragment,FRAGMENT_TAG);
         }
@@ -161,7 +186,7 @@ public class FullscreenActivity extends Activity {
     }
 
     public void hideFragment(){
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         Log.i("Test","hideFragment mCurr: "+mCurrentFragment);
         if(null != mCurrentFragment){
             ft.hide(mCurrentFragment);
@@ -171,21 +196,7 @@ public class FullscreenActivity extends Activity {
 
     }
 
-    @OnClick(R.id.main_detail)
-    public void detail(){
-//        FragmentManager fm = getFragmentManager();
-//        final List<Fragment> list = fm.getFragments();
-//        for (Fragment frg : list) {
-//            Log.i("Test","Activity detail frg: "+frg);
-//        }
-        showFragment(fragment2);
-//        Log.i("Test","Activity detail set invisible 33");
-//        FrameLayout layout = findViewById(R.id.container_fragment);
-//        layout.setVisibility(View.INVISIBLE);
 
-
-
-    }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {

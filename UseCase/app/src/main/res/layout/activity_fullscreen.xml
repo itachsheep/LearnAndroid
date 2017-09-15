@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.tao.usecase.FullscreenActivity">
+    tools:context="com.tao.usecase.activity.FullscreenAndFragmentActivity">
     <TextView
         android:id="@+id/fullscreen_content"
         android:layout_width="wrap_content"

@@ -18,94 +18,98 @@ import butterknife.ButterKnife;
  * Created by SDT14324 on 2017/9/14.
  */
 
-public class AddFragment1 extends BaseFragment {
+public class AddFragment0 extends BaseFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        Log.i("Test","AddFragment1 onAttach ");
+        Log.i("Test","AddFragment0 onAttach ");
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.i("Test","AddFragment1 onCreate ");
+        Log.i("Test","AddFragment0 onCreate ");
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        Log.i("Test","AddFragment1 onStart ");
+        Log.i("Test","AddFragment0 onStart ");
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        Log.i("Test","AddFragment1 onResume ");
+        Log.i("Test","AddFragment0 onResume ");
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        Log.i("Test","AddFragment1 onDestroyView ");
+        Log.i("Test","AddFragment0 onDestroyView ");
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        Log.i("Test","AddFragment1 onPause ");
+        Log.i("Test","AddFragment0 onPause ");
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        Log.i("Test","AddFragment1 onStop ");
+        Log.i("Test","AddFragment0 onStop ");
     }
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        Log.i("Test","AddFragment1 onHiddenChanged hidden:  "+hidden);
+        Log.i("Test","AddFragment0 onHiddenChanged hidden:  "+hidden);
     }
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        Log.i("Test","AddFragment1 setUserVisibleHint isVisibleToUser:  "+isVisibleToUser);
+        Log.i("Test","AddFragment0 setUserVisibleHint isVisibleToUser:  "+isVisibleToUser);
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        Log.i("Test","AddFragment1 onSaveInstanceState ");
+        Log.i("Test","AddFragment0 onSaveInstanceState ");
         super.onSaveInstanceState(outState);
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        Log.i("Test","AddFragment1 onDetach ");
+        Log.i("Test","AddFragment0 onDetach ");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.i("Test","AddFragment1 onDestroy ");
+        Log.i("Test","AddFragment0 onDestroy ");
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        Log.i("Test","AddFragment1 onCreateView ");
-        View view = inflater.inflate(R.layout.fragment_add1,container,false);
+        View view = inflater.inflate(R.layout.fragment_test,container,false);
         ButterKnife.bind(this,view);
-      /*  List<Fragment> frglist = getFragmentManager().getFragments();
+        Log.i("Test","AddFragment0 onCreateView ");
+        /*List<Fragment> frglist = getFragmentManager().getFragments();
         for (Fragment frg:frglist) {
-            Log.i("Test","AddFragment1 oncreat frg: "+frg);
+            Log.i("Test","AddFragment0 oncreate frg: "+frg);
         }*/
-
         btClick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    addToBackStack(new AddFragment2(),"tag2");
-//                ((FullscreenAndFragmentActivity)getActivity()).showFragment(new AddFragment2());
+                synchronized (AddFragment0.class){
+
+
+//                    ((FullscreenAndFragmentActivity)getActivity()).showFragment(new AddFragment1());
+                    addToBackStack(new AddFragment1(),"tag1");
+                }
+
             }
         });
         return view;
@@ -114,5 +118,4 @@ public class AddFragment1 extends BaseFragment {
     private void initListener() {
 
     }
-
 }
