@@ -12,8 +12,7 @@ import java.util.List;
  */
 
 public  class MultiTypeItemRecycleAdapter<T> extends RecyclerView.Adapter<MyViewHolder> {
-    protected Context mContext;
-    protected List<T> mDatas;
+    protected Context mContext;    protected List<T> mDatas;
     protected ItemViewManager itemViewManager;
     public MultiTypeItemRecycleAdapter(Context context,List<T> ds){
         itemViewManager = new ItemViewManager();
@@ -23,7 +22,7 @@ public  class MultiTypeItemRecycleAdapter<T> extends RecyclerView.Adapter<MyView
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        ItemViewController itemViewController = itemViewManager.getItemViewDelegate(viewType);
+        ItemViewController itemViewController = itemViewManager.getItemViewController(viewType);
         int layoutId = itemViewController.getItemViewLayoutId();
         MyViewHolder holder = MyViewHolder.createViewHolder(mContext,parent,layoutId);
         onViewHolderCreated(holder,holder.getConvertView());
@@ -41,6 +40,37 @@ public  class MultiTypeItemRecycleAdapter<T> extends RecyclerView.Adapter<MyView
     public int getItemCount() {
         int itemCount = mDatas.size();
         return itemCount;
+    }
+
+    //这个方法就涉及到itemController,每种viewType对应一种 itemControllers
+    @Override
+    public int getItemViewType(int position) {
+        if (!useItemViewDelegateManager()) return super.getItemViewType(position);
+        return itemViewManager.getViewType(mDatas.get(position),position);
+    }
+
+
+    /***********************************************************
+     *   以上均是重写RecycleView.Adapter的方法。
+     ***********************************************************/
+
+
+    /***********************************************************
+     *   最重要的方法
+     ***********************************************************/
+
+    public MultiTypeItemRecycleAdapter addItemViewController(ItemViewController<T> controller){
+        itemViewManager.addItemViewController(controller);
+        return this;
+    }
+
+
+    /***********************************************************
+     *   以下是对上述方法的支持。
+     ***********************************************************/
+
+    protected boolean useItemViewDelegateManager() {
+        return itemViewManager.getItemViewDelegateCount() > 0;
     }
 
     public void convert(MyViewHolder holder, T t) {

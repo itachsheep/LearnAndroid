@@ -37,6 +37,10 @@ public class MyViewHolder extends ViewHolder {
         tv.setText(mes);
         return this;
     }
+    public static MyViewHolder createViewHolder(Context context,View itemView){
+        MyViewHolder holder = new MyViewHolder(context,itemView);
+        return holder;
+    }
 
     public static MyViewHolder createViewHolder(Context context,
                                               ViewGroup parent, int layoutId)

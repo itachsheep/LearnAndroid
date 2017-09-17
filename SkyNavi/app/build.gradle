@@ -12,24 +12,24 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
-    signingConfigs {
-        signingConfigs {
-            keyAlias RELEASE_KEY_ALIAS
-            keyPassword RELEASE_KEY_PASSWORD
-            storeFile file(RELEASE_STORE_FILE)
-            storePassword RELEASE_STORE_PASSWROD
-        }
-    }
+//    signingConfigs {
+//        signingConfigs {
+//            keyAlias RELEASE_KEY_ALIAS
+//            keyPassword RELEASE_KEY_PASSWORD
+//            storeFile file(RELEASE_STORE_FILE)
+//            storePassword RELEASE_STORE_PASSWROD
+//        }
+//    }
 
     buildTypes {
         release {
             minifyEnabled false
-            signingConfig signingConfigs.signingConfigs
+//            signingConfig signingConfigs.signingConfigs
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
         debug {
-            signingConfig signingConfigs.signingConfigs
+//            signingConfig signingConfigs.signingConfigs
         }
     }
 

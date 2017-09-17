@@ -9,10 +9,32 @@ import java.util.List;
  */
 
 public abstract class MyRecyAdapter<T> extends MultiTypeItemRecycleAdapter<T> {
-
-    public MyRecyAdapter(Context context, List<T> ds) {
+    protected int mLayoutId;
+    public MyRecyAdapter(Context context,int layoutId, List<T> ds) {
         super(context, ds);
+        mLayoutId = layoutId;
 
-        // TODO: 2017/9/15 add itemViewController 
+        // TODO: 2017/9/15 add itemViewController
+
+        addItemViewController(new ItemViewController<T>() {
+            @Override
+            public boolean isForViewType(T item, int position) {
+                return true;
+            }
+
+            @Override
+            public void convert(MyViewHolder holder, T t, int position) {
+                MyRecyAdapter.this.convert(holder,t,position);
+            }
+
+            @Override
+            public int getItemViewLayoutId() {
+                return mLayoutId;
+            }
+        });
+
+
     }
+
+    protected abstract void convert(MyViewHolder holder, T t, int position);
 }

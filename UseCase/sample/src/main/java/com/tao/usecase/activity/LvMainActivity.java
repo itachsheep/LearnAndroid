@@ -12,6 +12,7 @@ import com.tao.adapter_lib.CommonAdapter;
 import com.tao.adapter_lib.ViewHolder;
 import com.tao.usecase.R;
 import com.tao.usecase.activity.view_activity.RecycleActivity;
+import com.tao.usecase.recycle_demo.RecycleDemoActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,7 +34,8 @@ public class LvMainActivity extends AppCompatActivity {
     private List<String> mDatas = new ArrayList<>(Arrays.asList(
             "MultiItem ListView",
             "RecyclerView",
-            "MultiItem RecyclerView"));
+            "MultiItem RecyclerView",
+            "我的RecycleView"));
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,6 +62,10 @@ public class LvMainActivity extends AppCompatActivity {
                         startActivity(new Intent(LvMainActivity.this, RecycleActivity.class));
                         break;
                     case 2:
+                        break;
+                    case 3:
+                        startActivity(new Intent(LvMainActivity.this,
+                                RecycleDemoActivity.class));
                         break;
                 }
             }
