@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -13,6 +15,7 @@ import com.tao.adapter_lib.ViewHolder;
 import com.tao.usecase.R;
 import com.tao.usecase.activity.view_activity.RecycleActivity;
 import com.tao.usecase.recycle_demo.RecycleDemoActivity;
+import com.tao.usecase.utils.LogUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -70,5 +73,18 @@ public class LvMainActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+        //
+        Display dis = getWindowManager().getDefaultDisplay();
+        DisplayMetrics metrics = new DisplayMetrics();
+        dis.getMetrics(metrics);
+        int widthPixels = metrics.widthPixels;
+        int heightPixels = metrics.heightPixels;
+        float density = metrics.density;
+        int densityDpi = metrics.densityDpi;
+        LogUtils.i("width: "+widthPixels+", height: "+heightPixels
+        +", density: "+density+", dpi: "+densityDpi);
+
     }
 }
