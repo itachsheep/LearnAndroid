@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        qd401 {
+            storeFile file('platform.keystore')
+            keyAlias 'androiddebugkey'
+            keyPassword 'SkyworthAuto'
+            storePassword 'SkyworthAuto'
+        }
+    }
+
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "com.skyworthauto.speak"
+        minSdkVersion 17
+        targetSdkVersion 21
+        versionCode 104
+        versionName="1.0.4"
+
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.qd401
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+
+        debug {
+            debuggable true
+            minifyEnabled false  //不启用Proguard
+            shrinkResources false //是否清理无用资源,依赖于minifyEnabled
+            zipAlignEnabled false //是否启用zipAlign压缩
+            signingConfig signingConfigs.qd401
+        }
+    }
+	android {
+		lintOptions {
+			abortOnError false
+		}
+	}
+}
+
+dependencies {
+    provided files('libs/framework.jar')
+    compile files('libs/TXZ_SDK.jar')
+}

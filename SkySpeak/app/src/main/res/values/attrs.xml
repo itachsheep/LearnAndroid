@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CmdProvider">
+        <attr name="id" format="integer|reference" />
+    </declare-styleable>
+    <declare-styleable name="Cmd">
+        <attr name="key" format="string|reference" />
+        <attr name="wakeupWords" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="SpeakableCmd">
+        <attr name="speakWord" format="string|reference" />
+    </declare-styleable>
+    <declare-styleable name="IntentCmd">
+        <attr name="action" format="string|reference" />
+        <attr name="subAction" format="string|reference" />
+        <attr name="value" format="integer|reference" />
+    </declare-styleable>
+</resources>

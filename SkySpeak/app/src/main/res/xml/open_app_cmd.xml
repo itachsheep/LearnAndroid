@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CmdProvider xmlns:cmd="http://schemas.android.com/apk/res/com.skyworthauto.speak"
+    cmd:id="@integer/pid_open_app">
+
+    <IntentCmd
+        cmd:key="@string/open_music_id"
+        cmd:wakeupWords="@array/open_music_array"
+        cmd:speakWord="@string/open_music_speak"
+        cmd:action="@string/action_control_skymusic"
+        cmd:subAction="@string/open_music" />
+
+    <IntentCmd
+        cmd:key="@string/open_video_id"
+        cmd:wakeupWords="@array/open_video_array"
+        cmd:speakWord="@string/open_video_speak"
+        cmd:action="@string/action_control_skyvideo"
+        cmd:subAction="@string/open_video" />
+
+    <IntentCmd
+        cmd:key="@string/open_photo_id"
+        cmd:wakeupWords="@array/open_photo_array"
+        cmd:speakWord="@string/open_photo_speak"
+        cmd:action="@string/action_control_skyphoto"
+        cmd:subAction="@string/open_photo" />
+
+    <IntentCmd
+        cmd:key="@string/open_dvr_id"
+        cmd:wakeupWords="@array/open_dvr_array"
+        cmd:speakWord="@string/open_dvr_speak"
+        cmd:action="@string/action_control_dvr"
+        cmd:subAction="@string/ctrl_app"
+        cmd:value="@integer/open"/>
+
+    <IntentCmd
+        cmd:key="@string/close_dvr_id"
+        cmd:wakeupWords="@array/close_dvr_array"
+        cmd:speakWord="@string/close_dvr_speak"
+        cmd:action="@string/action_control_dvr"
+        cmd:subAction="@string/ctrl_app"
+        cmd:value="@integer/close"/>
+
+    <IntentCmd
+        cmd:key="@string/bluetooth_close_id"
+        cmd:wakeupWords="@array/bluetooth_close_array"
+        cmd:speakWord="@string/bluetooth_close_speak"
+        cmd:action="@string/action_control_bt"
+        cmd:subAction="@string/ctrl_app"
+        cmd:value="@integer/close"/>
+
+    <IntentCmd
+        cmd:key="@string/bluetooth_open_id"
+        cmd:wakeupWords="@array/bluetooth_open_array"
+        cmd:speakWord="@string/bluetooth_open_speak"
+        cmd:action="@string/action_control_bt"
+        cmd:subAction="@string/ctrl_app"
+        cmd:value="@integer/open"/>
+
+</CmdProvider>

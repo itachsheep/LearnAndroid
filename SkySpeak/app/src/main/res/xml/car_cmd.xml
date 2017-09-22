@@ -1,0 +1,52 @@
+<CmdProvider xmlns:cmd="http://schemas.android.com/apk/res/com.skyworthauto.speak"
+    cmd:id="@integer/pid_car">
+
+    <IntentCmd
+        cmd:key="@string/open_car_id"
+        cmd:wakeupWords="@array/open_car_array"
+        cmd:speakWord="@string/open_car_speak"
+        cmd:action="@string/action_control_car"
+        cmd:subAction="@string/ctrl_app"
+        cmd:value="@integer/open"/>
+
+    <IntentCmd
+        cmd:key="@string/close_car_id"
+        cmd:wakeupWords="@array/close_car_array"
+        cmd:speakWord="@string/close_car_speak"
+        cmd:action="@string/action_control_car"
+        cmd:subAction="@string/ctrl_app"
+        cmd:value="@integer/close"/>
+
+    <IntentCmd
+        cmd:key="@string/open_overhead_light_id"
+        cmd:wakeupWords="@array/open_overhead_light_array"
+        cmd:speakWord="@string/open_overhead_light_speak"
+        cmd:action="@string/action_control_car"
+        cmd:subAction="@string/ctrl_overhead_light"
+        cmd:value="@integer/open"/>
+
+    <IntentCmd
+        cmd:key="@string/close_overhead_light_id"
+        cmd:wakeupWords="@array/close_overhead_light_array"
+        cmd:speakWord="@string/close_overhead_light_speak"
+        cmd:action="@string/action_control_car"
+        cmd:subAction="@string/ctrl_overhead_light"
+        cmd:value="@integer/close"/>
+
+    <IntentCmd
+        cmd:key="@string/open_back_screen_id"
+        cmd:wakeupWords="@array/open_back_screen_array"
+        cmd:speakWord="@string/open_back_screen_speak"
+        cmd:action="@string/action_control_car"
+        cmd:subAction="@string/ctrl_back_screen"
+        cmd:value="@integer/open"/>
+
+    <IntentCmd
+        cmd:key="@string/close_back_screen_id"
+        cmd:wakeupWords="@array/close_back_screen_array"
+        cmd:speakWord="@string/close_back_screen_speak"
+        cmd:action="@string/action_control_car"
+        cmd:subAction="@string/ctrl_back_screen"
+        cmd:value="@integer/close"/>
+
+</CmdProvider>

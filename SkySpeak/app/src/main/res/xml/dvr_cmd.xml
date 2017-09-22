@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CmdProvider xmlns:cmd="http://schemas.android.com/apk/res/com.skyworthauto.speak"
+    cmd:id="@integer/pid_dvr">
+
+    <IntentCmd
+        cmd:key="@string/stop_record_video_id"
+        cmd:wakeupWords="@array/stop_record_video_array"
+        cmd:speakWord="@string/stop_record_video_speak"
+        cmd:action="@string/action_control_dvr"
+        cmd:subAction="@string/ctrl_capture"
+        cmd:value="@integer/stop_record"/>
+
+    <IntentCmd
+        cmd:key="@string/start_record_video_id"
+        cmd:wakeupWords="@array/start_record_video_array"
+        cmd:speakWord="@string/start_record_video_speak"
+        cmd:action="@string/action_control_dvr"
+        cmd:subAction="@string/ctrl_capture"
+        cmd:value="@integer/start_record"/>
+
+    <IntentCmd
+        cmd:key="@string/take_photo_id"
+        cmd:wakeupWords="@array/take_photo_array"
+        cmd:speakWord="@string/take_photo_speak"
+        cmd:action="@string/action_control_dvr"
+        cmd:subAction="@string/ctrl_capture"
+        cmd:value="@integer/take_photo"/>
+
+    <IntentCmd
+        cmd:key="@string/lock_video_id"
+        cmd:wakeupWords="@array/lock_video_array"
+        cmd:speakWord="@string/lock_video_speak"
+        cmd:action="@string/action_control_dvr"
+        cmd:subAction="@string/ctrl_capture"
+        cmd:value="@integer/lock_video"/>
+
+    <IntentCmd
+        cmd:key="@string/playback_video_id"
+        cmd:wakeupWords="@array/playback_video_array"
+        cmd:speakWord="@string/playback_video_speak"
+        cmd:action="@string/action_control_dvr"
+        cmd:subAction="@string/ctrl_playback_video"
+        cmd:value="@integer/playback_start"/>
+
+    <IntentCmd
+        cmd:key="@string/playback_prev_video_id"
+        cmd:wakeupWords="@array/playback_prev_video_array"
+        cmd:speakWord="@string/playback_prev_video_speak"
+        cmd:action="@string/action_control_dvr"
+        cmd:subAction="@string/ctrl_playback_video"
+        cmd:value="@integer/playback_prev"/>
+
+    <IntentCmd
+        cmd:key="@string/playback_next_video_id"
+        cmd:wakeupWords="@array/playback_next_video_array"
+        cmd:speakWord="@string/playback_next_video_speak"
+        cmd:action="@string/action_control_dvr"
+        cmd:subAction="@string/ctrl_playback_video"
+        cmd:value="@integer/playback_next"/>
+
+    <IntentCmd
+        cmd:key="@string/playback_photo_id"
+        cmd:wakeupWords="@array/playback_photo_array"
+        cmd:speakWord="@string/playback_photo_speak"
+        cmd:action="@string/action_control_dvr"
+        cmd:subAction="@string/ctrl_playback_photo"
+        cmd:value="@integer/playback_start"/>
+
+    <IntentCmd
+        cmd:key="@string/playback_prev_photo_id"
+        cmd:wakeupWords="@array/playback_prev_photo_array"
+        cmd:speakWord="@string/playback_prev_photo_speak"
+        cmd:action="@string/action_control_dvr"
+        cmd:subAction="@string/ctrl_playback_photo"
+        cmd:value="@integer/playback_prev"/>
+
+    <IntentCmd
+        cmd:key="@string/playback_next_photo_id"
+        cmd:wakeupWords="@array/playback_next_photo_array"
+        cmd:speakWord="@string/playback_next_photo_speak"
+        cmd:action="@string/action_control_dvr"
+        cmd:subAction="@string/ctrl_playback_photo"
+        cmd:value="@integer/playback_next"/>
+
+</CmdProvider>

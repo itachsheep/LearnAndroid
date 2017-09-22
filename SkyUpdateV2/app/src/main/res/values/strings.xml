@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SkyUpdateV2</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="download_err">下载出错！</string>
+    <string name="download_md5_err">MD5校验出错！</string>
+    <string name="download_success">下载成功！</string>
+    <string name="download_break">下载过程断电！</string>
+
+</resources>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CmdProvider xmlns:cmd="http://schemas.android.com/apk/res/com.skyworthauto.speak"
+    cmd:id="@integer/pid_music">
+
+    <IntentCmd
+        cmd:key="@string/media_play_id"
+        cmd:wakeupWords="@array/media_play_array"
+        cmd:speakWord="@string/media_play_speak"
+        cmd:action="@string/action_control_skyvideo"
+        cmd:subAction="@string/ctrl_video"
+        cmd:value="@integer/play"/>
+
+    <IntentCmd
+        cmd:key="@string/media_pause_id"
+        cmd:wakeupWords="@array/media_pause_array"
+        cmd:speakWord="@string/media_pause_speak"
+        cmd:action="@string/action_control_skyvideo"
+        cmd:subAction="@string/ctrl_video"
+        cmd:value="@integer/pause"/>
+
+    <IntentCmd
+        cmd:key="@string/media_track_prev_id"
+        cmd:wakeupWords="@array/media_track_prev_array"
+        cmd:speakWord="@string/media_track_prev_speak"
+        cmd:action="@string/action_control_skyvideo"
+        cmd:subAction="@string/ctrl_video"
+        cmd:value="@integer/prev"/>
+
+    <IntentCmd
+        cmd:key="@string/media_track_next_id"
+        cmd:wakeupWords="@array/media_track_next_array"
+        cmd:speakWord="@string/media_track_next_speak"
+        cmd:action="@string/action_control_skyvideo"
+        cmd:subAction="@string/ctrl_video"
+        cmd:value="@integer/next"/>
+
+    <IntentCmd
+        cmd:key="@string/media_repeat_sequence_id"
+        cmd:wakeupWords="@array/media_repeat_sequence_array"
+        cmd:speakWord="@string/media_repeat_sequence_speak"
+        cmd:action="@string/action_control_skyvideo"
+        cmd:subAction="@string/ctrl_video"
+        cmd:value="@integer/repeat_sequence"/>
+
+    <IntentCmd
+        cmd:key="@string/media_repeat_single_id"
+        cmd:wakeupWords="@array/media_repeat_single_array"
+        cmd:speakWord="@string/media_repeat_single_speak"
+        cmd:action="@string/action_control_skyvideo"
+        cmd:subAction="@string/ctrl_video"
+        cmd:value="@integer/repeat_single"/>
+
+    <IntentCmd
+        cmd:key="@string/media_repeat_random_id"
+        cmd:wakeupWords="@array/media_repeat_random_array"
+        cmd:speakWord="@string/media_repeat_random_speak"
+        cmd:action="@string/action_control_skyvideo"
+        cmd:subAction="@string/ctrl_video"
+        cmd:value="@integer/repeat_random"/>
+
+</CmdProvider>
