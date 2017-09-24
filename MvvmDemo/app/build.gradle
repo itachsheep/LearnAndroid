@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 26
     buildToolsVersion "26.0.1"
     defaultConfig {
         applicationId "com.java.mvvmdemo"
@@ -10,6 +10,10 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        //for jdk 1.8
+        jackOptions{
+            enabled true
+        }
     }
     buildTypes {
         release {
@@ -21,8 +25,11 @@ android {
     dataBinding{
         enabled true
     }
+
+    //for jdk 1.8
     compileOptions {
-        targetCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
