@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.xutil.xutildemo.MainActivity">
+
+    <Button
+        android:id="@+id/ac_bt_write"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="写入数据库"
+        android:textSize="25sp"
+        />
+    <Button
+        android:id="@+id/ac_bt_lastTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="查询最近一个"
+        android:textSize="25sp"
+         />
+    <Button
+        android:id="@+id/ac_bt_findALl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="全部查询数据库"
+        android:textSize="25sp"
+         />
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
