@@ -7,7 +7,7 @@ import android.util.Log;
  */
 
 public class LogUtil {
-    public static final String TAG = "sky_upgrade";
+    public static final String TAG = "skyDemo";
 
     public static void i(String msg) {
         Log.i(TAG, msg);

@@ -28,7 +28,13 @@
         android:text="全部查询数据库"
         android:textSize="25sp"
          />
-
+    <Button
+        android:id="@+id/ac_bt_gotodownload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="去下载页面"
+        android:textSize="25sp"
+        />
     <TextView
         android:id="@+id/tv_content"
         android:layout_width="match_parent"
