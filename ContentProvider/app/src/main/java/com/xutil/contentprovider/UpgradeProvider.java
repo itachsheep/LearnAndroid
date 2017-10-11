@@ -88,15 +88,18 @@ public class UpgradeProvider extends ContentProvider {
 	@Override
 	public Uri insert(Uri uri, ContentValues values) {
 		LogUtil.log("UpgradeProvider insert uri: "+uri);
-		// TODO Auto-generated method stub
+
 		SQLiteDatabase db = mOpenHelper.getWritableDatabase();
         
         long rowId = 0;
         switch (sURIMatcher.match(uri)) {
 		case DEVICEINFO:
+
 			rowId = db.insert(ProviderDBHelper.DEVICEINFO_TABLE_NAME, null, values);
+			LogUtil.log("UpgradeProvider insert rowId: "+rowId);
 	        if (rowId > 0) {
 	            Uri noteUri = ContentUris.withAppendedId(CommonUtil.CONTENT_URI, rowId);
+
 	            getContext().getContentResolver().notifyChange(noteUri, null);
 	            return noteUri;
 	        }

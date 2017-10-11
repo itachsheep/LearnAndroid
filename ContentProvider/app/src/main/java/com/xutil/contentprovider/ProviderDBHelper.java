@@ -17,7 +17,7 @@ public class ProviderDBHelper extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		// TODO Auto-generated method stub
-		LogUtil.log("Creating...");
+		LogUtil.log("ProviderDBHelper Creating...");
 
 		db.execSQL("CREATE TABLE " + DEVICEINFO_TABLE_NAME + " ("
 				+ CommonUtil.KEY + " TEXT PRIMARY KEY,"
@@ -28,7 +28,7 @@ public class ProviderDBHelper extends SQLiteOpenHelper {
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		// TODO Auto-generated method stub
-		LogUtil.log("Upgrading database from version " + oldVersion + " to "
+		LogUtil.log("ProviderDBHelper onUpgrade database from version " + oldVersion + " to "
 				+ newVersion + ".");
 	}
 
