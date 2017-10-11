@@ -1,4 +1,4 @@
-package com.xutil.xutildemo;
+package com.xutil.xutildemo.db;
 
 import org.xutils.db.annotation.Column;
 import org.xutils.db.annotation.Table;

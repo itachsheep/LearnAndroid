@@ -7,9 +7,20 @@ import android.util.Log;
  */
 
 public class LogUtil {
-    public static final String TAG = "skyDemo";
+    public static final String TAG = "xutilsDemo";
 
     public static void i(String msg) {
-        Log.i(TAG, msg);
+        Log.i(getTag(), msg);
+    }
+
+    private static String getTag(){
+        StackTraceElement caller = new Throwable().getStackTrace()[2];
+        String tag = "%s.%s(L:%d)";
+        String callerClazzName = caller.getClassName();
+        callerClazzName = callerClazzName.substring(callerClazzName.lastIndexOf(".") + 1);
+        tag = String.format(tag, callerClazzName, caller.getMethodName(), caller.getLineNumber());
+//        tag = TextUtils.isEmpty(TAG) ? tag : TAG + ":" + tag;
+        tag = TAG+"."+tag;
+        return tag;
     }
 }
