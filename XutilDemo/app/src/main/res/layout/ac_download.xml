@@ -3,30 +3,18 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <Button
+        android:layout_marginTop="40dp"
         android:id="@+id/ac_dl_start"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="开始下载"
-        android:textSize="25sp"
-        />
-    <Button
-        android:id="@+id/ac_dl_stop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="停止下载"
-        android:textSize="25sp"
-        />
-    <Button
-        android:id="@+id/ac_dl_continue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="继续下载"
+        android:text="开始测试下载"
         android:textSize="25sp"
         />
 
-        />
-    <TextView
-        android:id="@+id/tv_dl_state"
+
+    <ListView
+        android:layout_marginTop="10dp"
+        android:id="@+id/ac_dl_lv"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.xutil.xutildemo.App;
+import com.xutil.xutildemo.utils.App;
 import com.xutil.xutildemo.R;
 import com.xutil.xutildemo.download.DownloadActivity;
 
@@ -36,6 +36,8 @@ public class DbActivity extends AppCompatActivity implements View.OnClickListene
         btLastTask.setOnClickListener(this);
         btFindAll.setOnClickListener(this);
         btUpdateDb.setOnClickListener(this);
+
+
     }
 
     private int state = 1, process = 1;

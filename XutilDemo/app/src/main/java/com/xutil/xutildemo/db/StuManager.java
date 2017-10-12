@@ -1,7 +1,7 @@
 package com.xutil.xutildemo.db;
 
-import com.xutil.xutildemo.App;
-import com.xutil.xutildemo.LogUtil;
+import com.xutil.xutildemo.utils.App;
+import com.xutil.xutildemo.utils.LogUtil;
 
 import org.xutils.DbManager;
 import org.xutils.ex.DbException;

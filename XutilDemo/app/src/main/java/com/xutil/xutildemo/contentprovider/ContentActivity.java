@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.xutil.xutildemo.LogUtil;
+import com.xutil.xutildemo.utils.LogUtil;
 import com.xutil.xutildemo.R;
 
 import org.xutils.view.annotation.ViewInject;
@@ -47,5 +47,6 @@ public class ContentActivity extends Activity {
                 contentResolver.insert(Uri.parse("content://com.skyworthdigital.upgrade/deviceinfo"),values);
             }
         });
+
     }
 }

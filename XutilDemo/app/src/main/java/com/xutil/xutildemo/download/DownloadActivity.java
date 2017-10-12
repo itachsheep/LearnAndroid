@@ -5,79 +5,50 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ListView;
 
-import com.xutil.xutildemo.LogUtil;
 import com.xutil.xutildemo.R;
 
-import org.xutils.common.Callback;
+import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.Event;
+import org.xutils.view.annotation.ViewInject;
+import org.xutils.x;
 
-import java.io.File;
 
 /**
  * Created by SDT14324 on 2017/9/29.
  */
 
-public class DownloadActivity extends Activity implements View.OnClickListener {
+@ContentView(R.layout.ac_download)
+public class DownloadActivity extends Activity  {
+
+    @ViewInject(R.id.ac_dl_start)
     private Button btStart;
-    private Button btStop;
-    private Button btContinue;
-    private TextView tvState;
+
+    @ViewInject(R.id.ac_dl_lv)
+    private ListView listView;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ac_download);
-
-        btStart = (Button) findViewById(R.id.ac_dl_start);
-        btStop = (Button) findViewById(R.id.ac_dl_stop);
-        btContinue = (Button) findViewById(R.id.ac_dl_continue);
-
-        btStart.setOnClickListener(this);
-        btStop.setOnClickListener(this);
-        btContinue.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.ac_dl_continue:
-
-                break;
-            case R.id.ac_dl_start:
-                downloadStart();
-                break;
-            case R.id.ac_dl_stop:
-
-                break;
-        }
-    }
-
-    private void downloadStart() {
+        x.view().inject(this);
 
     }
 
-    class DownloadCallback implements Callback.CommonCallback<File> {
-
-        @Override
-        public void onSuccess(File file) {
-            LogUtil.i("onSucess ");
-        }
-
-        @Override
-        public void onError(Throwable throwable, boolean b) {
-            LogUtil.i("onError ");
-        }
-
-        @Override
-        public void onCancelled(CancelledException e) {
-            LogUtil.i("onCancelled ");
-        }
-
-        @Override
-        public void onFinished() {
-            LogUtil.i("onFinished ");
+    @Event(R.id.ac_dl_start)
+    private void startDownload(View view){
+        for (int i = 0; i < 5; i++) {
+            String url = "http://192.168.0.76:9191/nginxSource/30001/7085/36ed7845-067f-4d23-9edc-d71abe7074f1.zip";
+            String label = i + "download_" + System.nanoTime();
+            DownloadManager.getInstance().startDownload(
+                    url, label,
+                    "/sdcard/download/" + label + ".zip", true, false, null);
         }
     }
+
+
+
+
 
 }

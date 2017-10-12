@@ -3,19 +3,36 @@
     package="com.xutil.xutildemo">
 
     <uses-permission android:name="com.skyworthdigital.upgrade.contentProvider.write"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
 
     <application
         android:allowBackup="true"
-        android:name=".App"
+        android:name=".utils.App"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!--测试数据库-->
         <activity android:name=".db.DbActivity">
         </activity>
+
+        <!--测试下载-->
         <activity android:name=".download.DownloadActivity"/>
+
+
+        <!--测试contentprovider-->
         <activity android:name=".contentprovider.ContentActivity">
+        </activity>
+
+
+        <!--测试获取升级进度-->
+        <activity android:name=".upgradeprogress.UpgradeProgressActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
