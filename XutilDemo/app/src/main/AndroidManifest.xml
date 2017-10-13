@@ -23,7 +23,13 @@
         </activity>
 
         <!--测试下载-->
-        <activity android:name=".download.DownloadActivity"/>
+        <activity android:name=".download.DownloadActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
 
         <!--测试contentprovider-->
@@ -33,12 +39,10 @@
 
         <!--测试获取升级进度-->
         <activity android:name=".upgradeprogress.UpgradeProgressActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
+
+
     </application>
 
 </manifest>

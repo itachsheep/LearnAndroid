@@ -2,6 +2,7 @@ package com.xutil.xutildemo.utils;
 
 import android.app.Application;
 
+import com.xutil.xutildemo.BuildConfig;
 import com.xutil.xutildemo.db.StuManager;
 
 import org.xutils.x;
@@ -26,8 +27,9 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
-        stuManager = new StuManager();
+//        stuManager = new StuManager();
         x.Ext.init(this);
+        x.Ext.setDebug(BuildConfig.DEBUG);
     }
 
 
