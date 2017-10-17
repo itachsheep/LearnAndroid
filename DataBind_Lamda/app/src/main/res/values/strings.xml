@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DataBind_Lamda</string>
+
+    <string name="item_list">list test</string>
+    <string name="item_lambda">lambda</string>
+
+</resources>
