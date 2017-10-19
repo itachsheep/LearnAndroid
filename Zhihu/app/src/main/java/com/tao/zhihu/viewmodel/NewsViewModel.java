@@ -1,19 +1,21 @@
-package com.kelin.mvvmlight.zhihu.news;
+package com.tao.zhihu.viewmodel;
 
 import android.app.Fragment;
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableList;
 import android.support.v4.util.Pair;
-import android.util.Log;
 import android.widget.Toast;
 
-import com.kelin.mvvmlight.base.ViewModel;
-import com.kelin.mvvmlight.command.ReplyCommand;
-import com.kelin.mvvmlight.messenger.Messenger;
-import com.kelin.mvvmlight.zhihu.R;
-import com.kelin.mvvmlight.zhihu.ZhiHuApp;
-import com.kelin.mvvmlight.zhihu.retrofit.RetrofitProvider;
+import com.tao.zhihu.R;
+import com.tao.zhihu.ZhihuApp;
+import com.tao.zhihu.command.ReplyCommand;
+import com.tao.zhihu.messenger.Messenger;
+import com.tao.zhihu.model.NewsService;
+import com.tao.zhihu.model.TopNewsService;
+import com.tao.zhihu.retrofit.RetrofitProvider;
+import com.tao.zhihu.utils.LogUtils;
+import com.tao.zhihu.utils.NewsListHelper;
 import com.trello.rxlifecycle.FragmentLifecycleProvider;
 
 import java.util.Calendar;
@@ -28,11 +30,11 @@ import rx.schedulers.Schedulers;
 import rx.subjects.BehaviorSubject;
 
 /**
- * Created by kelin on 16-4-25.
+ * Created by SDT14324 on 2017/10/19.
  */
-public class NewsViewModel implements ViewModel {
-    public static final String TOKEN_TOP_NEWS_FINISH = "token_top_news_finish" + ZhiHuApp.sPackageName;
 
+public class NewsViewModel implements ViewModel{
+    public static final String TOKEN_TOP_NEWS_FINISH = "token_top_news_finish" + ZhihuApp.sPackageName;
     //context
     private Fragment fragment;
 
@@ -42,17 +44,13 @@ public class NewsViewModel implements ViewModel {
     private NewsService.News news;
     private TopNewsService.News topNews;
 
-    /*
-      data for presenter
-     */
-
     // viewModel for RecyclerView
     public final ObservableList<NewItemViewModel> itemViewModel = new ObservableArrayList<>();
     // view layout for RecyclerView
     public final ItemViewSelector<NewItemViewModel> itemView = new BaseItemViewSelector<NewItemViewModel>() {
         @Override
         public void select(ItemView itemView, int position, NewItemViewModel itemViewModel) {
-            itemView.set(com.kelin.mvvmlight.zhihu.BR.viewModel, itemViewModel.storiesBean.getExtraField() != null ? R.layout.listitem_news_header : R.layout.listitem_news);
+            itemView.set(com.tao.zhihu.BR.viewModel, itemViewModel.storiesBean.getExtraField() != null ? R.layout.listitem_news_header : R.layout.listitem_news);
         }
 
         @Override
@@ -61,6 +59,7 @@ public class NewsViewModel implements ViewModel {
         }
 
     };
+
     //collection of view style,wrap to a class to manage conveniently!
     public final ViewStyle viewStyle = new ViewStyle();
 
@@ -68,10 +67,6 @@ public class NewsViewModel implements ViewModel {
         public final ObservableBoolean isRefreshing = new ObservableBoolean(true);
         public final ObservableBoolean progressRefreshing = new ObservableBoolean(true);
     }
-
-    /**
-     * command
-     */
 
     public final ReplyCommand onRefreshCommand = new ReplyCommand<>(() -> {
         Observable.just(Calendar.getInstance())
@@ -87,7 +82,6 @@ public class NewsViewModel implements ViewModel {
         loadNewsList(news.getDate());
     });
 
-
     public NewsViewModel(Fragment fragment) {
         this.fragment = fragment;
 
@@ -99,9 +93,8 @@ public class NewsViewModel implements ViewModel {
                 .doOnNext(c -> c.add(Calendar.DAY_OF_MONTH, 1))
                 .map(c -> NewsListHelper.DAY_FORMAT.format(c.getTime()))
                 .subscribe(d -> loadTopNews(d));
+        LogUtils.i("newsviewmodel contructor..");
     }
-
-
     private void loadNewsList(String date) {
         viewStyle.isRefreshing.set(true);
 
@@ -172,8 +165,13 @@ public class NewsViewModel implements ViewModel {
 
         NewsListHelper.dealWithResponseError(combineRequestOb.filter(Notification::isOnError)
                 .map(n -> n.getThrowable()));
-        Log.i("zhihuer","loadTopNews date: "+date);
+
+        LogUtils.i("loadTopNews date:"+date);
 
     }
+
+
+
+
 
 }

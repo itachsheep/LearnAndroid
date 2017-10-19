@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="今日日报" />
+        <item
+            android:id="@+id/nav_test"
+            android:icon="@mipmap/zhihu"
+            android:title="作为测试"
+            />
+
+        <item
+            android:id="@+id/nav_test2"
+            android:icon="@mipmap/zhihu"
+            android:title="作为测试2"
+            />
+
+        <item
+            android:id="@+id/nav_test3"
+            android:icon="@mipmap/zhihu"
+            android:title="作为测试3"
+            />
+
+
+        <item
+            android:id="@+id/nav_test4"
+            android:icon="@mipmap/zhihu"
+            android:title="作为测试4"
+            />
+
+        <item
+            android:id="@+id/nav_test5"
+            android:icon="@mipmap/zhihu"
+            android:title="作为测试5"
+            />
+
+    </group>
+
+
+
+</menu>

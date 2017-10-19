@@ -1,18 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.tao.zhihu.view.MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-</android.support.constraint.ConstraintLayout>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.tao.zhihu.viewmodel.MainViewModel"/>
+    </data>
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/main_drawerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:openDrawer="start"
+        >
+        <!-- 协调布局，帧布局-->
+        <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- 线性布局， AppbarLayout 可以定制当某个可滑动的View滑动手势改变时内部子View的动作，
+            通过app:layout_scrollFlags来指定 -->
+            <android.support.design.widget.AppBarLayout
+                android:id="@+id/main_appbarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="256dp"
+                android:fitsSystemWindows="true"
+                >
+
+                <!-- 帧布局,CollapsingToolbarLayout 是对Toolbar的包装并且实现了折叠app bar效果，
+                使用时，要作为 AppbarLayout 的直接子View -->
+
+                <!--总的来说，CoordinatorLayout 是协调子View的，
+                通过Behavior指定子View动作。AppbarLayout就是一个竖直方向的LinearLayout,
+                只不过它添加了一些材料的概念和特性，可以定制子View的滑动。
+                CollapsingToolbarLayout 是对Toolbar 的包装，
+                它有5个特性，Collapsing title、Content scrim、
+                Status bar scrim、Parallax scrolling children、
+                Pinned position children-->
+                <android.support.design.widget.CollapsingToolbarLayout
+                    android:id="@+id/main_collapsingLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fitsSystemWindows="true"
+                    app:contentScrim="@color/colorPrimary"
+                    app:expandedTitleMarginEnd="64dp"
+                    app:expandedTitleMarginStart="48dp"
+
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                    >
+
+                    <android.support.v4.view.ViewPager
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/main_viewpager"
+                        android:fitsSystemWindows="true"
+                        app:itemView="@{viewModel.topItemView}"
+                        app:items="@{viewModel.topItemViewModel}"
+                        />
+
+                    <com.viewpagerindicator.CirclePageIndicator
+                        android:id="@+id/main_circleIndicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:layout_marginBottom="15dp"
+                        android:fitsSystemWindows="true"
+                        android:padding="5dp"
+                        app:gapWidth="10dp"
+                        app:pageColor="#88888888"
+                        app:strokeColor="#88888888"
+                        />
+                    <android.support.v7.widget.Toolbar
+                        android:id="@+id/main_toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        app:layout_collapseMode="pin"
+                        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                        app:title="我的主页"
+                        app:subtitle="知乎"
+
+                        />
+                </android.support.design.widget.CollapsingToolbarLayout>
+                
+            </android.support.design.widget.AppBarLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                >
+
+                <FrameLayout
+                    android:id="@+id/main_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
+
+        </android.support.design.widget.CoordinatorLayout>
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/main_naviView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            android:background="#ffffff"
+            app:headerLayout="@layout/nav_header_main"
+            app:menu="@menu/activity_main_drawer"
+            />
+    </android.support.v4.widget.DrawerLayout>
+</layout>

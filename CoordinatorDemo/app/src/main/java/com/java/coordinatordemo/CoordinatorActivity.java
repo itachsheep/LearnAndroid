@@ -1,11 +1,10 @@
 package com.java.coordinatordemo;
 
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import com.java.coordinatordemo.Adapter.BaseFragmentPagerAdapter;
 import com.java.coordinatordemo.fragment.ViewPagerFragment;
@@ -15,7 +14,7 @@ import java.util.List;
 
 public class CoordinatorActivity extends AppCompatActivity {
     private TabLayout tabLayout;
-    private ViewPager viewPager;
+//    private ViewPager viewPager;
 
     String[] mTitles = new String[]{
             "主页", "微博", "相册"
@@ -29,7 +28,7 @@ public class CoordinatorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_coordinator);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
-        viewPager = (ViewPager) findViewById(R.id.ac_viewpager);
+//        viewPager = (ViewPager) findViewById(R.id.ac_viewpager);
 
 
 
@@ -49,7 +48,7 @@ public class CoordinatorActivity extends AppCompatActivity {
 
         mAdapter = new BaseFragmentPagerAdapter(getSupportFragmentManager(),
                 mfragments,mTitles);
-        viewPager.setAdapter(mAdapter);
-        tabLayout.setupWithViewPager(viewPager);
+//        viewPager.setAdapter(mAdapter);
+//        tabLayout.setupWithViewPager(viewPager);
     }
 }
