@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+        <variable name="user" type="com.tao.databind_lamda.model.User"/>
+        <variable name="userHandler" type="com.tao.databind_lamda.events.UserHandler"/>
+        <variable name="presenter" type="com.tao.databind_lamda.events.UserPresenter"/>
+
+        <!--not success-->
+        <variable name="list" type="java.util.List"/>
+        <variable name="index" type="int"/>
+
+        <!--ObservableField-->
+
+        <variable name="worker" type="com.tao.databind_lamda.model.Worker"/>
+
+
+        <!--ObservableArrayMap-->
+        <variable name="map" type="android.databinding.ObservableMap"/>
+
+        <!--lisetener-->
+        <variable name="listener" type="com.tao.databind_lamda.listener.ImageViewListener"/>
+
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--数据绑定时实现listener-->
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.userName}"
+            android:onClick="@{userHandler::onUserNameClick}"
+           />
+
+        <!-- 事件触发时实现listener -->
+        <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text='@{"change user,worker: "+user.userName+user.userAge}'
+        android:onClick="@{() -> presenter.onChangeTest(user,worker)}"
+        />
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="事件响应监听绑定方式"
+            android:onClick="@{(view) -> presenter.onTestClick(view,user)}"
+            />
+
+        <!--使用resource资源-->
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{@string/test + user.userAge}'
+            />
+
+        <!--使用ObservableField 观察变化-->
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{@string/worker_test +worker.name + ","+worker.id}'
+            />
+
+        <!--使用ObservableMap 观察变化-->
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{@string/worker_map + worker.map["key"]}'
+            />
+
+        <!--使用include-->
+        <!--<include layout="@layout/name"
+            bind:foo="@{user}"
+            />-->
+
+        <!--自定义属性-->
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="自定义属性"
+            android:paddingLeft="100dp"
+            bind:items="@{@string/self_attr}"
+            bind:itemView="@{@string/self_attr2}"
+            />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            bind:imageUrl='@{"http://note.youdao.com/favicon.ico"}'
+            bind:error="@{@drawable/ic_launcher}"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="111111"
+            bind:onLoadMoreCommand="@{listener.imageViewListener}"/>
+
+        <!-- recycleview databind,注意viewhodler绑定 ViewDatabinding-->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/main_recycleView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+</layout>

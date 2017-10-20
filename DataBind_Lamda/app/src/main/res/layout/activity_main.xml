@@ -28,6 +28,7 @@
             />
 
         <Button
+            android:id="@+id/main_bt_lambda"
             android:layout_marginTop="10dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -38,6 +39,8 @@
             android:text="@{@string/item_lambda}"
             android:onClick="@{viewModel.onlamdaClick}"
             />
+
+
 
     </android.support.constraint.ConstraintLayout>
 </layout>

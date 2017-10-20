@@ -30,6 +30,7 @@ public class MainActivity extends RxAppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         ViewDataBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setVariable(com.kelin.mvvmlight.zhihu.BR.viewModel, new MainViewModel(this));

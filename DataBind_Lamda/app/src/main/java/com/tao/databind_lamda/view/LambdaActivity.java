@@ -20,5 +20,6 @@ public class LambdaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_lambda);
         binding.setViewModel(new LambdaViewModel(LambdaActivity.this));
+
     }
 }

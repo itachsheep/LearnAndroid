@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.tao.zhihu.BR;
 import com.tao.zhihu.R;
 import com.tao.zhihu.databinding.ActivityMainBinding;
 import com.tao.zhihu.fragment.NewsListFragment;
@@ -35,6 +36,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mbinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        mbinding.setVariable(BR.viewModel,new MainViewModel(MainActivity.this));
+
 
         //enable actionbar
         setSupportActionBar(mbinding.mainToolbar);

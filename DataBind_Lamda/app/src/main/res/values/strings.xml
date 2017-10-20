@@ -4,4 +4,13 @@
     <string name="item_list">list test</string>
     <string name="item_lambda">lambda</string>
 
+
+    <string name="test">引用resource资源 : </string>
+
+    <string name="worker_test">测试worker变化： </string>
+    <string name="worker_map">测试observabel map变化： </string>
+
+
+    <string name="self_attr">有道词典</string>
+    <string name="self_attr2">--厉害了，我的国！！</string>
 </resources>
