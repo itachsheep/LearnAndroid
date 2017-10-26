@@ -163,6 +163,7 @@ public class HttpRequest extends UriRequest {
                 for (RequestParams.Header header : headers) {
                     String name = header.key;
                     String value = header.getValueStr();
+                    LogUtil.i(" headers name: "+name+", value: "+value);
                     if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(value)) {
                         if (header.setHeader) {
                             connection.setRequestProperty(name, value);

@@ -91,14 +91,18 @@ public class DownloadManager {
         viewHolder.update(downloadInfo);
         DownloadCallback callback = new DownloadCallback(viewHolder);
         callback.setDownloadManager(this);
+
+
         RequestParams params = new RequestParams(url);
         params.setAutoResume(autoResume);
         params.setAutoRename(autoRename);
         params.setSaveFilePath(fileSavePath);
         params.setExecutor(executor);
         params.setCancelFast(true);
+
         Callback.Cancelable cancelable = x.http().get(params, callback);
         callback.setCancelable(cancelable);
+
 
         //add to callback map
         callbackMap.put(downloadInfo,callback);

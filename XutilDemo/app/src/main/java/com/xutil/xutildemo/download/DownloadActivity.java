@@ -55,7 +55,7 @@ public class DownloadActivity extends Activity  {
 
     @Event(R.id.ac_dl_start)
     private void startDownload(View view) throws DbException {
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 5; i++) {
 //            String url = "http://dl.bintray.com/wyouflf/maven/org/xutils/xutils/3.5.0/xutils-3.5.0.aar";
             String url = "http://192.168.0.76:9191/nginxSource/30001/7085/36ed7845-067f-4d23-9edc-d71abe7074f1.zip";
             String label = i + "_download_" + System.nanoTime();

@@ -75,9 +75,9 @@
             />
 
         <!--使用include-->
-        <!--<include layout="@layout/name"
+        <include layout="@layout/name"
             bind:foo="@{user}"
-            />-->
+            />
 
         <!--自定义属性-->
         <Button
