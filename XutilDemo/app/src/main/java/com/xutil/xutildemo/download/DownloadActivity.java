@@ -59,10 +59,8 @@ public class DownloadActivity extends Activity  {
 //            String url = "http://dl.bintray.com/wyouflf/maven/org/xutils/xutils/3.5.0/xutils-3.5.0.aar";
             String url = "http://192.168.0.76:9191/nginxSource/30001/7085/36ed7845-067f-4d23-9edc-d71abe7074f1.zip";
             String label = i + "_download_" + System.nanoTime();
-            String savePath = "/sdcard/download/" + label + ".zip";
-
-
-
+            String filepath = getFilesDir().getPath();
+            String savePath = filepath + label + ".zip";
             View itemView = LayoutInflater.from(this).inflate(R.layout.download_item,null);
             DownloadItemViewholder viewholder = new DownloadItemViewholder(itemView,adapter,downloadManager,null);
 

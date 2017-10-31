@@ -597,6 +597,7 @@ public class HttpTask<ResultType> extends AbsTask<ResultType> implements Progres
 
                 try {
                     request.setRequestInterceptListener(requestInterceptListener);
+                    //真正发起请求的方法
                     this.result = request.loadResult();
                 } catch (Throwable ex) {
                     this.ex = ex;

@@ -214,7 +214,7 @@ public class FileLoader extends Loader<File> {
             if (progressHandler != null && !progressHandler.updateProgress(0, 0, false)) {
                 throw new Callback.CancelledException("download stopped!");
             }
-
+            //调用HttpRequest.sendRequest()
             request.sendRequest(); // may be throw an HttpException
 
             contentLength = request.getContentLength();
@@ -236,6 +236,7 @@ public class FileLoader extends Loader<File> {
                 entity.setExpires(request.getExpiration());
                 entity.setLastModify(new Date(request.getLastModified()));
             }
+            //真正实现下载，写入文件
             result = this.load(request.getInputStream());
         } catch (HttpException httpException) {
             if (httpException.getCode() == 416) {

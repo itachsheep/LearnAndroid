@@ -28,7 +28,7 @@ public class DownloadManager {
     private final ConcurrentHashMap<DownloadInfo,DownloadCallback> callbackMap =
             new ConcurrentHashMap<DownloadInfo, DownloadCallback>(5);
 
-    private final int MAX_DOWNLOAD_THREAD = 1;
+    private final int MAX_DOWNLOAD_THREAD = 2;
     private final Executor executor = new PriorityExecutor(MAX_DOWNLOAD_THREAD,true);
 
 
@@ -99,6 +99,10 @@ public class DownloadManager {
         params.setSaveFilePath(fileSavePath);
         params.setExecutor(executor);
         params.setCancelFast(true);
+
+        params.addParameter("key","xxx");
+        params.addParameter("value","xxx");
+        //http://www.baiud.com?key=xxx&value=xxx
 
         Callback.Cancelable cancelable = x.http().get(params, callback);
         callback.setCancelable(cancelable);
