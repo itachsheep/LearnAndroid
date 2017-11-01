@@ -21,8 +21,7 @@ public class UnitTestActivity extends AppCompatActivity {
     }
 
     public void sayHello(View view){
-//        binding.utaText.setText("Hello,"+binding.utaEdit.getText().toString());
-        binding.utaText.setText("Hello, " + binding.utaEdit.getText().toString() + "!");
+        binding.utaText.setText("Hello,"+binding.utaEdit.getText().toString());
     }
 
 
