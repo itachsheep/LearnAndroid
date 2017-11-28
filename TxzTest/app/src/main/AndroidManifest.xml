@@ -25,7 +25,7 @@
         </activity>
 
         <activity android:name=".view.MusicActivity"/>
-
+        <activity android:name=".view.CommandActivity"/>
         <service
             android:name="com.txznet.sdk.TXZService"
             android:exported="true" >

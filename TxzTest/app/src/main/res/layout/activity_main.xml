@@ -34,7 +34,7 @@
     <LinearLayout
         android:id="@+id/llFunctions"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
             android:id="@+id/bt_music"
@@ -47,15 +47,17 @@
            />
 
         <Button
-            android:id="@+id/bt_test"
+            android:id="@+id/bt_command"
             android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:text="test"
+            android:text="指令对接"
             />
     </LinearLayout>
+
+
 
 
 </LinearLayout>
