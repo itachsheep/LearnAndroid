@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">SystemUiDemo</string>
+    <string name="label_task_close">关屏</string>
+
+    <string name="label_task_wifi">WiFi</string>
+    <string name="label_task_hotspot">热点</string>
+    <string name="label_task_flow">数据</string>
+    <string name="label_task_multi_task">多任务</string>
+    <string name="accessibility_clear_all" msgid="5235938559247164925">"清除所有通知。"</string>
+    <string name="accessibility_desc_quick_settings" msgid="6186378411582437046">"快捷设置。"</string>
+    <string name="accessibility_notifications_button" msgid="4498000369779421892">"通知。"</string>
+</resources>

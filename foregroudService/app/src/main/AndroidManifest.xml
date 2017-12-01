@@ -17,6 +17,12 @@
             </intent-filter>
         </activity>
 
+
+        <service android:name=".MyService">
+            <intent-filter>
+                <action android:name="com.tao.my.service"></action>
+            </intent-filter>
+        </service>
         <service android:name=".ForegroudService">
             <intent-filter>
                 <action android:name="com.tao.foregroud.service"></action>

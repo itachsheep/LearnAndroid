@@ -6,6 +6,7 @@ import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.IBinder
 
+
 /**
  * Created by SDT14324 on 2017/11/21.
  */
@@ -23,6 +24,8 @@ class ForegroudService : Service(){
                 .setContentText("notification 内容")
         var notification = builder.build()
         startForeground(111,notification)
+
+
 
         return super.onStartCommand(intent, flags, startId)
     }

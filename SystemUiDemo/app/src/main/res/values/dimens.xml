@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="status_bar_icon_size">@*android:dimen/status_bar_icon_size</dimen>
+
+    <!-- Height of a small notification in the status bar -->
+    <dimen name="notification_min_height">120dp</dimen>
+
+    <!-- Height of a large notification in the status bar -->
+    <dimen name="notification_max_height">260dp</dimen>
+
+    <!-- Height of a small notification in the status bar plus glow, padding, etc -->
+    <dimen name="notification_row_min_height">100dp</dimen>
+
+    <dimen name="notification_panel_padding_top">0dp</dimen>
+    <dimen name="notification_panel_margin_left">0dp</dimen>
+
+    <!-- Height of the draggable handle at the bottom of the phone notification panel -->
+    <dimen name="close_handle_height">36dp</dimen>
+
+    <!-- Amount of close_handle that will NOT overlap the notification list -->
+    <dimen name="close_handle_underlap">32dp</dimen>
+
+    <!-- Height of the notification panel header bar -->
+    <dimen name="notification_panel_header_height">48dp</dimen>
+
+    <dimen name="carrier_label_height">24dp</dimen>
+
+</resources>
