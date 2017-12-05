@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.tao.foregroudservice">
+    package="com.tao.hidesoftinputdemo">
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <application
         android:allowBackup="true"
@@ -17,19 +17,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".TestActivity">
+        <service android:name=".HideSoftInputService">
             <intent-filter>
-                <action android:name="com.tao.my.testactivity" />
-            </intent-filter>
-        </activity>
-        <service android:name=".MyService">
-            <intent-filter>
-                <action android:name="com.tao.my.service"></action>
-            </intent-filter>
-        </service>
-        <service android:name=".ForegroudService">
-            <intent-filter>
-                <action android:name="com.tao.foregroud.service"></action>
+                <action android:name="com.tao.hide.softinput.service"/>
             </intent-filter>
         </service>
     </application>
