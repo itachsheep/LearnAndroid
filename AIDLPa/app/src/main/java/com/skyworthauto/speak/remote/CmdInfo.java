@@ -1,17 +1,24 @@
-package com.skyworthauto.speak;
+package com.skyworthauto.speak.remote;
+
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class CmdInfo implements Parcelable{
+public class CmdInfo implements Parcelable {
 	
 	private String cmdKey;
-	private String cmdArray;
+	private String[] cmdArray;
 
-	public CmdInfo(String key,String array){
+	public CmdInfo(String key,String[] array){
 		cmdKey =  key;
 		cmdArray = array;
 	}
 
+
+	protected CmdInfo(Parcel in) {
+		cmdKey = in.readString();
+		cmdArray = in.createStringArray();
+	}
+	
 	public String getCmdKey() {
 		return cmdKey;
 	}
@@ -20,18 +27,14 @@ public class CmdInfo implements Parcelable{
 		this.cmdKey = cmdKey;
 	}
 
-	public String getCmdArray() {
+	public String[] getCmdArray() {
 		return cmdArray;
 	}
 
-	public void setCmdArray(String cmdArray) {
+	public void setCmdArray(String[] cmdArray) {
 		this.cmdArray = cmdArray;
 	}
-
-	protected CmdInfo(Parcel in) {
-		cmdKey = in.readString();
-		cmdArray = in.readString();
-	}
+	
 
 	public static final Creator<CmdInfo> CREATOR = new Creator<CmdInfo>() {
 		@Override
@@ -45,6 +48,12 @@ public class CmdInfo implements Parcelable{
 		}
 	};
 
+//	@Override
+//	public void readFromParcel(Parcel _reply) {
+//        cmdKey = _reply.readString();
+//        _reply.readStringArray(cmdArray);
+//	}
+	
 	@Override
 	public int describeContents() {
 		return 0;
@@ -53,11 +62,9 @@ public class CmdInfo implements Parcelable{
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
 		dest.writeString(cmdKey);
-		dest.writeString(cmdArray);
+		dest.writeStringArray(cmdArray);
 	}
+	
+	
 
-	public void readFromParcel(Parcel _reply) {
-		// TODO Auto-generated method stub
-
-	}
 }

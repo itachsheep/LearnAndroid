@@ -23,7 +23,7 @@
         android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="call"/>
+        android:text="注册全局指令"/>
 </LinearLayout>
 
 
