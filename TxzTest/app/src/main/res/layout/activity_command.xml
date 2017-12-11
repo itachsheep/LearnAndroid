@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
+            android:background="@drawable/button_common"
             android:id="@+id/bt_reg_command"
             android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
@@ -18,15 +19,32 @@
             android:text="注册指令"
             />
         <Button
+            android:background="@drawable/button_common"
             android:id="@+id/bt_wakeup"
             android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:text="语音唤醒识别"
+            android:text="全局指令"
             />
     </LinearLayout>
 
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:background="@drawable/button_common"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="注销全局指令"
+            android:onClick="unRegGlobalCmd"
+            />
+
+    </LinearLayout>
 </LinearLayout>

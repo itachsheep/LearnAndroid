@@ -72,7 +72,6 @@ public class CommandActivity extends AppCompatActivity {
         findViewById(R.id.bt_wakeup).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //
                 LogUtils.i(tag," regCommand global OPEN_SCREEN command!! ");
                 mAsrCallback.addCommand("OPEN_SCREEN",openScreenCmd);
                 mAsrCallback.addCommand("CLOSE_SCREEN",closeScreenCmd);
@@ -81,6 +80,10 @@ public class CommandActivity extends AppCompatActivity {
         });
     }
 
+    public void unRegGlobalCmd(View view){
+        LogUtils.i(tag," unRegGlobalCmd global OPEN_SCREEN command!! ");
+        TXZAsrManager.getInstance().recoverWakeupFromAsr("WAKEUP_TASK111");
+    }
     TXZAsrManager.AsrComplexSelectCallback mAsrCallback = new TXZAsrManager.AsrComplexSelectCallback() {
         @Override
         public String getTaskId() {
