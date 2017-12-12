@@ -1,19 +1,14 @@
 package com.tao.aidlpa;
 
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
 import com.skyworthauto.speak.remote.CmdInfo;
-import com.skyworthauto.speak.remote.IRemoteCmd;
-import com.skyworthauto.speak.remote.ISpeak;
+import com.skyworthauto.speak.remote.IRemote;
+import com.skyworthauto.speak.remote.IService;
 import com.skyworthauto.speak.remote.RemoteSpeak;
 
 import java.util.ArrayList;
@@ -22,47 +17,60 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private String TAG = "SkySpeak.on.MainActivity";
+    private final int GLOBAL_CMD_ID = 100;
+    private final int CUSTOM_CMD_ID = 1000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
 
-//        Intent intent = new Intent("111");
-//        bindService(intent,conn, Context.BIND_AUTO_CREATE);
-
-        RemoteSpeak.getInstance().init(MainActivity.this);
-        findViewById(R.id.bt_bind).setOnClickListener(new View.OnClickListener() {
+    public void bind(View view){
+        RemoteSpeak.getInstance().bindService(MainActivity.this, new IService() {
             @Override
-            public void onClick(View v) {
-                Log.d(TAG," onclick bt_bind");
-                Intent intent = new Intent();
-
-                ComponentName componentName = new ComponentName("com.skyworthauto.speak",
-                        "com.skyworthauto.speak.SpeakService");
-                intent.setComponent(componentName);
-                bindService(intent,conn, Context.BIND_AUTO_CREATE);
-            }
-        });
-
-        findViewById(R.id.bt_call).setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG," onclick bt_call");
-                try{
-                    RemoteSpeak.getInstance().registerGlobalCmd(remoteCmd,MainActivity.this);
-                }catch(Exception e){
-                    Log.d(TAG, "onclick error: "+e.getMessage(),e);
-                }
-
+            public void onServiceConnected() {
+                Log.d(TAG, "onServiceConnected  ");
+                RemoteSpeak.getInstance().registerGlobalCmd(MainActivity.this,mGlobalCmd);
+                RemoteSpeak.getInstance().registerCustomCmd(MainActivity.this,mCustomCmd);
             }
         });
     }
 
-    IRemoteCmd remoteCmd = new IRemoteCmd.Stub() {
+    public void unbind(View view){
+        Log.d(TAG, "unbind click  ");
+        RemoteSpeak.getInstance().unBindService(MainActivity.this);
+    }
+
+
+
+    public void regGlobalCmd(View view){
+        RemoteSpeak.getInstance().registerGlobalCmd(MainActivity.this,mGlobalCmd);
+    }
+
+    public void unRegGlobalCmd(View view){
+        RemoteSpeak.getInstance().unRegisterGlobalCmd(MainActivity.this,mGlobalCmd);
+    }
+
+    public void regCustomCmd(View view){
+        RemoteSpeak.getInstance().registerCustomCmd(MainActivity.this,mCustomCmd);
+    }
+
+    public void unRegCustomCmd(View view){
+        RemoteSpeak.getInstance().unRegisterCustomCmd(MainActivity.this,mCustomCmd);
+    }
+
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        RemoteSpeak.getInstance().unBindService(MainActivity.this);
+    }
+
+    IRemote mGlobalCmd = new IRemote() {
         @Override
         public List<CmdInfo> getList() throws RemoteException {
             List<CmdInfo> list = new ArrayList<>();
-            String key = "open_ppt";
+            String key = "open_document";
             String[] array = {"打开文档","打开我的文档"};
             CmdInfo info = new CmdInfo(key,array);
             list.add(info);
@@ -70,46 +78,43 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public String getId() throws RemoteException {
-            return getPackageName();
+        public int getId() throws RemoteException {
+            return GLOBAL_CMD_ID;
         }
 
 
         @Override
         public void onCommand(String cmdKey, String cmdData) throws RemoteException {
-            Log.d(TAG," onCommand cmdKey: "+cmdKey+", cmdData: "+cmdData);
+            Log.d(TAG,"自己处理全局指令 cmdKey: "+cmdKey+", cmdData: "+cmdData);
         }
     };
-    private ISpeak iSpeak;
-    ServiceConnection conn = new ServiceConnection() {
+    IRemote mCustomCmd = new IRemote(){
         @Override
-        public void onServiceConnected(ComponentName name, IBinder service) {
-            iSpeak = ISpeak.Stub.asInterface(service);
+        public List<CmdInfo> getList() throws RemoteException {
+            List<CmdInfo> list = new ArrayList<>();
+            String key = "shopping_something";
+            String[] array = {"打开我的手机","打开手机"};
+            CmdInfo info = new CmdInfo(key,array);
+            list.add(info);
+            return list;
         }
 
         @Override
-        public void onServiceDisconnected(ComponentName name) {
+        public int getId() throws RemoteException {
+            return CUSTOM_CMD_ID;
+        }
 
+        @Override
+        public void onCommand(String cmdKey, String cmdData) throws RemoteException {
+            Log.d(TAG,"自己处理语音指令 cmdKey: "+cmdKey+", cmdData: "+cmdData);
         }
     };
 
-
-    /*ServiceConnection conn = new ServiceConnection() {
-        @Override
-        public void onServiceConnected(ComponentName name, IBinder service) {
-            IMyTest iMyTest = IMyTest.Stub.asInterface(service);
-            try {
-                iMyTest.testBinder();
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName name) {
-
-        }
-    };*/
-
-
+    /*public void stop(View view){
+        Log.d(TAG, "stop click  ");
+        Intent intent = new Intent();
+        ComponentName component = new ComponentName("com.skyworthauto.speak","com.skyworthauto.speak.SpeakService");
+        intent.setComponent(component);
+        stopService(intent);
+    }*/
 }

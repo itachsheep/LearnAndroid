@@ -15,10 +15,8 @@ public class RemoteSpeak {
 	private  ISpeak speakBinder;
 	private static RemoteSpeak remoteSpeak;
 
-	private RemoteSpeak(){
-
-	}
-
+	private RemoteSpeak(){}
+	private IService svrCallback;
 
 	public static RemoteSpeak getInstance(){
 		synchronized (lock) {
@@ -29,26 +27,75 @@ public class RemoteSpeak {
 		}
 	}
 
-	public void init(Context context){
+	public void bindService(Context context,IService callback){
 		if(speakBinder == null){
+			svrCallback = callback;
 			bindService(context);
 		}
 	}
 
+	public void unBindService(Context context){
+		Log.d(TAG, "unBindRemoteService ");
+		context.unbindService(conn);
+	}
 
-	public void registerGlobalCmd(IRemoteCmd remoteCmd,Context context){
+
+	public void registerGlobalCmd(Context context,IRemoteCmd remoteCmd){
 		synchronized (lock) {
 			if(speakBinder == null){
-				Log.d(TAG, "speakBinder is null, register again !!");
-				bindService(context);
+				Log.d(TAG, "speakBinder is null !!");
 			}else{
-				context.getPackageName();
 				try {
-					speakBinder.registerGlobalCmd(remoteCmd);
+					IdInfo idInfo = new IdInfo(context.getPackageName()+"_"+ remoteCmd.getId());
+					speakBinder.registerGlobalCmd(remoteCmd,idInfo);
 				} catch (RemoteException e) {
-					Log.e(TAG, "RemoteException e: "+e.getMessage(),e);
+					Log.e(TAG, "registerGlobalCmd error e: "+e.getMessage(),e);
 					e.printStackTrace();
 				}
+			}
+		}
+	}
+
+	public void unRegisterGlobalCmd(Context context,IRemoteCmd remoteCmd){
+		if(speakBinder == null){
+			Log.d(TAG, "speakBinder is null!!");
+		}else{
+			try {
+				IdInfo idInfo = new IdInfo(context.getPackageName()+"_"+remoteCmd.getId());
+				speakBinder.unRegisterGlobalCmd(remoteCmd,idInfo);
+			} catch (RemoteException e) {
+				Log.e(TAG, "unRegisterGlobalCmd error e: "+e.getMessage(),e);
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public void registerCustomCmd(Context context,IRemoteCmd remoteCmd){
+		synchronized (lock) {
+			if(speakBinder == null){
+				Log.d(TAG, "speakBinder is null!!");
+			}else{
+				try {
+					IdInfo idInfo = new IdInfo(context.getPackageName()+"_"+remoteCmd.getId());
+					speakBinder.registerCustomCmd(remoteCmd,idInfo);
+				} catch (RemoteException e) {
+					Log.e(TAG, "registerCustomCmd error e: "+e.getMessage(),e);
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+	public void unRegisterCustomCmd(Context context,IRemoteCmd remoteCmd){
+		if(speakBinder == null){
+			Log.d(TAG, "speakBinder is null!!");
+		}else{
+			try {
+				IdInfo idInfo = new IdInfo(context.getPackageName()+"_"+remoteCmd.getId());
+				speakBinder.unRegisterCustomCmd(remoteCmd, idInfo);
+			} catch (RemoteException e) {
+				Log.e(TAG, "unRegisterCustomCmd error e: "+e.getMessage(),e);
+				e.printStackTrace();
 			}
 		}
 	}
@@ -60,7 +107,7 @@ public class RemoteSpeak {
 		context.bindService(intent, conn, Context.BIND_AUTO_CREATE);
 	}
 
-	private  ServiceConnection conn = new ServiceConnection() {
+	private ServiceConnection conn = new ServiceConnection() {
 
 		@Override
 		public void onServiceDisconnected(ComponentName name) {
@@ -69,8 +116,23 @@ public class RemoteSpeak {
 
 		@Override
 		public void onServiceConnected(ComponentName name, IBinder service) {
-
 			speakBinder =  ISpeak.Stub.asInterface(service);
+			if(svrCallback != null){
+				svrCallback.onServiceConnected();
+			}
+			/*try {
+				service.linkToDeath(serverBinder,0);
+			} catch (RemoteException e) {
+				Log.e(TAG, "onServiceConnected error e: "+e.getMessage(),e);
+				e.printStackTrace();
+			}*/
 		}
 	};
+
+	 /*IBinder.DeathRecipient serverBinder = new IBinder.DeathRecipient() {
+		 @Override
+		 public void binderDied() {
+			 Log.d(TAG, "binderDied : server is killed !!");
+		 }
+	 };*/
 }
