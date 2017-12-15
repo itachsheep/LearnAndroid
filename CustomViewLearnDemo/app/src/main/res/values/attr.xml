@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ExSeekBar">
+        <attr name="android:thumb" />
+        <attr name="android:thumbOffset" />
+        <attr name="android:orientation" />
+        <attr name="android:minWidth" />
+        <attr name="android:minHeight" />
+        <attr name="android:progressDrawable" />
+        <attr name="android:background" />
+        <attr name="android:progress" />
+        <attr name="android:max" />
+        <attr name="android:thickness" />
+    </declare-styleable>
+</resources>

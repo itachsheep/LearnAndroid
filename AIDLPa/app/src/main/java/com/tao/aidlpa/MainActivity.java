@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.View;
 
 import com.skyworthauto.speak.remote.CmdInfo;
+import com.skyworthauto.speak.remote.ICmdAM;
+import com.skyworthauto.speak.remote.ICmdFM;
 import com.skyworthauto.speak.remote.IRemote;
 import com.skyworthauto.speak.remote.IService;
 import com.skyworthauto.speak.remote.RemoteSpeak;
@@ -24,14 +26,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+    private static final int AM_FROM = 522;
+    private static final int AM_TO = 1620;
 
+    private static final float FM_FROM = 87.5f;
+    private static final float FM_TO = 108.0f;
     public void bind(View view){
         RemoteSpeak.getInstance().bindService(MainActivity.this, new IService() {
             @Override
             public void onServiceConnected() {
                 Log.d(TAG, "onServiceConnected  ");
-                RemoteSpeak.getInstance().registerGlobalCmd(MainActivity.this,mGlobalCmd);
-                RemoteSpeak.getInstance().registerCustomCmd(MainActivity.this,mCustomCmd);
+//                RemoteSpeak.getInstance().registerGlobalCmd(MainActivity.this,mGlobalCmd);
+//                RemoteSpeak.getInstance().registerCustomCmd(MainActivity.this,mCustomCmd);
+
+                RemoteSpeak.getInstance().registerCmdForAM(AM_FROM, AM_TO,mAM);
+                RemoteSpeak.getInstance().registerCmdForFM(FM_FROM,FM_TO,mFM);
             }
         });
     }
@@ -65,6 +74,21 @@ public class MainActivity extends AppCompatActivity {
         super.onStop();
         RemoteSpeak.getInstance().unBindService(MainActivity.this);
     }
+
+    ICmdAM mAM = new ICmdAM() {
+        @Override
+        public void onCommand(String cmdKey, int am) throws RemoteException {
+            Log.d(TAG,"调幅 AM 指令 cmdKey: "+cmdKey+", am: "+am);
+        }
+    };
+
+    ICmdFM mFM = new ICmdFM() {
+        @Override
+        public void onCommand(String cmdKey, float fm) throws RemoteException {
+            Log.d(TAG,"调频 FM 指令 cmdKey: "+cmdKey+", fm: "+fm);
+        }
+    };
+
 
     IRemote mGlobalCmd = new IRemote() {
         @Override
@@ -109,12 +133,4 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG,"自己处理语音指令 cmdKey: "+cmdKey+", cmdData: "+cmdData);
         }
     };
-
-    /*public void stop(View view){
-        Log.d(TAG, "stop click  ");
-        Intent intent = new Intent();
-        ComponentName component = new ComponentName("com.skyworthauto.speak","com.skyworthauto.speak.SpeakService");
-        intent.setComponent(component);
-        stopService(intent);
-    }*/
 }

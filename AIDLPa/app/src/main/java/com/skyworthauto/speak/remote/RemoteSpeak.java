@@ -38,9 +38,37 @@ public class RemoteSpeak {
 		Log.d(TAG, "unBindRemoteService ");
 		context.unbindService(conn);
 	}
+	public void registerCmdForAM(int from, int to,ICmdAM radio){
+		synchronized (lock){
+			if(speakBinder == null){
+				Log.d(TAG, "speakBinder is null !!");
+			}else{
+				try {
+					speakBinder.registerCmdForAM(from,to,radio);
+				} catch (RemoteException e) {
+					Log.e(TAG, "registerCmdForAM error e: "+e.getMessage(),e);
+					e.printStackTrace();
+				}
+			}
+		}
+	}
 
+	public void registerCmdForFM(float from, float to,ICmdFM radio){
+		synchronized (lock){
+			if(speakBinder == null){
+				Log.d(TAG, "speakBinder is null !!");
+			}else{
+				try {
+					speakBinder.registerCmdForFM(from,to,radio);
+				} catch (RemoteException e) {
+					Log.e(TAG, "registerCmdForFM error e: "+e.getMessage(),e);
+					e.printStackTrace();
+				}
+			}
+		}
+	}
 
-	public void registerGlobalCmd(Context context,IRemoteCmd remoteCmd){
+	public void registerGlobalCmd(Context context,IRemote remoteCmd){
 		synchronized (lock) {
 			if(speakBinder == null){
 				Log.d(TAG, "speakBinder is null !!");
@@ -56,7 +84,7 @@ public class RemoteSpeak {
 		}
 	}
 
-	public void unRegisterGlobalCmd(Context context,IRemoteCmd remoteCmd){
+	public void unRegisterGlobalCmd(Context context,IRemote remoteCmd){
 		if(speakBinder == null){
 			Log.d(TAG, "speakBinder is null!!");
 		}else{
@@ -70,7 +98,7 @@ public class RemoteSpeak {
 		}
 	}
 
-	public void registerCustomCmd(Context context,IRemoteCmd remoteCmd){
+	public void registerCustomCmd(Context context,IRemote remoteCmd){
 		synchronized (lock) {
 			if(speakBinder == null){
 				Log.d(TAG, "speakBinder is null!!");
@@ -86,7 +114,7 @@ public class RemoteSpeak {
 		}
 	}
 
-	public void unRegisterCustomCmd(Context context,IRemoteCmd remoteCmd){
+	public void unRegisterCustomCmd(Context context,IRemote remoteCmd){
 		if(speakBinder == null){
 			Log.d(TAG, "speakBinder is null!!");
 		}else{
