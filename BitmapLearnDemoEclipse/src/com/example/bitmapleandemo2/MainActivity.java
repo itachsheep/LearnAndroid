@@ -3,7 +3,7 @@ package com.example.bitmapleandemo2;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.View;
+import net.bither.util.NativeUtil;
 
 public class MainActivity extends Activity {
 	private File sdFile;
@@ -34,20 +35,20 @@ public class MainActivity extends Activity {
 	}
 	
 	/**
-	 * 1.ÖÊÁ¿Ñ¹Ëõ
-	 * Ô­Àí£ºÍ¨¹ýËã·¨¿Ùµô(Í¬»¯)ÁËÍ¼Æ¬ÖÐµÄÒ»Ð©Ä³¸öÐ©µã¸½½üÏà½üµÄÏñËØ£¬´ïµ½½µµÍÖÊÁ¿½éÉÜÎÄ¼þ´óÐ¡µÄÄ¿µÄ¡£
-	 * ¼õÐ¡ÁËÍ¼Æ¬ÖÊÁ¿
-	 * ×¢Òâ£ºËüÆäÊµÖ»ÄÜÊµÏÖ¶ÔfileµÄÓ°Ïì£¬¶Ô¼ÓÔØÕâ¸öÍ¼Æ¬³öÀ´µÄbitmapÄÚ´æÊÇÎÞ·¨½ÚÊ¡µÄ£¬»¹ÊÇÄÇÃ´´ó¡£
-	 * ÒòÎªbitmapÔÚÄÚ´æÖÐµÄ´óÐ¡ÊÇ°´ÕÕÏñËØ¼ÆËãµÄ£¬Ò²¾ÍÊÇwidth*height£¬¶ÔÓÚÖÊÁ¿Ñ¹Ëõ£¬²¢²»»á¸Ä±äÍ¼Æ¬µÄÕæÊµµÄÏñËØ£¨ÏñËØ´óÐ¡²»»á±ä£©¡£
+	 * 1.ï¿½ï¿½ï¿½ï¿½Ñ¹ï¿½ï¿½
+	 * Ô­ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ã·¨ï¿½Ùµï¿½(Í¬ï¿½ï¿½)ï¿½ï¿½Í¼Æ¬ï¿½Ðµï¿½Ò»Ð©Ä³ï¿½ï¿½Ð©ï¿½ã¸½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø£ï¿½ï¿½ïµ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½Ä¿ï¿½Ä¡ï¿½
+	 * ï¿½ï¿½Ð¡ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
+	 * ×¢ï¿½â£ºï¿½ï¿½ï¿½ï¿½ÊµÖ»ï¿½ï¿½Êµï¿½Ö¶ï¿½fileï¿½ï¿½Ó°ï¿½ì£¬ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½bitmapï¿½Ú´ï¿½ï¿½ï¿½ï¿½Þ·ï¿½ï¿½ï¿½Ê¡ï¿½Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã´ï¿½ï¿½
+	 * ï¿½ï¿½Îªbitmapï¿½ï¿½ï¿½Ú´ï¿½ï¿½ÐµÄ´ï¿½Ð¡ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½Ä£ï¿½Ò²ï¿½ï¿½ï¿½ï¿½width*heightï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½Ø£ï¿½ï¿½ï¿½ï¿½Ø´ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ä£©ï¿½ï¿½
 	 * 
-	 * Ê¹ÓÃ³¡¾°£º
-	 * 			½«Í¼Æ¬Ñ¹Ëõºó±£´æµ½±¾µØ£¬»òÕß½«Í¼Æ¬ÉÏ´«µ½·þÎñÆ÷¡£¸ù¾ÝÊµ¼ÊÐèÇóÀ´¡£
+	 * Ê¹ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * 			ï¿½ï¿½Í¼Æ¬Ñ¹ï¿½ï¿½ï¿½ó±£´æµ½ï¿½ï¿½ï¿½Ø£ï¿½ï¿½ï¿½ï¿½ß½ï¿½Í¼Æ¬ï¿½Ï´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void qualityCompress(View view){
 		Log.i(TAG, "qualityCompress clicked !! ");
 		BitmapFactory.Options options = new BitmapFactory.Options();
 		Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath(), options);
-		//Ñ¹ËõÍ¼Æ¬
+		//Ñ¹ï¿½ï¿½Í¼Æ¬
 		compressImageToFile(bitmap, new File(sdFile,"qualityCompress.jpg"));
 	}
 	
@@ -74,15 +75,15 @@ public class MainActivity extends Activity {
 	}
 	
 	/**
-	 * 2.³ß´çÑ¹Ëõ
-	 * Í¨¹ý¼õÉÙµ¥Î»³ß´çµÄÏñËØÖµ£¬ÕýÕæÒâÒåÉÏµÄ½µµÍÏñËØ¡£1020*8880--
-	 * Ê¹ÓÃ³¡¾°£º»º´æËõÂÔÍ¼µÄÊ±ºò£¨Í·Ïñ´¦Àí£©
+	 * 2.ï¿½ß´ï¿½Ñ¹ï¿½ï¿½
+	 * Í¨ï¿½ï¿½ï¿½ï¿½ï¿½Ùµï¿½Î»ï¿½ß´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÄ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¡ï¿½1020*8880--
+	 * Ê¹ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½Ê±ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @param bmp
 	 * @param file
 	 */
 	private void compressBitmapToFileBySize(Bitmap bitmap,File file){
-		//Ñ¹Ëõ³ß´ç±¶Êý£¬ÖµÔ½´ó£¬Í¼Æ¬µÄ³ß´ç¾ÍÔ½Ð¡
+		//Ñ¹ï¿½ï¿½ï¿½ß´ç±¶ï¿½ï¿½ï¿½ï¿½ÖµÔ½ï¿½ï¿½Í¼Æ¬ï¿½Ä³ß´ï¿½ï¿½Ô½Ð¡
 		int ratio = 4;
 		Bitmap result = Bitmap.createBitmap(bitmap.getWidth()/ratio, 
 				bitmap.getHeight()/ratio, Bitmap.Config.ARGB_8888);
@@ -132,28 +133,29 @@ public class MainActivity extends Activity {
     }
 	
 	
+	@SuppressLint("NewApi")
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		if (resultCode == Activity.RESULT_OK) {
 			switch (requestCode) {
 			case REQUEST_PICK_IMAGE:
-				//4.4 ÒÔÏÂ
+				//4.4 ï¿½ï¿½ï¿½ï¿½
 				if (data != null) {
                     Uri uri = data.getData();
 //                    compressImage(uri);
                 } else {
-                    Log.e(TAG, "========Í¼Æ¬Îª¿Õ======");
+                    Log.e(TAG, "========Í¼Æ¬Îªï¿½ï¿½======");
                 }
 				break;
 
 			case REQUEST_KITKAT_PICK_IMAGE:
-				//4.4 º¬ÒÔÉÏ
+				//4.4 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				if (data != null) {
                     Uri uri = ensureUriPermission(this, data);
 //                    compressImage(uri);
                 } else {
-                    Log.e(TAG, "====-----==Í¼Æ¬Îª¿Õ======");
+                    Log.e(TAG, "====-----==Í¼Æ¬Îªï¿½ï¿½======");
                 }
 				break;
 			}

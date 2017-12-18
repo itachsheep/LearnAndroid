@@ -1,4 +1,4 @@
-package com.example.bitmapleandemo2;
+package net.bither.util;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -18,27 +18,27 @@ public class NativeUtil {
 	public static void compressBitmap(Bitmap bitmap,String filePath){
 		Log.i(TAG, "jpegCompressImage" );
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        // ÖÊÁ¿Ñ¹Ëõ·½·¨£¬ÕâÀï100±íÊ¾²»Ñ¹Ëõ£¬°ÑÑ¹ËõºóµÄÊı¾İ´æ·Åµ½baosÖĞ
+		 // è´¨é‡å‹ç¼©æ–¹æ³•ï¼Œè¿™é‡Œ100è¡¨ç¤ºä¸å‹ç¼©ï¼ŒæŠŠå‹ç¼©åçš„æ•°æ®å­˜æ”¾åˆ°baosä¸­
         int options = 20;
-        // JNIµ÷ÓÃ±£´æÍ¼Æ¬µ½SD¿¨ Õâ¸ö¹Ø¼ü
+     // JNIè°ƒç”¨ä¿å­˜å›¾ç‰‡åˆ°SDå¡ è¿™ä¸ªå…³é”®
         NativeUtil.saveBitmap(bitmap, options, filePath, true);
 	}
 	
-	  /**
-     * µ÷ÓÃnative·½·¨
+	/**
+     * è°ƒç”¨nativeæ–¹æ³•
      *
      * @param bit
      * @param quality
      * @param fileName
      * @param optimize
-     * @Description:º¯ÊıÃèÊö
+     * @Description:å‡½æ•°æè¿°
      */
     public static void saveBitmap(Bitmap bit, int quality, String fileName, boolean optimize) {
         compressBitmap(bit, bit.getWidth(), bit.getHeight(), quality, fileName.getBytes(), optimize);
     }
     
     /**
-     * µ÷ÓÃµ×²ã bitherlibjni.cÖĞµÄ·½·¨
+     * è°ƒç”¨åº•å±‚ bitherlibjni.cä¸­çš„æ–¹æ³•
      *
      * @param bit
      * @param w
@@ -47,7 +47,7 @@ public class NativeUtil {
      * @param fileNameBytes
      * @param optimize
      * @return
-     * @Description:º¯ÊıÃèÊö
+     * @Description:å‡½æ•°æè¿°
      */
     public static native String compressBitmap(Bitmap bit, int w, int h, int quality, byte[] fileNameBytes,
                                                 boolean optimize);
