@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -47,7 +48,7 @@ public class MainActivity extends Activity {
 		BitmapFactory.Options options = new BitmapFactory.Options();
 		Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath(), options);
 		//Ñ¹ËõÍ¼Æ¬
-		compressImageToFile(bitmap, new File(sdFile,"qualityCompress_5.jpeg"));
+		compressImageToFile(bitmap, new File(sdFile,"qualityCompress.jpg"));
 	}
 	
 	private void compressImageToFile(Bitmap bitmap,File file){
@@ -69,7 +70,7 @@ public class MainActivity extends Activity {
 	public void sizeCompress(View view){
 		BitmapFactory.Options options = new BitmapFactory.Options();
 		Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath(), options);
-		compressBitmapToFileBySize(bitmap, new File(sdFile,"sizeCompress.jpeg"));
+		compressBitmapToFileBySize(bitmap, new File(sdFile,"sizeCompress.jpg"));
 	}
 	
 	/**
@@ -82,29 +83,30 @@ public class MainActivity extends Activity {
 	 */
 	private void compressBitmapToFileBySize(Bitmap bitmap,File file){
 		//Ñ¹Ëõ³ß´ç±¶Êý£¬ÖµÔ½´ó£¬Í¼Æ¬µÄ³ß´ç¾ÍÔ½Ð¡
-				int ratio = 4;
-				Bitmap result = Bitmap.createBitmap(bitmap.getWidth()/ratio, 
-						bitmap.getHeight()/ratio, Bitmap.Config.ARGB_8888);
-				
-				Canvas canvas = new Canvas(result);
-				RectF rect = new RectF(0, 0, bitmap.getWidth()/ratio, bitmap.getHeight()/ratio);
-				canvas.drawBitmap(bitmap, null, rect , null);
-				
-				ByteArrayOutputStream baos = new ByteArrayOutputStream();
-				result.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-				try {
-					FileOutputStream fos = new FileOutputStream(file);
-					fos.write(baos.toByteArray());
-					fos.flush();
-					fos.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+		int ratio = 4;
+		Bitmap result = Bitmap.createBitmap(bitmap.getWidth()/ratio, 
+				bitmap.getHeight()/ratio, Bitmap.Config.ARGB_8888);
+		
+		Canvas canvas = new Canvas(result);
+		RectF rect = new RectF(0, 0, bitmap.getWidth()/ratio, bitmap.getHeight()/ratio);
+		canvas.drawBitmap(bitmap, null, rect , null);
+		
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		result.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+		try {
+			FileOutputStream fos = new FileOutputStream(file);
+			fos.write(baos.toByteArray());
+			fos.flush();
+			fos.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	
 	public void jpegCompress(View view){
-		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
+		Log.i(TAG, "jpegCompress click");
+		/*if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
             startActivityForResult(new Intent(Intent.ACTION_GET_CONTENT).setType("image/*"),
                     REQUEST_PICK_IMAGE);
         } else {
@@ -112,8 +114,23 @@ public class MainActivity extends Activity {
             intent.addCategory(Intent.CATEGORY_OPENABLE);
             intent.setType("image/*");
             startActivityForResult(intent, REQUEST_KITKAT_PICK_IMAGE);
-        }
+        }*/
+		BitmapFactory.Options opts = new BitmapFactory.Options(); 
+		Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath(), opts);
+		NativeUtil.compressBitmap(bitmap, new File(imageFile,"jpegCompress.jpg").getAbsolutePath());
 	}
+	
+	
+	
+	public static Uri ensureUriPermission(Context context, Intent intent) {
+        Uri uri = intent.getData();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            final int takeFlags = intent.getFlags() & Intent.FLAG_GRANT_READ_URI_PERMISSION;
+            context.getContentResolver().takePersistableUriPermission(uri, takeFlags);
+        }
+        return uri;
+    }
+	
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -124,9 +141,9 @@ public class MainActivity extends Activity {
 				//4.4 ÒÔÏÂ
 				if (data != null) {
                     Uri uri = data.getData();
-                    compressImage(uri);
+//                    compressImage(uri);
                 } else {
-                    Log.e("======", "========Í¼Æ¬Îª¿Õ======");
+                    Log.e(TAG, "========Í¼Æ¬Îª¿Õ======");
                 }
 				break;
 
@@ -134,9 +151,9 @@ public class MainActivity extends Activity {
 				//4.4 º¬ÒÔÉÏ
 				if (data != null) {
                     Uri uri = ensureUriPermission(this, data);
-                    compressImage(uri);
+//                    compressImage(uri);
                 } else {
-                    Log.e("======", "====-----==Í¼Æ¬Îª¿Õ======");
+                    Log.e(TAG, "====-----==Í¼Æ¬Îª¿Õ======");
                 }
 				break;
 			}
