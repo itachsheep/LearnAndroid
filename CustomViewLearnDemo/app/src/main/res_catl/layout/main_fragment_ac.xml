@@ -5,8 +5,11 @@
     android:layout_marginTop="50dp"
     >
 
-
-        <com.skyworthauto.aircondition.views.ExSeekBar
+<com.tao.customviewlearndemo.view.ParabolaView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    />
+        <!--<com.skyworthauto.aircondition.views.ExSeekBar
             android:id="@+id/seekCool"
             android:layout_width="90dp"
             android:layout_height="280dp"
@@ -17,7 +20,7 @@
             android:thumb="@drawable/fan_speed_controller_thumb"
             android:thumbOffset="0dp"
             android:visibility="visible">
-        </com.skyworthauto.aircondition.views.ExSeekBar>
+        </com.skyworthauto.aircondition.views.ExSeekBar>-->
 <!--android:thumb="@drawable/fan_speed_controller_thumb"-->
 
         <!--<LinearLayout
