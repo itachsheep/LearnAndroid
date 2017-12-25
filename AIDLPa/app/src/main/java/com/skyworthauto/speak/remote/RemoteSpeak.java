@@ -130,8 +130,10 @@ public class RemoteSpeak {
 
 	private void bindService(Context context){
 		Intent intent = new Intent();
-		ComponentName component = new ComponentName("com.skyworthauto.speak","com.skyworthauto.speak.SpeakService");
+		ComponentName component = new ComponentName("com.skyworthauto.speak",
+				"com.skyworthauto.speak.SpeakService");
 		intent.setComponent(component);
+		intent.setAction("com.tao.test.service");
 		context.bindService(intent, conn, Context.BIND_AUTO_CREATE);
 	}
 

@@ -5,6 +5,7 @@ import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.skyworthauto.speak.remote.CmdInfo;
 import com.skyworthauto.speak.remote.ICmdAM;
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        findViewById(R.id.bt_bind).requestFocus();
+        Log.d(TAG, "onCreate");
     }
     private static final int AM_FROM = 522;
     private static final int AM_TO = 1620;
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private static final float FM_FROM = 87.5f;
     private static final float FM_TO = 108.0f;
     public void bind(View view){
+        Toast.makeText(MainActivity.this,"绑定服务",Toast.LENGTH_SHORT).show();
         RemoteSpeak.getInstance().bindService(MainActivity.this, new IService() {
             @Override
             public void onServiceConnected() {
