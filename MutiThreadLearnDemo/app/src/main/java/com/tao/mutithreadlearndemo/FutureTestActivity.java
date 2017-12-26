@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
@@ -64,5 +65,20 @@ public class FutureTestActivity extends Activity {
     public void cancelTask(View view){
         LogUtil.i(TAG,"cancel Task");
         future.cancel(true);
+    }
+
+    public void getResult(View view){
+        LogUtil.i(TAG,"getResult ");
+        try {
+            Integer reuslt = future.get();
+            LogUtil.i(TAG,"getResult result = "+reuslt);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        Thread thread = new Thread(){};
+        thread.interrupt();
     }
 }
