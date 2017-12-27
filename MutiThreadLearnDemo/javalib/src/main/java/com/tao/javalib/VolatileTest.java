@@ -1,10 +1,11 @@
 package com.tao.javalib;
 
 /**
+ * volatile关键字使用
  * Created by SDT14324 on 2017/12/21.
  */
 
-public class ThreadTestVolatile {
+public class VolatileTest {
     static long SerialNum = 0;
     static class ProductObject {
         //使用互斥锁
@@ -41,7 +42,7 @@ public class ThreadTestVolatile {
 
     public static void main(String[] args){
         Object lock = new Object();
-        new ThreadTest1.Producer(lock).start();
-        new ThreadTest1.Consumer(lock).start();
+        new ThreadAsyncTest.Producer(lock).start();
+        new ThreadAsyncTest.Consumer(lock).start();
     }
 }

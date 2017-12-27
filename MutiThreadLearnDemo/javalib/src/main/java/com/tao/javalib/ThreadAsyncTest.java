@@ -1,10 +1,11 @@
 package com.tao.javalib;
 
 /**
+ * 多线程同步 synchronized waite notify
  * Created by SDT14324 on 2017/12/20.
  */
 
-public class ThreadTest1 {
+public class ThreadAsyncTest {
     static long SerialNum = 0;
     static class ProductObject {
         //使用互斥锁

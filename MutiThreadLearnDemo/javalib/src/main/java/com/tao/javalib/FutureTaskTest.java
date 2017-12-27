@@ -6,10 +6,11 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
 
 /**
+ * FutureTask 使用方法
  * Created by SDT14324 on 2017/12/22.
  */
 
-public class FutureTest1 {
+public class FutureTaskTest {
     static class Task implements Callable<Integer>{
 
         @Override
