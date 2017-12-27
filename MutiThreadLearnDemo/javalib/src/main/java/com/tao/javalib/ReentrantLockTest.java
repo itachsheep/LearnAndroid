@@ -1,8 +1,7 @@
 package com.tao.javalib;
 
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by SDT14324 on 2017/12/26.
@@ -10,37 +9,9 @@ import java.util.concurrent.locks.Lock;
 
 public class ReentrantLockTest {
     public static void main(String[] args){
-        Lock lock = new Lock() {
-            @Override
-            public void lock() {
 
-            }
+        Lock lock2 = new ReentrantLock();
 
-            @Override
-            public void lockInterruptibly() throws InterruptedException {
-
-            }
-
-            @Override
-            public boolean tryLock() {
-                return false;
-            }
-
-            @Override
-            public boolean tryLock(long l, TimeUnit timeUnit) throws InterruptedException {
-                return false;
-            }
-
-            @Override
-            public void unlock() {
-
-            }
-
-            @Override
-            public Condition newCondition() {
-                return null;
-            }
-        }
     }
 
 }
