@@ -18,7 +18,7 @@ public class FutureTaskTest {
             int i = 0;
             for(; i < 10; i++){
                 try {
-                    System.out.println(Thread.currentThread().getName()+"_"+i);
+                    System.out.println(Thread.currentThread().getName()+" i = "+i);
                     Thread.sleep(500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();

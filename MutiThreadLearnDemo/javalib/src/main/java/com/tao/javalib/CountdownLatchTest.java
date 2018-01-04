@@ -21,7 +21,6 @@ public class CountdownLatchTest {
         private final AtomicInteger mCount = new AtomicInteger(1);
         @Override
         public Thread newThread(Runnable runnable) {
-
             return new Thread(runnable,"Thread-"+mCount.getAndIncrement());
         }
     };

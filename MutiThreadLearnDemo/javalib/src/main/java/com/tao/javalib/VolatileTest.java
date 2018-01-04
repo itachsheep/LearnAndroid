@@ -44,5 +44,6 @@ public class VolatileTest {
         Object lock = new Object();
         new ThreadAsyncTest.Producer(lock).start();
         new ThreadAsyncTest.Consumer(lock).start();
+
     }
 }

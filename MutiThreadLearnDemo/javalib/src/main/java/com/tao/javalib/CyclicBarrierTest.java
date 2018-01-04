@@ -1,6 +1,5 @@
 package com.tao.javalib;
 
-import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -26,9 +25,7 @@ public class CyclicBarrierTest {
                 System.out.println(name+" wait others");
                 cyclicBarrier.await();
                 Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (BrokenBarrierException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }finally {
                 System.out.println(name+" is finished");
