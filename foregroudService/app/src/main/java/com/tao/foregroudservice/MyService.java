@@ -8,12 +8,14 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 /**
  * Created by SDT14324 on 2017/12/1.
  */
 
 public class MyService extends Service {
+    private String TAG = MyService.class.getSimpleName();
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
@@ -22,7 +24,7 @@ public class MyService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-
+        Log.i(TAG,"onStartCommand show notification!!");
         Notification.Builder builder = new Notification.Builder(getApplicationContext());
         builder.setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.ic_launcher_background))
                 .setContentTitle("我的标题")

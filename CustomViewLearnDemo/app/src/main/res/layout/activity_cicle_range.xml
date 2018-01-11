@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.tao.customviewlearndemo.activity.SectorViewActivity">
+
+    <com.tao.customviewlearndemo.view.CircleRangeView
+        android:id="@+id/circleRangeView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:rangeColorArray="@array/circlerangeview_colors"
+        app:rangeTextArray="@array/circlerangeview_txts"
+        app:rangeValueArray="@array/circlerangeview_values" />
+
+
+
+    <RelativeLayout
+        android:id="@+id/menu_main"
+        android:layout_width="320dip"
+        android:layout_height="160dip"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/level3" >
+
+        <ImageButton
+            android:id="@+id/ib_channel1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dip"
+            android:layout_marginLeft="15dip"
+            android:background="@drawable/channel1" />
+
+        <ImageButton
+            android:id="@+id/ib_channel2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/ib_channel1"
+            android:layout_marginBottom="20dip"
+            android:layout_marginLeft="40dip"
+            android:background="@drawable/channel2" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/ib_channel2"
+            android:layout_marginBottom="15dip"
+            android:layout_marginLeft="10dip"
+            android:layout_toRightOf="@id/ib_channel2"
+            android:background="@drawable/channel3" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dip"
+            android:background="@drawable/channel4" />
+
+        <ImageButton
+            android:id="@+id/ib_channel7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="10dip"
+            android:layout_marginRight="15dip"
+            android:background="@drawable/channel7" />
+
+        <ImageButton
+            android:id="@+id/ib_channel6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/ib_channel7"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="20dip"
+            android:layout_marginRight="40dip"
+            android:background="@drawable/channel6" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/ib_channel6"
+            android:layout_marginBottom="15dip"
+            android:layout_marginRight="10dip"
+            android:layout_toLeftOf="@id/ib_channel6"
+            android:background="@drawable/channel5" />
+    </RelativeLayout>
+    <com.tao.customviewlearndemo.view.LearnView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:rangeColorArray="@array/circlerangeview_colors"
+        app:rangeTextArray="@array/circlerangeview_txts"
+        app:rangeValueArray="@array/circlerangeview_values"
+        app:borderColor="@color/wdiget_circlerange_border_color"
+        app:cursorColor="@color/wdiget_circlerange_cursor_color"
+        app:extraTextColor="@color/widget_circlerange_extra_color"
+        app:rangeTextSize="35sp"
+        app:extraTextSize="14sp"
+        />
+
+</LinearLayout>

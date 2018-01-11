@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CustomViewLearnDemo</string>
+    <string name="sector_bt">SectorView</string>
+    <string name="circle_range_bt">CircleRangeView</string>
 </resources>

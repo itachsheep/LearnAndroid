@@ -5,16 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#000"
+    tools:context="com.tao.customviewlearndemo.activity.SectorViewActivity">
 
-    tools:context="com.tao.customviewlearndemo.MainActivity">
-
-    <com.tao.customviewlearndemo.view.TransView
-        android:id="@+id/ts"
-        android:layout_marginTop="100dp"
+    <Button
+        android:layout_margin="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ac_knob_power_on1"
-       />
+        android:textSize="25sp"
+        android:text="circle_range_view"
+        android:onClick="toCirleRangeView"/>
+    <Button
+        android:layout_margin="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:text="secotr_view"
+        android:onClick="toSectorView"/>
+
 
 </LinearLayout>

@@ -12,7 +12,6 @@ import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.EditText;
 
 /**
  * Created by SDT14324 on 2017/12/4.
@@ -21,7 +20,7 @@ import android.widget.EditText;
 public class MainActivity extends Activity {
     private String TAG = "MainActivity";
     private WindowManager wm ;
-    private EditText mEt;
+//    private EditText mEt;
 
     private Handler mHandler = new Handler(){
         @Override
@@ -45,12 +44,14 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
 
-        mEt = (EditText) findViewById(R.id.et_main);
+//        mEt = (EditText) findViewById(R.id.et_main);
         findViewById(R.id.bt_notification).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                mHandler.sendEmptyMessageDelayed(2,1500);
+//                mHandler.sendEmptyMessageDelayed(2,1500);
+                Intent intent = new Intent(MainActivity.this,MyService.class);
+                startService(intent);
             }
         });
     }
