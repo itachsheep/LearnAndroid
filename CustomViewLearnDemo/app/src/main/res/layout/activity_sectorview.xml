@@ -35,13 +35,13 @@
             app:textIsDisplayable="false"
             app:textSize="18sp" />
 
-        <!--<com.tao.customviewlearndemo.view.TransView
+        <com.tao.customviewlearndemo.view.TransView
             android:id="@+id/imgPower"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/ac_knob_power_off" />-->
+            android:src="@drawable/ac_knob_power_off" />
     </RelativeLayout>
 
 

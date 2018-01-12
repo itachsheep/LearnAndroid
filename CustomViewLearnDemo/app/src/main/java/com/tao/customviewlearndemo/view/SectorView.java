@@ -78,6 +78,7 @@ public class SectorView extends View {
     }
     
     private void drawAngle(Canvas c){
+        Log.i(TAG,"drawAngle progress = "+progress+", max = "+max);
     	if(mIsMoving){
     		c.save();
         	paint.setARGB(150, 185, 164, 130);
@@ -218,7 +219,8 @@ public class SectorView extends View {
         textColor = mTypedArray.getColor(R.styleable.SectorView_textColor, Color.GREEN);  
         textSize = mTypedArray.getDimension(R.styleable.SectorView_textSize, 15);  
         roundWidth = mTypedArray.getDimension(R.styleable.SectorView_roundWidth, 90);  */
-        max = mTypedArray.getInteger(R.styleable.SectorView_max, 100);  
+        max = mTypedArray.getInteger(R.styleable.SectorView_max, 100);
+        Log.i(TAG,"SectorView max = "+max);
 /*        textIsDisplayable = mTypedArray.getBoolean(R.styleable.SectorView_textIsDisplayable, true);
         style = mTypedArray.getInt(R.styleable.SectorView_style, 0);  */
           
