@@ -231,7 +231,6 @@ public class LearnView extends View {
             point[0] = (float) (mCenterX + Math.cos(arcAngle) * radius);
             point[1] = (float) (mCenterY - Math.sin(arcAngle) * radius);
         }
-
         return point;
     }
 
