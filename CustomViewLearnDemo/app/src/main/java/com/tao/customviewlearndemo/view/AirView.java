@@ -229,7 +229,8 @@ public class AirView extends View {
             c.drawArc(mOutArcRect, tempStartAngle, 360f / max, true, mPaint);
             c.restore();*/
             //画扇形
-           drawArcWithStartAngle(c,mStopAngle);
+           //drawArcWithStartAngle(c,mStopAngle);
+           drawNoTransArcWithStartAngle(c,mStopAngle);
             //画选中图标
             if(mSelectDrawable != null){
                 int[] pivot = getPicCirclePivot(mStopAngle);
@@ -289,10 +290,21 @@ public class AirView extends View {
         }
     }
 
-    //画圆弧
+    //画透明圆弧
     private void drawArcWithStartAngle(Canvas c,float angle){
         c.save();
         mPaint.setARGB(150, 185, 164, 130);
+        mPaint.setStyle(Paint.Style.STROKE);
+        //mPaint.setStrokeCap(Paint.Cap.SQUARE);
+        mPaint.setStrokeWidth(outerArcWidth);
+        c.drawArc(mOutArcRect,angle - halfSection,totalSection,false,mPaint);
+        c.restore();
+    }
+
+    //画非透明圆弧
+    private void drawNoTransArcWithStartAngle(Canvas c,float angle){
+        c.save();
+        mPaint.setARGB(255, 185, 164, 130);
         mPaint.setStyle(Paint.Style.STROKE);
         //mPaint.setStrokeCap(Paint.Cap.SQUARE);
         mPaint.setStrokeWidth(outerArcWidth);

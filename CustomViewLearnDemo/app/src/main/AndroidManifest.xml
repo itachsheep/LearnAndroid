@@ -17,6 +17,7 @@
         </activity>
         <activity android:name=".activity.SectorViewActivity"/>
         <activity android:name=".activity.CircleRangeActivity"/>
+        <activity android:name=".activity.PPCircleProgressActivity"/>
     </application>
 
 </manifest>

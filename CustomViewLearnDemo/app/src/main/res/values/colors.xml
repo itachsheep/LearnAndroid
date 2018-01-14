@@ -3,4 +3,11 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="yellow">#DDAF14</color>
+
+    <color name="ppCircleViewBg">#505050</color>
+    <color name="ppLineColor">#131518</color>
+    <color name="ppCircleColorGray">#969696</color>
+    <color name="ppCircleColorRed">#7F2F2F</color>
+
 </resources>

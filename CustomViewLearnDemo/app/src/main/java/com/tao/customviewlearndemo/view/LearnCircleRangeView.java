@@ -21,7 +21,7 @@ import com.tao.customviewlearndemo.R;
  * Created by SDT14324 on 2018/1/11.
  */
 
-public class LearnView extends View {
+public class LearnCircleRangeView extends View {
     private String TAG = "LearnView";
     private CharSequence[] rangeColorArray;
     private CharSequence[] rangeValueArray;
@@ -39,12 +39,12 @@ public class LearnView extends View {
     private Rect mRectText;
     private int mBackgroundColor;
 
-    public LearnView(Context context, @Nullable AttributeSet attrs) {
+    public LearnCircleRangeView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs,0);
         Log.i(TAG," LearnView 1--") ;
     }
 
-    public LearnView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public LearnCircleRangeView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CircleRangeView);
         rangeColorArray = typedArray.getTextArray(R.styleable.CircleRangeView_rangeColorArray);

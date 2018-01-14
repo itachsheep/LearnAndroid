@@ -3,16 +3,19 @@ package com.tao.customviewlearndemo.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.tao.customviewlearndemo.R;
-import com.tao.customviewlearndemo.view.AirView;
 import com.tao.customviewlearndemo.view.CircleRangeView;
 import com.tao.customviewlearndemo.view.InnerCircleRelativelayout;
+import com.tao.customviewlearndemo.view.LearnPPCircleView;
 import com.tao.customviewlearndemo.view.OuterCircleRelativelayout;
+import com.tao.customviewlearndemo.view.PPCircleProgressView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,19 +28,35 @@ import java.util.Random;
 public class CircleRangeActivity extends AppCompatActivity implements View.OnClickListener {
     private String TAG = "CircleRangeActivity";
     private CircleRangeView circleRangeView;
-    private AirView mAirView;
+//    private AirView mAirView;
     private String [] valueArray;
     private Random random;
     private OuterCircleRelativelayout outerCircle;
     private InnerCircleRelativelayout innerCircle;
     private RelativeLayout rlParent;
     private ImageView ivArrow;
+
+    private PPCircleProgressView ppCircleView;
+    private Button btPPcircle;
+
+    private LearnPPCircleView learnPPCircleView;
+    private Button btLearnPPcircle;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cicle_range);
         initView();
         initListener();
+    }
+
+    private int i = 0;
+    public void setPPCircleProgress(View view){
+        ppCircleView.setProgress("哈哈",100,true);
+    }
+
+    public void learnPPCircleProgress(View view){
+        learnPPCircleView.setProgress("哈哈",50,true);
     }
 
     private void initListener() {
@@ -97,10 +116,15 @@ public class CircleRangeActivity extends AppCompatActivity implements View.OnCli
         circleRangeView=  findViewById(R.id.circleRangeView);
         outerCircle = findViewById(R.id.out_circle);
         innerCircle = findViewById(R.id.inner_circle);
-        mAirView = findViewById(R.id.airview);
+//        mAirView = findViewById(R.id.airview);
         ivArrow = findViewById(R.id.iv_arrow);
         rlParent = findViewById(R.id.rl_parent);
+
+//        ppCircleView = findViewById(R.id.pp_circle);
+//        btPPcircle = findViewById(R.id.bt_ppcircle);
+        learnPPCircleView = findViewById(R.id.pp_learn_circle);
     }
+
 
     @Override
     public void onClick(View view) {
@@ -132,6 +156,8 @@ public class CircleRangeActivity extends AppCompatActivity implements View.OnCli
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 //        mAirView.onTouchEvent(event);
+        learnPPCircleView.onTouchEvent(event);
+        Log.i("LearnPPCircleView","Activity onTouchEvent");
         return super.onTouchEvent(event);
     }
 }
