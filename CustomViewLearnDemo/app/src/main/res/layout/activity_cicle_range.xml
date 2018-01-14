@@ -57,22 +57,6 @@
         android:layout_height="20dp"
         android:src="@drawable/arrow"/>
 </RelativeLayout>
-    <!--<LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <com.tao.customviewlearndemo.view.PPCircleProgressView
-            android:id="@+id/pp_circle"
-            android:layout_marginTop="10dp"
-            android:layout_width="150dp"
-            android:layout_height="150dp" />
-
-        <Button
-            android:id="@+id/bt_ppcircle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="setPPCircleProgress"/>
-    </LinearLayout>-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -84,11 +68,10 @@
             android:layout_width="200dp"
             android:layout_height="200dp" />
 
-        <Button
-            android:id="@+id/bt_learn_ppcircle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="learnPPCircleProgress"/>
+       <com.tao.customviewlearndemo.view.ClipDrawView
+           android:layout_width="200dp"
+           android:layout_height="200dp"
+           />
     </LinearLayout>
 
 </LinearLayout>
