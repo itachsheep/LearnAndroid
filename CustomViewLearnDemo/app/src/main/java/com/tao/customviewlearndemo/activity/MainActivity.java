@@ -24,4 +24,8 @@ public class MainActivity extends AppCompatActivity {
     public void toCirleRangeView(View view){
         startActivity(new Intent(MainActivity.this, CircleRangeActivity.class));
     }
+
+    public void toNormalCircle(View view){
+        startActivity(new Intent(MainActivity.this,NormalCircleActivity.class));
+    }
 }

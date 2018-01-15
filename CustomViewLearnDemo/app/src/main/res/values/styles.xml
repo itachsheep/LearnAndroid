@@ -8,4 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <declare-styleable name="ClipDrawView">
+        <attr name="cdv_bg" format="reference"></attr>
+    </declare-styleable>
 </resources>

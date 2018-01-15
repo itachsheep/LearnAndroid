@@ -1,22 +1,16 @@
 package com.tao.customviewlearndemo.view;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Path;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.Region;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.View;
+import android.view.MotionEvent;
+import android.widget.ImageView;
 
 import com.tao.customviewlearndemo.R;
 
@@ -27,36 +21,35 @@ import com.tao.customviewlearndemo.R;
  * com.tao.customviewlearndemo.view
  */
 
-public class ClipDrawView extends View {
+@SuppressLint("AppCompatCustomView")
+public class ClipDrawView extends ImageView {
     private String TAG = "ClipDrawView";
-//    private BitmapDrawable mDestPic;
-//    private BitmapDrawable mBgPic;
-
-    private Bitmap mDestBitmap;
-    private Bitmap mBgBitmap;
+    private Drawable mBgDrawable;
+    private SectorDrawable mBgSectorDrawable;
     private int mLayoutSize;
-
-    private Rect mSrcRect;
-    private Rect mDestRect;
-    private Rect mBgRect;
-
-    private Paint mPaint;
+    private float mCenterX;
+    private float mCenterY;
+    private float mRadius;
+    private float mPercent;
 
     public ClipDrawView(Context context) {
-        this(context,null);
+        this(context, null);
     }
 
     public ClipDrawView(Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs,0);
+        this(context, attrs, 0);
     }
 
     public ClipDrawView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        mBgDrawable = context.getResources().getDrawable(R.drawable.normal_bg);
+        mBgSectorDrawable = new SectorDrawable(mBgDrawable);
+        this.setImageDrawable(mBgSectorDrawable);
+    }
 
-        mDestBitmap =  ((BitmapDrawable)context.getResources()
-                .getDrawable(R.drawable.ctest)).getBitmap();
-        mBgBitmap = ((BitmapDrawable)context.getResources()
-                .getDrawable(R.drawable.ctest_bg)).getBitmap();
+    public void setPercent(float progress){
+        mPercent = progress;
+        mBgSectorDrawable.setPercent(progress);
     }
 
     @Override
@@ -65,62 +58,81 @@ public class ClipDrawView extends View {
 
         int width = getMeasuredWidth();
         int height = getMeasuredHeight();
-        mLayoutSize = Math.min(width,height);
+        mLayoutSize = Math.max(width, height);
+        Log.i(TAG, "width = " + width
+                + ",height = " + height
+                + "onMeasure mLayoutSize = " + mLayoutSize);
+        mCenterY = mLayoutSize * 1f / 2;
+        mCenterX = mLayoutSize * 1f / 2;
+        mRadius = mLayoutSize * 1f / 2;
+    }
 
-        mBgRect = new Rect(0,0,mLayoutSize,mLayoutSize);
-        mSrcRect = new Rect(0,0,mLayoutSize,mLayoutSize);
-        mDestRect = new Rect(0,0,mLayoutSize,mLayoutSize);
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+            {
+                float x = event.getX();
+                float y = event.getY();
+                float angle = getAngle(mCenterX, mCenterY, x, y);
+                mPercent = angle / 360;
+                Log.i(TAG,"action down mPercent = "+mPercent);
+                setPercent(mPercent);
+            }
+                break;
+            case MotionEvent.ACTION_MOVE:
+            {
+                float x = event.getX();
+                float y = event.getY();
+                float angle = getAngle(mCenterX, mCenterY, x, y);
+                mPercent = angle / 360;
+                Log.i(TAG,"action down mPercent = "+mPercent);
+                setPercent(mPercent);
+            }
+                break;
 
-        mPaint = new Paint();
+            case MotionEvent.ACTION_UP:
+            {
 
-        Log.i(TAG,"width = "+width
-                +",height = "+height
-                +"onMeasure mLayoutSize = "+mLayoutSize);
+            }
+                break;
+        }
+        return super.onTouchEvent(event);
+    }
+
+    private float getAngle(float centerX, float centerY, float xInView, float yInView){
+        double rotation = 0;
+        double tan = (centerY - yInView)*1.0 / (xInView - centerX);
+        double tmpDegree = Math.atan(tan) / Math.PI * 180;
+        //顺时针算转过的角度的话
+        if (xInView > centerX && yInView < centerY) {  //第一象限  tmpDegree: 90 , 0
+            rotation = 270 - tmpDegree;
+        } else if (xInView < centerX && yInView < centerY) //第二象限 tmpDegree: 0 , -90
+        {
+            rotation = 90 - tmpDegree;
+        } else if (xInView < centerX && yInView > centerY) { //第三象限 tmpDegree: 90, 0
+            rotation = 90 -  tmpDegree;
+        } else if (xInView > centerX && yInView > centerY) { //第四象限 tmpDegree: 0 , -90
+            rotation = 290 - tmpDegree;
+        } else if (xInView == centerX && yInView < centerY) {//
+            rotation = 180;
+        } else if (xInView == centerX && yInView > centerY) {
+            rotation = 0;
+        }else if(yInView == centerY && xInView > centerX){
+            rotation = 270;
+        }else if(yInView == centerY && xInView < centerX) {
+            rotation = 90;
+        }
+//        Log.i(TAG,"getAngle rotation = "+(int)rotation+", tmpDegree = "+tmpDegree);
+        return (float) rotation;
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
-         //绘制背景
-        /*canvas.save();
-        canvas.drawBitmap(mBgBitmap,mBgRect,mBgRect,mPaint);
-        canvas.restore();*/
-
-        //
-       /* canvas.save();
-        canvas.clipRect(mDestRect);
-        canvas.drawBitmap(mDestBitmap,10,10,mPaint);
-        canvas.restore();*/
-
-        //绘制背景
-        /*canvas.save();
-        Path path = new Path();
-        path.addCircle(0,0,mLayoutSize, Path.Direction.CCW);
-        canvas.clipPath(path);
-        canvas.drawBitmap(mBgBitmap,0,0,mPaint);
-        canvas.restore();*/
-
-        //绘制图片
-        /*canvas.save();
-        canvas.drawBitmap(mDestBitmap,mSrcRect,mDestRect,mPaint);
-        canvas.restore();*/
-
-        canvas.save();
-        Path path = new Path();
-        // 添加一个圆形区域
-//        path.addCircle(130, 130, mLayoutSize/5, Path.Direction.CW);
-        path.addArc(new RectF(0,0,mLayoutSize,mLayoutSize),0,270);
-        // 也可以通过设置 path 来显示自定义区域
-        canvas.clipPath(path);
-//        canvas.drawBitmap(mDestBitmap, 0, 0, mPaint);
-        canvas.drawColor(Color.RED);
-        canvas.drawBitmap(mDestBitmap,mSrcRect,mDestRect,mPaint);
-        canvas.restore();
     }
 
     private int dp2px(int dp) {
-
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp,
                 Resources.getSystem().getDisplayMetrics());
     }
