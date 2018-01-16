@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <com.tao.customviewlearndemo.nview.ClipPartView
+        android:id="@+id/spr_cpv"
+        app:cpvSrc="@drawable/normal_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         />
+
+    <com.tao.customviewlearndemo.nview.CenterImageView
+        android:id="@+id/spr_center_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/normal_center" />
+
+    <TextView
+        android:id="@+id/spr_tv_num"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:text="0s"
+        android:textColor="#fff"/>
+</RelativeLayout>

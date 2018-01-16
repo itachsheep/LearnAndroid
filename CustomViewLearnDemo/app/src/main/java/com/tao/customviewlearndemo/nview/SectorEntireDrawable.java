@@ -1,4 +1,4 @@
-package com.tao.customviewlearndemo.view;
+package com.tao.customviewlearndemo.nview;
 
 import android.annotation.SuppressLint;
 import android.content.res.ColorStateList;
@@ -14,12 +14,15 @@ import android.graphics.drawable.Drawable;
  * Created by SDT14324 on 2018/1/15.
  */
 
-public class SectorDrawable extends Drawable implements Drawable.Callback  {
+public class SectorEntireDrawable extends Drawable implements Drawable.Callback  {
     private Drawable mDrawable;
     private Path mPath = new Path();
     private float mPercent;
+    private final int TYPE_CENTER_UP = 0;
+    private final int TYPE_CENTER_DOWN = 1;
+    private int mDrawType;
 
-    public SectorDrawable(Drawable drawable) {
+    public SectorEntireDrawable(Drawable drawable) {
         this.mDrawable = drawable;
         if (drawable != null) {
             drawable.setCallback(this);
@@ -48,24 +51,18 @@ public class SectorDrawable extends Drawable implements Drawable.Callback  {
         RectF rect = new RectF(getBounds());
         double radius = Math.pow(Math.pow(rect.right, 2) + Math.pow(rect.bottom, 2), 0.5);
         //以中间最上面点为起始点
-        /*mPath.moveTo(rect.right / 2, rect.bottom / 2);//圆心
-        mPath.lineTo(rect.right / 2, 0);//
-        if (mPercent > 0.125f) {// 大于45
-            mPath.lineTo(rect.right, 0);
-        }
-        if (mPercent > 0.375f) {//大于135
-            mPath.lineTo(rect.right, rect.bottom);
-        }
-        if (mPercent > 0.625f) {
-            mPath.lineTo(0, rect.bottom);
-        }
-        if (mPercent > 0.875f) {
-            mPath.lineTo(0, 0);
-        }
-        mPath.lineTo((float) (rect.right / 2 + radius * Math.sin(Math.PI * 2 * mPercent)),
-                (float) (rect.bottom / 2 - radius * Math.cos(Math.PI * 2 * mPercent)));
-        mPath.close();*/
+        //drawPathCenterUp(rect, radius);
         //以中间最下面点为起始点
+        drawPathCenterDown(rect, radius);
+        if (mPercent >= 0 && mPercent <= 1) {
+            canvas.save();
+            canvas.clipPath(mPath);
+            mDrawable.draw(canvas);
+            canvas.restore();
+        }
+    }
+
+    private void drawPathCenterDown(RectF rect, double radius) {
         mPath.moveTo(rect.right / 2, rect.bottom / 2);//圆心
         mPath.lineTo(rect.right / 2, rect.bottom);//
         if (mPercent > 0.125f) {// 大于45
@@ -83,12 +80,26 @@ public class SectorDrawable extends Drawable implements Drawable.Callback  {
         mPath.lineTo((float) (rect.right / 2 - radius * Math.sin(Math.PI * 2 * mPercent)),
                 (float) (rect.bottom / 2 + radius * Math.cos(Math.PI * 2 * mPercent)));
         mPath.close();
-        if (mPercent >= 0 && mPercent <= 1) {
-            canvas.save();
-            canvas.clipPath(mPath);
-            mDrawable.draw(canvas);
-            canvas.restore();
+    }
+
+    private void drawPathCenterUp(RectF rect, double radius) {
+        mPath.moveTo(rect.right / 2, rect.bottom / 2);//圆心
+        mPath.lineTo(rect.right / 2, 0);//
+        if (mPercent > 0.125f) {// 大于45
+            mPath.lineTo(rect.right, 0);
         }
+        if (mPercent > 0.375f) {//大于135
+            mPath.lineTo(rect.right, rect.bottom);
+        }
+        if (mPercent > 0.625f) {
+            mPath.lineTo(0, rect.bottom);
+        }
+        if (mPercent > 0.875f) {
+            mPath.lineTo(0, 0);
+        }
+        mPath.lineTo((float) (rect.right / 2 + radius * Math.sin(Math.PI * 2 * mPercent)),
+                (float) (rect.bottom / 2 - radius * Math.cos(Math.PI * 2 * mPercent)));
+        mPath.close();
     }
 
     @Override

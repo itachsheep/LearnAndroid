@@ -9,6 +9,10 @@
     </style>
 
     <declare-styleable name="ClipDrawView">
-        <attr name="cdv_bg" format="reference"></attr>
+        <attr name="cdvSrc" format="reference"></attr>
+    </declare-styleable>
+
+    <declare-styleable name="ClipPartView">
+        <attr name="cpvSrc"></attr>
     </declare-styleable>
 </resources>

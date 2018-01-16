@@ -12,8 +12,9 @@ import android.view.View;
 
 import com.tao.customviewlearndemo.R;
 import com.tao.customviewlearndemo.nview.NormalCircleView;
-import com.tao.customviewlearndemo.view.ClipDrawView;
-import com.tao.customviewlearndemo.view.SectorDrawable;
+import com.tao.customviewlearndemo.nview.ClipDrawView;
+import com.tao.customviewlearndemo.nview.SectorEntireDrawable;
+import com.tao.customviewlearndemo.nview.SectorPartRoot;
 
 /**
  * Created by SDT14324 on 2018/1/15.
@@ -22,8 +23,9 @@ import com.tao.customviewlearndemo.view.SectorDrawable;
 public class NormalCircleActivity extends AppCompatActivity {
     private NormalCircleView normalCircleView;
 //    private ImageView mIvSector;
-    private SectorDrawable sectorDrawable;
+    private SectorEntireDrawable sectorEntireDrawable;
     private ClipDrawView clipDrawView;
+    private SectorPartRoot sectorPartRoot;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,13 +33,16 @@ public class NormalCircleActivity extends AppCompatActivity {
 
         //normalCircleView = findViewById(R.id.nc_view);
 //        mIvSector = findViewById(R.id.iv_sector);
-//        sectorDrawable = new SectorDrawable(mIvSector.getDrawable());
-//        mIvSector.setImageDrawable(sectorDrawable);
+//        sectorEntireDrawable = new SectorEntireDrawable(mIvSector.getDrawable());
+//        mIvSector.setImageDrawable(sectorEntireDrawable);
 
         clipDrawView = findViewById(R.id.cd_drawable);
+        sectorPartRoot = findViewById(R.id.spr_root);
     }
 
-
+    public void freshSectorPartRoot(View view){
+        sectorPartRoot.hideClipPartView();
+    }
 
     @SuppressLint("HandlerLeak")
     private Handler mHandler = new Handler() {
@@ -52,7 +57,7 @@ public class NormalCircleActivity extends AppCompatActivity {
                 percent = 0;
                 return;
             }
-            sectorDrawable.setPercent(percent);
+            sectorEntireDrawable.setPercent(percent);
             Log.i("this",String.valueOf(percent));
             sendEmptyMessageDelayed(0, 10);
         }
@@ -60,7 +65,7 @@ public class NormalCircleActivity extends AppCompatActivity {
 
     public void test(View view){
         mHandler.sendEmptyMessage(0);
-//        sectorDrawable.setPercent(0.1f);
+//        sectorEntireDrawable.setPercent(0.1f);
         clipDrawView.setPercent(0.5f);
     }
 

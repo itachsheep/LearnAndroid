@@ -13,33 +13,38 @@
             android:clickable="true"
             android:id="@+id/nc_view"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+           />
         <RelativeLayout
             android:layout_width="151dp"
             android:layout_height="151dp">
-            <com.tao.customviewlearndemo.view.ClipDrawView
+            <!--151dp-->
+            <com.tao.customviewlearndemo.nview.ClipDrawView
                 android:clickable="true"
                 android:id="@+id/cd_drawable"
-                android:layout_width="151dp"
-                android:layout_height="151dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cdvSrc="@drawable/normal_bg"
                 />
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/normal_center"/>
         </RelativeLayout>
-
-
     </LinearLayout>
 
-   <!-- <ImageView
-        android:id="@+id/iv_sector"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/normal_bg"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="test"/>-->
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal">
+        <com.tao.customviewlearndemo.nview.SectorPartRoot
+            android:id="@+id/spr_root"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+       <Button
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="收缩"
+           android:onClick="freshSectorPartRoot"/>
+   </LinearLayout>
 </LinearLayout>
