@@ -28,4 +28,8 @@ public class MainActivity extends AppCompatActivity {
     public void toNormalCircle(View view){
         startActivity(new Intent(MainActivity.this,NormalCircleActivity.class));
     }
+
+    public void toAnimate(View view ){
+        startActivity(new Intent(MainActivity.this,AnimateActivity.class));
+    }
 }

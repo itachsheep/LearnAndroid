@@ -7,26 +7,49 @@
     android:orientation="vertical"
     tools:context="com.tao.customviewlearndemo.activity.SectorViewActivity">
 
-    <Button
-        android:layout_margin="20dp"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:text="circle_range_view"
-        android:onClick="toCirleRangeView"/>
-    <Button
-        android:layout_margin="20dp"
-        android:layout_width="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:onClick="toCirleRangeView"
+            android:text="自定义"
+            android:textSize="25sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:onClick="toSectorView"
+            android:text="扇形"
+            android:textSize="25sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:onClick="toNormalCircle"
+            android:text="c30需求"
+            android:textSize="25sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:text="secotr_view"
-        android:onClick="toSectorView"/>
-    <Button
-        android:layout_margin="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:text="normal_circle"
-        android:onClick="toNormalCircle"/>
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:onClick="toAnimate"
+            android:text="动画"
+            android:textSize="25sp" />
+    </LinearLayout>
 
 </LinearLayout>

@@ -47,4 +47,8 @@
            android:text="收缩"
            android:onClick="freshSectorPartRoot"/>
    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>

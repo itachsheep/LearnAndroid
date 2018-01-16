@@ -20,6 +20,7 @@
         <activity android:name=".activity.CircleRangeActivity"/>
         <activity android:name=".activity.PPCircleProgressActivity"/>
         <activity android:name=".activity.NormalCircleActivity"/>
+        <activity android:name=".activity.AnimateActivity"/>
     </application>
 
 </manifest>
