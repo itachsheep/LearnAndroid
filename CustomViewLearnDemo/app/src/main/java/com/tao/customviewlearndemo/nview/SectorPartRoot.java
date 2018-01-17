@@ -39,6 +39,8 @@ public class SectorPartRoot extends RelativeLayout implements CenterImageView.On
     private float mArrowStartAngle;
     private float mProgress;
 
+    private boolean mShowArrow = true;
+
     public SectorPartRoot(Context context) {
         this(context,null);
     }
@@ -112,10 +114,9 @@ public class SectorPartRoot extends RelativeLayout implements CenterImageView.On
                 if(clipPartViewIn != null){
                     clipPartViewIn.setProgrss(mProgress);
                 }
-                if(ivArrow != null){
+                if(ivArrow != null && mShowArrow){
                     rotateArrow(mArrowStartAngle,mArrowEndAngle);
                     mArrowStartAngle = mArrowEndAngle;
-
                 }
                 updateTvNum();
                 break;
@@ -185,7 +186,7 @@ public class SectorPartRoot extends RelativeLayout implements CenterImageView.On
             rotateArrow(mArrowStartAngle,mArrowEndAngle);
             ivArrow.setVisibility(View.VISIBLE);
         }
-
+        mShowArrow = true;
 
         // hide 内部进度条
         if(clipPartViewIn.getVisibility() == View.VISIBLE){
@@ -207,6 +208,7 @@ public class SectorPartRoot extends RelativeLayout implements CenterImageView.On
             ivArrow.clearAnimation();
             ivArrow.setVisibility(View.INVISIBLE);
         }
+        mShowArrow = false;
 
         // show 内部进度条
         if(clipPartViewIn.getVisibility() == View.INVISIBLE){

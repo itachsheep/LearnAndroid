@@ -15,26 +15,26 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
             android:onClick="toCirleRangeView"
             android:text="自定义"
-            android:textSize="25sp" />
+            android:textSize="15sp" />
 
         <Button
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+
             android:onClick="toSectorView"
             android:text="扇形"
-            android:textSize="25sp" />
+            android:textSize="15sp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+
             android:onClick="toNormalCircle"
             android:text="c30需求"
-            android:textSize="25sp" />
+            android:textSize="15sp" />
 
     </LinearLayout>
 
@@ -46,10 +46,9 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
             android:onClick="toAnimate"
             android:text="动画"
-            android:textSize="25sp" />
+            android:textSize="15sp" />
     </LinearLayout>
 
 </LinearLayout>
