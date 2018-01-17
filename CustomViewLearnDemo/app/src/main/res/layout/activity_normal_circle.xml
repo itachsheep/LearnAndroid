@@ -37,7 +37,7 @@
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:orientation="horizontal">
-        <com.tao.customviewlearndemo.nview.SectorPartRoot
+        <com.tao.customviewlearndemo.nview.LightDelayView
             android:id="@+id/spr_root"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -47,8 +47,12 @@
            android:text="收缩"
            android:onClick="freshSectorPartRoot"/>
    </LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<com.tao.customviewlearndemo.nview.AtmosphereLightView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
+</LinearLayout>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 </LinearLayout>

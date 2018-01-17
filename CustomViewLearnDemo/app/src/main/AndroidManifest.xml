@@ -17,9 +17,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.SectorViewActivity"/>
-        <activity android:name=".activity.CircleRangeActivity"/>
+        <activity android:name=".activity.ViewTestActivity"/>
         <activity android:name=".activity.PPCircleProgressActivity"/>
-        <activity android:name=".activity.NormalCircleActivity"/>
+        <activity android:name=".activity.C30Activity"/>
         <activity android:name=".activity.AnimateActivity"/>
     </application>
 

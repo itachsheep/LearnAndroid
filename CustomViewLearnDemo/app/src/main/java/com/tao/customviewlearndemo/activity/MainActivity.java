@@ -22,11 +22,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void toCirleRangeView(View view){
-        startActivity(new Intent(MainActivity.this, CircleRangeActivity.class));
+        startActivity(new Intent(MainActivity.this, ViewTestActivity.class));
     }
 
     public void toNormalCircle(View view){
-        startActivity(new Intent(MainActivity.this,NormalCircleActivity.class));
+        startActivity(new Intent(MainActivity.this,C30Activity.class));
     }
 
     public void toAnimate(View view ){

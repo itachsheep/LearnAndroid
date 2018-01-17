@@ -14,18 +14,18 @@ import com.tao.customviewlearndemo.R;
 import com.tao.customviewlearndemo.nview.NormalCircleView;
 import com.tao.customviewlearndemo.nview.ClipDrawView;
 import com.tao.customviewlearndemo.nview.SectorEntireDrawable;
-import com.tao.customviewlearndemo.nview.SectorPartRoot;
+import com.tao.customviewlearndemo.nview.LightDelayView;
 
 /**
  * Created by SDT14324 on 2018/1/15.
  */
 
-public class NormalCircleActivity extends AppCompatActivity {
+public class C30Activity extends AppCompatActivity {
     private NormalCircleView normalCircleView;
 //    private ImageView mIvSector;
     private SectorEntireDrawable sectorEntireDrawable;
     private ClipDrawView clipDrawView;
-    private SectorPartRoot sectorPartRoot;
+    private LightDelayView lightDelayView;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,11 +37,11 @@ public class NormalCircleActivity extends AppCompatActivity {
 //        mIvSector.setImageDrawable(sectorEntireDrawable);
 
         clipDrawView = findViewById(R.id.cd_drawable);
-        sectorPartRoot = findViewById(R.id.spr_root);
+        lightDelayView = findViewById(R.id.spr_root);
     }
 
     public void freshSectorPartRoot(View view){
-        sectorPartRoot.hideClipPartView();
+        lightDelayView.hideClipPartView();
     }
 
     @SuppressLint("HandlerLeak")

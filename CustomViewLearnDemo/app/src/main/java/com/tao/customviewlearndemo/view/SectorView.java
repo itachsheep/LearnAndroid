@@ -114,7 +114,7 @@ public class SectorView extends View {
 	        mWarmDrawble.setBounds(120, 170, 120 + mWarmDrawble.getIntrinsicWidth(), 170 +
                     mWarmDrawble.getIntrinsicHeight());
 	        mWarmDrawble.draw(c);
-	        c.restore();
+//	        c.restore();
         }
  
     }

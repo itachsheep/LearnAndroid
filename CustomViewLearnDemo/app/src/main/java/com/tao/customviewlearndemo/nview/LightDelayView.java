@@ -20,7 +20,7 @@ import com.tao.customviewlearndemo.R;
  * Created by SDT14324 on 2018/1/16.
  */
 
-public class SectorPartRoot extends RelativeLayout implements CenterImageView.OnInnerListener{
+public class LightDelayView extends RelativeLayout implements CenterImageView.OnInnerListener{
     private String TAG = "SectorPartRoot";
 
     private float mRadius;
@@ -34,24 +34,24 @@ public class SectorPartRoot extends RelativeLayout implements CenterImageView.On
     private ImageView ivArrow;
 
     private TextView tvNum;
-    private int mode = 0;
+    private int mode = 0;//表示当前模式
     private float mArrowEndAngle;
     private float mArrowStartAngle;
     private float mProgress;
 
     private boolean mShowArrow = true;
 
-    public SectorPartRoot(Context context) {
+    public LightDelayView(Context context) {
         this(context,null);
     }
 
-    public SectorPartRoot(Context context, AttributeSet attrs) {
+    public LightDelayView(Context context, AttributeSet attrs) {
         this(context, attrs,0);
     }
 
-    public SectorPartRoot(Context context, AttributeSet attrs, int defStyleAttr) {
+    public LightDelayView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        View view = LayoutInflater.from(context).inflate(R.layout.view_setor_holder,this);
+        View view = LayoutInflater.from(context).inflate(R.layout.view_light_delay,this);
         clipPartViewOut = view.findViewById(R.id.spr_cpv_out);
         clipPartViewIn = view.findViewById(R.id.spr_cpv_in);
         centerImageView = view.findViewById(R.id.spr_center_iv);

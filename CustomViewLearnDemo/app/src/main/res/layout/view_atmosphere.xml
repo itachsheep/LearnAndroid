@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content" android:layout_height="wrap_content">
+<ImageView
+    android:id="@+id/atmos_bg"
+    android:layout_centerInParent="true"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/atmos_bg"/>
+<ImageView
+    android:id="@+id/atmos_part0"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/atmos_part0"
+    />
+    <ImageView
+        android:id="@+id/atmos_part1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/atmos_part1"
+        android:visibility="invisible"/>
+    <ImageView
+        android:id="@+id/atmos_part2"
+        style="@style/atmosphere_image"
+        android:src="@drawable/atmos_part2"/>
+    <ImageView
+        android:id="@+id/atmos_part3"
+        style="@style/atmosphere_image"
+        android:src="@drawable/atmos_part3"
+        />
+    <ImageView
+        android:id="@+id/atmos_part4"
+        style="@style/atmosphere_image"
+        android:src="@drawable/atmos_part4"/>
+
+    <ImageView
+        android:id="@+id/atmos_part5"
+        style="@style/atmosphere_image"
+        android:src="@drawable/atmos_part5"/>
+    <ImageView
+        android:id="@+id/atmos_part6"
+        style="@style/atmosphere_image"
+        android:src="@drawable/atmos_part6"/>
+    <ImageView
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/atmos_center_bg"/>
+    <ImageView
+        android:layout_centerInParent="true"
+        style="@style/atmosphere_image"
+        android:src="@drawable/atoms_center0"/>
+    <ImageView
+        android:id="@+id/atmos_arrow"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/zm_arrow"/>
+</RelativeLayout>

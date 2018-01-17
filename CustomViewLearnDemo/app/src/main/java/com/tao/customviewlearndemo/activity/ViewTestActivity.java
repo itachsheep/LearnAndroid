@@ -11,23 +11,20 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.tao.customviewlearndemo.R;
-import com.tao.customviewlearndemo.view.CircleRangeView;
 import com.tao.customviewlearndemo.view.InnerCircleRelativelayout;
 import com.tao.customviewlearndemo.view.LearnPPCircleView;
 import com.tao.customviewlearndemo.view.OuterCircleRelativelayout;
 import com.tao.customviewlearndemo.view.PPCircleProgressView;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 /**
  * Created by SDT14324 on 2018/1/11.
  */
 
-public class CircleRangeActivity extends AppCompatActivity implements View.OnClickListener {
-    private String TAG = "CircleRangeActivity";
-    private CircleRangeView circleRangeView;
+public class ViewTestActivity extends AppCompatActivity implements View.OnClickListener {
+    private String TAG = "ViewTestActivity";
+//    private CircleRangeView circleRangeView;
 //    private AirView mAirView;
     private String [] valueArray;
     private Random random;
@@ -107,13 +104,13 @@ public class CircleRangeActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void initCircleRangeView() {
-        circleRangeView.setOnClickListener(this);
+//        circleRangeView.setOnClickListener(this);
         valueArray=getResources().getStringArray(R.array.circlerangeview_values);
         random=new Random();
     }
 
     private void initView() {
-        circleRangeView=  findViewById(R.id.circleRangeView);
+//        circleRangeView=  findViewById(R.id.circleRangeView);
         outerCircle = findViewById(R.id.out_circle);
         innerCircle = findViewById(R.id.inner_circle);
 //        mAirView = findViewById(R.id.airview);
@@ -140,7 +137,7 @@ public class CircleRangeActivity extends AppCompatActivity implements View.OnCli
 
                 break;
 
-            case R.id.circleRangeView:
+           /* case R.id.circleRangeView:
                 {
                     List<String> extras =new ArrayList<>();
                     extras.add("收缩压：116");
@@ -148,7 +145,7 @@ public class CircleRangeActivity extends AppCompatActivity implements View.OnCli
                     int i=random.nextInt(valueArray.length);
                     circleRangeView.setValueWithAnim(valueArray[i],extras);
                     break;
-                }
+                }*/
 
         }
     }

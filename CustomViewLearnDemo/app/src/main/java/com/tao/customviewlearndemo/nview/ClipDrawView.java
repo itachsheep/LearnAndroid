@@ -47,7 +47,6 @@ public class ClipDrawView extends ImageView {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ClipDrawView);
         mBgDrawable = typedArray.getDrawable(R.styleable.ClipDrawView_cdvSrc);
         typedArray.recycle();
-        //mBgDrawable = context.getResources().getDrawable(R.drawable.normal_bg);
         mBgSectorEntireDrawable = new SectorEntireDrawable(mBgDrawable);
         this.setImageDrawable(mBgSectorEntireDrawable);
     }
