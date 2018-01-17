@@ -56,11 +56,11 @@ public class SectorPartDrawable extends Drawable implements Drawable.Callback  {
         //drawPathCenterDown(rect, radius);
 
         mPath.moveTo(rect.right / 2, rect.bottom / 2);//圆心
-        if(mPercent * 360 <= 30){// < 30
+        if(mPercent * 360 <= 25.5){// < 25.5
             mPath.lineTo(rect.right / 2, rect.bottom);
-        }else if(mPercent * 360 > 30 ) { // > 30
-            mPath.lineTo((float) (rect.right / 2 - radius * Math.sin(Math.PI * 2 * 30f / 360)),
-                    (float) (rect.bottom / 2 + radius * Math.cos(Math.PI * 2 * 30f / 360)));
+        }else if(mPercent * 360 > 25.5 ) { // > 25.5
+            mPath.lineTo((float) (rect.right / 2 - radius * Math.sin(Math.PI * 2 * 25.5f / 360)),
+                    (float) (rect.bottom / 2 + radius * Math.cos(Math.PI * 2 * 25.5f / 360)));
         }
 
         if (mPercent > 0.125f) {// 大于45
@@ -78,9 +78,6 @@ public class SectorPartDrawable extends Drawable implements Drawable.Callback  {
         mPath.lineTo((float) (rect.right / 2 - radius * Math.sin(Math.PI * 2 * mPercent)),
                 (float) (rect.bottom / 2 + radius * Math.cos(Math.PI * 2 * mPercent)));
         mPath.close();
-
-
-
         if (mPercent >= 0 && mPercent <= 1) {
             canvas.save();
             canvas.clipPath(mPath);

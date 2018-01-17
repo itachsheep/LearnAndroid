@@ -18,10 +18,11 @@ import android.widget.ImageView;
 public class CenterImageView extends ImageView {
     private String TAG = "CenterImageView";
     private float mRadius;
-    private float mInnerRadius ;
+//    private float mInnerRadius ;
     private float mCenterX ;
     private float mCenterY;
     private OnInnerListener mListener;
+    private float mResponseRadius;
 
     public CenterImageView(Context context) {
         super(context);
@@ -41,17 +42,18 @@ public class CenterImageView extends ImageView {
         int height = getMeasuredHeight();
         int width = getMeasuredWidth();
         mRadius = Math.max(height,width) * 1f / 2;
-        mInnerRadius = mRadius - dp2px(30);
+//        mInnerRadius = mRadius - dp2px(30);
         mCenterX = mRadius;
         mCenterY = mRadius;
+        mResponseRadius = mRadius - dp2px(15);
         Log.i(TAG,"onMeasure height = "+height+", width = "+width);
     }
 
-    @Override
+   /* @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
         Log.i(TAG,"dispatchTouchEvent ");
         return super.dispatchTouchEvent(event);
-    }
+    }*/
 
     public interface OnInnerListener{
         void onInnerClick(MotionEvent event);
@@ -71,8 +73,8 @@ public class CenterImageView extends ImageView {
                 float x = event.getX();
                 float y = event.getY();
                 double r = Math.pow((Math.pow(x - mCenterX, 2) + Math.pow(y - mCenterY, 2)), 0.5);
-                Log.i(TAG,"r = "+r+", mInnerRadius = "+mInnerRadius);
-                if(r < mInnerRadius){
+                Log.i(TAG,"r = "+r+", mResponseRadius = "+mResponseRadius);
+                if(r < mResponseRadius ){
                     if(mListener != null){
                         mListener.onInnerClick(event);
                     }

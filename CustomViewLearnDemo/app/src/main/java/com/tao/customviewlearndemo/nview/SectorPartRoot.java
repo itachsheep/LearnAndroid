@@ -8,6 +8,9 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -21,15 +24,21 @@ public class SectorPartRoot extends RelativeLayout implements CenterImageView.On
     private String TAG = "SectorPartRoot";
 
     private float mRadius;
-    private float mInnerRadius;
     private float mCenterX ;
     private float mCenterY;
 
-    private ClipPartView clipPartView;
+    private ClipPartView clipPartViewOut;
+    private ClipPartView clipPartViewIn;
     private CenterImageView centerImageView;
+    private ImageView imageViewBg;
+    private ImageView ivArrow;
+
     private TextView tvNum;
     private int mode = 0;
+    private float mArrowEndAngle;
+    private float mArrowStartAngle;
     private float mProgress;
+
     public SectorPartRoot(Context context) {
         this(context,null);
     }
@@ -41,16 +50,22 @@ public class SectorPartRoot extends RelativeLayout implements CenterImageView.On
     public SectorPartRoot(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         View view = LayoutInflater.from(context).inflate(R.layout.view_setor_holder,this);
-        clipPartView = view.findViewById(R.id.spr_cpv);
+        clipPartViewOut = view.findViewById(R.id.spr_cpv_out);
+        clipPartViewIn = view.findViewById(R.id.spr_cpv_in);
         centerImageView = view.findViewById(R.id.spr_center_iv);
         tvNum = view.findViewById(R.id.spr_tv_num);
+        imageViewBg = view.findViewById(R.id.spr_bg);
+        ivArrow = view.findViewById(R.id.spr_iv_arrow);
+
         initListener();
         //初始化时显示开始的进度
         initClipPartView();
     }
 
     private void initClipPartView() {
-        clipPartView.setProgrss(30f/360);
+        clipPartViewOut.setProgrss(25.5f/360);
+        clipPartViewIn.setProgrss(25.5f/360);
+        clipPartViewIn.setVisibility(INVISIBLE);
     }
 
     private void initListener() {
@@ -63,7 +78,6 @@ public class SectorPartRoot extends RelativeLayout implements CenterImageView.On
         int height = getMeasuredHeight();
         int width = getMeasuredWidth();
         mRadius = Math.max(height,width) * 1f / 2;
-        mInnerRadius = mRadius - dp2px(30);
         mCenterX = mRadius;
         mCenterY = mRadius;
         Log.i(TAG,"onMeasure height = "+height+", width = "+width);
@@ -92,8 +106,16 @@ public class SectorPartRoot extends RelativeLayout implements CenterImageView.On
                 float angle = getAngle(mCenterX, mCenterY, x, y);
                 setAngleAndMode(angle);
                 Log.i(TAG,"action down mProgress = "+mProgress+", angle = "+angle);
-                if(clipPartView != null){
-                    clipPartView.setProgrss(mProgress);
+                if(clipPartViewOut != null){
+                    clipPartViewOut.setProgrss(mProgress);
+                }
+                if(clipPartViewIn != null){
+                    clipPartViewIn.setProgrss(mProgress);
+                }
+                if(ivArrow != null){
+                    rotateArrow(mArrowStartAngle,mArrowEndAngle);
+                    mArrowStartAngle = mArrowEndAngle;
+
                 }
                 updateTvNum();
                 break;
@@ -106,35 +128,90 @@ public class SectorPartRoot extends RelativeLayout implements CenterImageView.On
         return super.onTouchEvent(event);
     }
 
+    private void rotateArrow(float from, float to) {
+        RotateAnimation animation = new RotateAnimation(from,to,
+                Animation.RELATIVE_TO_SELF,0.5f,
+                Animation.RELATIVE_TO_SELF,0.5f);
+        animation.setFillAfter(true);
+        animation.setDuration(10);
+        ivArrow.startAnimation(animation);
+    }
+
+
     private void setAngleAndMode(float angle) {
-        if(angle >0  && angle <= 30){
-            mProgress = 30f / 360;
+        if(angle >0  && angle <= 25.5){
+            mProgress = 25.5f / 360;
             mode = 0;
-        }else if(angle > 30 && angle <= 90){
-            mProgress = 90f / 360;
-            mode = 15;
-        }else if(angle > 90 && angle <= 150){
-            mProgress = 150f / 360;
-            mode = 30;
-        }else if(angle > 150 && angle <= 240){
-            mProgress = 240f / 360;
-            mode = 45;
-        }else if(angle > 240 && angle <= 360){
-            mProgress = 330f /360;
-            mode = 60;
+            mArrowEndAngle = 0;
+        }else if(angle > 25.5 && angle <= 76.5){
+            mProgress = 76.5f / 360;
+            mode = 1;
+            mArrowEndAngle = 51;
+        }else if(angle > 76.5 && angle <= 127.5){
+            mProgress = 127.5f / 360;
+            mode = 2;
+            mArrowEndAngle = 102;
+        }else if(angle > 127.5 && angle <= 181.5){
+            mProgress = 181.5f / 360;
+            mode = 3;
+            mArrowEndAngle = 154.5f;
+        }else if(angle > 181.5 && angle <= 232.5){
+            mProgress = 232.5f / 360;
+            mode = 4;
+            mArrowEndAngle = 207;
+        }else if(angle > 232.5 && angle <= 283.5){
+            mProgress = 283.5f / 360;
+            mode = 5;
+            mArrowEndAngle = 258f;
+        }else if(angle > 283.5 && angle <= 334.5){
+            mProgress = 334.5f / 360;
+            mode = 6;
+            mArrowEndAngle = 309;
         }
     }
 
     private void showClipPartView(){
-        if (clipPartView.getVisibility() == View.INVISIBLE){
-            clipPartView.setVisibility(View.VISIBLE);
+        //show 外围背景
+        if(imageViewBg.getVisibility() == View.INVISIBLE){
+            imageViewBg.setVisibility(View.VISIBLE);
+        }
+        //show 外围黄色圆弧
+        if (clipPartViewOut.getVisibility() == View.INVISIBLE){
+            clipPartViewOut.setVisibility(View.VISIBLE);
+        }
+
+        //show 箭头
+        if(ivArrow.getVisibility() == View.INVISIBLE){
+            rotateArrow(mArrowStartAngle,mArrowEndAngle);
+            ivArrow.setVisibility(View.VISIBLE);
+        }
+
+
+        // hide 内部进度条
+        if(clipPartViewIn.getVisibility() == View.VISIBLE){
+            clipPartViewIn.setVisibility(View.INVISIBLE);
         }
     }
     public void hideClipPartView(){
-        if(clipPartView.getVisibility() == View.VISIBLE){
-            clipPartView.setVisibility(View.INVISIBLE);
+        //hide 外围背景
+        if(imageViewBg.getVisibility() == View.VISIBLE){
+            imageViewBg.setVisibility(View.INVISIBLE);
         }
-        // 当ClipPartView不可见时，显示进度条
+        //hide 外围黄色圆弧
+        if(clipPartViewOut.getVisibility() == View.VISIBLE){
+            clipPartViewOut.setVisibility(View.INVISIBLE);
+        }
+
+        //hide 箭头
+        if(ivArrow.getVisibility() == View.VISIBLE){
+            ivArrow.clearAnimation();
+            ivArrow.setVisibility(View.INVISIBLE);
+        }
+
+        // show 内部进度条
+        if(clipPartViewIn.getVisibility() == View.INVISIBLE){
+            clipPartViewIn.setVisibility(View.VISIBLE);
+        }
     }
 
     private int dp2px(int dp) {
