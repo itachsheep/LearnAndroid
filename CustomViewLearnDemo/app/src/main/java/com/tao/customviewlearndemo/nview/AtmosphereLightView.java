@@ -1,6 +1,7 @@
 package com.tao.customviewlearndemo.nview;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,7 +18,7 @@ import com.tao.customviewlearndemo.R;
  * Created by SDT14324 on 2018/1/17.
  */
 
-public class AtmosphereLightView extends RelativeLayout {
+public class AtmosphereLightView extends RelativeLayout implements CenterImageView.OnInnerListener {
     private String TAG = "AtmosphereLightView";
     private int curMode = 0;
     private int lastMode =0;
@@ -31,7 +32,12 @@ public class AtmosphereLightView extends RelativeLayout {
     private boolean mShowArrow = true;//是否显示箭头
 
     private ImageView mIvArrow;
-    private ImageView[] mIvArray = new ImageView[7];
+    private ImageView[] mOutPartArray = new ImageView[7];
+    private Drawable[] mCenterPartArray = new Drawable[7];
+    private Drawable mCenterPartOrigin;
+    private CenterImageView mIvCenterPart;
+    private ImageView mAtmosBg;
+
     public AtmosphereLightView(Context context) {
         this(context,null);
     }
@@ -43,14 +49,36 @@ public class AtmosphereLightView extends RelativeLayout {
     public AtmosphereLightView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         View view = LayoutInflater.from(context).inflate(R.layout.view_atmosphere,this);
+        initView(view);
+        initListener();
+    }
+
+    private void initListener() {
+        mIvCenterPart.setInnerListener(this);
+    }
+
+    private void initView(View view) {
         mIvArrow = view.findViewById(R.id.atmos_arrow);
-        mIvArray[0] = view.findViewById(R.id.atmos_part0);
-        mIvArray[1] = view.findViewById(R.id.atmos_part1);
-        mIvArray[2] = view.findViewById(R.id.atmos_part2);
-        mIvArray[3] = view.findViewById(R.id.atmos_part3);
-        mIvArray[4] = view.findViewById(R.id.atmos_part4);
-        mIvArray[5] = view.findViewById(R.id.atmos_part5);
-        mIvArray[6] = view.findViewById(R.id.atmos_part6);
+        mIvCenterPart = view.findViewById(R.id.atmos_center_part);
+        mIvCenterPart = view.findViewById(R.id.atmos_center_part);
+        mAtmosBg = view.findViewById(R.id.atmos_bg);
+
+        mOutPartArray[0] = view.findViewById(R.id.atmos_part0);
+        mOutPartArray[1] = view.findViewById(R.id.atmos_part1);
+        mOutPartArray[2] = view.findViewById(R.id.atmos_part2);
+        mOutPartArray[3] = view.findViewById(R.id.atmos_part3);
+        mOutPartArray[4] = view.findViewById(R.id.atmos_part4);
+        mOutPartArray[5] = view.findViewById(R.id.atmos_part5);
+        mOutPartArray[6] = view.findViewById(R.id.atmos_part6);
+
+        mCenterPartArray[0] = getResources().getDrawable(R.drawable.atoms_center0);
+        mCenterPartArray[1] = getResources().getDrawable(R.drawable.atoms_center1);
+        mCenterPartArray[2] = getResources().getDrawable(R.drawable.atoms_center2);
+        mCenterPartArray[3] = getResources().getDrawable(R.drawable.atoms_center3);
+        mCenterPartArray[4] = getResources().getDrawable(R.drawable.atoms_center4);
+        mCenterPartArray[5] = getResources().getDrawable(R.drawable.atoms_center5);
+        mCenterPartArray[6] = getResources().getDrawable(R.drawable.atoms_center6);
+        mCenterPartOrigin = getResources().getDrawable(R.drawable.atmos_center_bg);
     }
 
     @Override
@@ -65,6 +93,55 @@ public class AtmosphereLightView extends RelativeLayout {
     }
 
     @Override
+    public void onInnerClick(MotionEvent event) {
+        showOutPart();
+    }
+
+    public void showOutPart(){
+        //show 箭头
+        if(mIvArrow.getVisibility() == View.INVISIBLE){
+            rotateArrow(mArrowStartAngle,mArrowEndAngle);
+            mIvArrow.setVisibility(View.VISIBLE);
+        }
+        mShowArrow = true;
+
+        //show 背景
+        if(mAtmosBg.getVisibility() == View.INVISIBLE){
+            mAtmosBg.setVisibility(View.VISIBLE);
+        }
+
+        //隐藏外围
+        if(mOutPartArray[curMode].getVisibility() == View.INVISIBLE){
+            mOutPartArray[curMode].setVisibility(View.VISIBLE);
+        }
+
+        //显示中间部分
+        mIvCenterPart.setImageDrawable(mCenterPartOrigin);
+    }
+
+    public void hideOutPart() {
+        //隐藏箭头
+        if(mIvArrow.getVisibility() == View.VISIBLE){
+            mIvArrow.clearAnimation();
+            mIvArrow.setVisibility(View.INVISIBLE);
+        }
+        mShowArrow = false;
+
+        //隐藏背景
+        if(mAtmosBg.getVisibility() == View.VISIBLE){
+            mAtmosBg.setVisibility(View.INVISIBLE);
+        }
+
+        //隐藏外围
+        if(mOutPartArray[curMode].getVisibility() == View.VISIBLE){
+            mOutPartArray[curMode].setVisibility(View.INVISIBLE);
+        }
+
+        //显示中间部分
+        mIvCenterPart.setImageDrawable(mCenterPartArray[curMode]);
+    }
+
+    @Override
     public boolean onTouchEvent(MotionEvent event) {
 
         switch (event.getAction()){
@@ -73,16 +150,16 @@ public class AtmosphereLightView extends RelativeLayout {
                 float y = event.getY();
                 float angle = getAngle(mCenterX, mCenterY, x, y);
                 Log.i(TAG,"onTouchEvent angle = "+angle);
-                //根据角度确定模式
-                setAngleAndMode(angle);
-                //选择对应外围圆弧
                 if(mShowArrow){
+                    //根据角度确定模式
+                    setAngleAndMode(angle);
+                    //选择对应外围圆弧
                     selectOuterArc(curMode);
-                }
-                //旋转箭头
-                if(mIvArrow != null && mShowArrow){
-                    rotateArrow(mArrowStartAngle,mArrowEndAngle);
-                    mArrowStartAngle = mArrowEndAngle;
+                    //旋转箭头
+                    if(mIvArrow != null ){
+                        rotateArrow(mArrowStartAngle,mArrowEndAngle);
+                        mArrowStartAngle = mArrowEndAngle;
+                    }
                 }
                 break;
         }
@@ -90,8 +167,8 @@ public class AtmosphereLightView extends RelativeLayout {
     }
 
     private void selectOuterArc(int sMode) {
-        mIvArray[lastMode].setVisibility(View.INVISIBLE);
-        mIvArray[sMode].setVisibility(View.VISIBLE);
+        mOutPartArray[lastMode].setVisibility(View.INVISIBLE);
+        mOutPartArray[sMode].setVisibility(View.VISIBLE);
         lastMode = sMode;
     }
 
@@ -105,7 +182,7 @@ public class AtmosphereLightView extends RelativeLayout {
     }
 
     private void setAngleAndMode(float angle) {
-        if(angle >0  && angle <= 25.5){
+        if(angle >0  && angle <= 25.5 || angle > 334.5){
             mProgress = 25.5f / 360;
             curMode = 0;
             mArrowEndAngle = 0;
@@ -161,4 +238,6 @@ public class AtmosphereLightView extends RelativeLayout {
 //        Log.i(TAG,"getAngle rotation = "+(int)rotation+", tmpDegree = "+tmpDegree);
         return (float) rotation;
     }
+
+
 }

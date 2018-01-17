@@ -51,8 +51,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 <com.tao.customviewlearndemo.nview.AtmosphereLightView
+    android:id="@+id/atmos_alv"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="收缩"
+        android:onClick="fresAtmosphere"/>
 </LinearLayout>
 
 </LinearLayout>

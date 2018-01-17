@@ -11,6 +11,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.tao.customviewlearndemo.R;
+import com.tao.customviewlearndemo.nview.AtmosphereLightView;
 import com.tao.customviewlearndemo.nview.NormalCircleView;
 import com.tao.customviewlearndemo.nview.ClipDrawView;
 import com.tao.customviewlearndemo.nview.SectorEntireDrawable;
@@ -26,6 +27,7 @@ public class C30Activity extends AppCompatActivity {
     private SectorEntireDrawable sectorEntireDrawable;
     private ClipDrawView clipDrawView;
     private LightDelayView lightDelayView;
+    private AtmosphereLightView atmosphereLightView;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,10 +40,15 @@ public class C30Activity extends AppCompatActivity {
 
         clipDrawView = findViewById(R.id.cd_drawable);
         lightDelayView = findViewById(R.id.spr_root);
+        atmosphereLightView = findViewById(R.id.atmos_alv);
     }
 
     public void freshSectorPartRoot(View view){
         lightDelayView.hideClipPartView();
+    }
+
+    public void fresAtmosphere(View view){
+        atmosphereLightView.hideOutPart();
     }
 
     @SuppressLint("HandlerLeak")

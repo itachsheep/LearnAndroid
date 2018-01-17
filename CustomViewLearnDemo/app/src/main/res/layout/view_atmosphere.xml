@@ -41,15 +41,17 @@
         android:id="@+id/atmos_part6"
         style="@style/atmosphere_image"
         android:src="@drawable/atmos_part6"/>
-    <ImageView
+
+    <com.tao.customviewlearndemo.nview.CenterImageView
+        android:id="@+id/atmos_center_part"
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/atmos_center_bg"/>
-    <ImageView
+    <!--<com.tao.customviewlearndemo.nview.CenterImageView
         android:layout_centerInParent="true"
         style="@style/atmosphere_image"
-        android:src="@drawable/atoms_center0"/>
+        android:src="@drawable/atoms_center0"/>-->
     <ImageView
         android:id="@+id/atmos_arrow"
         android:layout_centerInParent="true"
