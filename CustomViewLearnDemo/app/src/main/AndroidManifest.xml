@@ -10,7 +10,7 @@
 
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".nactivity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -21,6 +21,11 @@
         <activity android:name=".activity.PPCircleProgressActivity"/>
         <activity android:name=".activity.C30Activity"/>
         <activity android:name=".activity.AnimateActivity"/>
+        <activity android:name=".activity.C30Activity2"/>
+<!-- fffffff -->
+        <activity android:name=".nactivity.LightDelayActivity"/>
+        <activity android:name=".nactivity.AtmosActivity"/>
+        <activity android:name=".nactivity.SwitchActivity"/>
     </application>
 
 </manifest>

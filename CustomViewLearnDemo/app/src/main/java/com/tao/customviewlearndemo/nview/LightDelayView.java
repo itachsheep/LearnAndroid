@@ -21,7 +21,7 @@ import com.tao.customviewlearndemo.R;
  */
 
 public class LightDelayView extends RelativeLayout implements CenterImageView.OnInnerListener{
-    private String TAG = "SectorPartRoot";
+    private String TAG = "LightDelayView";
 
     private float mRadius;
     private float mCenterX ;
@@ -39,7 +39,7 @@ public class LightDelayView extends RelativeLayout implements CenterImageView.On
     private float mArrowStartAngle;
     private float mProgress;
 
-    private boolean mShowArrow = true;
+    private boolean mEnabled = true;
 
     public LightDelayView(Context context) {
         this(context,null);
@@ -85,40 +85,43 @@ public class LightDelayView extends RelativeLayout implements CenterImageView.On
         Log.i(TAG,"onMeasure height = "+height+", width = "+width);
     }
 
-    @Override
+    /*@Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         Log.i(TAG,"dispatchTouchEvent ");
         return super.dispatchTouchEvent(ev);
-    }
+    }*/
 
-    @Override
+   /* @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         Log.i(TAG,"onInterceptTouchEvent ");
         return super.onInterceptTouchEvent(ev);
-    }
+    }*/
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Log.i(TAG,"onTouchEvent");
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
             {
                 float x = event.getX();
                 float y = event.getY();
                 float angle = getAngle(mCenterX, mCenterY, x, y);
-                setAngleAndMode(angle);
                 Log.i(TAG,"action down mProgress = "+mProgress+", angle = "+angle);
-                if(clipPartViewOut != null){
-                    clipPartViewOut.setProgrss(mProgress);
+                if(x > 2 * mCenterX || y > 2 * mCenterY){
+                    //点击外部,外围消失 disabled
+                    setDisabled();
+                }else {
+                    if(!mEnabled){
+                        setEnabled();
+                    }else {
+                        setAngleAndMode(angle);
+                        clipPartViewOut.setProgrss(mProgress);
+                        clipPartViewIn.setProgrss(mProgress);
+                        rotateArrow(mArrowStartAngle,mArrowEndAngle);
+                        mArrowStartAngle = mArrowEndAngle;
+                        updateTvNum();
+                    }
+                    return true;
                 }
-                if(clipPartViewIn != null){
-                    clipPartViewIn.setProgrss(mProgress);
-                }
-                if(ivArrow != null && mShowArrow){
-                    rotateArrow(mArrowStartAngle,mArrowEndAngle);
-                    mArrowStartAngle = mArrowEndAngle;
-                }
-                updateTvNum();
                 break;
             }
             case MotionEvent.ACTION_UP:
@@ -127,6 +130,10 @@ public class LightDelayView extends RelativeLayout implements CenterImageView.On
                 break;
         }
         return super.onTouchEvent(event);
+    }
+
+    public void init(){
+        setDisabled();
     }
 
     private void rotateArrow(float from, float to) {
@@ -171,7 +178,7 @@ public class LightDelayView extends RelativeLayout implements CenterImageView.On
         }
     }
 
-    private void showClipPartView(){
+    private void setEnabled(){
         //show 外围背景
         if(imageViewBg.getVisibility() == View.INVISIBLE){
             imageViewBg.setVisibility(View.VISIBLE);
@@ -180,20 +187,20 @@ public class LightDelayView extends RelativeLayout implements CenterImageView.On
         if (clipPartViewOut.getVisibility() == View.INVISIBLE){
             clipPartViewOut.setVisibility(View.VISIBLE);
         }
-
+        Log.i(TAG,"setEnabled mArrowStartAngle = "+mArrowStartAngle+", mArrowEndAngle = "+mArrowEndAngle);
         //show 箭头
         if(ivArrow.getVisibility() == View.INVISIBLE){
             rotateArrow(mArrowStartAngle,mArrowEndAngle);
             ivArrow.setVisibility(View.VISIBLE);
         }
-        mShowArrow = true;
+        mEnabled = true;
 
         // hide 内部进度条
         if(clipPartViewIn.getVisibility() == View.VISIBLE){
             clipPartViewIn.setVisibility(View.INVISIBLE);
         }
     }
-    public void hideClipPartView(){
+    public void setDisabled(){
         //hide 外围背景
         if(imageViewBg.getVisibility() == View.VISIBLE){
             imageViewBg.setVisibility(View.INVISIBLE);
@@ -208,7 +215,7 @@ public class LightDelayView extends RelativeLayout implements CenterImageView.On
             ivArrow.clearAnimation();
             ivArrow.setVisibility(View.INVISIBLE);
         }
-        mShowArrow = false;
+        mEnabled = false;
 
         // show 内部进度条
         if(clipPartViewIn.getVisibility() == View.INVISIBLE){
@@ -223,7 +230,7 @@ public class LightDelayView extends RelativeLayout implements CenterImageView.On
 
     @Override
     public void onInnerClick(MotionEvent event) {
-        showClipPartView();
+        setEnabled();
     }
 
     private void updateTvNum( ) {

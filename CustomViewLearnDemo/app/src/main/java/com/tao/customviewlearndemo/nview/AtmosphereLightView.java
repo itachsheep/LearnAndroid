@@ -24,7 +24,7 @@ public class AtmosphereLightView extends RelativeLayout implements CenterImageVi
     private int lastMode =0;
     private float mArrowEndAngle;
     private float mArrowStartAngle;
-    private float mProgress;
+//    private float mProgress;
 
     private float mCenterX ;
     private float mCenterY;
@@ -119,6 +119,10 @@ public class AtmosphereLightView extends RelativeLayout implements CenterImageVi
         mIvCenterPart.setImageDrawable(mCenterPartOrigin);
     }
 
+    public void init(){
+        hideOutPart();
+    }
+
     public void hideOutPart() {
         //隐藏箭头
         if(mIvArrow.getVisibility() == View.VISIBLE){
@@ -149,21 +153,29 @@ public class AtmosphereLightView extends RelativeLayout implements CenterImageVi
                 float x = event.getX();
                 float y = event.getY();
                 float angle = getAngle(mCenterX, mCenterY, x, y);
-                Log.i(TAG,"onTouchEvent angle = "+angle);
-                if(mShowArrow){
-                    //根据角度确定模式
-                    setAngleAndMode(angle);
-                    //选择对应外围圆弧
-                    selectOuterArc(curMode);
-                    //旋转箭头
-                    if(mIvArrow != null ){
+                Log.i(TAG,"( "+x+","+y+" )"+""+" ------ "+"("+2 * mCenterX+","+2 * mCenterY+")");
+                if(x > 2 * mCenterX || y > 2 * mCenterY ){
+                    //点击外部消失
+                    hideOutPart();
+                }else {
+                    if(mShowArrow){
+                        //根据角度确定模式
+                        setAngleAndMode(angle);
+                        //选择对应外围圆弧
+                        selectOuterArc(curMode);
+                        //旋转箭头
                         rotateArrow(mArrowStartAngle,mArrowEndAngle);
-                        mArrowStartAngle = mArrowEndAngle;
+                        return true;
                     }
                 }
+
                 break;
         }
         return super.onTouchEvent(event);
+    }
+
+    public void setMode(int mode){
+
     }
 
     private void selectOuterArc(int sMode) {
@@ -173,41 +185,44 @@ public class AtmosphereLightView extends RelativeLayout implements CenterImageVi
     }
 
     private void rotateArrow(float from, float to) {
-        RotateAnimation animation = new RotateAnimation(from,to,
-                Animation.RELATIVE_TO_SELF,0.5f,
-                Animation.RELATIVE_TO_SELF,0.5f);
-        animation.setFillAfter(true);
-        animation.setDuration(10);
-        mIvArrow.startAnimation(animation);
+        if(mIvArrow != null ){
+            RotateAnimation animation = new RotateAnimation(from,to,
+                    Animation.RELATIVE_TO_SELF,0.5f,
+                    Animation.RELATIVE_TO_SELF,0.5f);
+            animation.setFillAfter(true);
+            animation.setDuration(10);
+            mIvArrow.startAnimation(animation);
+            mArrowStartAngle = mArrowEndAngle;
+        }
     }
 
     private void setAngleAndMode(float angle) {
         if(angle >0  && angle <= 25.5 || angle > 334.5){
-            mProgress = 25.5f / 360;
+            //mProgress = 25.5f / 360;
             curMode = 0;
             mArrowEndAngle = 0;
         }else if(angle > 25.5 && angle <= 76.5){
-            mProgress = 76.5f / 360;
+            //mProgress = 76.5f / 360;
             curMode = 1;
             mArrowEndAngle = 51;
         }else if(angle > 76.5 && angle <= 127.5){
-            mProgress = 127.5f / 360;
+            //mProgress = 127.5f / 360;
             curMode = 2;
             mArrowEndAngle = 102;
         }else if(angle > 127.5 && angle <= 181.5){
-            mProgress = 181.5f / 360;
+            //mProgress = 181.5f / 360;
             curMode = 3;
             mArrowEndAngle = 154.5f;
         }else if(angle > 181.5 && angle <= 232.5){
-            mProgress = 232.5f / 360;
+            //mProgress = 232.5f / 360;
             curMode = 4;
             mArrowEndAngle = 207;
         }else if(angle > 232.5 && angle <= 283.5){
-            mProgress = 283.5f / 360;
+            //mProgress = 283.5f / 360;
             curMode = 5;
             mArrowEndAngle = 258f;
         }else if(angle > 283.5 && angle <= 334.5){
-            mProgress = 334.5f / 360;
+            //mProgress = 334.5f / 360;
             curMode = 6;
             mArrowEndAngle = 309;
         }

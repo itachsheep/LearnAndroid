@@ -44,7 +44,7 @@ public class C30Activity extends AppCompatActivity {
     }
 
     public void freshSectorPartRoot(View view){
-        lightDelayView.hideClipPartView();
+//        lightDelayView.setEnabled();
     }
 
     public void fresAtmosphere(View view){
@@ -79,6 +79,8 @@ public class C30Activity extends AppCompatActivity {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         //normalCircleView.onTouchEvent(event);
+        atmosphereLightView.onTouchEvent(event);
+        lightDelayView.onTouchEvent(event);
         return super.onTouchEvent(event);
     }
 }
