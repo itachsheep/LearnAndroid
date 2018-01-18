@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/pattern_bg"
+        style="@style/pattern_image"
+        android:src="@drawable/pattern_bg" />
+
+    <ImageView
+        android:id="@+id/pattern_part"
+        style="@style/pattern_image"
+        android:src="@drawable/pattern0" />
+
+    <com.tao.customviewlearndemo.nview.CenterImageView
+        android:id="@+id/pattern_civ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/pattern_center" />
+
+    <ImageView
+        android:id="@+id/pattern_pb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/pattern_arc0"/>
+
+    <ImageView
+        android:id="@+id/pattern_arrow"
+        style="@style/pattern_image"
+        android:layout_centerInParent="true"
+        android:src="@drawable/zm_arrow" />
+</RelativeLayout>

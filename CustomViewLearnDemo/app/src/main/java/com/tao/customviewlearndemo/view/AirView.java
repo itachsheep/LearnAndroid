@@ -367,9 +367,10 @@ public class AirView extends View {
 
     //根据角度，得到角度在 图标所在圆的上的坐标
     private int[] getPicCirclePivot(float degree){
+        //顺时针看，水平线为0度, pivot[0] x方向， pivot[1] y方向
         int[] pivot = new int[2];
         double radians = Math.toRadians(degree);
-        /*if(degree >= 0 & degree < 90){//顺时针看，水平线为0度, pivot[0] x方向， pivot[1] y方向
+        /*if(degree >= 0 & degree < 90){
             pivot[0] = (int) (Math.cos(radians) * mRadius + mRadius);
             pivot[1] = (int) (Math.sin(radians) * mRadius + mRadius);
         }

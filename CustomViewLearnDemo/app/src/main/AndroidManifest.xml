@@ -26,6 +26,8 @@
         <activity android:name=".nactivity.LightDelayActivity"/>
         <activity android:name=".nactivity.AtmosActivity"/>
         <activity android:name=".nactivity.SwitchActivity"/>
+        <activity android:name=".nactivity.PatternActivity"/>
+        <activity android:name=".nactivity.ThemeViewActivity"/>
     </application>
 
 </manifest>

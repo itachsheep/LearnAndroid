@@ -29,7 +29,7 @@ public class AtmosphereLightView extends RelativeLayout implements CenterImageVi
     private float mCenterX ;
     private float mCenterY;
     private float mRadius;
-    private boolean mShowArrow = true;//是否显示箭头
+    private boolean mEnabled = false;//是否显示箭头
 
     private ImageView mIvArrow;
     private ImageView[] mOutPartArray = new ImageView[7];
@@ -103,14 +103,14 @@ public class AtmosphereLightView extends RelativeLayout implements CenterImageVi
             rotateArrow(mArrowStartAngle,mArrowEndAngle);
             mIvArrow.setVisibility(View.VISIBLE);
         }
-        mShowArrow = true;
+        mEnabled = true;
 
         //show 背景
         if(mAtmosBg.getVisibility() == View.INVISIBLE){
             mAtmosBg.setVisibility(View.VISIBLE);
         }
 
-        //隐藏外围
+        //show 外围
         if(mOutPartArray[curMode].getVisibility() == View.INVISIBLE){
             mOutPartArray[curMode].setVisibility(View.VISIBLE);
         }
@@ -129,7 +129,7 @@ public class AtmosphereLightView extends RelativeLayout implements CenterImageVi
             mIvArrow.clearAnimation();
             mIvArrow.setVisibility(View.INVISIBLE);
         }
-        mShowArrow = false;
+        mEnabled = false;
 
         //隐藏背景
         if(mAtmosBg.getVisibility() == View.VISIBLE){
@@ -147,7 +147,6 @@ public class AtmosphereLightView extends RelativeLayout implements CenterImageVi
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
                 float x = event.getX();
@@ -158,7 +157,7 @@ public class AtmosphereLightView extends RelativeLayout implements CenterImageVi
                     //点击外部消失
                     hideOutPart();
                 }else {
-                    if(mShowArrow){
+                    if(mEnabled){
                         //根据角度确定模式
                         setAngleAndMode(angle);
                         //选择对应外围圆弧

@@ -13,13 +13,20 @@
     </declare-styleable>
 
     <declare-styleable name="ClipPartView">
-        <attr name="cpvSrc"></attr>
+        <attr name="cpvSrc" format="reference"></attr>
+        <attr name="cpvStyle" format="integer"></attr>
     </declare-styleable>
     <!--android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/atmos_part1"
         android:visibility="invisible"-->
     <style name="atmosphere_image">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:visibility">invisible</item>
+    </style>
+
+    <style name="pattern_image">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:visibility">invisible</item>

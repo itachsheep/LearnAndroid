@@ -14,6 +14,7 @@
     <com.tao.customviewlearndemo.nview.ClipPartView
         android:id="@+id/spr_cpv_out"
         app:cpvSrc="@drawable/zm_bg_yellow"
+        app:cpvStyle="1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
          />
@@ -28,6 +29,7 @@
         android:layout_centerInParent="true"
         android:id="@+id/spr_cpv_in"
         app:cpvSrc="@drawable/zm_center_pb"
+        app:cpvStyle="1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />

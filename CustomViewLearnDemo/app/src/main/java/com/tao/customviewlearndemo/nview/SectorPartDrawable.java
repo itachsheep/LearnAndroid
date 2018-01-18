@@ -9,21 +9,27 @@ import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 
 /**
  * Created by SDT14324 on 2018/1/15.
  */
 
 public class SectorPartDrawable extends Drawable implements Drawable.Callback  {
+    private String TAG =  SectorPartDrawable.class.getSimpleName();
+
     private Drawable mDrawable;
     private Path mPath = new Path();
     private float mPercent;
-    private final int TYPE_CENTER_UP = 0;
-    private final int TYPE_CENTER_DOWN = 1;
-    private int mDrawType;
 
-    public SectorPartDrawable(Drawable drawable) {
+    private int mDrawType;
+    private final int STYLE_LIGHT_DELAY = 1;
+    private final int STYLE_PATTERN_SETTING = 2;
+    private int mStyle;
+
+    public SectorPartDrawable(Drawable drawable,int startAngle) {
         this.mDrawable = drawable;
+        this.mStyle = startAngle;
         if (drawable != null) {
             drawable.setCallback(this);
         }
@@ -45,38 +51,87 @@ public class SectorPartDrawable extends Drawable implements Drawable.Callback  {
         return super.setVisible(visible, restart);
     }
 
+    private RectF mRect;
+    private double mRadius;
     @Override
     public void draw(Canvas canvas) {
         mPath.reset();
-        RectF rect = new RectF(getBounds());
-        double radius = Math.pow(Math.pow(rect.right, 2) + Math.pow(rect.bottom, 2), 0.5);
+        if(mRect == null){
+            mRect = new RectF(getBounds());
+            mRadius = Math.pow(Math.pow(mRect.right, 2) + Math.pow(mRect.bottom, 2), 0.5);
+        }
+
         //以中间最上面点为起始点
         //drawPathCenterUp(rect, radius);
         //以中间最下面点为起始点
         //drawPathCenterDown(rect, radius);
-
-        mPath.moveTo(rect.right / 2, rect.bottom / 2);//圆心
-        if(mPercent * 360 <= 25.5){// < 25.5
-            mPath.lineTo(rect.right / 2, rect.bottom);
-        }else if(mPercent * 360 > 25.5 ) { // > 25.5
-            mPath.lineTo((float) (rect.right / 2 - radius * Math.sin(Math.PI * 2 * 25.5f / 360)),
-                    (float) (rect.bottom / 2 + radius * Math.cos(Math.PI * 2 * 25.5f / 360)));
+        Log.i(TAG,"ondraw mStyle = "+mStyle);
+        if(mStyle == STYLE_LIGHT_DELAY){
+            //绘制照明延时灯效果，小于25.5 从90度开始，大于25.5 从 90+25.5开始
+            drawLightDelay(canvas);
+        }else if(mStyle == STYLE_PATTERN_SETTING) {
+            //绘制模式设置效果，从45度开始画，每段角度为90，且每段不连续
+            drawPatternSetting(canvas);
         }
 
+    }
+
+    private void drawPatternSetting(Canvas canvas) {
+        mPath.moveTo(mRect.right / 2, mRect.bottom / 2);//圆心
+//            if(mPercent * 360 <= 22.5 || mPercent * 360 > 337.5){// < 22.5  且 > 337.5
+//
+//            }
+
+        mPath.lineTo((float) (mRect.right / 2 + mRadius * Math.cos(Math.toRadians(45))),
+                (float) (mRect.bottom / 2 + mRadius * Math.sin(Math.toRadians(45))));
+        mPath.lineTo(mRect.right / 2, mRect.bottom);
+
         if (mPercent > 0.125f) {// 大于45
-            mPath.lineTo(0, rect.bottom);
+            mPath.lineTo(0, mRect.bottom);
         }
         if (mPercent > 0.375f) {//大于135
             mPath.lineTo(0, 0);
         }
         if (mPercent > 0.625f) {//大于225
-            mPath.lineTo(rect.right, 0);
+            mPath.lineTo(mRect.right, 0);
         }
         if (mPercent > 0.875f) {//大于315
-            mPath.lineTo(rect.right, rect.bottom);
+            mPath.lineTo(mRect.right, mRect.bottom);
         }
-        mPath.lineTo((float) (rect.right / 2 - radius * Math.sin(Math.PI * 2 * mPercent)),
-                (float) (rect.bottom / 2 + radius * Math.cos(Math.PI * 2 * mPercent)));
+        mPath.lineTo((float) (mRect.right / 2 - mRadius * Math.sin(Math.PI * 2 * mPercent)),
+                (float) (mRect.bottom / 2 + mRadius * Math.cos(Math.PI * 2 * mPercent)));
+        mPath.close();
+        if (mPercent >= 0 && mPercent <= 1) {
+            canvas.save();
+            canvas.clipPath(mPath);
+            mDrawable.draw(canvas);
+            canvas.restore();
+        }
+    }
+
+    private void drawLightDelay(Canvas canvas) {
+        mPath.moveTo(mRect.right / 2, mRect.bottom / 2);//圆心
+        if(mPercent * 360 <= 25.5){// < 25.5
+            mPath.lineTo(mRect.right / 2, mRect.bottom);
+        }else if(mPercent * 360 > 25.5 ) { // > 25.5
+            mPath.lineTo((float) (mRect.right / 2 - mRadius * Math.sin(Math.PI * 2 * 25.5f / 360)),
+                    (float) (mRect.bottom / 2 + mRadius * Math.cos(Math.PI * 2 * 25.5f / 360)));
+        }
+
+        if (mPercent > 0.125f) {// 大于45
+            mPath.lineTo(0, mRect.bottom);
+        }
+        if (mPercent > 0.375f) {//大于135
+            mPath.lineTo(0, 0);
+        }
+        if (mPercent > 0.625f) {//大于225
+            mPath.lineTo(mRect.right, 0);
+        }
+        if (mPercent > 0.875f) {//大于315
+            mPath.lineTo(mRect.right, mRect.bottom);
+        }
+        mPath.lineTo((float) (mRect.right / 2 - mRadius * Math.sin(Math.PI * 2 * mPercent)),
+                (float) (mRect.bottom / 2 + mRadius * Math.cos(Math.PI * 2 * mPercent)));
         mPath.close();
         if (mPercent >= 0 && mPercent <= 1) {
             canvas.save();

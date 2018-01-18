@@ -59,4 +59,12 @@ public class MainActivity extends AppCompatActivity {
     public void toSwitch(View view){
         startActivity(new Intent(MainActivity.this, SwitchActivity.class));
     }
+
+    public void toPattern(View view){
+        startActivity(new Intent(MainActivity.this,PatternActivity.class));
+    }
+
+    public void toTheme(View view){
+        startActivity(new Intent(MainActivity.this,ThemeViewActivity.class));
+    }
 }

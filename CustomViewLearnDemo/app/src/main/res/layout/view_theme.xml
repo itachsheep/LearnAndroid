@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/th_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/th_bg"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/th_part"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/th_part0"
+        android:visibility="invisible"/>
+
+    <com.tao.customviewlearndemo.nview.CenterImageView
+        android:id="@+id/th_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/th_center" />
+
+    <ImageView
+        android:id="@+id/th_pb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/th_pb0" />
+
+    <ImageView
+        android:id="@+id/th_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/zm_arrow"
+        android:visibility="invisible"/>
+</RelativeLayout>
