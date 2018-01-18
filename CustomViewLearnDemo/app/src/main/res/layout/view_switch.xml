@@ -18,8 +18,10 @@
         android:src="@drawable/switch_off2"
          />
     <ImageView
+        android:id="@+id/switch_arrow"
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/zm_arrow"/>
+        android:src="@drawable/switch_arrow"
+        android:visibility="invisible"/>
 </RelativeLayout>

@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -20,9 +22,9 @@ public class SwitchView extends RelativeLayout {
     private String TAG = "SwitchView";
     private ImageView mSwitchOut;
     private ImageView mSwitchIn;
+    private ImageView mIvArrow;
 
-    private final int OFF_MODE = 0;
-    private final int ON_MODE = 1;
+    private int mAngle = 0;
 
     private Drawable[] outArray = new Drawable[2];
     private Drawable[] inArray = new Drawable[2];
@@ -47,6 +49,7 @@ public class SwitchView extends RelativeLayout {
         View view = LayoutInflater.from(context).inflate(R.layout.view_switch,this);
         mSwitchOut = view.findViewById(R.id.switch_out);
         mSwitchIn = view.findViewById(R.id.switch_in);
+        mIvArrow = view.findViewById(R.id.switch_arrow);
         initDrawable();
     }
 
@@ -74,10 +77,10 @@ public class SwitchView extends RelativeLayout {
                 float y = event.getY();
                 Log.i(TAG,"x = "+x+", y = "+y);
                 if(x > width || y > height){
-                    switchOutView();
+                    setDisableMode();
                 }else {
                     if(!mEnabled){
-                        switchOutView();
+                        setEnableMode();
                     }else {
                         switchMode();
                     }
@@ -89,17 +92,42 @@ public class SwitchView extends RelativeLayout {
         return super.onTouchEvent(event);
     }
 
-    private void switchOutView() {
-        if(mEnabled){
-            //缩小
-            mEnabled = false;
-            mSwitchOut.setVisibility(View.INVISIBLE);
-            mSwitchIn.setVisibility(View.VISIBLE);
+    public void setDisableMode(){
+        mEnabled = false;
+        mSwitchOut.setVisibility(View.INVISIBLE);
+        mSwitchIn.setVisibility(View.VISIBLE);
+        mIvArrow.clearAnimation();
+        mIvArrow.setVisibility(View.INVISIBLE);
+    }
+    private void setEnableMode() {
+        mEnabled = true;
+        mSwitchOut.setVisibility(View.VISIBLE);
+        mSwitchIn.setVisibility(View.INVISIBLE);
+
+        if(curMode == 1){
+            rotateAngle(360);
         }else {
-            //放大
-            mEnabled = true;
-            mSwitchOut.setVisibility(View.VISIBLE);
-            mSwitchIn.setVisibility(View.INVISIBLE);
+            rotateAngle(180);
+        }
+    }
+    private void rotateAngle(float angle) {
+        if(mIvArrow != null ){
+            RotateAnimation animation = new RotateAnimation(angle,angle,
+                    Animation.RELATIVE_TO_SELF,0.5f,
+                    Animation.RELATIVE_TO_SELF,0.5f);
+            animation.setFillAfter(true);
+            mIvArrow.startAnimation(animation);
+        }
+    }
+
+    private void rotateArrow(float from, float to) {
+        if(mIvArrow != null ){
+            RotateAnimation animation = new RotateAnimation(from,to,
+                    Animation.RELATIVE_TO_SELF,0.5f,
+                    Animation.RELATIVE_TO_SELF,0.5f);
+            animation.setFillAfter(true);
+            animation.setDuration(50);
+            mIvArrow.startAnimation(animation);
         }
     }
 
@@ -108,6 +136,13 @@ public class SwitchView extends RelativeLayout {
         if(mEnabled){
             mSwitchOut.setImageDrawable(outArray[curMode]);
             mSwitchIn.setImageDrawable(inArray[curMode]);
+            if(curMode == 1){
+                rotateArrow(180,360);
+            }else {
+                rotateArrow(0,180);
+            }
+
+
         }else {
             mSwitchOut.setImageDrawable(outArray[curMode]);
             mSwitchIn.setImageDrawable(inArray[curMode]);
