@@ -12,10 +12,8 @@ import android.view.View;
 
 import com.tao.customviewlearndemo.R;
 import com.tao.customviewlearndemo.nview.AtmosphereLightView;
-import com.tao.customviewlearndemo.nview.NormalCircleView;
-import com.tao.customviewlearndemo.nview.ClipDrawView;
-import com.tao.customviewlearndemo.nview.SectorEntireDrawable;
 import com.tao.customviewlearndemo.nview.LightDelayView;
+import com.tao.customviewlearndemo.nview.NormalCircleView;
 
 /**
  * Created by SDT14324 on 2018/1/15.
@@ -24,8 +22,8 @@ import com.tao.customviewlearndemo.nview.LightDelayView;
 public class C30Activity extends AppCompatActivity {
     private NormalCircleView normalCircleView;
 //    private ImageView mIvSector;
-    private SectorEntireDrawable sectorEntireDrawable;
-    private ClipDrawView clipDrawView;
+//    private SectorEntireDrawable sectorEntireDrawable;
+//    private ClipDrawView clipDrawView;
     private LightDelayView lightDelayView;
     private AtmosphereLightView atmosphereLightView;
     @Override
@@ -38,7 +36,7 @@ public class C30Activity extends AppCompatActivity {
 //        sectorEntireDrawable = new SectorEntireDrawable(mIvSector.getDrawable());
 //        mIvSector.setImageDrawable(sectorEntireDrawable);
 
-        clipDrawView = findViewById(R.id.cd_drawable);
+//        clipDrawView = findViewById(R.id.cd_drawable);
         lightDelayView = findViewById(R.id.spr_root);
         atmosphereLightView = findViewById(R.id.atmos_alv);
     }
@@ -64,7 +62,6 @@ public class C30Activity extends AppCompatActivity {
                 percent = 0;
                 return;
             }
-            sectorEntireDrawable.setPercent(percent);
             Log.i("this",String.valueOf(percent));
             sendEmptyMessageDelayed(0, 10);
         }
@@ -73,7 +70,7 @@ public class C30Activity extends AppCompatActivity {
     public void test(View view){
         mHandler.sendEmptyMessage(0);
 //        sectorEntireDrawable.setPercent(0.1f);
-        clipDrawView.setPercent(0.5f);
+//        clipDrawView.setPercent(0.5f);
     }
 
     @Override

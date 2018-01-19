@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.tao.customviewlearndemo.R;
+import com.tao.customviewlearndemo.nview.ClipDrawView;
 import com.tao.customviewlearndemo.view.InnerCircleRelativelayout;
 import com.tao.customviewlearndemo.view.LearnPPCircleView;
 import com.tao.customviewlearndemo.view.OuterCircleRelativelayout;
@@ -38,6 +39,7 @@ public class ViewTestActivity extends AppCompatActivity implements View.OnClickL
 
     private LearnPPCircleView learnPPCircleView;
     private Button btLearnPPcircle;
+    private ClipDrawView clipDrawView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -120,6 +122,7 @@ public class ViewTestActivity extends AppCompatActivity implements View.OnClickL
 //        ppCircleView = findViewById(R.id.pp_circle);
 //        btPPcircle = findViewById(R.id.bt_ppcircle);
         learnPPCircleView = findViewById(R.id.pp_learn_circle);
+        clipDrawView = findViewById(R.id.cdv);
     }
 
 

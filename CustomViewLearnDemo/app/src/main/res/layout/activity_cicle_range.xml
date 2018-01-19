@@ -72,15 +72,13 @@
 
 
         <RelativeLayout
-            android:layout_width="200dp"
-            android:layout_height="200dp">
-           <!-- <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/normal_bg"/>-->
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
             <com.tao.customviewlearndemo.nview.ClipDrawView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:id="@+id/cdv"
+                android:clickable="true"
+                android:layout_width="151dp"
+                android:layout_height="151dp"
                 app:cdvSrc="@drawable/normal_bg"
                 />
         </RelativeLayout>
