@@ -16,6 +16,12 @@ buildscript {
 }
 
 allprojects {
+	//添加以下代码，使classes-full-debug.jar包编译先于android.jar
+//    gradle.projectsEvaluated {
+//        tasks.withType(JavaCompile) {
+//            options.compilerArgs.add('-Xbootclasspath/p:app\\libs\\framework.jar')
+//        }
+//    }
     repositories {
         google()
         jcenter()
