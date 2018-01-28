@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SystemUiDemo.iml" filepath="$PROJECT_DIR$/SystemUiDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ProgressbarDemo.iml" filepath="$PROJECT_DIR$/ProgressbarDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/javalib/javalib.iml" filepath="$PROJECT_DIR$/javalib/javalib.iml" />
     </modules>
   </component>
 </project>
