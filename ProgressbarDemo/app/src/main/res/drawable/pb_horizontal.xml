@@ -2,14 +2,14 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@android:id/background"
 
-
+        android:drawable="@drawable/pic_slide"
         >
         <!--
         android:drawable="@drawable/pb_bg1"
 
         android:height="30dp"
         -->
-        <shape>
+        <!--<shape>
             <corners android:radius="5dip" />
             <gradient
                 android:startColor="#ff9d9e9d"
@@ -18,7 +18,7 @@
                 android:endColor="#ff747674"
                 android:angle="270"
                 />
-        </shape>
+        </shape>-->
 
     </item>
 
@@ -38,8 +38,8 @@
     </item>-->
 
     <item android:id="@android:id/progress">
-        <clip>
-            <shape>
+        <clip android:drawable="@drawable/pic_slide2">
+            <!--<shape>
                 <corners android:radius="5dip" />
                 <gradient
                     android:startColor="#ffffd300"
@@ -48,7 +48,7 @@
                     android:endColor="#ffffcb00"
                     android:angle="270"
                     />
-            </shape>
+            </shape>-->
         </clip>
     </item>
 </layer-list>

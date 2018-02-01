@@ -4,18 +4,25 @@ import android.content.Context;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
+    private String TAG = MainActivity.class.getSimpleName();
     WindowManager windowManager;
     WindowManager.LayoutParams layoutParams;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+        Log.i(TAG,"dpi = "+displayMetrics.densityDpi+" desity = "+displayMetrics.density);
+
         windowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
         layoutParams = new WindowManager.LayoutParams(
                 200,
