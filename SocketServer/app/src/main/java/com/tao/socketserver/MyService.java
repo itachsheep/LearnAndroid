@@ -10,7 +10,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -30,26 +29,22 @@ public class MyService extends Service {
             public void run() {
                 Log.i(TAG,"startServer  ");
                 BufferedReader in = null;
-                PrintWriter outer = null;
+                PrintWriter writer = null;
                 ServerSocket serverSocket = null;
+                int i = 0;
                 try {
-//                    serverSocket = new ServerSocket(8888);
-                    serverSocket=new ServerSocket(8000,10, InetAddress.getByName ("192.168.1.111"));
-
-                    byte[] buffer = new byte[20 * 1024];
-                    Socket socket = serverSocket.accept();
-                    while (true){
-                        Log.i(TAG,"startServer  accept ");
-
-//                        InputStream inputStream = socket.getInputStream();
-                        in =new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                        outer =new PrintWriter(socket.getOutputStream());
-//                        String s = "";
-//                        while (inputStream.read(buffer) != -1){
-//                            s = new String(buffer);
-//                        }
-                        String receiveMes = in.readLine();
-                        Log.i(TAG,"startServer  receiver s "+receiveMes);
+                    ServerSocket server =new ServerSocket(5209);
+                    Log.i(TAG,"服务端启动成功");
+                    Socket socket = server.accept();
+                    in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                    writer = new PrintWriter(socket.getOutputStream());
+                    while(true){
+                        String str = in.readLine();
+                        if(str != "" || str != null){
+                            Log.i(TAG,"Client: "+str);
+                            writer.println("hello !! I am server "+(i++));
+                            writer.flush();
+                        }
                     }
                 } catch (IOException e) {
                     Log.i(TAG,"startServer  IOException "+e.getMessage());
@@ -57,7 +52,7 @@ public class MyService extends Service {
                 }finally {
                     try {
                         in.close();
-                        outer.close();
+                        writer.close();
                         serverSocket.close();
                     } catch (IOException e) {
                         Log.i(TAG,"startServer  close IOException "+e.getMessage());

@@ -12,9 +12,8 @@ import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.InetSocketAddress;
 import java.net.Socket;
 
 public class SocketClientActivity extends AppCompatActivity implements View.OnClickListener {
@@ -67,54 +66,49 @@ public class SocketClientActivity extends AppCompatActivity implements View.OnCl
 
             case R.id.bt_send:
             {
-                if(outer != null){
+                /*if(outer != null){
                     Log.i(TAG,"send str 1111 ");
                     outer.write("1111");
                     outer.flush();
-                }
+                }*/
                 break;
             }
 
         }
     }
 
-    private PrintWriter outer = null;
     private void startClient() {
         new Thread(){
             @Override
             public void run() {
-                Log.i(TAG,"startClient  ");
+                PrintWriter write = null;
                 BufferedReader in = null;
-                Socket mSocket = null;
+                Socket socket = null;
+                Log.i(TAG,"startClient  ");
                 try {
-//                    mSocket = new Socket("127.0.0.1", 8888);
-                    mSocket = new Socket("192.168.1.111", 8000);
-                    mSocket.connect(new InetSocketAddress("192.168.1.111",8000));
-
-                    byte[] buffer = new byte[20 * 1024];
+                    //socket = new Socket("127.0.0.1", 5209);
+                    socket = new Socket("192.168.1.113", 5209);
+                    Log.i(TAG,"客户端启动成功");
+                    write = new PrintWriter(socket.getOutputStream());
+                    in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                    int i = 0;
                     while (true){
-                        InputStream inputStream = mSocket.getInputStream();
-                        outer = new PrintWriter(mSocket.getOutputStream());
-                        String s = "";
-                        while (inputStream.read(buffer) != -1){
-                            s = new String(buffer);
-                        }
-//                        String receiveMes = in.readLine();
-                        Log.i(TAG,"startClient  receiveMes "+s);
-//                        sendMessage(s);
+                        write.println("hello i am client "+(i++));
+                        write.flush();
+                        sendMessage(in.readLine());
+                        Thread.sleep(1000);
                     }
-                } catch (IOException e) {
+                } catch (Exception e) {
                     Log.i(TAG,"startClient  IOException "+e.getMessage());
                     e.printStackTrace();
                 }finally {
-//                    try {
-//                        in.close();
-//                        outer.close();
-//                        mSocket.close();
-//                    } catch (IOException e) {
-//                        Log.i(TAG,"startClient  close IOException "+e.getMessage());
-//                        e.printStackTrace();
-//                    }
+                    try {
+                        in.close();
+                        write.close();
+                        socket.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }.start();
