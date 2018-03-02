@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="100dp"
+    android:orientation="vertical"
+    tools:context="com.tao.activitymodedemo.ViewStubActivity">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <Button
+        android:layout_margin="20dp"
+        android:id="@+id/bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="inflate viewstub"
+        android:textSize="25sp"
+        />
+    <Button
+        android:layout_margin="20dp"
+        android:id="@+id/bt_hide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="隐藏viewstub"
+        android:textSize="25sp"
+        />
+
+    <Button
+        android:layout_margin="20dp"
+        android:id="@+id/bt_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="显示viewstub"
+        android:textSize="25sp"
+        />
+</LinearLayout>
+
+    <ViewStub
+        android:id="@+id/vs"
+        android:layout_width="500dp"
+        android:layout_height="200dp"
+        android:layout="@layout/viewstub_layout"/>
+
+</LinearLayout>

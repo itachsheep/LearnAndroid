@@ -5,13 +5,102 @@
     android:layout_height="match_parent"
     tools:context="com.tao.statushidedemo.FullScreenActivity">
 
-    <Button
-        android:id="@+id/btShow"
+    <LinearLayout
+        android:id="@+id/ll1"
         android:layout_centerInParent="true"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:text="show or hide"
-        />
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/bt_flag_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="flag_show"
+            />
+
+        <Button
+            android:layout_marginLeft="20dp"
+            android:id="@+id/bt_flag_hide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="flag_hide"
+            />
+        <Button
+            android:layout_marginLeft="20dp"
+            android:id="@+id/bt_send_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="发送广播show"
+            />
+        <Button
+            android:layout_marginLeft="20dp"
+            android:id="@+id/bt_send_hide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="发送广播hide"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll2"
+        android:layout_below="@+id/ll1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_marginLeft="20dp"
+            android:id="@+id/bt_framework_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="发送framewrok广播show"
+            />
+        <Button
+            android:layout_marginLeft="20dp"
+            android:id="@+id/bt_framework_hide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="发送framewrok广播hide"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll3"
+        android:layout_below="@+id/ll2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_marginLeft="20dp"
+            android:id="@+id/bt_date_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="Date 0"
+            />
+        <Button
+            android:layout_marginLeft="20dp"
+            android:id="@+id/bt_date_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="Date 1"
+            />
+
+        <Button
+            android:layout_marginLeft="20dp"
+            android:id="@+id/bt_date_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="Date 2"
+            />
+    </LinearLayout>
 
 </RelativeLayout>

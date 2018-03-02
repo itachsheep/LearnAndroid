@@ -12,7 +12,7 @@ import android.util.Log;
 public class RemoteSpeak {
 	private static Object lock = new Object();
 	private  String TAG ="SkySpeak.RemoteSpeak";
-	private  ISpeak speakBinder;
+	private ISpeak speakBinder;
 	private static RemoteSpeak remoteSpeak;
 
 	private RemoteSpeak(){}

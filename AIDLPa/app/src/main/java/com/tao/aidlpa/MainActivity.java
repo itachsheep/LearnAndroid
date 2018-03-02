@@ -1,5 +1,6 @@
 package com.tao.aidlpa;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
@@ -28,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         findViewById(R.id.bt_bind).requestFocus();
         Log.d(TAG, "onCreate");
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//强制竖屏
+        Log.i(TAG,""+Thread.currentThread().getName()+", id = "+
+                Thread.currentThread().getId()+","+android.os.Process.myPid( )
+        +android.os.Process.myUid());
     }
     private static final int AM_FROM = 522;
     private static final int AM_TO = 1620;
@@ -40,10 +45,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onServiceConnected() {
                 Log.d(TAG, "onServiceConnected  ");
-//                RemoteSpeak.getInstance().registerGlobalCmd(MainActivity.this,mGlobalCmd);
-//                RemoteSpeak.getInstance().registerCustomCmd(MainActivity.this,mCustomCmd);
-
+                //注册全局指令
+                RemoteSpeak.getInstance().registerGlobalCmd(MainActivity.this,mGlobalCmd);
+                //注册唤醒指令
+                RemoteSpeak.getInstance().registerCustomCmd(MainActivity.this,mCustomCmd);
+                //注册调幅指令am
                 RemoteSpeak.getInstance().registerCmdForAM(AM_FROM, AM_TO,mAM);
+                //注册调频指令fm
                 RemoteSpeak.getInstance().registerCmdForFM(FM_FROM,FM_TO,mFM);
             }
         });
@@ -51,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void unbind(View view){
         Log.d(TAG, "unbind click  ");
+        RemoteSpeak.getInstance().unRegisterGlobalCmd(MainActivity.this,mGlobalCmd);
+        RemoteSpeak.getInstance().unRegisterCustomCmd(MainActivity.this,mCustomCmd);
         RemoteSpeak.getInstance().unBindService(MainActivity.this);
     }
 

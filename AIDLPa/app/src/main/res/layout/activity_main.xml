@@ -19,7 +19,7 @@
             android:background="@drawable/button_common"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="绑定服务"/>
+            android:text="绑定服务,注册全局指令和唤醒指令"/>
 
         <Button
             android:layout_marginLeft="20dp"
@@ -28,14 +28,15 @@
             android:background="@drawable/button_common"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="解绑服务"/>
+            android:text="解绑服务，注销指令"/>
 
 
     </LinearLayout>
 <LinearLayout
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:visibility="gone">
     <Button
 
         android:layout_marginLeft="20dp"

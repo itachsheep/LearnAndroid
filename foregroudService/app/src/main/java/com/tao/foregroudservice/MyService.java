@@ -28,14 +28,14 @@ public class MyService extends Service {
         Notification.Builder builder = new Notification.Builder(getApplicationContext());
         builder.setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.ic_launcher_background))
                 .setContentTitle("我的标题")
-                .setSmallIcon(R.mipmap.home_icon_day_prs)
+                .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentText("我的内容");
         Notification notification = builder.build();
 
         NotificationManager notificationManager =
                 (NotificationManager)getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 
-        notificationManager.notify(null,R.mipmap.home_icon_day_prs,notification);
+        notificationManager.notify(R.mipmap.home_icon_day_prs,notification);
 
 
         return super.onStartCommand(intent, flags, startId);
