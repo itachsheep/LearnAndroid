@@ -10,12 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ViewStubActivity">
+
+        </activity>
+        <activity android:name=".ActivityLifeCycle">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:name=".ServiceLife">
+            <intent-filter>
+                <action android:name="com.tao.test.ser"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
