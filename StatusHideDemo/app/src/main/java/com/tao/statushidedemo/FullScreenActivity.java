@@ -60,6 +60,7 @@ public class FullScreenActivity extends Activity implements View.OnClickListener
         findViewById(R.id.bt_date_0).setOnClickListener(this);
         findViewById(R.id.bt_date_1).setOnClickListener(this);
         findViewById(R.id.bt_date_2).setOnClickListener(this);
+        findViewById(R.id.bt_air_broadcasst).setOnClickListener(this);
 
         btFlagShow.setOnClickListener(this);
         btFlagHide.setOnClickListener(this);
@@ -181,9 +182,16 @@ public class FullScreenActivity extends Activity implements View.OnClickListener
 //                sendOrderedBroadcast(intent,null);
             }
             break;
+
+            case R.id.bt_air_broadcasst:
+            {
+                Intent intent = new Intent(AIR_ACTION);
+                sendBroadcast(intent);
+            }
+                break;
         }
     }
-
+    private final String AIR_ACTION = "com.systemui.air.action";
     @SuppressLint("HandlerLeak")
     private Handler mHandler = new Handler(){
         @Override
