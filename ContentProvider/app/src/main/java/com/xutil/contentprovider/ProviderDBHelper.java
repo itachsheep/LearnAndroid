@@ -20,7 +20,7 @@ public class ProviderDBHelper extends SQLiteOpenHelper {
 		LogUtil.log("ProviderDBHelper Creating...");
 
 		db.execSQL("CREATE TABLE " + DEVICEINFO_TABLE_NAME + " ("
-				+ CommonUtil.KEY + " TEXT PRIMARY KEY,"
+				+ CommonUtil.KEY + "TEXT PRIMARY KEY,"
 				+ CommonUtil.VALUE + " TEXT" + ");");
 		
 	}

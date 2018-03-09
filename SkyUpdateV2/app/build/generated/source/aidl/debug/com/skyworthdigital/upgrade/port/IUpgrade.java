@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: D:\\as_workspace\\for_test\\update\\SkyUpdateV2\\app\\src\\main\\aidl\\com\\skyworthdigital\\upgrade\\port\\IUpgrade.aidl
+ * Original file: D:\\as_workspace\\LearnAndroid\\SkyUpdateV2\\app\\src\\main\\aidl\\com\\skyworthdigital\\upgrade\\port\\IUpgrade.aidl
  */
 package com.skyworthdigital.upgrade.port;
 public interface IUpgrade extends android.os.IInterface

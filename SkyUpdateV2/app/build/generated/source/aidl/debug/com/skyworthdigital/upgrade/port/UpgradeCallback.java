@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: D:\\as_workspace\\for_test\\update\\SkyUpdateV2\\app\\src\\main\\aidl\\com\\skyworthdigital\\upgrade\\port\\UpgradeCallback.aidl
+ * Original file: D:\\as_workspace\\LearnAndroid\\SkyUpdateV2\\app\\src\\main\\aidl\\com\\skyworthdigital\\upgrade\\port\\UpgradeCallback.aidl
  */
 package com.skyworthdigital.upgrade.port;
 public interface UpgradeCallback extends android.os.IInterface
