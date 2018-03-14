@@ -12,6 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
+import java.net.HttpURLConnection;
+
 /**
  * Created by sdt14324 on 2018/3/5.
  */
@@ -30,6 +32,8 @@ public class ActivityLifeCycle extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lifecycle);
         Log.i(TAG,"onCreate");
+        HttpURLConnection conn;
+        conn.set
 
         //Fragment fragment = findViewById(R.id.my_content);
         /*FragmentManager fragmentManager = getSupportFragmentManager();

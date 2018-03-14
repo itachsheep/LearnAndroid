@@ -53,6 +53,32 @@ public class RemoteSpeak {
 		}
 	}
 
+	public void sendTtsSpeaker(String words){
+		if(speakBinder == null){
+			Log.d(TAG, "sendTtsSpeaker speakBinder is null !!");
+		}else {
+			try {
+				speakBinder.sendTtsSpeaker(words);
+			} catch (RemoteException e) {
+				Log.e(TAG, "sendTtsSpeaker error e: "+e.getMessage(),e);
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public void registerTtsStatusListener(ISpeakTts tts){
+		if(speakBinder == null){
+			Log.d(TAG, "registerTtsStatusListener speakBinder is null !!");
+		}else {
+			try {
+				speakBinder.registerTtsStatusListener(tts);
+			} catch (RemoteException e) {
+				Log.e(TAG, "registerTtsStatusListener error e: "+e.getMessage(),e);
+				e.printStackTrace();
+			}
+		}
+	}
+
 	public void registerCmdForFM(float from, float to,ICmdFM radio){
 		synchronized (lock){
 			if(speakBinder == null){

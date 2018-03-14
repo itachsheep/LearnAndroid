@@ -5,6 +5,7 @@ import com.skyworthauto.speak.remote.IRemoteCmd;
 import com.skyworthauto.speak.remote.IRadioAM;
 import com.skyworthauto.speak.remote.IRadioFM;
 import com.skyworthauto.speak.remote.CmdInfo;
+import com.skyworthauto.speak.remote.ISpeakTts;
 interface ISpeak{
 	void registerGlobalCmd(IRemoteCmd remoteCmd,in IdInfo idInfo);
 	void registerCustomCmd(IRemoteCmd remoteCmd,in IdInfo idInfo);
@@ -12,4 +13,6 @@ interface ISpeak{
 	void registerCmdForFM(float from, float to,IRadioFM radioCmd);
 	void unRegisterGlobalCmd(IRemoteCmd remoteCmd,in IdInfo idInfo);
 	void unRegisterCustomCmd(IRemoteCmd remoteCmd,in IdInfo idInfo);
+	void sendTtsSpeaker(String words);
+	void registerTtsStatusListener(ISpeakTts tts);
 }

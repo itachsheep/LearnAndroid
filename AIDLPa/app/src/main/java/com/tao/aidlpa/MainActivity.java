@@ -13,6 +13,7 @@ import com.skyworthauto.speak.remote.ICmdAM;
 import com.skyworthauto.speak.remote.ICmdFM;
 import com.skyworthauto.speak.remote.IRemote;
 import com.skyworthauto.speak.remote.IService;
+import com.skyworthauto.speak.remote.ISpeakTts;
 import com.skyworthauto.speak.remote.RemoteSpeak;
 
 import java.util.ArrayList;
@@ -45,16 +46,41 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onServiceConnected() {
                 Log.d(TAG, "onServiceConnected  ");
-                //注册全局指令
+                /*//注册全局指令
                 RemoteSpeak.getInstance().registerGlobalCmd(MainActivity.this,mGlobalCmd);
                 //注册唤醒指令
                 RemoteSpeak.getInstance().registerCustomCmd(MainActivity.this,mCustomCmd);
                 //注册调幅指令am
                 RemoteSpeak.getInstance().registerCmdForAM(AM_FROM, AM_TO,mAM);
                 //注册调频指令fm
-                RemoteSpeak.getInstance().registerCmdForFM(FM_FROM,FM_TO,mFM);
+                RemoteSpeak.getInstance().registerCmdForFM(FM_FROM,FM_TO,mFM);*/
             }
         });
+    }
+
+
+    public void setTtsListener(View view){
+        //导航播报监听
+        RemoteSpeak.getInstance().bindService(this, new IService() {
+            @Override
+            public void onServiceConnected() {
+                RemoteSpeak.getInstance().registerTtsStatusListener(new ISpeakTts.Stub() {
+                    @Override
+                    public void onStartTts() throws RemoteException {
+                        Log.i(TAG,"onStartTts 开始播放" );
+                    }
+
+                    @Override
+                    public void onEndTts() throws RemoteException {
+                        Log.i(TAG,"onEndTts 结束播放" );
+                    }
+                });
+            }
+        });
+    }
+
+    public void sendTts(View view){
+        RemoteSpeak.getInstance().sendTtsSpeaker("开始导航，向右行驶500米");
     }
 
     public void unbind(View view){
