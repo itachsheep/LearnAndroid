@@ -36,6 +36,7 @@ public class OkhttpActivity extends AppCompatActivity implements View.OnClickLis
                 .build();
         request = new Request.Builder()
                 .url("http://publicobject.com/helloworld.txt").build();
+
     }
 
     @Override

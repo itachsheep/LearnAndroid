@@ -46,14 +46,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onServiceConnected() {
                 Log.d(TAG, "onServiceConnected  ");
-                /*//注册全局指令
+                //注册全局指令
                 RemoteSpeak.getInstance().registerGlobalCmd(MainActivity.this,mGlobalCmd);
                 //注册唤醒指令
                 RemoteSpeak.getInstance().registerCustomCmd(MainActivity.this,mCustomCmd);
                 //注册调幅指令am
                 RemoteSpeak.getInstance().registerCmdForAM(AM_FROM, AM_TO,mAM);
                 //注册调频指令fm
-                RemoteSpeak.getInstance().registerCmdForFM(FM_FROM,FM_TO,mFM);*/
+                RemoteSpeak.getInstance().registerCmdForFM(FM_FROM,FM_TO,mFM);
             }
         });
     }
@@ -135,8 +135,10 @@ public class MainActivity extends AppCompatActivity {
         public List<CmdInfo> getList() throws RemoteException {
             List<CmdInfo> list = new ArrayList<>();
             String key = "open_document";
-            String[] array = {"打开文档","打开我的文档"};
+//            String[] array = {"打开文档","打开我的文档"};
+            String[] array = {"打开前进辅助线"};
             CmdInfo info = new CmdInfo(key,array);
+
             list.add(info);
             return list;
         }

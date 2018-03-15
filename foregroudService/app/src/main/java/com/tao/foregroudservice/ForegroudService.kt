@@ -18,7 +18,8 @@ class ForegroudService : Service(){
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
 
         var builder = Notification.Builder(applicationContext)
-        builder.setLargeIcon(BitmapFactory.decodeResource(resources,R.drawable.ic_launcher_background))
+//        builder.setLargeIcon(BitmapFactory.decodeResource(resources,R.drawable.ic_launcher_background))
+        builder.setLargeIcon(BitmapFactory.decodeResource(resources,R.mipmap.home_icon_day_prs))
                 .setContentTitle("notification 标题")
                 .setSmallIcon(R.mipmap.home_icon_day_prs)
                 .setContentText("notification 内容")

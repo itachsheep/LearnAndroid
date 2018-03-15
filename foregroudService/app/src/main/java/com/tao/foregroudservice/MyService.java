@@ -2,6 +2,7 @@ package com.tao.foregroudservice;
 
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -25,15 +26,23 @@ public class MyService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.i(TAG,"onStartCommand show notification!!");
-        Notification.Builder builder = new Notification.Builder(getApplicationContext());
-        builder.setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.ic_launcher_background))
-                .setContentTitle("我的标题")
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentText("我的内容");
-        Notification notification = builder.build();
-
         NotificationManager notificationManager =
                 (NotificationManager)getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        Notification.Builder builder = new Notification.Builder(getApplicationContext());
+        Intent action = new Intent(this,TestActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this,0,
+                action,PendingIntent.FLAG_CANCEL_CURRENT);
+
+        builder.setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.ic_launcher_background))
+                .setContentTitle("我的标题")
+                .setSmallIcon(R.mipmap.home_icon_day_prs)
+                .setContentText("我的内容")
+//                .setAutoCancel(true)
+                .setContentIntent(pendingIntent)
+            ;
+        Notification notification = builder.build();
+        notification.flags |= Notification.FLAG_AUTO_CANCEL;
+
 
         notificationManager.notify(R.mipmap.home_icon_day_prs,notification);
 
