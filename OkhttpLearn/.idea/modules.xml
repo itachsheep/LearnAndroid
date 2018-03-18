@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/OkhttpLearn.iml" filepath="$PROJECT_DIR$/OkhttpLearn.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib/lib.iml" filepath="$PROJECT_DIR$/lib/lib.iml" />
-      <module fileurl="file://D:\as_workspace\LearnAndroid\OkhttpLearn\lib\lib.iml" filepath="D:\as_workspace\LearnAndroid\OkhttpLearn\lib\lib.iml" />
     </modules>
   </component>
 </project>
