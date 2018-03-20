@@ -1,7 +1,6 @@
 package com.tao.statushidedemo;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -9,11 +8,15 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 
-public class FullScreenActivity extends Activity implements View.OnClickListener {
+public class FullScreenActivity extends AppCompatActivity implements View.OnClickListener {
     private Button btFlagShow;
     private Button btFlagHide;
     private Button btSendShow;
@@ -61,6 +64,7 @@ public class FullScreenActivity extends Activity implements View.OnClickListener
         findViewById(R.id.bt_date_1).setOnClickListener(this);
         findViewById(R.id.bt_date_2).setOnClickListener(this);
         findViewById(R.id.bt_air_broadcasst).setOnClickListener(this);
+        findViewById(R.id.bt_show_window).setOnClickListener(this);
 
         btFlagShow.setOnClickListener(this);
         btFlagHide.setOnClickListener(this);
@@ -114,10 +118,12 @@ public class FullScreenActivity extends Activity implements View.OnClickListener
                 //btShow.setSystemUiVisibility(mHideFlags);
                 //状态栏显示处于低能显示状态(low profile模式)，状态栏上一些图标显示会被隐藏。
                 //mHideFlags = View.SYSTEM_UI_FLAG_LOW_PROFILE;
-                mHideFlags |= View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_FULLSCREEN;
-                mHideFlags |= View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
-                LogUtils.i(TAG,"onClick  mHideFlags = "+Integer.toHexString(mHideFlags));
+//                mHideFlags |= View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_FULLSCREEN;
+//                mHideFlags |= View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+//                LogUtils.i(TAG,"onClick  mHideFlags = "+Integer.toHexString(mHideFlags));
                 //mSystemUiHider.hide();
+
+                mHideFlags |=  View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION ;
                 btFlagShow.setSystemUiVisibility(mHideFlags);
 
             }
@@ -189,8 +195,36 @@ public class FullScreenActivity extends Activity implements View.OnClickListener
                 sendBroadcast(intent);
             }
                 break;
+
+            case R.id.bt_show_window:
+            {
+//                Intent intent = new Intent("com.test.show.window");
+//                sendBroadcast(intent);
+//                showWindow();
+                MyDialog dialog = new MyDialog(getApplicationContext(),R.style.CustomDialog);
+                dialog.show();
+            }
+                break;
         }
     }
+
+    private void showDialog(){
+
+    }
+
+    private void showWindow() {
+        WindowManager windowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+        View view = LayoutInflater.from(this).inflate(R.layout.view_window,null);
+        WindowManager.LayoutParams mParams = new WindowManager.LayoutParams();
+        view.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+//        mParams.flags |= WindowManager.LayoutParams.TYPE_DRAG ;
+        mParams.gravity |= Gravity.TOP;
+        mParams.height = WindowManager.LayoutParams.MATCH_PARENT;
+        mParams.width = 500;
+        windowManager.addView(view,mParams);
+
+    }
+
     private final String AIR_ACTION = "com.systemui.air.action";
     @SuppressLint("HandlerLeak")
     private Handler mHandler = new Handler(){

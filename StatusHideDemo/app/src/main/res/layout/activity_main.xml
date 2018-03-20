@@ -118,6 +118,15 @@
             android:textAllCaps="false"
             android:text="空调变化"
             />
+
+        <Button
+            android:layout_marginLeft="20dp"
+            android:id="@+id/bt_show_window"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="显示window"
+            />
     </LinearLayout>
 
 </RelativeLayout>

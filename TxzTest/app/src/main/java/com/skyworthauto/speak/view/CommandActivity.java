@@ -17,7 +17,8 @@ import com.txznet.sdk.TXZResourceManager;
 
 public class CommandActivity extends AppCompatActivity {
     private String tag = CommandActivity.class.getSimpleName();
-    String[] arrOpenAirconCmd = new String[] { "打开空调", "开启空调" };
+//    String[] arrOpenAirconCmd = new String[] { "打开空调", "开启空调" };
+    String[] arrOpenAirconCmd = new String[] { "播放本地音乐" };
     String[] arrCloseAirconCmd = new String[] { "关闭空调", "关掉空调" };
 
     String[] openScreenCmd = new String[]{"打开屏幕", "开启屏幕"};

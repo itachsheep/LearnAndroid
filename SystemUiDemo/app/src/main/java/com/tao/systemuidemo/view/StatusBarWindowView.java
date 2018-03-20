@@ -119,7 +119,7 @@ public class StatusBarWindowView extends FrameLayout
 //            pt.setColor(0x80FFFF00);
 //            pt.setStrokeWidth(12.0f);
 //            pt.setStyle(Paint.Style.STROKE);
-//            canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), pt);
+//            canvas.drawRect(tmp_0, tmp_0, canvas.getWidth(), canvas.getHeight(), pt);
 //        }
     }
 

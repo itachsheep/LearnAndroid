@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 
 import okhttp3.Cache;
+import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -21,6 +22,7 @@ public class OkhttpActivity extends AppCompatActivity implements View.OnClickLis
     Request request;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        View decorView = getWindow().getDecorView();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -32,7 +34,7 @@ public class OkhttpActivity extends AppCompatActivity implements View.OnClickLis
         cache = new Cache(cacheFile,cacheSize);
 
         client = new OkHttpClient.Builder()
-                //.cache(cache)
+                .cache(cache)
                 .build();
         request = new Request.Builder()
                 .url("http://publicobject.com/helloworld.txt").build();
@@ -60,7 +62,11 @@ public class OkhttpActivity extends AppCompatActivity implements View.OnClickLis
             public void run() {
                 try {
 
-                    Response response1 = client.newCall(request).execute();
+
+
+
+
+                    /*Response response1 = client.newCall(request).execute();
                     Log.i(TAG," response1 = "+response1);
                     Log.i(TAG," cache response1 = "+response1.cacheResponse());
                     Log.i(TAG," network response1 = "+response1.networkResponse());
@@ -70,7 +76,11 @@ public class OkhttpActivity extends AppCompatActivity implements View.OnClickLis
                     Log.i(TAG," response2 = "+response2);
                     Log.i(TAG," cache response2 = "+response2.cacheResponse());
                     Log.i(TAG," network response2 = "+response2.networkResponse());
-                    response2.body().close();
+                    response2.body().close();*/
+
+                    Call call = client.newCall(request);
+                    Response response = call.execute();
+                    Log.i(TAG,"call = "+call+", response ="+response);
 
                 } catch (IOException e) {
                     e.printStackTrace();
