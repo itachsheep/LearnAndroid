@@ -67,12 +67,13 @@ public class MainActivity extends AppCompatActivity {
                 RemoteSpeak.getInstance().registerTtsStatusListener(new ISpeakTts.Stub() {
                     @Override
                     public void onStartTts() throws RemoteException {
-                        Log.i(TAG,"onStartTts 开始播放" );
+                       // Log.i(TAG,"onStartTts 开始播放" );
+
                     }
 
                     @Override
                     public void onEndTts() throws RemoteException {
-                        Log.i(TAG,"onEndTts 结束播放" );
+                       // Log.i(TAG,"onEndTts 结束播放" );
                     }
                 });
             }

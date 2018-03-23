@@ -8,6 +8,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
@@ -46,14 +47,15 @@ public class FullScreenActivity extends AppCompatActivity implements View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
 
         /*int uiFlags = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                 | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_FULLSCREEN //hide statusBar
                 | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION; //hide navigationBar
         getWindow().getDecorView().setSystemUiVisibility(uiFlags);*/
-
-        btFlagShow = findViewById(R.id.bt_flag_show);
+        NotificationCompat.Builder v = new  NotificationCompat.Builder(this);
+                btFlagShow = findViewById(R.id.bt_flag_show);
         btFlagHide = findViewById(R.id.bt_flag_hide);
         btSendShow = findViewById(R.id.bt_send_show);
         btSendHide = findViewById(R.id.bt_send_hide);

@@ -3,7 +3,7 @@
     <!-- Base application theme. -->
     <!-- Theme.AppCompat.Light.DarkActionBar  -->
     <!--@android:style/Theme.Light.NoTitleBar.Fullscreen-->
-    <style name="AppTheme" parent="Theme.AppCompat">
+    <style name="AppTheme" parent="@android:style/Theme.Light.NoTitleBar.Fullscreen">
         <!-- Customize your theme here. -->
        <!-- <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
