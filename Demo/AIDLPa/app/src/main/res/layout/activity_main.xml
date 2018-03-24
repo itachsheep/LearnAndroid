@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.tao.aidlpa.MainActivity">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/bt_bind"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:onClick="bind"
+            android:background="@drawable/button_common"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="绑定服务,注册全局指令和唤醒指令"/>
+
+        <Button
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:onClick="unbind"
+            android:background="@drawable/button_common"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="解绑服务，注销指令"/>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:onClick="setTtsListener"
+            android:background="@drawable/button_common"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="注册播放监听"/>
+
+        <Button
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:onClick="sendTts"
+            android:background="@drawable/button_common"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发送导航播放"/>
+    </LinearLayout>
+
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:visibility="gone">
+    <Button
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:onClick="regGlobalCmd"
+        android:background="@drawable/button_common"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="注册全局指令"/>
+
+    <Button
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:onClick="unRegGlobalCmd"
+        android:background="@drawable/button_common"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="注销全局指令"/>
+
+    <Button
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:onClick="regCustomCmd"
+        android:background="@drawable/button_common"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="注册唤醒指令"/>
+
+    <Button
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:onClick="unRegCustomCmd"
+        android:background="@drawable/button_common"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="注销唤醒指令"/>
+</LinearLayout>
+
+
+</LinearLayout>
