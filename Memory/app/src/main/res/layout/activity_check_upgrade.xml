@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="60dp"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/check_bt_start"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="启动服务"
+            android:textSize="35sp"/>
+
+        <Button
+            android:layout_marginLeft="15dp"
+            android:id="@+id/check_bt_wait"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="线程等待"
+            android:textSize="35sp"/>
+
+        <Button
+            android:layout_marginLeft="15dp"
+            android:id="@+id/check_bt_notify"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="线程唤醒"
+            android:textSize="35sp"/>
+        <Button
+            android:layout_marginLeft="15dp"
+            android:id="@+id/check_bt_sleep"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="线程睡眠"
+            android:textSize="35sp"/>
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/check_pb"
+        android:layout_marginTop="30dp"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100"/>
+    <!--android:max="171318727"-->
+</LinearLayout>
