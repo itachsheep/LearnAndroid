@@ -90,7 +90,7 @@ final class RealCall implements Call {
     retryAndFollowUpInterceptor.setCallStackTrace(callStackTrace);
   }
 
-  @Override public void enqueue(Callback responseCallback) {
+  @Override public Response enqueue(Callback responseCallback) {
     synchronized (this) {
       if (executed) throw new IllegalStateException("Already Executed");
       executed = true;
@@ -98,6 +98,7 @@ final class RealCall implements Call {
     captureCallStackTrace();
     eventListener.callStart(this);
     client.dispatcher().enqueue(new AsyncCall(responseCallback));
+    return null;
   }
 
   @Override public void cancel() {
@@ -183,14 +184,21 @@ final class RealCall implements Call {
   Response getResponseWithInterceptorChain() throws IOException {
     // Build a full stack of interceptors.
     List<Interceptor> interceptors = new ArrayList<>();
+    //添加开发者应用层自定义的Interceptor
     interceptors.addAll(client.interceptors());
+    //这个Interceptor是处理请求失败的重试，重定向
     interceptors.add(retryAndFollowUpInterceptor);
+    //这个Interceptor工作是添加一些请求的头部或其他信息
+    //并对返回的Response做一些友好的处理（有一些信息你可能并不需要）
     interceptors.add(new BridgeInterceptor(client.cookieJar()));
+    //这个Interceptor的职责是判断缓存是否存在，读取缓存，更新缓存等等
     interceptors.add(new CacheInterceptor(client.internalCache()));
+    //这个Interceptor的职责是建立客户端和服务器的连接
     interceptors.add(new ConnectInterceptor(client));
     if (!forWebSocket) {
       interceptors.addAll(client.networkInterceptors());
     }
+    //通过CallServerInterceptor方法获取到最终的网络数据
     interceptors.add(new CallServerInterceptor(forWebSocket));
 
     Interceptor.Chain chain = new RealInterceptorChain(interceptors, null, null, null, 0,

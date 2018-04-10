@@ -18,6 +18,7 @@ package okhttp3.internal.http;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
 import okhttp3.Call;
 import okhttp3.Connection;
 import okhttp3.EventListener;
@@ -124,7 +125,12 @@ public final class RealInterceptorChain implements Interceptor.Chain {
   public Response proceed(Request request, StreamAllocation streamAllocation, HttpCodec httpCodec,
       RealConnection connection) throws IOException {
     if (index >= interceptors.size()) throw new AssertionError();
-
+    StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+    /*Log.i("OkHttpClient","---------------------RealInterceptorChain-------------------------------");
+    for(int i  = 0; i < stackTrace.length; i++){
+      Log.i("OkHttpClient",stackTrace[i].getClassName()+"."+
+              stackTrace[i].getMethodName()+": "+stackTrace[i].getLineNumber()+" ");
+    }*/
     calls++;
 
     // If we already have a stream, confirm that the incoming request will use it.
@@ -144,6 +150,8 @@ public final class RealInterceptorChain implements Interceptor.Chain {
         connection, index + 1, request, call, eventListener, connectTimeout, readTimeout,
         writeTimeout);
     Interceptor interceptor = interceptors.get(index);
+//    Log.i("OkHttpClient","RealInterceptorChain proceed interceptor = "+interceptor
+//    +", interceptors size = "+interceptors.size());
     Response response = interceptor.intercept(next);
 
     // Confirm that the next interceptor made its required call to chain.proceed().

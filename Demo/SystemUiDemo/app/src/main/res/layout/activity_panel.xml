@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#aa000000"
+    android:background="@android:color/holo_blue_light"
     android:layout_margin="50dp"
     tools:context="com.tao.systemuidemo.ClockActivity">
 

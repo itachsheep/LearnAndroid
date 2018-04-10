@@ -15,6 +15,8 @@
  */
 package okhttp3;
 
+import android.util.Log;
+
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,7 +27,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+
 import javax.annotation.Nullable;
+
 import okhttp3.RealCall.AsyncCall;
 import okhttp3.internal.Util;
 
@@ -61,6 +65,12 @@ public final class Dispatcher {
   }
 
   public synchronized ExecutorService executorService() {
+    StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+    Log.i("OkHttpClient","---------------------Dispatcher-------------------------------");
+    for(int i  = 0; i < stackTrace.length; i++){
+      Log.i("OkHttpClient",stackTrace[i].getClassName()+"."+
+              stackTrace[i].getMethodName()+": "+stackTrace[i].getLineNumber()+" ");
+    }
     if (executorService == null) {
       executorService = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60, TimeUnit.SECONDS,
           new SynchronousQueue<Runnable>(), Util.threadFactory("OkHttp Dispatcher", false));

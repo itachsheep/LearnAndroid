@@ -16,7 +16,7 @@ import okhttp3.Response;
 
 public class OkhttpActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private String TAG = OkhttpActivity.class.getSimpleName();
+    private String TAG = "OkHttpClient";
     OkHttpClient client;
     Cache cache;
     Request request;
@@ -34,7 +34,7 @@ public class OkhttpActivity extends AppCompatActivity implements View.OnClickLis
         cache = new Cache(cacheFile,cacheSize);
 
         client = new OkHttpClient.Builder()
-                .cache(cache)
+//                .cache(cache)
                 .build();
         request = new Request.Builder()
                 .url("http://publicobject.com/helloworld.txt").build();
@@ -61,26 +61,28 @@ public class OkhttpActivity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void run() {
                 try {
+                   /* Response response1 = client.newCall(request).enqueue(new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
 
+                        }
 
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
 
+                        }
+                    });*/
 
-
-                    /*Response response1 = client.newCall(request).execute();
-                    Log.i(TAG," response1 = "+response1);
-                    Log.i(TAG," cache response1 = "+response1.cacheResponse());
-                    Log.i(TAG," network response1 = "+response1.networkResponse());
-                    response1.body().close();
-
-                    Response response2 = client.newCall(request).execute();
-                    Log.i(TAG," response2 = "+response2);
-                    Log.i(TAG," cache response2 = "+response2.cacheResponse());
-                    Log.i(TAG," network response2 = "+response2.networkResponse());
-                    response2.body().close();*/
-
+//                    Response response2 = client.newCall(request).execute();
+//                    Log.i(TAG," response2 = "+response2);
+//                    Log.i(TAG," cache response2 = "+response2.cacheResponse());
+//                    Log.i(TAG," network response2 = "+response2.networkResponse());
+//                    response2.body().close();
+                    Log.i(TAG,"send request for onclick!!!!");
                     Call call = client.newCall(request);
                     Response response = call.execute();
                     Log.i(TAG,"call = "+call+", response ="+response);
+                    //Log.i(TAG,"call = "+call+", response ="+response.body().string());
 
                 } catch (IOException e) {
                     e.printStackTrace();

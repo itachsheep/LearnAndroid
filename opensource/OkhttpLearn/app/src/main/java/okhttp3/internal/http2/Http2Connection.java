@@ -15,6 +15,8 @@
  */
 package okhttp3.internal.http2;
 
+import android.util.Log;
+
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.InterruptedIOException;
@@ -33,6 +35,7 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+
 import okhttp3.Protocol;
 import okhttp3.internal.NamedRunnable;
 import okhttp3.internal.Util;
@@ -160,7 +163,12 @@ public final class Http2Connection implements Closeable {
       writerExecutor.scheduleAtFixedRate(new PingRunnable(false, 0, 0),
           builder.pingIntervalMillis, builder.pingIntervalMillis, MILLISECONDS);
     }
-
+    StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+    Log.i("OkHttpClient","---------------------Dispatcher-------------------------------");
+    for(int i  = 0; i < stackTrace.length; i++){
+      Log.i("OkHttpClient",stackTrace[i].getClassName()+"."+
+              stackTrace[i].getMethodName()+": "+stackTrace[i].getLineNumber()+" ");
+    }
     // Like newSingleThreadExecutor, except lazy creates the thread.
     pushExecutor = new ThreadPoolExecutor(0, 1, 60, TimeUnit.SECONDS,
         new LinkedBlockingQueue<Runnable>(),

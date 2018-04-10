@@ -16,6 +16,12 @@ import com.tao.systemuidemo.R;
 
 public class TemperatureView extends LinearLayout {
 
+
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+    }
+
     private int[] ivRes = {
             R.drawable.tmp_0,
             R.drawable.tmp_1,

@@ -15,6 +15,8 @@
  */
 package okhttp3;
 
+import android.util.Log;
+
 import org.jetbrains.annotations.Nullable;
 
 import java.net.MalformedURLException;
@@ -31,6 +33,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
+
 import javax.net.SocketFactory;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
@@ -39,6 +42,7 @@ import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
+
 import okhttp3.internal.Internal;
 import okhttp3.internal.Util;
 import okhttp3.internal.cache.InternalCache;
@@ -439,6 +443,12 @@ public class OkHttpClient implements Cloneable, Call.Factory, WebSocket.Factory 
    * Uses {@code request} to connect a new web socket.
    */
   @Override public WebSocket newWebSocket(Request request, WebSocketListener listener) {
+    StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+    Log.i("OkHttpClient","----------------------------------------------------");
+    for(int i  = 0; i < stackTrace.length; i++){
+      Log.i("OkHttpClient",stackTrace[i].getClassName()+"."+
+              stackTrace[i].getMethodName()+": "+stackTrace[i].getLineNumber()+" ");
+    }
     RealWebSocket webSocket = new RealWebSocket(request, listener, new Random(), pingInterval);
     webSocket.connect(this);
     return webSocket;

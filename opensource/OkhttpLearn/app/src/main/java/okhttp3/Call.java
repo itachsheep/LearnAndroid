@@ -67,7 +67,7 @@ public interface Call extends Cloneable {
    *
    * @throws IllegalStateException when the call has already been executed.
    */
-  void enqueue(Callback responseCallback);
+  Response enqueue(Callback responseCallback);
 
   /** Cancels the request, if possible. Requests that are already complete cannot be canceled. */
   void cancel();

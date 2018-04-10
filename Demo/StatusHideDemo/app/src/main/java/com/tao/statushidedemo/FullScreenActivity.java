@@ -1,23 +1,22 @@
 package com.tao.statushidedemo;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.NotificationCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
+import android.view.KeyEvent;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 
-public class FullScreenActivity extends AppCompatActivity implements View.OnClickListener {
+public class FullScreenActivity extends Activity implements View.OnClickListener {
     private Button btFlagShow;
     private Button btFlagHide;
     private Button btSendShow;
@@ -61,6 +60,17 @@ public class FullScreenActivity extends AppCompatActivity implements View.OnClic
         btSendHide = findViewById(R.id.bt_send_hide);
         btFrameworkHide = findViewById(R.id.bt_framework_hide);
         btFrameworkShow = findViewById(R.id.bt_framework_show);
+
+
+        btFlagShow.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                AudioManager audioManager = (AudioManager) FullScreenActivity.this.getSystemService(Context.AUDIO_SERVICE);
+                audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC,AudioManager.ADJUST_SAME,
+                        AudioManager.FLAG_SHOW_UI);
+                return false;
+            }
+        });
 
         findViewById(R.id.bt_date_0).setOnClickListener(this);
         findViewById(R.id.bt_date_1).setOnClickListener(this);
@@ -215,15 +225,15 @@ public class FullScreenActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void showWindow() {
-        WindowManager windowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
-        View view = LayoutInflater.from(this).inflate(R.layout.view_window,null);
-        WindowManager.LayoutParams mParams = new WindowManager.LayoutParams();
-        view.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+//        WindowManager windowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+//        View view = LayoutInflater.from(this).inflate(R.layout.view_window,null);
+//        WindowManager.LayoutParams mParams = new WindowManager.LayoutParams();
+//        view.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 //        mParams.flags |= WindowManager.LayoutParams.TYPE_DRAG ;
-        mParams.gravity |= Gravity.TOP;
-        mParams.height = WindowManager.LayoutParams.MATCH_PARENT;
-        mParams.width = 500;
-        windowManager.addView(view,mParams);
+//        mParams.gravity |= Gravity.TOP;
+//        mParams.height = WindowManager.LayoutParams.MATCH_PARENT;
+//        mParams.width = 500;
+//        windowManager.addView(view,mParams);
 
     }
 
