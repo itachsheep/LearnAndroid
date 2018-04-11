@@ -26,7 +26,7 @@ import fragment.MusicFragment;
 import fragment.RadioFragment;
 import fragment.WheatherFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class LunboActivity extends AppCompatActivity {
     ViewPager viewPager;
     List<BaseFragment> list;
     MyAdapter adapter;
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean isMusic = false;
      //当前页面位置
     private int mCurrentPositon;
-    private String TAG = MainActivity.class.getSimpleName();
+    private String TAG = LunboActivity.class.getSimpleName();
     private static final int WHAT_AUTO_PLAY = 1000;
     //自动播放时间
     private int mAutoPalyTime = 2000;
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"11111",Toast.LENGTH_SHORT).show();
+                Toast.makeText(LunboActivity.this,"11111",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             Field field = ViewPager.class.getDeclaredField("mScroller");
             field.setAccessible(true);
-            Scroller scroller = new Scroller(MainActivity.this, new LinearInterpolator()) {
+            Scroller scroller = new Scroller(LunboActivity.this, new LinearInterpolator()) {
                 @Override
                 public void startScroll(int startX, int startY, int dx, int dy, int duration) {
                     super.startScroll(startX, startY, dx, dy, SCROLL_DURATION);

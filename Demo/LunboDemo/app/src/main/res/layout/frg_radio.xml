@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context="com.tao.lunbodemo.MainActivity">
+    tools:context="com.tao.lunbodemo.LunboActivity">
 
     <TextView
         android:background="@color/colorAccent"
