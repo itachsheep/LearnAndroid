@@ -15,9 +15,12 @@
  */
 package okhttp3;
 
+import com.tao.okhttplearn.LogUtil;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 import okhttp3.internal.NamedRunnable;
 import okhttp3.internal.cache.CacheInterceptor;
 import okhttp3.internal.connection.ConnectInterceptor;
@@ -31,6 +34,7 @@ import okhttp3.internal.platform.Platform;
 import static okhttp3.internal.platform.Platform.INFO;
 
 final class RealCall implements Call {
+  private String TAG = "RealCall";
   final OkHttpClient client;
   final RetryAndFollowUpInterceptor retryAndFollowUpInterceptor;
 
@@ -66,6 +70,7 @@ final class RealCall implements Call {
   }
 
   @Override public Response execute() throws IOException {
+    //首先它会做一个同步的检查，判断这个请求是否已经被执行了，因为每一个请求只能被执行一次
     synchronized (this) {
       if (executed) throw new IllegalStateException("Already Executed");
       executed = true;
@@ -74,6 +79,9 @@ final class RealCall implements Call {
     eventListener.callStart(this);
     try {
       client.dispatcher().executed(this);
+      //getResponseWithInterceptorChian（）这个方法可以说把okhttp最精髓的地方体现出来了，
+      // 也就是----拦截器，最后，它会返回请求到的数据，然后把这次的请求关闭；
+      //真正做网络请求的，就是getResponseWithInterceptorChian（）这个方法
       Response result = getResponseWithInterceptorChain();
       if (result == null) throw new IOException("Canceled");
       return result;
@@ -81,6 +89,7 @@ final class RealCall implements Call {
       eventListener.callFailed(this, e);
       throw e;
     } finally {
+      LogUtil.i(TAG,"execute finally !");
       client.dispatcher().finished(this);
     }
   }
@@ -195,6 +204,7 @@ final class RealCall implements Call {
     interceptors.add(new CacheInterceptor(client.internalCache()));
     //这个Interceptor的职责是建立客户端和服务器的连接
     interceptors.add(new ConnectInterceptor(client));
+    LogUtil.i(TAG,"getResponseWithInterceptorChain forWebSocket = "+forWebSocket);
     if (!forWebSocket) {
       interceptors.addAll(client.networkInterceptors());
     }

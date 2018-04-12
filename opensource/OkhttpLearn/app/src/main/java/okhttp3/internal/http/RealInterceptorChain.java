@@ -15,6 +15,8 @@
  */
 package okhttp3.internal.http;
 
+import com.tao.okhttplearn.LogUtil;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -35,6 +37,7 @@ import static okhttp3.internal.Util.checkDuration;
  * interceptors, the OkHttp core, all network interceptors, and finally the network caller.
  */
 public final class RealInterceptorChain implements Interceptor.Chain {
+  private String TAG = RealInterceptorChain.class.getSimpleName();
   private final List<Interceptor> interceptors;
   private final StreamAllocation streamAllocation;
   private final HttpCodec httpCodec;
@@ -125,12 +128,14 @@ public final class RealInterceptorChain implements Interceptor.Chain {
   public Response proceed(Request request, StreamAllocation streamAllocation, HttpCodec httpCodec,
       RealConnection connection) throws IOException {
     if (index >= interceptors.size()) throw new AssertionError();
-    StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-    /*Log.i("OkHttpClient","---------------------RealInterceptorChain-------------------------------");
+    /*StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+    Log.i("OkHttpClient","---------------------RealInterceptorChain-------------------------------");
     for(int i  = 0; i < stackTrace.length; i++){
       Log.i("OkHttpClient",stackTrace[i].getClassName()+"."+
               stackTrace[i].getMethodName()+": "+stackTrace[i].getLineNumber()+" ");
     }*/
+    LogUtil.i(TAG,"proceed calls = "+calls+", index = "+index
+    +", interceptors size = "+interceptors.size());
     calls++;
 
     // If we already have a stream, confirm that the incoming request will use it.
@@ -150,9 +155,9 @@ public final class RealInterceptorChain implements Interceptor.Chain {
         connection, index + 1, request, call, eventListener, connectTimeout, readTimeout,
         writeTimeout);
     Interceptor interceptor = interceptors.get(index);
-//    Log.i("OkHttpClient","RealInterceptorChain proceed interceptor = "+interceptor
-//    +", interceptors size = "+interceptors.size());
+    LogUtil.i(TAG,"proceed interceptor = "+interceptor);
     Response response = interceptor.intercept(next);
+    LogUtil.i(TAG,"proceed response = "+(response.body() == null ? response.body() : response.body()));
 
     // Confirm that the next interceptor made its required call to chain.proceed().
     if (httpCodec != null && index + 1 < interceptors.size() && next.calls != 1) {

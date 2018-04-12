@@ -10,11 +10,19 @@
     tools:context="com.tao.okhttplearn.OkhttpActivity">
 
     <Button
-        android:id="@+id/bt_send_req"
+        android:onClick="syncRequest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="发送request"
+        android:text="同步request"
         android:textAllCaps="false"
          />
+
+    <Button
+        android:onClick="asynRequest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="异步request"
+        android:textAllCaps="false"
+        />
 
 </LinearLayout>

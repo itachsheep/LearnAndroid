@@ -32,7 +32,7 @@ import okio.Sink;
 /** This is the last interceptor in the chain. It makes a network call to the server. */
 public final class CallServerInterceptor implements Interceptor {
   private final boolean forWebSocket;
-
+  private String TAG = CallServerInterceptor.class.getSimpleName();
   public CallServerInterceptor(boolean forWebSocket) {
     this.forWebSocket = forWebSocket;
   }

@@ -15,7 +15,7 @@
  */
 package okhttp3.internal.http;
 
-import android.util.Log;
+import com.tao.okhttplearn.LogUtil;
 
 import java.io.IOException;
 import java.io.InterruptedIOException;
@@ -67,7 +67,7 @@ public final class RetryAndFollowUpInterceptor implements Interceptor {
    * curl, and wget follow 20; Safari follows 16; and HTTP/1.0 recommends 5.
    */
   private static final int MAX_FOLLOW_UPS = 20;
-
+  private String TAG = RetryAndFollowUpInterceptor.class.getSimpleName();
   private final OkHttpClient client;
   private final boolean forWebSocket;
   private volatile StreamAllocation streamAllocation;
@@ -107,7 +107,7 @@ public final class RetryAndFollowUpInterceptor implements Interceptor {
   }
 
   @Override public Response intercept(Chain chain) throws IOException {
-    Log.i("OkHttpClient","RetryAndFollowUpInterceptor intercept canceled = "+canceled);
+    LogUtil.i(TAG,"intercept ");
     Request request = chain.request();
     RealInterceptorChain realChain = (RealInterceptorChain) chain;
     Call call = realChain.call();
@@ -120,7 +120,7 @@ public final class RetryAndFollowUpInterceptor implements Interceptor {
     int followUpCount = 0;
     Response priorResponse = null;
     while (true) {
-      Log.i("OkHttpClient"," RetryAndFollowUpInterceptor while true canceled =  "+canceled);
+
       if (canceled) {
         streamAllocation.release();
         throw new IOException("Canceled");
@@ -137,14 +137,14 @@ public final class RetryAndFollowUpInterceptor implements Interceptor {
           throw e.getLastConnectException();
         }
         releaseConnection = false;
-        Log.i("OkHttpClient"," RetryAndFollowUpInterceptor RouteException  ");
+
         continue;
       } catch (IOException e) {
         // An attempt to communicate with a server failed. The request may have been sent.
         boolean requestSendStarted = !(e instanceof ConnectionShutdownException);
         if (!recover(e, streamAllocation, requestSendStarted, request)) throw e;
         releaseConnection = false;
-        Log.i("OkHttpClient"," RetryAndFollowUpInterceptor IOException  ");
+
         continue;
       } finally {
         // We're throwing an unchecked exception. Release any resources.
@@ -152,7 +152,7 @@ public final class RetryAndFollowUpInterceptor implements Interceptor {
           streamAllocation.streamFailed(null);
           streamAllocation.release();
         }
-        Log.i("OkHttpClient"," RetryAndFollowUpInterceptor finally  ");
+
       }
 
       // Attach the prior response if it exists. Such responses never have a body.
@@ -165,12 +165,12 @@ public final class RetryAndFollowUpInterceptor implements Interceptor {
       }
 
       Request followUp = followUpRequest(response, streamAllocation.route());
-      Log.i("OkHttpClient"," RetryAndFollowUpInterceptor followUp "+followUp+", forWebSocket = "+forWebSocket);
+
       if (followUp == null) {
         if (!forWebSocket) {
           streamAllocation.release();
         }
-        Log.i("OkHttpClient"," RetryAndFollowUpInterceptor return !!!  ");
+
         return response;
       }
 
@@ -198,7 +198,7 @@ public final class RetryAndFollowUpInterceptor implements Interceptor {
 
       request = followUp;
       priorResponse = response;
-      Log.i("OkHttpClient"," RetryAndFollowUpInterceptor while again !!  ");
+
     }
   }
 

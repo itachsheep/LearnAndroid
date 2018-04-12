@@ -15,7 +15,7 @@
  */
 package okhttp3;
 
-import android.util.Log;
+import com.tao.okhttplearn.LogUtil;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -44,7 +44,7 @@ public final class Dispatcher {
   private int maxRequests = 64;
   private int maxRequestsPerHost = 5;
   private @Nullable Runnable idleCallback;
-
+  private String TAG = Dispatcher.class.getSimpleName();
   /** Executes calls. Created lazily. */
   private @Nullable ExecutorService executorService;
 
@@ -65,12 +65,6 @@ public final class Dispatcher {
   }
 
   public synchronized ExecutorService executorService() {
-    StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-    Log.i("OkHttpClient","---------------------Dispatcher-------------------------------");
-    for(int i  = 0; i < stackTrace.length; i++){
-      Log.i("OkHttpClient",stackTrace[i].getClassName()+"."+
-              stackTrace[i].getMethodName()+": "+stackTrace[i].getLineNumber()+" ");
-    }
     if (executorService == null) {
       executorService = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60, TimeUnit.SECONDS,
           new SynchronousQueue<Runnable>(), Util.threadFactory("OkHttp Dispatcher", false));
@@ -164,6 +158,7 @@ public final class Dispatcher {
   }
 
   private void promoteCalls() {
+    LogUtil.i(TAG,"promoteCalls");
     if (runningAsyncCalls.size() >= maxRequests) return; // Already running max capacity.
     if (readyAsyncCalls.isEmpty()) return; // No ready calls to promote.
 
@@ -173,6 +168,7 @@ public final class Dispatcher {
       if (runningCallsForHost(call) < maxRequestsPerHost) {
         i.remove();
         runningAsyncCalls.add(call);
+        LogUtil.i(TAG,"promoteCalls call = "+call);
         executorService().execute(call);
       }
 
