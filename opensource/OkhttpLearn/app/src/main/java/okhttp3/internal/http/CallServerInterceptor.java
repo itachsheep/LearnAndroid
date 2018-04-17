@@ -37,6 +37,10 @@ public final class CallServerInterceptor implements Interceptor {
     this.forWebSocket = forWebSocket;
   }
 
+  /**
+   * 这个方法内部其实就是取得请求request的头部和body，
+   * 然后取得response的头部和body，大致就是这么一个流程，但是在这里，我们注意一个类，
+   */
   @Override public Response intercept(Chain chain) throws IOException {
     RealInterceptorChain realChain = (RealInterceptorChain) chain;
     HttpCodec httpCodec = realChain.httpStream();

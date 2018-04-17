@@ -13,7 +13,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.Scroller;
-import android.widget.Toast;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -25,9 +24,10 @@ import fragment.LogoFragment;
 import fragment.MusicFragment;
 import fragment.RadioFragment;
 import fragment.WheatherFragment;
+import view.MyViewPager;
 
 public class LunboActivity extends AppCompatActivity {
-    ViewPager viewPager;
+    MyViewPager  viewPager;
     List<BaseFragment> list;
     MyAdapter adapter;
 
@@ -48,7 +48,7 @@ public class LunboActivity extends AppCompatActivity {
     //自动播放时间
     private int mAutoPalyTime = 2000;
     //页面切换时间
-    private static final int SCROLL_DURATION = 500;
+    private static final int SCROLL_DURATION = 1000;
     @SuppressLint("HandlerLeak")
     private Handler autoPlayHandler = new Handler(){
         @Override
@@ -59,33 +59,33 @@ public class LunboActivity extends AppCompatActivity {
         }
     };
 
+    /*@Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        viewPager.onInterceptTouchEvent(ev);
+        viewPager.onTouchEvent(ev);
+        return true;
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         viewPager = findViewById(R.id.main_vp);
-        viewPager.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(LunboActivity.this,"11111",Toast.LENGTH_SHORT).show();
-            }
-        });
 
         list = new ArrayList<>();
         wheatherFragment0 = new WheatherFragment();
         logoFragment = new LogoFragment();
         radioFragment = new RadioFragment();
-        musicFragment = new MusicFragment();
-        dateFragment = new DateFragment();
+//        musicFragment = new MusicFragment();
+//        dateFragment = new DateFragment();
         wheatherFragment5 = new WheatherFragment();
         logoFragment6 = new LogoFragment();
 
         list.add(wheatherFragment0);
         list.add(logoFragment);
         list.add(radioFragment);
-        list.add(musicFragment);
-        list.add(dateFragment);
+//        list.add(musicFragment);
+//        list.add(dateFragment);
         list.add(wheatherFragment5);
         list.add(logoFragment6);
 
@@ -99,71 +99,9 @@ public class LunboActivity extends AppCompatActivity {
         setDefaultDuration();
         //设置切换时的动画效果
         //setDefaultAnmation();
+
+        autoPlayHandler.sendEmptyMessageDelayed(WHAT_AUTO_PLAY, mAutoPalyTime);
     }
-
-    private void setDefaultAnmation(){
-        viewPager.setPageTransformer(true, new ViewPager.PageTransformer() {
-                    float MIN_SCALE = 0.85f;
-                    float MIN_ALPHA = 0.5f;
-
-                    @Override
-                    public void transformPage(View view, float position) {
-                        int pageWidth = view.getWidth();
-                        int pageHeight = view.getHeight();
-
-                        if (position < -1) { // [-Infinity,-1)
-                            // This page is way off-screen to the left.
-                            view.setAlpha(0);
-                        } else if (position <= 1) { // [-1,1]
-                            // Modify the default slide transition to
-                            // shrink the page as well
-                            float scaleFactor = Math.max(MIN_SCALE, 1 - Math.abs(position));
-                            float vertMargin = pageHeight * (1 - scaleFactor) / 2;
-                            float horzMargin = pageWidth * (1 - scaleFactor) / 2;
-                            if (position < 0) {
-                                view.setTranslationX(horzMargin - vertMargin / 2);
-                            } else {
-                                view.setTranslationX(-horzMargin + vertMargin / 2);
-                            }
-                            // Scale the page down (between MIN_SCALE and 1)
-                            view.setScaleX(scaleFactor);
-                            view.setScaleY(scaleFactor);
-                            // Fade the page relative to its size.
-                            view.setAlpha(MIN_ALPHA + (scaleFactor - MIN_SCALE)
-                                    / (1 - MIN_SCALE) * (1 - MIN_ALPHA));
-                        } else { // (1,+Infinity]
-                            // This page is way off-screen to the right.
-                            view.setAlpha(0);
-                        }
-                    }
-                }
-        );
-    }
-
-    private void setDefaultDuration() {
-        try {
-            Field field = ViewPager.class.getDeclaredField("mScroller");
-            field.setAccessible(true);
-            Scroller scroller = new Scroller(LunboActivity.this, new LinearInterpolator()) {
-                @Override
-                public void startScroll(int startX, int startY, int dx, int dy, int duration) {
-                    super.startScroll(startX, startY, dx, dy, SCROLL_DURATION);
-                }
-                @Override
-                public void startScroll(int startX, int startY, int dx, int dy) {
-                    super.startScroll(startX, startY, dx, dy, SCROLL_DURATION);
-                }
-            };
-            field.set(viewPager, scroller);
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-
     public void disRadio(View view){
         isRadio = true;
         boolean isSucess = list.remove(radioFragment);
@@ -205,7 +143,7 @@ public class LunboActivity extends AppCompatActivity {
 
         @Override
         public void onPageSelected(int position) {
-            Log.i(TAG,"onPageSelected position = "+position);
+//            Log.i(TAG,"onPageSelected position = "+position);
             mCurrentPositon = position % (list.size());
         }
 
@@ -214,8 +152,7 @@ public class LunboActivity extends AppCompatActivity {
             if (state == ViewPager.SCROLL_STATE_IDLE) {
                 int current = viewPager.getCurrentItem();
                 int lastReal = viewPager.getAdapter().getCount()-2;
-                Log.i(TAG,"onPageScrollStateChanged current = "+current
-                        +", lastReal = "+lastReal);
+                Log.i(TAG,"onPageScrollStateChanged SCROLL_STATE_IDLE !!");
                 if (current == 0) {
                     viewPager.setCurrentItem(lastReal, false);
                 } else if (current == lastReal+1) {
@@ -247,4 +184,69 @@ public class LunboActivity extends AppCompatActivity {
             return POSITION_NONE;
         }
     }
+
+
+    private void setDefaultAnmation(){
+        viewPager.setPageTransformer(true, new ViewPager.PageTransformer() {
+                    float MIN_SCALE = 0.85f;
+                    float MIN_ALPHA = 0.5f;
+
+                    @Override
+                    public void transformPage(View view, float position) {
+                        int pageWidth = view.getWidth();
+                        int pageHeight = view.getHeight();
+
+                        if (position < -1) { // [-Infinity,-1)
+                            // This page is way off-screen to the left.
+                            view.setAlpha(0);
+                        } else if (position <= 1) { // [-1,1]
+                            // Modify the default slide transition to
+                            // shrink the page as well
+                            float scaleFactor = Math.max(MIN_SCALE, 1 - Math.abs(position));
+                            float vertMargin = pageHeight * (1 - scaleFactor) / 2;
+                            float horzMargin = pageWidth * (1 - scaleFactor) / 2;
+                            if (position < 0) {
+                                view.setTranslationX(horzMargin - vertMargin / 2);
+                            } else {
+                                view.setTranslationX(-horzMargin + vertMargin / 2);
+                            }
+                            // Scale the page down (between MIN_SCALE and 1)
+                            view.setScaleX(scaleFactor);
+                            view.setScaleY(scaleFactor);
+                            // Fade the page relative to its size.
+                            view.setAlpha(MIN_ALPHA + (scaleFactor - MIN_SCALE)
+                                    / (1 - MIN_SCALE) * (1 - MIN_ALPHA));
+                        } else { // (1,+Infinity]
+                            // This page is way off-screen to the right.
+                            view.setAlpha(0);
+                        }
+                    }
+                }
+        );
+    }
+
+
+
+    private void setDefaultDuration() {
+        try {
+            Field field = MyViewPager.class.getDeclaredField("mScroller");
+            field.setAccessible(true);
+            Scroller scroller = new Scroller(LunboActivity.this, new LinearInterpolator()) {
+                @Override
+                public void startScroll(int startX, int startY, int dx, int dy, int duration) {
+                    super.startScroll(startX, startY, dx, dy, SCROLL_DURATION);
+                }
+                @Override
+                public void startScroll(int startX, int startY, int dx, int dy) {
+                    super.startScroll(startX, startY, dx, dy, SCROLL_DURATION);
+                }
+            };
+            field.set(viewPager, scroller);
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

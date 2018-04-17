@@ -10,6 +10,7 @@ import java.io.IOException;
 import okhttp3.Cache;
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -35,6 +36,12 @@ public class OkhttpActivity extends AppCompatActivity {
 
         client = new OkHttpClient.Builder()
                 .cache(cache)
+                .addInterceptor(new Interceptor() {
+                    @Override
+                    public Response intercept(Chain chain) throws IOException {
+                        return null;
+                    }
+                })
                 .build();
         request = new Request.Builder()
                 .url("http://192.168.5.51:8080/123.txt").build();
