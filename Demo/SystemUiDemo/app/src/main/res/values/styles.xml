@@ -42,4 +42,8 @@
 
    <!-- <style name="TextAppearance.StatusBar.Expanded.Network.EmergencyOnly">
     </style>-->
+
+    <declare-styleable name="TemperatureView">
+        <attr name="texttype" format="string"></attr>
+    </declare-styleable>
 </resources>

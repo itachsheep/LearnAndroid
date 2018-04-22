@@ -14,7 +14,24 @@ android:orientation="horizontal">
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:src="@drawable/tmp_8"/>
+ <LinearLayout
+     android:id="@+id/ll_dot"
+     android:visibility="gone"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:orientation="horizontal">
+     <ImageView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:src="@drawable/tmp_dot"/>
+     <ImageView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:src="@drawable/tmp_5"/>
+ </LinearLayout>
+
 <ImageView
+    android:id="@+id/iv_temp_icon"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:src="@drawable/tmp_icon"/>

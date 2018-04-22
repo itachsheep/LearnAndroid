@@ -1,6 +1,5 @@
 package com.tao.systemuidemo.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -31,7 +30,7 @@ public class PanelActivity extends AppCompatActivity implements View.OnClickList
         btTempDown = findViewById(R.id.bt_temp_down);
         btTempUp.setOnClickListener(this);
         btTempDown.setOnClickListener(this);
-        temperatureView.setTemperature(temp);
+        temperatureView.setTemp(temp);
     }
 
     @Override
@@ -39,14 +38,14 @@ public class PanelActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()){
             case R.id.bt_temp_up:
             {
-                temp++;
-                temperatureView.setTemperature(temp);
+                temp += 10;
+                temperatureView.setTemp(temp);
             }
                 break;
             case R.id.bt_temp_down:
             {
-                temp--;
-                temperatureView.setTemperature(temp);
+                temp -= 5;
+                temperatureView.setTemp(temp);
             }
             break;
         }

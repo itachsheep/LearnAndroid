@@ -52,7 +52,7 @@ public final class CacheInterceptor implements Interceptor {
   @Override public Response intercept(Chain chain) throws IOException {
     Response cacheCandidate = cache != null
         ? cache.get(chain.request())
-        : null;
+        : null;// 首先，如果此次网络请求有缓存数据，取出缓存数据
 
     long now = System.currentTimeMillis();
 
