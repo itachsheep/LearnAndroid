@@ -57,17 +57,18 @@ public final class CacheInterceptor implements Interceptor {
     long now = System.currentTimeMillis();
 
     CacheStrategy strategy = new CacheStrategy.Factory(now, chain.request(), cacheCandidate).get();
-    Request networkRequest = strategy.networkRequest;
-    Response cacheResponse = strategy.cacheResponse;
+    Request networkRequest = strategy.networkRequest;// 通过缓存策略计算的网络请求
+    Response cacheResponse = strategy.cacheResponse;// 通过CacheStrategy处理得到的缓存响应数据
+
 
     if (cache != null) {
       cache.trackResponse(strategy);
     }
 
-    if (cacheCandidate != null && cacheResponse == null) {
+    if (cacheCandidate != null && cacheResponse == null) {// 缓存数据不能使用清除此缓存数据
       closeQuietly(cacheCandidate.body()); // The cache candidate wasn't applicable. Close it.
     }
-
+    // 如果当前网络请求不能使用(在CacheStrategy部分详细解释哪些情况为网络请求不可用)而且缓存数据也不可用，则返回网络请求错误的结果
     // If we're forbidden from using the network and the cache is insufficient, fail.
     if (networkRequest == null && cacheResponse == null) {
       return new Response.Builder()
@@ -80,7 +81,7 @@ public final class CacheInterceptor implements Interceptor {
           .receivedResponseAtMillis(System.currentTimeMillis())
           .build();
     }
-
+// 如果不需要网络请求，缓存数据可用，则直接返回缓存数据
     // If we don't need the network, we're done.
     if (networkRequest == null) {
       return cacheResponse.newBuilder()

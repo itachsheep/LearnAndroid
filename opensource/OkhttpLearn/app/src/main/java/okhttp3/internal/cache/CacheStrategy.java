@@ -15,8 +15,12 @@
  */
 package okhttp3.internal.cache;
 
+import com.tao.okhttplearn.LogUtil;
+
 import java.util.Date;
+
 import javax.annotation.Nullable;
+
 import okhttp3.CacheControl;
 import okhttp3.Headers;
 import okhttp3.Request;
@@ -48,6 +52,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
  * potentially stale).
  */
 public final class CacheStrategy {
+  private static String TAG = CacheStrategy.class.getSimpleName();
   /** The request to send on the network, or null if this call doesn't use the network. */
   public final @Nullable Request networkRequest;
 
@@ -157,8 +162,10 @@ public final class CacheStrategy {
           } else if ("Last-Modified".equalsIgnoreCase(fieldName)) {
             lastModified = HttpDate.parse(value);
             lastModifiedString = value;
+            LogUtil.i(TAG," lastModified = "+lastModified+", lastModifiedString = "+lastModifiedString);
           } else if ("ETag".equalsIgnoreCase(fieldName)) {
             etag = value;
+            LogUtil.i(TAG," etag = "+etag);
           } else if ("Age".equalsIgnoreCase(fieldName)) {
             ageSeconds = HttpHeaders.parseSeconds(value, -1);
           }
