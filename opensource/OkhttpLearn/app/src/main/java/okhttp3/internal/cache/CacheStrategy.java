@@ -190,11 +190,13 @@ public final class CacheStrategy {
     /** Returns a strategy to use assuming the request can use the network. */
     private CacheStrategy getCandidate() {
       // No cached response.
+      // 没有缓存的情况，直接返回包含网络请求的策略结果
       if (cacheResponse == null) {
         return new CacheStrategy(request, null);
       }
 
       // Drop the cached response if it's missing a required handshake.
+      // 如果是HTTPS请求，但是缓存数据中不存在握手信息，则返回只包含网络请求的策略结果
       if (request.isHttps() && cacheResponse.handshake() == null) {
         return new CacheStrategy(request, null);
       }
@@ -202,11 +204,13 @@ public final class CacheStrategy {
       // If this response shouldn't have been stored, it should never be used
       // as a response source. This check should be redundant as long as the
       // persistence store is well-behaved and the rules are constant.
+      // 如果根据CacheControl参数有no-store, 缓存数据不能被存储，则不能使用此缓存
       if (!isCacheable(cacheResponse, request)) {
         return new CacheStrategy(request, null);
       }
 
       CacheControl requestCaching = request.cacheControl();
+      // 如果缓存数据的CacheControl 有nocache指令或者需要向服务器端校验后决定是否使用缓存，则返回只包含网络请求的策略结果
       if (requestCaching.noCache() || hasConditions(request)) {
         return new CacheStrategy(request, null);
       }
