@@ -216,10 +216,12 @@ public final class CacheStrategy {
       }
 
       CacheControl responseCaching = cacheResponse.cacheControl();
+      // 如果响应一直不会改变，则返回只有缓存响应的策略结果
       if (responseCaching.immutable()) {
         return new CacheStrategy(null, cacheResponse);
       }
 
+      // 如果缓存在有效的时间范围内，则使用缓存
       long ageMillis = cacheResponseAge();
       long freshMillis = computeFreshnessLifetime();
 
