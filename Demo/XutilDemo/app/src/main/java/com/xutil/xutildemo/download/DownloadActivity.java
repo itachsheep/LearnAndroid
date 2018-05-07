@@ -57,7 +57,8 @@ public class DownloadActivity extends Activity  {
     private void startDownload(View view) throws DbException {
         for (int i = 0; i < 5; i++) {
 //            String url = "http://dl.bintray.com/wyouflf/maven/org/xutils/xutils/3.5.0/xutils-3.5.0.aar";
-            String url = "http://192.168.0.76:9191/nginxSource/30001/7085/36ed7845-067f-4d23-9edc-d71abe7074f1.zip";
+//            String url = "http://192.168.0.76:9191/nginxSource/30001/7085/36ed7845-067f-4d23-9edc-d71abe7074f1.zip";
+            String url = "http://192.168.56.1:8080/test_upgrade.zip";
             String label = i + "_download_" + System.nanoTime();
             String filepath = getFilesDir().getPath();
             String savePath = filepath + label + ".zip";
