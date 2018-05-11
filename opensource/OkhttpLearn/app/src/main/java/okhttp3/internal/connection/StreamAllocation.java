@@ -136,6 +136,7 @@ public final class StreamAllocation {
           pingIntervalMillis, connectionRetryEnabled);
 
       // If this is a brand new connection, we can skip the extensive health checks.
+
       synchronized (connectionPool) {
         if (candidate.successCount == 0) {
           return candidate;
@@ -144,6 +145,13 @@ public final class StreamAllocation {
 
       // Do a (potentially slow) check to confirm that the pooled connection is still good. If it
       // isn't, take it out of the pool and start again.
+      /**
+       * 这里就是检查RealConnection是否正常可用。也就是做个体检isHealthy，
+       * 如果发现返回False，那么标记这个RealConnection的noNewStreams为true。
+       * 此变量标记为true后，代码后面就不要从使用这个RealConnection。何以得知呢？
+       *
+       * 看到前面第2步，从ConnectionPool调用get方法寻找合适的RealConnection，有一句判断，前面我们没有讲，这里我跟踪一下：
+       */
       if (!candidate.isHealthy(doExtensiveHealthChecks)) {
         noNewStreams();
         continue;
@@ -171,6 +179,10 @@ public final class StreamAllocation {
 
       // Attempt to use an already-allocated connection. We need to be careful here because our
       // already-allocated connection may have been restricted from creating new streams.
+      /**
+       * 先判断当前的RealConnection allocatedConnection = this.connection;判断当前连接是否已存在，
+       * 如果存在且没有标记noNewStreams，则直接返回该连接
+       */
       releasedConnection = this.connection;
       toClose = releaseIfNoNewStreams();
       if (this.connection != null) {
@@ -185,6 +197,12 @@ public final class StreamAllocation {
 
       if (result == null) {
         // Attempt to get a connection from the pool.
+        /**
+         * 到连接池中寻找匹配的连接Internal.instance.get(connectionPool, address, this, null);。
+         * 这里Internal.instance是一个抽象类中的静态变量，那在哪里实现的呢。
+         * 我们看到OkHttpClient类。类中第三个static关键字就是instance的实现
+         * 这里我们就知道其实最终调用到了ConnectionPool的get方法。我们查看
+         */
         Internal.instance.get(connectionPool, address, this, null);
         if (connection != null) {
           foundPooledConnection = true;
@@ -242,7 +260,11 @@ public final class StreamAllocation {
         // for an asynchronous cancel() to interrupt the handshake we're about to do.
         route = selectedRoute;
         refusedStreamCount = 0;
+        /**
+         * 经过上面三个步骤后，说明已经没有可用的Connection。那么就得创建一个
+         */
         result = new RealConnection(connectionPool, selectedRoute);
+        //创建完后调用acquire，这个是干啥的呢
         acquire(result, false);
       }
     }
@@ -254,6 +276,9 @@ public final class StreamAllocation {
     }
 
     // Do TCP + TLS handshakes. This is a blocking operation.
+    /**
+     * 开始进行Socket连接
+     */
     result.connect(connectTimeout, readTimeout, writeTimeout, pingIntervalMillis,
         connectionRetryEnabled, call, eventListener);
     routeDatabase().connected(result.route());
@@ -263,6 +288,10 @@ public final class StreamAllocation {
       reportedAcquired = true;
 
       // Pool the connection.
+      /**
+       * 将RealConnection添加到connectionPool中
+       */
+
       Internal.instance.put(connectionPool, result);
 
       // If another multiplexed connection to the same address was created concurrently, then
@@ -465,6 +494,10 @@ public final class StreamAllocation {
    * {@link #release} on the same connection.
    */
   public void acquire(RealConnection connection, boolean reportedAcquired) {
+    /**
+     * 把当前的StreamAllocation添加到RealConnection。
+     * 这和我们前面说到的一个RealConnection可能对应多个StreamAllocation。
+     */
     assert (Thread.holdsLock(connectionPool));
     if (this.connection != null) throw new IllegalStateException();
 

@@ -121,6 +121,10 @@ public final class ConnectionPool {
    */
   @Nullable RealConnection get(Address address, StreamAllocation streamAllocation, Route route) {
     assert (Thread.holdsLock(this));
+    /**
+     * 内部就是循环遍历connections，找到匹配的Connection。
+     * 至于如何判断，大家查看方法的实现即可。如果找到则直接返回，否则进入下一步
+     */
     for (RealConnection connection : connections) {
       if (connection.isEligible(address, route)) {
         streamAllocation.acquire(connection, true);

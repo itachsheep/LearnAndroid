@@ -112,7 +112,7 @@ public final class RetryAndFollowUpInterceptor implements Interceptor {
     RealInterceptorChain realChain = (RealInterceptorChain) chain;
     Call call = realChain.call();
     EventListener eventListener = realChain.eventListener();
-
+    //创建StreamAllocation， connectionPool是在okhttpclient创建时候
     StreamAllocation streamAllocation = new StreamAllocation(client.connectionPool(),
         createAddress(request.url()), call, eventListener, callStackTrace);
     this.streamAllocation = streamAllocation;

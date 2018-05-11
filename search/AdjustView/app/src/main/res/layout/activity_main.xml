@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="#000"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/test_scrollview"
+        android:layout_width="785.3dp"
+        android:layout_height="@dimen/network_marquee_text_height"
+        android:focusable="true"
+        >
+        <!--android:scrollbars="none"-->
+        <!--<com.tao.adjustview.view.SkyVerticalMarqueeTextview
+            style="@style/network_upgrade"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textSize="20sp"
+            android:id="@+id/test_marquee"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/network_marquee_text_height"
+            android:maxLines="6"
+            android:nextFocusDown="@+id/ota_update_now"
+            android:scrollbars="vertical"
+            android:textColor="@android:color/white" />-->
+    </ScrollView>
+</LinearLayout>

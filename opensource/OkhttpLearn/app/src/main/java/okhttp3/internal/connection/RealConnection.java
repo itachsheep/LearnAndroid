@@ -224,7 +224,9 @@ public final class RealConnection extends Http2Connection.Listener implements Co
     }
   }
 
-  /** Does all the work necessary to build a full HTTP or HTTPS connection on a raw socket. */
+  /**
+   * 逻辑很清晰，就是建立socket连接，然后封装输入输出流。
+   * Does all the work necessary to build a full HTTP or HTTPS connection on a raw socket. */
   private void connectSocket(int connectTimeout, int readTimeout, Call call,
       EventListener eventListener) throws IOException {
     Proxy proxy = route.proxy();
@@ -237,6 +239,7 @@ public final class RealConnection extends Http2Connection.Listener implements Co
     eventListener.connectStart(call, route.socketAddress(), proxy);
     rawSocket.setSoTimeout(readTimeout);
     try {
+      // 建立socket连接
       Platform.get().connectSocket(rawSocket, route.socketAddress(), connectTimeout);
     } catch (ConnectException e) {
       ConnectException ce = new ConnectException("Failed to connect to " + route.socketAddress());
@@ -249,6 +252,7 @@ public final class RealConnection extends Http2Connection.Listener implements Co
     // https://github.com/square/okhttp/issues/3245
     // https://android-review.googlesource.com/#/c/271775/
     try {
+      //封装输入输出流
       source = Okio.buffer(Okio.source(rawSocket));
       sink = Okio.buffer(Okio.sink(rawSocket));
     } catch (NullPointerException npe) {
@@ -436,6 +440,12 @@ public final class RealConnection extends Http2Connection.Listener implements Co
    */
   public boolean isEligible(Address address, @Nullable Route route) {
     // If this connection is not accepting new streams, we're done.
+    /**
+     * 看到noNewStreams了吧， 现在知道他的用处了吧。还有allocations.size() >= allocationLimit，
+     * 控制一个RealConnection可以被多少个StreamAllocation持有，这下都清楚了吧。
+     *
+     *
+     */
     if (allocations.size() >= allocationLimit || noNewStreams) return false;
 
     // If the non-host fields of the address don't overlap, we're done.

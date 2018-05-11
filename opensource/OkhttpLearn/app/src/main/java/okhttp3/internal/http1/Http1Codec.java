@@ -127,6 +127,9 @@ public final class Http1Codec implements HttpCodec {
   @Override public void writeRequestHeaders(Request request) throws IOException {
     String requestLine = RequestLine.get(
         request, streamAllocation.connection().route().proxy().type());
+    /**
+     * requestLine就是HTTP的起始行，内部大家可以自己查看
+     */
     writeRequest(request.headers(), requestLine);
   }
 
@@ -139,6 +142,10 @@ public final class Http1Codec implements HttpCodec {
       return new RealResponseBody(contentType, 0, Okio.buffer(source));
     }
 
+    /**
+     * 主要判断响应头Transfer-Encoding来确定响应体的数据大小是否确定，
+     * 如果是chunked则是分块传输，则没有Content-Length。否则可以确定响应体大小。然后返回不同的Source实现。
+     */
     if ("chunked".equalsIgnoreCase(response.header("Transfer-Encoding"))) {
       Source source = newChunkedSource(response.request().url());
       return new RealResponseBody(contentType, -1L, Okio.buffer(source));
@@ -170,6 +177,9 @@ public final class Http1Codec implements HttpCodec {
   public void writeRequest(Headers headers, String requestLine) throws IOException {
     if (state != STATE_IDLE) throw new IllegalStateException("state: " + state);
     sink.writeUtf8(requestLine).writeUtf8("\r\n");
+    /**
+     * 逻辑就很简单了，遍历Headers，将请求头写入到sink中。
+     */
     for (int i = 0, size = headers.size(); i < size; i++) {
       sink.writeUtf8(headers.name(i))
           .writeUtf8(": ")
@@ -186,13 +196,19 @@ public final class Http1Codec implements HttpCodec {
     }
 
     try {
+      /**
+       * 首先读取起始行statusLine。我们进入到实现source.readUtf8LineStrict()看怎么读取的
+       */
       StatusLine statusLine = StatusLine.parse(readHeaderLine());
 
+      /**
+       * 下面读取响应头：先将起始行封装到responseBuilder中，然后readHeaders()读取响应头。
+       */
       Response.Builder responseBuilder = new Response.Builder()
           .protocol(statusLine.protocol)
           .code(statusLine.code)
           .message(statusLine.message)
-          .headers(readHeaders());
+          .headers(readHeaders());//这里就是一行行读取响应头，然后添加到Headers中。细节大家跟踪到方法内部查看即可。
 
       if (expectContinue && statusLine.code == HTTP_CONTINUE) {
         return null;
@@ -219,6 +235,9 @@ public final class Http1Codec implements HttpCodec {
 
   /** Reads headers or trailers. */
   public Headers readHeaders() throws IOException {
+    /**
+     * 这里就是一行行读取响应头，然后添加到Headers中。细节大家跟踪到方法内部查看即可。
+     */
     Headers.Builder headers = new Headers.Builder();
     // parse the result headers until the first blank line
     for (String line; (line = readHeaderLine()).length() != 0; ) {

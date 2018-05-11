@@ -158,6 +158,12 @@ public final class Dispatcher {
   }
 
   private void promoteCalls() {
+    /**
+     * 还是先判断正在请求的数量是否超限制
+     遍历readyAsyncCalls，找到符合条件的请求（同一个主机的请求数量是否超限制）。
+     如果找到就从readyAsyncCalls中移除，
+     然后加入到runningAsyncCalls。然后通过线程池获进行调度执行。
+     */
     LogUtil.i(TAG,"promoteCalls");
     if (runningAsyncCalls.size() >= maxRequests) return; // Already running max capacity.
     if (readyAsyncCalls.isEmpty()) return; // No ready calls to promote.
@@ -205,7 +211,14 @@ public final class Dispatcher {
     int runningCallsCount;
     Runnable idleCallback;
     synchronized (this) {
+      /**
+       * 这里先把call从队列中移除。然后判断promoteCalls，
+       * 这里我们知道是true，所以重点看到if (promoteCalls) promoteCalls();这段代码：
+       */
       if (!calls.remove(call)) throw new AssertionError("Call wasn't in-flight!");
+      /**
+       * promoteCalls始终为true，因为是 AsyncCall
+       */
       if (promoteCalls) promoteCalls();
       runningCallsCount = runningCallsCount();
       idleCallback = this.idleCallback;

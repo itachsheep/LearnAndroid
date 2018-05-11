@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="network_marquee_text_height">127dp</dimen>
+</resources>

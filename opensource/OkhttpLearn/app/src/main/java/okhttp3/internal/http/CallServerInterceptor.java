@@ -42,6 +42,7 @@ public final class CallServerInterceptor implements Interceptor {
    * 然后取得response的头部和body，大致就是这么一个流程，但是在这里，我们注意一个类，
    */
   @Override public Response intercept(Chain chain) throws IOException {
+    // 1,从RealInterceptorChain获取相关对象
     RealInterceptorChain realChain = (RealInterceptorChain) chain;
     HttpCodec httpCodec = realChain.httpStream();
     StreamAllocation streamAllocation = realChain.streamAllocation();
@@ -51,6 +52,7 @@ public final class CallServerInterceptor implements Interceptor {
     long sentRequestMillis = System.currentTimeMillis();
 
     realChain.eventListener().requestHeadersStart(realChain.call());
+    // 2. 发送请求头数据
     httpCodec.writeRequestHeaders(request);
     realChain.eventListener().requestHeadersEnd(realChain.call(), request);
 
@@ -72,7 +74,12 @@ public final class CallServerInterceptor implements Interceptor {
         CountingSink requestBodyOut =
             new CountingSink(httpCodec.createRequestBody(request, contentLength));
         BufferedSink bufferedRequestBody = Okio.buffer(requestBodyOut);
-
+        //3. 发送请求体
+        //这里会先判断请求方法以及是否有请求体数据。如果有则发送。
+        /**
+         * 我们看到request.body()返回是RequestBody，
+         * 一个抽象类，定义请求体的方法。看到自带的实现有FormBody、MultipartBody。我们挑一个看FormBody。看到
+         */
         request.body().writeTo(bufferedRequestBody);
         bufferedRequestBody.close();
         realChain.eventListener()
@@ -85,10 +92,12 @@ public final class CallServerInterceptor implements Interceptor {
       }
     }
 
+    //todo 将请求刷新到底层套接字，并发出信号，不再发送任何字节。
     httpCodec.finishRequest();
 
     if (responseBuilder == null) {
       realChain.eventListener().responseHeadersStart(realChain.call());
+      // 4. 读取响应头
       responseBuilder = httpCodec.readResponseHeaders(false);
     }
 
@@ -98,7 +107,7 @@ public final class CallServerInterceptor implements Interceptor {
         .sentRequestAtMillis(sentRequestMillis)
         .receivedResponseAtMillis(System.currentTimeMillis())
         .build();
-
+    //5. 封装相应内容
     int code = response.code();
     if (code == 100) {
       // server sent a 100-continue even though we did not request one.
@@ -120,17 +129,23 @@ public final class CallServerInterceptor implements Interceptor {
 
     if (forWebSocket && code == 101) {
       // Connection is upgrading, but we need to ensure interceptors see a non-null response body.
+      //封装响应体
       response = response.newBuilder()
           .body(Util.EMPTY_RESPONSE)
           .build();
     } else {
+      /**
+       * 封装响应体
+       * 我们重点看到httpCodec.openResponseBody(response)
+       */
       response = response.newBuilder()
           .body(httpCodec.openResponseBody(response))
           .build();
     }
-
+    //如果请求头或响应头的Connection值为close。则标识改Connection为noNewStreams。标识不会有新的流。
     if ("close".equalsIgnoreCase(response.request().header("Connection"))
         || "close".equalsIgnoreCase(response.header("Connection"))) {
+      //至于noNewStreams是用来控制，当前的连接是否能再次被使用
       streamAllocation.noNewStreams();
     }
 

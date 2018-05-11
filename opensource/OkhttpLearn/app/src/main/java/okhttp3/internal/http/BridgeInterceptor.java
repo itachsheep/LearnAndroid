@@ -16,6 +16,8 @@
  */
 package okhttp3.internal.http;
 
+import com.tao.okhttplearn.LogUtil;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -46,13 +48,7 @@ public final class BridgeInterceptor implements Interceptor {
   }
 
   @Override public Response intercept(Chain chain) throws IOException {
-    //Log.i("OkHttpClient","## BridgeInterceptor intercept  ###");
-   /* StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-    Log.i("OkHttpClient","---------------------BridgeInterceptor-------------------------------");
-    for(int i  = 0; i < stackTrace.length; i++){
-      Log.i("OkHttpClient",stackTrace[i].getClassName()+"."+
-              stackTrace[i].getMethodName()+": "+stackTrace[i].getLineNumber()+" ");
-    }*/
+    LogUtil.i("BridgeInterceptor","intercept");
     Request userRequest = chain.request();
     Request.Builder requestBuilder = userRequest.newBuilder();
 
