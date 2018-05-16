@@ -4,18 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="50dp"
-    android:layout_marginTop="20dp"
-    android:orientation="vertical"
-    tools:context="com.tao.okhttplearn.activity.OkhttpActivity">
+    tools:context="com.tao.memorysearch.MainActivity">
 
     <Button
-        android:id="@+id/bt_dd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="changedNotify"
-        android:text="通知改变"
-        android:textAllCaps="false"
-         />
+        android:text="发送通知"
+        android:textSize="30sp"
+        android:onClick="send_notification"
+        />
 
 </LinearLayout>

@@ -1275,6 +1275,19 @@ public final class Buffer implements BufferedSource, BufferedSink, Cloneable, By
     checkOffsetAndCount(source.size, 0, byteCount);
 
     while (byteCount > 0) {
+      /**
+       * 首先是在一个循环中执行写操作，直到byteCount为零。
+       * 然后看需要写的字节数量是否超出了source的第一个Segment的范围，
+       * 如果没有超出，则看sink的最后一个Segment是否可以写入并且具有充足的空间写入，
+       * 如果可以就直接拷贝过去，这里调用了Segment.writeTo()方法，
+       * 前面也做过介绍，其实就是System.arrayCopy()将数组拷贝过去。
+       * 否则的话就将source的head节点拆分，保证source的head节点是需要全部写入到sink中去的。
+       * 后面的逻辑就比较简单了，就是将source的head节点挂到sink的尾部，
+       * 然后执行一次compact()操作，并更新各个属性就完成了一个Segment的写入，
+       * 这里不会更新Segment节点时不需要数组拷贝，所以节约了CPU，
+       * 而在compact()时执行少量的数据拷贝，提高内存的利用率。
+       * 如此循环，完成数据的写入操作。
+       */
       // Is a prefix of the source's head segment all that we need to move?
       if (byteCount < (source.head.limit - source.head.pos)) {
         Segment tail = head != null ? head.prev : null;

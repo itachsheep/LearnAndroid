@@ -1,9 +1,12 @@
-package com.tao.okhttplearn;
+package activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+
+import com.tao.okhttplearn.LogUtil;
+import com.tao.okhttplearn.R;
 
 import java.io.File;
 import java.io.IOException;

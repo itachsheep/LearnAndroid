@@ -1,10 +1,12 @@
-package com.tao.okhttplearn;
+package activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+
+import com.tao.okhttplearn.R;
 
 import java.util.Observable;
 import java.util.Observer;

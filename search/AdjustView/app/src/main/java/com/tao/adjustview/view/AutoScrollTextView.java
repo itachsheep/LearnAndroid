@@ -63,7 +63,6 @@ public class AutoScrollTextView extends LinearLayout {
                 scrollView.scrollTo(0,mScrollDis);
                 mhandler.postDelayed(downRunnable,80);
             }
-
         }
     };
 }
