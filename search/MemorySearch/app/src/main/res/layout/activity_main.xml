@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.tao.memorysearch.MainActivity">
 
     <Button
@@ -14,4 +15,17 @@
         android:onClick="send_notification"
         />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="移除通知"
+        android:textSize="30sp"
+        android:onClick="remove_notification"
+        />
+    <RelativeLayout
+        android:id="@+id/rl_notify"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal|center_vertical"
+        android:visibility="invisible" />
 </LinearLayout>

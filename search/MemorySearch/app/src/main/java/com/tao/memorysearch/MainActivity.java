@@ -15,17 +15,27 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        builder = new NotificationCompat.Builder(MainActivity.this,"chanelid");
+        
+
     }
+    NotificationManager notificationManager;
+    NotificationCompat.Builder builder;
+    Notification notification;
 
     public void send_notification(View view){
-        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(MainActivity.this,"chanelid");
+
         builder.setContentText("通知内容");
         builder.setContentTitle("通知标题");
         builder.setSmallIcon(R.drawable.ic_launcher_background);
         builder.setLargeIcon(BitmapFactory.decodeResource(getResources(),R.mipmap.ic_launcher));
         builder.setTicker("滚动提示的文字...");
-        Notification notification = builder.build();
+        notification  = builder.build();
         notificationManager.notify(R.mipmap.ic_launcher,notification);
+    }
+
+    public void remove_notification(View view){
+        notificationManager.cancel(R.mipmap.ic_launcher);
     }
 }
