@@ -54,6 +54,8 @@ public class ObserverActivity extends AppCompatActivity {
 
     public void changedNotify(View view){
         observable.setData(" 被观察者发生改变了！！");
+//        observable.notifyObservers();
+//        notifyObservers();
     }
 
     class MyObserver implements Observer{
@@ -72,5 +74,9 @@ public class ObserverActivity extends AppCompatActivity {
             notifyObservers();
         }
 
+        @Override
+        public void notifyObservers() {
+            notifyObservers(data);
+        }
     }
 }
