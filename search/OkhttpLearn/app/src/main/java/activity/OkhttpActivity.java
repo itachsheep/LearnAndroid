@@ -16,13 +16,14 @@ import okhttp3.Cache;
 import okhttp3.CacheControl;
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
 public class OkhttpActivity extends AppCompatActivity {
 
-    private String TAG = "OkHttpClient";
+    private String TAG = "OkhttpActivity";
 //    OkHttpClient client;
 //    Cache cache;
 //    Request request;
@@ -103,7 +104,24 @@ public class OkhttpActivity extends AppCompatActivity {
      * @param view
      */
     public void asynRequest(View view){
-          /*Response response1 = client.newCall(request).enqueue(new Callback() {
+        OkHttpClient client = new OkHttpClient.Builder()
+                .cache(null)
+                .addInterceptor(new Interceptor() {
+                    @Override
+                    public Response intercept(Chain chain) throws IOException {
+                        Request request = null;
+                        LogUtil.i(TAG,"addInterceptor request  = "+(request == null));
+                        if(chain != null){
+                            request = chain.request();
+                            LogUtil.i(TAG,"addInterceptor request  = "+request);
+                        }
+                        return chain.proceed(request);
+                    }
+                })
+                .build();
+          Request request = new Request.Builder()
+                .url("http://192.168.5.55:8080/123.txt").build();
+          Response response1 = client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 LogUtil.i(TAG,"asynRequest onFailure");
@@ -112,8 +130,9 @@ public class OkhttpActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 LogUtil.i(TAG,"asynRequest onResponse");
+                LogUtil.i(TAG,"asynRequest onResponse response = "+response.body().string());
             }
-          });*/
+          });
 
     }
 

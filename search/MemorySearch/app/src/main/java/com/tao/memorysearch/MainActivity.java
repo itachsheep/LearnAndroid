@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         builder = new NotificationCompat.Builder(MainActivity.this,"chanelid");
         
+        View view;
 
     }
     NotificationManager notificationManager;

@@ -117,9 +117,9 @@ public class FullScreenActivity extends Activity implements View.OnClickListener
               {
                   mShowFlags = View.SYSTEM_UI_FLAG_VISIBLE;
                   //让View全屏显示，Layout会被拉伸到StatusBar下面，不包含NavigationBar。
-                 // mShowFlags |= View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
+                  mShowFlags |= View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
                   //让View全屏显示，Layout会被拉伸到StatusBar和NavigationBar下面。
-                  //mShowFlags |= View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION;
+                  mShowFlags |= View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION;
                   LogUtils.i(TAG,"onClick  mShowFlags = "+Integer.toHexString(mShowFlags));
                   btFlagShow.setSystemUiVisibility(mShowFlags);
                 }
@@ -130,12 +130,11 @@ public class FullScreenActivity extends Activity implements View.OnClickListener
                 //btShow.setSystemUiVisibility(mHideFlags);
                 //状态栏显示处于低能显示状态(low profile模式)，状态栏上一些图标显示会被隐藏。
                 //mHideFlags = View.SYSTEM_UI_FLAG_LOW_PROFILE;
-//                mHideFlags |= View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_FULLSCREEN;
-//                mHideFlags |= View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
-//                LogUtils.i(TAG,"onClick  mHideFlags = "+Integer.toHexString(mHideFlags));
-                //mSystemUiHider.hide();
+                mHideFlags |= View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_FULLSCREEN;
+                mHideFlags |= View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
 
-                mHideFlags |=  View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION ;
+
+//                mHideFlags |=  View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION ;
                 btFlagShow.setSystemUiVisibility(mHideFlags);
 
             }
