@@ -9,6 +9,15 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import org.reactivestreams.Subscriber;
+import org.reactivestreams.Subscription;
+
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -39,4 +48,63 @@ public class MainActivity extends AppCompatActivity {
     public void remove_notification(View view){
         notificationManager.cancel(R.mipmap.ic_launcher);
     }
+
+    Observer<String> observer = new Observer<String>() {
+        @Override
+        public void onSubscribe(Disposable d) {
+
+        }
+
+        @Override
+        public void onNext(String s) {
+
+        }
+
+        @Override
+        public void onError(Throwable e) {
+
+        }
+
+        @Override
+        public void onComplete() {
+
+        }
+    };
+
+    Observable<String> observable = new Observable<String>() {
+        @Override
+        protected void subscribeActual(Observer<? super String> observer) {
+
+        }
+    };
+
+    Observable<String> observable2 = Observable.create(new ObservableOnSubscribe<String>() {
+        @Override
+        public void subscribe(ObservableEmitter<String> emitter) throws Exception {
+
+        }
+    });
+
+
+    Subscriber<String> subscriber = new Subscriber<String>() {
+        @Override
+        public void onSubscribe(Subscription s) {
+
+        }
+
+        @Override
+        public void onNext(String s) {
+
+        }
+
+        @Override
+        public void onError(Throwable t) {
+
+        }
+
+        @Override
+        public void onComplete() {
+
+        }
+    };
 }
