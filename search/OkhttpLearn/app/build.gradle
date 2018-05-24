@@ -41,4 +41,5 @@ dependencies {
 
     //okhttp org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement不存在
     provided files('libs/animal-sniffer-annotations-1.5.jar')
+    compile 'com.google.code.gson:gson:2.5'
 }
