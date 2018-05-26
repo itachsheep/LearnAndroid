@@ -10,19 +10,12 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="test_init"
-        android:text="初始化"
+        android:onClick="test_scheduer"
+        android:text="显示图片"
         />
-    <Button
+    <ImageView
+        android:id="@+id/sche_iv"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="test_observer"
-        android:text="观察者模式"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="test_commit_action"
-        android:text="提交任务"
-        />
+        android:layout_height="wrap_content" />
+
 </LinearLayout>

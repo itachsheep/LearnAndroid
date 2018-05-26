@@ -11,7 +11,7 @@ import java.util.Observer;
  * Created by SDT14324 on 2018/5/22.
  */
 
-public class TestActivity extends AppCompatActivity {
+public class AndroidObserverActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

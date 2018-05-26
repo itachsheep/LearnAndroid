@@ -9,14 +9,10 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import org.reactivestreams.Subscriber;
-import org.reactivestreams.Subscription;
-
 import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
         builder = new NotificationCompat.Builder(MainActivity.this,"chanelid");
         
         View view;
+
+        Observable observable = null;
+        Observable observable1 = observable.observeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
 
     }
     NotificationManager notificationManager;
@@ -49,62 +48,5 @@ public class MainActivity extends AppCompatActivity {
         notificationManager.cancel(R.mipmap.ic_launcher);
     }
 
-    Observer<String> observer = new Observer<String>() {
-        @Override
-        public void onSubscribe(Disposable d) {
 
-        }
-
-        @Override
-        public void onNext(String s) {
-
-        }
-
-        @Override
-        public void onError(Throwable e) {
-
-        }
-
-        @Override
-        public void onComplete() {
-
-        }
-    };
-
-    Observable<String> observable = new Observable<String>() {
-        @Override
-        protected void subscribeActual(Observer<? super String> observer) {
-
-        }
-    };
-
-    Observable<String> observable2 = Observable.create(new ObservableOnSubscribe<String>() {
-        @Override
-        public void subscribe(ObservableEmitter<String> emitter) throws Exception {
-
-        }
-    });
-
-
-    Subscriber<String> subscriber = new Subscriber<String>() {
-        @Override
-        public void onSubscribe(Subscription s) {
-
-        }
-
-        @Override
-        public void onNext(String s) {
-
-        }
-
-        @Override
-        public void onError(Throwable t) {
-
-        }
-
-        @Override
-        public void onComplete() {
-
-        }
-    };
 }

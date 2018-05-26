@@ -16,8 +16,8 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 
-public class MainActivity extends AppCompatActivity {
-    private String TAG = MainActivity.class.getSimpleName();
+public class RxObserverActivity extends AppCompatActivity {
+    private String TAG = RxObserverActivity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
