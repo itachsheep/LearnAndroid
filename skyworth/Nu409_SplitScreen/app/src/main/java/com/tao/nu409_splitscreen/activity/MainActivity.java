@@ -1,5 +1,7 @@
 package com.tao.nu409_splitscreen.activity;
 
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
@@ -61,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
             leftLayout.setVisibility(View.GONE);
             rightLayout.setVisibility(View.GONE);
 
-            leftLayout.startAnimation(loadAnim(R.anim.push_left_out,null));
-            rightLayout.startAnimation(loadAnim(R.anim.push_right_out,null));
+            leftLayout.startAnimation(loadAnim(R.animator.push_left_out,null));
+            rightLayout.startAnimation(loadAnim(R.animator.push_right_out,null));
             iSsplitScreen = false;
             btMain.setText(" << ");
         }else {
@@ -70,19 +72,45 @@ public class MainActivity extends AppCompatActivity {
             L.i(TAG,"split_screen false");
             leftLayout.setVisibility(View.VISIBLE);
             rightLayout.setVisibility(View.VISIBLE);
-            leftLayout.startAnimation(loadAnim(R.anim.push_left_in,null));
-            rightLayout.startAnimation(loadAnim(R.anim.push_right_in,null));
+            leftLayout.startAnimation(loadAnim(R.animator.push_left_in,null));
+            rightLayout.startAnimation(loadAnim(R.animator.push_right_in,null));
 
             iSsplitScreen = true;
             btMain.setText(" >> ");
         }
+
+//        if(iSsplitScreen){
+//            L.i(TAG,"split_screen true");
+//            //分屏 -> 全屏
+//            leftLayout.setVisibility(View.GONE);
+//            rightLayout.setVisibility(View.GONE);
+//
+//            startObjectorAnim(R.animator.objector_push_left_out,leftLayout);
+//            startObjectorAnim(R.animator.objector_push_right_out,rightLayout);
+//
+//            iSsplitScreen = false;
+//            btMain.setText(" << ");
+//        }else {
+//            //全屏 -> 分屏
+//            L.i(TAG,"split_screen false");
+//            leftLayout.setVisibility(View.VISIBLE);
+//            rightLayout.setVisibility(View.VISIBLE);
+//
+//            startObjectorAnim(R.animator.objector_push_left_in,leftLayout);
+//            startObjectorAnim(R.animator.objector_push_right_in,rightLayout);
+//
+//            iSsplitScreen = true;
+//            btMain.setText(" >> ");
+//        }
     }
 
-    private Animation loadAnim(){
-        ObjectAnimator animator = new ObjectAnimator();
-        animator.setPropertyName("translationX");
-        animator.setFloatValues();
-        return null;
+    private void startObjectorAnim(int id,View view){
+        /*Animator animator = AnimatorInflater.loadAnimator(MainActivity.this, id);
+        animator.setTarget(view);
+        animator.start();*/
+        AnimatorSet animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(MainActivity.this, id);
+        animatorSet.setTarget(view);
+        animatorSet.start();
     }
 
     private Animation loadAnim(int id, Animation.AnimationListener listener){
