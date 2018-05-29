@@ -13,6 +13,8 @@
 
 package io.reactivex;
 
+import com.tao.rxjavalearn.activity.L;
+
 import org.reactivestreams.Publisher;
 
 import java.util.Collection;
@@ -12093,7 +12095,7 @@ public abstract class Observable<T> implements ObservableSource<T> {
         ObjectHelper.requireNonNull(observer, "observer is null");
         try {
             observer = RxJavaPlugins.onSubscribe(this, observer);
-
+            L.i(TAG,"subscribe observer = "+observer);
             ObjectHelper.requireNonNull(observer, "Plugin returned null Observer");
 
             subscribeActual(observer);

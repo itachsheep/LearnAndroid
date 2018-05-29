@@ -1,21 +1,13 @@
 package com.tao.rxjavalearn.activity;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.tao.rxjavalearn.R;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -40,16 +32,32 @@ public class SchedulerActivity extends AppCompatActivity {
         iv = (ImageView) findViewById(R.id.sche_iv);
     }
 
+    public void test_normal(View view){
+        //第一种方式：普通观察者模式
+        Observable<String> observable1 = Observable.create(new ObservableOnSubscribe<String>() {
+            @Override
+            public void subscribe(ObservableEmitter<String> emitter) throws Exception {
+                L.i(TAG,"ObservableEmitter subscribe emitter = "+emitter);
+                emitter.onNext("haha1");
+                emitter.onNext("haha2");
+                emitter.onNext("haha3");
+                emitter.onComplete();
+            }
+        });
+        //第一种方式：普通观察者模式
+        L.i(TAG,"test_norml observalbe1 = "+observable1);
+        observable1.subscribe(new MyObserver<String>());
+    }
     public void test_scheduer(View view){
         Observer<Bitmap> observer = new Observer<Bitmap>() {
             @Override
             public void onSubscribe(Disposable d) {
-                L.i(TAG,"test_scheduer onSubscribe");
+                L.i(TAG,"test_scheduer onSubscribe"+", thread = "+Thread.currentThread().getName());
             }
 
             @Override
             public void onNext(Bitmap bitmap) {
-                L.i(TAG,"test_scheduer onNext bitmap == null ? "+(bitmap == null));
+                L.i(TAG,"test_scheduer onNext bitmap == null ? "+(bitmap == null)+", thread = "+Thread.currentThread().getName());
 
                 if(bitmap == null )return ;
                 iv.setImageBitmap(bitmap);
@@ -57,87 +65,48 @@ public class SchedulerActivity extends AppCompatActivity {
 
             @Override
             public void onError(Throwable e) {
-                L.i(TAG,"test_scheduer onError");
+                L.i(TAG,"test_scheduer onError"+", thread = "+Thread.currentThread().getName());
             }
 
             @Override
             public void onComplete() {
-                L.i(TAG,"test_scheduer onComplete");
+                L.i(TAG,"test_scheduer onComplete"+", thread = "+Thread.currentThread().getName());
             }
         };
         Observable<Bitmap> observable = Observable.create(new ObservableOnSubscribe<Bitmap>() {
             @Override
             public void subscribe(ObservableEmitter<Bitmap> emitter) throws Exception {
-                Bitmap bitmap = getBitmap(imageurl);
+                L.i(TAG,"subscribe "+", thread : "+Thread.currentThread().getName());
+                Bitmap bitmap = L.getBitmap(imageurl);
                 emitter.onNext(bitmap);
                 emitter.onComplete();
             }
         }).subscribeOn(Schedulers.io())//subscribe()执行的线程
                 .observeOn(AndroidSchedulers.mainThread());//指定 observer 的回调发生在主线程
-
+        L.i(TAG,"test_scheduer observable = "+observable);
         observable.subscribe(observer);
     }
 
-    private Bitmap getBitmap(String url){
-        L.i(TAG,"getBitmap");
-        byte[] data = getNetData(url);
-        return binary2Bitmap(data);
-    }
-
-    private byte[] getNetData(String url){
-        L.i(TAG,"getNetData");
-        if (TextUtils.isEmpty(url)) {
-            L.i(TAG,"getNetData return");
-            return null;
+    class MyObserver<String> implements Observer<String> {
+        @Override
+        public void onSubscribe(Disposable d) {
+            L.i(TAG,"onSubscribe d = "+d+", thread : "+Thread.currentThread().getName());
         }
-        ByteArrayOutputStream bos = null;
-        InputStream in = null;
 
-        try {
-            bos = new ByteArrayOutputStream();
-            HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
-            conn.setInstanceFollowRedirects(true);
-            if (conn.getResponseCode() == 301){
-                L.i(TAG, "http 301 重定向！！" + url);
-                String location= conn.getURL().toString();
-                return  getNetData(location);
-            }else {
-                in = conn.getInputStream();
-                L.i(TAG, "getting image from url" + url);
-                byte[] buf = new byte[4 * 1024]; // 4K buffer
-                int bytesRead;
-                while ((bytesRead = in.read(buf)) != -1) {
-                    bos.write(buf, 0, bytesRead);
-                    L.i(TAG,"bos size = "+bos.size());
-                }
-                L.i(TAG,"write finish, bos total size = "+bos.size());
-                return bos.toByteArray();
-            }
+        @Override
+        public void onNext(String s) {
+            L.i(TAG,"onNext s = "+s+", thread : "+Thread.currentThread().getName());
 
-        } catch (Exception e) {
-            L.i(TAG,"exception e ");
-            e.printStackTrace();
-            return null;
-        } finally {
-            if (in != null) {
-                try {
-                    in.close();
-                } catch (IOException e) {
-                } finally {
-                    if (bos != null) {
-                        try {
-                            bos.close();
-                        } catch (IOException e) {
-                        }
-                    }
-                }
-            }
         }
-    }
-    public Bitmap binary2Bitmap(byte[] data) {
-        if (data != null) {
-            return BitmapFactory.decodeByteArray(data, 0, data.length);
+
+        @Override
+        public void onError(Throwable e) {
+            L.i(TAG,"onError  "+", thread : "+Thread.currentThread().getName());
         }
-        return null;
-    }
+
+        @Override
+        public void onComplete() {
+            L.i(TAG,"onComplete"+", thread : "+Thread.currentThread().getName());
+        }
+    };
 }
