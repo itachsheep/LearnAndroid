@@ -13,8 +13,6 @@
 
 package io.reactivex;
 
-import com.tao.rxjavalearn.activity.L;
-
 import org.reactivestreams.Publisher;
 
 import java.util.Collection;
@@ -79,6 +77,7 @@ import io.reactivex.observers.TestObserver;
 import io.reactivex.plugins.RxJavaPlugins;
 import io.reactivex.schedulers.Schedulers;
 import io.reactivex.schedulers.Timed;
+import util.L;
 
 /**
  * The Observable class is the non-backpressured, optionally multi-valued base reactive class that
@@ -8439,6 +8438,7 @@ public abstract class Observable<T> implements ObservableSource<T> {
         ObjectHelper.verifyPositive(maxConcurrency, "maxConcurrency");
         ObjectHelper.verifyPositive(bufferSize, "bufferSize");
         if (this instanceof ScalarCallable) {
+            L.i(TAG,"flatMap this instanceof ScalarCallable");
             @SuppressWarnings("unchecked")
             T v = ((ScalarCallable<T>)this).call();
             if (v == null) {
@@ -8446,6 +8446,7 @@ public abstract class Observable<T> implements ObservableSource<T> {
             }
             return ObservableScalarXMap.scalarXMap(v, mapper);
         }
+        L.i(TAG,"flatMap new ObservableFlatMap");
         return RxJavaPlugins.onAssembly(new ObservableFlatMap<T, R>(this, mapper, delayErrors, maxConcurrency, bufferSize));
     }
 

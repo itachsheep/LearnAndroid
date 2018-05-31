@@ -14,13 +14,16 @@
 
 package io.reactivex.internal.operators.observable;
 
-import io.reactivex.*;
+import io.reactivex.ObservableSource;
+import io.reactivex.Observer;
 import io.reactivex.annotations.Nullable;
 import io.reactivex.functions.Function;
 import io.reactivex.internal.functions.ObjectHelper;
 import io.reactivex.internal.observers.BasicFuseableObserver;
+import util.L;
 
 public final class ObservableMap<T, U> extends AbstractObservableWithUpstream<T, U> {
+    private String TAG = ObservableMap.class.getSimpleName();
     final Function<? super T, ? extends U> function;
 
     public ObservableMap(ObservableSource<T> source, Function<? super T, ? extends U> function) {
@@ -30,6 +33,7 @@ public final class ObservableMap<T, U> extends AbstractObservableWithUpstream<T,
 
     @Override
     public void subscribeActual(Observer<? super U> t) {
+        L.i(TAG,"subscribeActual source = "+source);
         source.subscribe(new MapObserver<T, U>(t, function));
     }
 

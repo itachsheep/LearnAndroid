@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#555555"
+    tools:context="com.tao.rxjavalearn.activity.RxObserverActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="test_map"
+        android:textAllCaps="false"
+        android:text="map使用"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="test_flatmap"
+        android:textAllCaps="false"
+        android:text="flat_map使用"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="test_filter"
+        android:textAllCaps="false"
+        android:text="filter使用"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="map_network"
+        android:textAllCaps="false"
+        android:text="map 操作符进行网络数据解析"
+        />
+</LinearLayout>

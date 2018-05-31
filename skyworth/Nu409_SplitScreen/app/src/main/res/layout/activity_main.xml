@@ -14,9 +14,7 @@
         android:id="@+id/main_split"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-
-        >
+        android:orientation="horizontal">
         <FrameLayout
             android:id="@+id/main_left"
             android:layout_width="0dp"
@@ -28,8 +26,14 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:visibility="gone"/>
+            android:visibility="gone">
+            <android.support.v4.view.ViewPager
+                android:id="@+id/main_vp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </FrameLayout>
     </LinearLayout>
+
     <Button
         android:id="@+id/main_bt"
         android:background="@color/colorAccent"
