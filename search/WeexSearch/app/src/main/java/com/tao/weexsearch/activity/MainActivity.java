@@ -18,4 +18,8 @@ public class MainActivity extends AppCompatActivity {
     public void start_ac_loadjs(View view){
         startActivity(new Intent(MainActivity.this,RecommendComponentActivity.class));
     }
+
+    public void start_ac_load_vue(View view){
+        startActivity(new Intent(MainActivity.this,TestVueActivity.class));
+    }
 }

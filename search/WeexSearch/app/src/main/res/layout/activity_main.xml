@@ -14,5 +14,11 @@
         android:text="使用js布局"
         android:onClick="start_ac_loadjs"
          />
-
+    <Button
+        android:textAllCaps="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="使用vue布局"
+        android:onClick="start_ac_load_vue"
+        />
 </LinearLayout>
