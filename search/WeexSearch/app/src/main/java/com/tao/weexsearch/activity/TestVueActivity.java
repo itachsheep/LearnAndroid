@@ -26,7 +26,7 @@ public class TestVueActivity extends AppCompatActivity implements IWXRenderListe
         mWxsdkInstance.registerRenderListener(this);
         Log.i(TAG,"onCreate ");
         mWxsdkInstance.render("TestVueAc",
-                    WXFileUtils.loadAsset("entry.js", this),
+                    WXFileUtils.loadAsset("index.js", this),
                         null,
                         null,
                         WXRenderStrategy.APPEND_ASYNC);
