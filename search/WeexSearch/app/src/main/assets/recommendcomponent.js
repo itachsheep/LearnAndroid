@@ -381,7 +381,7 @@
 	        loadMoreData: function loadMoreData() {
 	            var self = this;
 	            this.getRecommend(self.url);
-	            modal.toast('执行了');
+	            modal.toast('执行了 123');
 	            self.page++;
 	        }
 	    },

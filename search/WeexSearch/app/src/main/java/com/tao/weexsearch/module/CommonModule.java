@@ -16,7 +16,7 @@ public class CommonModule extends WXModule {
 
     @JSMethod(uiThread = true)
     public void toast(String message) {
-        Toast.makeText(WXApplication.getApp(), "" + message, 0).show();
+        Toast.makeText(WXApplication.getApp(), "哈哈哈哈哈xxx！！" + message, Toast.LENGTH_LONG).show();
     }
 
 }
