@@ -37,6 +37,7 @@ import android.view.ViewGroup;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.taobao.weex.L;
 import com.taobao.weex.WXEnvironment;
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.WXSDKManager;
@@ -1235,12 +1236,12 @@ public class WXBridgeManager implements Callback, BactchExecutor {
       }
     }, instanceId);
   }
-
+  private
   private void invokeCreateInstance(@NonNull WXSDKInstance instance, String template,
                                     Map<String, Object> options, String data) {
     // add for sandbox, will delete on sandbox ok
     initFramework("");
-
+    L.i(TAG,"");
     if (mMock) {
       mock(instance.getInstanceId());
     } else {

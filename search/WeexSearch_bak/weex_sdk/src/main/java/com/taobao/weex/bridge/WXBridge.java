@@ -23,6 +23,7 @@ import android.util.Log;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.taobao.weex.L;
 import com.taobao.weex.WXEnvironment;
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.WXSDKManager;
@@ -95,7 +96,6 @@ public class WXBridge implements IWXBridge {
   private native void nativeRegisterCoreEnv(String key, String value);
 
   private native void nativeSetViewPortWidth(String instanceId, float value);
-
 
   /**
    * update global config,
@@ -218,6 +218,9 @@ public class WXBridge implements IWXBridge {
   @Override
   public Object callNativeModule(String instanceId, String module, String method, byte[] arguments, byte[] options) {
     try{
+
+      L.i(TAG,"callNativeModule instanceId = "+instanceId+",module = "+module+",method = "+method);
+      L.printStack(TAG,"callNativeModule");
       JSONArray argArray = (JSONArray) WXWsonJSONSwitch.parseWsonOrJSON(arguments);
       JSONObject optionsObj = null;
       if (options != null) {
