@@ -1236,12 +1236,12 @@ public class WXBridgeManager implements Callback, BactchExecutor {
       }
     }, instanceId);
   }
-  private
+
   private void invokeCreateInstance(@NonNull WXSDKInstance instance, String template,
                                     Map<String, Object> options, String data) {
     // add for sandbox, will delete on sandbox ok
     initFramework("");
-    L.i(TAG,"");
+//    L.i(TAG,"");
     if (mMock) {
       mock(instance.getInstanceId());
     } else {
