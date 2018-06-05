@@ -1,5 +1,6 @@
 package com.tao.weexsearch.module;
 
+import android.util.Log;
 import android.widget.Toast;
 
 import com.tao.weexsearch.WXApplication;
@@ -13,9 +14,15 @@ import com.taobao.weex.common.WXModule;
  *
  */
 public class CommonModule extends WXModule {
-
+    private String TAG = CommonModule.class.getSimpleName();
     @JSMethod(uiThread = true)
     public void toast(String message) {
+        StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+        Log.i(TAG,"----------------------------------------------------");
+        for(int i  = 0; i < stackTrace.length; i++){
+            Log.i(TAG,stackTrace[i].getClassName()+"."+
+                    stackTrace[i].getMethodName()+": "+stackTrace[i].getLineNumber()+" ");
+        }
         Toast.makeText(WXApplication.getApp(), "哈哈哈哈哈xxx！！" + message, Toast.LENGTH_LONG).show();
     }
 

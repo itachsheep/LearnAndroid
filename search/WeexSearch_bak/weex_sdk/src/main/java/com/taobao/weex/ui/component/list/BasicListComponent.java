@@ -184,7 +184,8 @@ public abstract class BasicListComponent<T extends ViewGroup & ListComponentView
     }
     if(WXUtils.getBoolean(getAttrs().get("prefetchGapDisable"), false)){
       if(recyclerView.getLayoutManager() != null){
-        recyclerView.getLayoutManager().setItemPrefetchEnabled(false);
+        //TODO taowei
+//        recyclerView.getLayoutManager().setItemPrefetchEnabled(false);
       }
     }
 

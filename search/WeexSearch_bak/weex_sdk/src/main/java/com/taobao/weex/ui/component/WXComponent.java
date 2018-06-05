@@ -1203,7 +1203,8 @@ public abstract class WXComponent<T extends View> extends WXBasicComponent imple
         public void onInitializeAccessibilityNodeInfo(View host, AccessibilityNodeInfoCompat info) {
           try {
             super.onInitializeAccessibilityNodeInfo(host, info);
-            info.setRoleDescription(finalRole);
+            //TODO taowei
+//            info.setRoleDescription(finalRole);
           } catch (Throwable e) {
             WXLogUtils.e("SetRole failed!");
           }

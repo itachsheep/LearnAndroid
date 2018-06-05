@@ -12,8 +12,9 @@ import android.widget.FrameLayout;
 
 import com.tao.weexsearch.widget.MaterialDesignPtrFrameLayout;
 import com.taobao.weex.WXSDKInstance;
-import com.taobao.weex.dom.WXDomObject;
+//import com.taobao.weex.dom.WXDomObject;
 import com.taobao.weex.ui.ComponentCreator;
+import com.taobao.weex.ui.action.BasicComponentData;
 import com.taobao.weex.ui.component.WXComponent;
 import com.taobao.weex.ui.component.WXComponentProp;
 import com.taobao.weex.ui.component.WXVContainer;
@@ -29,14 +30,21 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
  */
 
 public class RefreshView extends WXVContainer<MaterialDesignPtrFrameLayout> {
-    public RefreshView(WXSDKInstance instance, WXDomObject dom, WXVContainer parent) {
-        super(instance, dom, parent);
+    public RefreshView(WXSDKInstance instance, WXVContainer parent, BasicComponentData basicComponentData) {
+        super(instance, parent, basicComponentData);
     }
+    /*public RefreshView(WXSDKInstance instance, WXDomObject dom, WXVContainer parent) {
+        super(instance, dom, parent);
+    }*/
 
     public static class Ceator implements ComponentCreator {
-        public WXComponent createInstance(WXSDKInstance instance, WXDomObject node, WXVContainer parent) throws IllegalAccessException, InvocationTargetException, InstantiationException {
-            return new RefreshView(instance, node, parent);
+        @Override
+        public WXComponent createInstance(WXSDKInstance instance, WXVContainer parent, BasicComponentData basicComponentData) throws IllegalAccessException, InvocationTargetException, InstantiationException {
+            return new RefreshView(instance, parent,basicComponentData);
         }
+        /*public WXComponent createInstance(WXSDKInstance instance, WXDomObject node, WXVContainer parent) throws IllegalAccessException, InvocationTargetException, InstantiationException {
+            return new RefreshView(instance, node, parent);
+        }*/
     }
 
     @Override

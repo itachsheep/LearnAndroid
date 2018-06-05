@@ -80,19 +80,19 @@ android {
 //        include 'weex-rax-extra-api.js'
 //    }
 
-    if(project.hasProperty('asfRelease')){
-        //download so file if not exist, when compile in source release
-        download{
-            src 'https://git-wip-us.apache.org/repos/asf?p=incubator-weex.git;a=blob_plain;f=android/sdk/libs/armeabi/libweexcore.so;hb=refs/heads/master'
-            dest "${projectDir}/libs/armeabi/libweexcore.so"
-            overwrite false
-        }
-        download{
-            src 'https://git-wip-us.apache.org/repos/asf?p=incubator-weex.git;a=blob_plain;f=android/sdk/libs/x86/libweexcore.so;hb=refs/heads/master'
-            dest "${projectDir}/libs/x86/libweexcore.so"
-            overwrite false
-        }
-    }
+//    if(project.hasProperty('asfRelease')){
+//        //download so file if not exist, when compile in source release
+//        download{
+//            src 'https://git-wip-us.apache.org/repos/asf?p=incubator-weex.git;a=blob_plain;f=android/sdk/libs/armeabi/libweexcore.so;hb=refs/heads/master'
+//            dest "${projectDir}/libs/armeabi/libweexcore.so"
+//            overwrite false
+//        }
+//        download{
+//            src 'https://git-wip-us.apache.org/repos/asf?p=incubator-weex.git;a=blob_plain;f=android/sdk/libs/x86/libweexcore.so;hb=refs/heads/master'
+//            dest "${projectDir}/libs/x86/libweexcore.so"
+//            overwrite false
+//        }
+//    }
 
     def ARMEABI_Size = new File(projectDir,"libs/armeabi/libweexcore.so").length();
     def ARMEABIV7_Size = new File(projectDir,"libs/armeabi-v7/libweexcore.so").length();
@@ -154,7 +154,7 @@ android {
     sourceSets {
         main {
             assets.srcDirs = ['assets']
-            jniLibs.srcDir(['libs'])
+//            jniLibs.srcDir(['libs'])
             java {
                 srcDirs = ["src/main/java"];
             }
@@ -185,6 +185,7 @@ dependencies {
     provided "com.android.support:support-v4:23.1.1"
     provided "com.android.support:appcompat-v7:23.1.1"
     provided "com.alibaba:fastjson:1.1.46.android"
+    implementation 'com.android.support:support-annotations:27.1.1'
 //    implementation 'com.alibaba:fastjson:1.1.46.android'
 
     testCompile "com.alibaba:fastjson:1.1.46.android"
