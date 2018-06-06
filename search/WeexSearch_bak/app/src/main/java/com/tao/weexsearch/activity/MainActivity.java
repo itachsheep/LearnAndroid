@@ -22,4 +22,8 @@ public class MainActivity extends AppCompatActivity {
     public void start_ac_load_vue(View view){
         startActivity(new Intent(MainActivity.this,TestVueActivity.class));
     }
+
+    public void start_ac_test_module(View view){
+        startActivity(new Intent(MainActivity.this,TestMyModuleActivity.class));
+    }
 }

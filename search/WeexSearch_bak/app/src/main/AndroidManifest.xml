@@ -22,6 +22,8 @@
 
         <activity android:name=".activity.RecommendComponentActivity"/>
         <activity android:name=".activity.TestVueActivity"/>
+
+        <activity android:name=".activity.TestMyModuleActivity"/>
     </application>
 
 </manifest>

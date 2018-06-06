@@ -10,7 +10,7 @@ public class L {
 
     public static void printStack(String tag,String method){
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        Log.i(TAG,"printStack ---------------------------------------------------- "+method);
+        Log.i(TAG,tag+"."+"printStack ---------------------------------------------------- "+method);
         for(int i  = 0; i < stackTrace.length; i++){
             Log.i("",stackTrace[i].getClassName()+"."+
                     stackTrace[i].getMethodName()+": "+stackTrace[i].getLineNumber()+" ");

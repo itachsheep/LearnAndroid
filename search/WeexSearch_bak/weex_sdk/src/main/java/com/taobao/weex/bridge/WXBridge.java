@@ -220,7 +220,7 @@ public class WXBridge implements IWXBridge {
     try{
 
       L.i(TAG,"callNativeModule instanceId = "+instanceId+",module = "+module+",method = "+method);
-      L.printStack(TAG,"callNativeModule");
+//      L.printStack(TAG,"callNativeModule");
       JSONArray argArray = (JSONArray) WXWsonJSONSwitch.parseWsonOrJSON(arguments);
       JSONObject optionsObj = null;
       if (options != null) {

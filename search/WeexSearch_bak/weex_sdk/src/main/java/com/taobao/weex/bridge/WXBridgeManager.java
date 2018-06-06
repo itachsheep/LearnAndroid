@@ -802,11 +802,13 @@ public class WXBridgeManager implements Callback, BactchExecutor {
   }
 
   private void getNextTick(final String instanceId, final String callback) {
+//    L.i(TAG,"getNextTick callback = "+callback);
     addJSTask(METHOD_CALLBACK, instanceId, callback, "{}");
     sendMessage(instanceId, WXJSBridgeMsgType.CALL_JS_BATCH);
   }
 
   private void getNextTick(final String instanceId) {
+//    L.i(TAG,"getNextTick ");
     addJSTask(METHOD_CALLBACK, instanceId, "", "{}");
     sendMessage(instanceId, WXJSBridgeMsgType.CALL_JS_BATCH);
   }
@@ -1051,6 +1053,8 @@ public class WXBridgeManager implements Callback, BactchExecutor {
     }
     if(callback == null) {
       addJSEventTask(METHOD_FIRE_EVENT, instanceId, params, ref, type, data, domChanges);
+      L.i(TAG,"fireEventOnNode ");
+//      L.printStack(TAG,"fireEventOnNode");
       sendMessage(instanceId, WXJSBridgeMsgType.CALL_JS_BATCH);
     }else{
       asyncCallJSEventWithResult(callback, METHD_FIRE_EVENT_SYNC, instanceId, params, ref, type, data, domChanges);
@@ -1109,7 +1113,7 @@ public class WXBridgeManager implements Callback, BactchExecutor {
             || mJSHandler == null) {
       return;
     }
-
+//    L.i(TAG,"callbackJavascript callback = "+callback);
     addJSTask(METHOD_CALLBACK, instanceId, callback, data, keepAlive);
     sendMessage(instanceId, WXJSBridgeMsgType.CALL_JS_BATCH);
   }
@@ -1740,9 +1744,10 @@ public class WXBridgeManager implements Callback, BactchExecutor {
       }
     });
   }
-
+  private String TAG = WXBridgeManager.class.getSimpleName();
   @SuppressWarnings("unchecked")
   private void invokeCallJSBatch(Message message) {
+
     if (mNextTickTasks.isEmpty() || !isJSFrameworkInit()) {
       if (!isJSFrameworkInit()) {
         WXLogUtils.e("[WXBridgeManager] invokeCallJSBatch: framework.js uninitialized!!  message:" + message.toString());
@@ -1780,6 +1785,7 @@ public class WXBridgeManager implements Callback, BactchExecutor {
 
     // If task is not empty, loop until it is empty
     if (!mNextTickTasks.isEmpty()) {
+//      L.i(TAG,"invokeCallJSBatch ");
       mJSHandler.sendEmptyMessage(WXJSBridgeMsgType.CALL_JS_BATCH);
     }
   }
