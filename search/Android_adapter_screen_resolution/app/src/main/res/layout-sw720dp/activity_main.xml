@@ -11,11 +11,8 @@
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1280x480"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="sw720dp"
+        android:textSize="35sp" />
     <ImageView
         android:id="@+id/iv1"
         android:layout_below="@+id/tv1"

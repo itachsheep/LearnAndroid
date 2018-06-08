@@ -22,7 +22,10 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.HandlerThread;
 import android.os.Message;
+
+import com.taobao.weex.L;
 import com.taobao.weex.WXEnvironment;
+import com.taobao.weex.ui.component.pesudo.TouchActivePseudoListener;
 import com.taobao.weex.utils.WXLogUtils;
 
 /**
@@ -82,6 +85,7 @@ public class WXThread extends HandlerThread {
       return result;
     }
   }
+  private static String TAG = WXThread.class.getSimpleName();
 
   /**
    * Secure Runnable to prevent throw during execution.
@@ -93,6 +97,7 @@ public class WXThread extends HandlerThread {
     if(runnable == null || runnable instanceof SafeRunnable){
       return runnable;
     }
+    L.printStack(TAG,"secure");
     return new SafeRunnable(runnable);
   }
 

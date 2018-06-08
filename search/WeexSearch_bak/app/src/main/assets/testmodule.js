@@ -140,7 +140,7 @@ module.exports = __vue_exports__
 module.exports = {
   methods: {
     click: function click() {
-      console.log('#### ####');
+      console.log('#### js console log ####');
       weex.requireModule('MyModule').printLog('I am a weex Module');
     }
   }

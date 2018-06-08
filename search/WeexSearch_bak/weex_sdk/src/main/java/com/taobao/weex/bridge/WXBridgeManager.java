@@ -1943,7 +1943,15 @@ public class WXBridgeManager implements Callback, BactchExecutor {
     }
 
     WXJSObject[] args = {WXWsonJSONSwitch.toWsonOrJsonWXJSObject(modules)};
+    Set<String> sets = modules.keySet();
+    Iterator<String> iterator = sets.iterator();
+    String next = iterator.next();
     try {
+     /* L.i(TAG,"invokeRegisterModules METHOD_REGISTER_MODULES = "+METHOD_REGISTER_MODULES+
+      ", module = "+next+", WXJSObject[] length = "+args.length
+      +", WXJSObject[0] type = "+args[0].type
+      +",WXJSObject[0] data =  "+args[0].data);*/
+      L.i(TAG,"invokeRegisterModules module = "+next);
       mWXBridge.execJS("", null, METHOD_REGISTER_MODULES, args);
       try {
         Iterator<String> iter = modules.keySet().iterator();
