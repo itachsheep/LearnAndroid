@@ -97,7 +97,7 @@ public class WXThread extends HandlerThread {
     if(runnable == null || runnable instanceof SafeRunnable){
       return runnable;
     }
-    L.printStack(TAG,"secure");
+//    L.printStack(TAG,"secure");
     return new SafeRunnable(runnable);
   }
 
@@ -105,7 +105,7 @@ public class WXThread extends HandlerThread {
     if(callback == null || callback instanceof SafeCallback){
       return callback;
     }
-
+    L.printStack(TAG,"secure");
     return new SafeCallback(callback);
   }
 

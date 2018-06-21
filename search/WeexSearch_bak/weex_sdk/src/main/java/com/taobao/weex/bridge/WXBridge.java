@@ -121,6 +121,8 @@ public class WXBridge implements IWXBridge {
 
   @Override
   public int execJS(String instanceId, String namespace, String function, WXJSObject[] args) {
+      L.i(TAG,"execJs instanceId = "+instanceId+", function = "+function
+      +", args[0] key = "+args[0].key);
     return nativeExecJS(instanceId, namespace, function, args);
   }
 
@@ -165,11 +167,13 @@ public class WXBridge implements IWXBridge {
    * @param callback
    */
   public int callNative(String instanceId, byte[] tasks, String callback) {
+    L.i(TAG,"callNative2");
     return callNative(instanceId, (JSONArray) JSON.parseArray(new String(tasks)), callback);
   }
 
   @Override
   public int callNative(String instanceId, String tasks, String callback) {
+    L.i(TAG,"callNative1");
     try{
       return callNative(instanceId, JSONArray.parseArray(tasks), callback);
     }catch (Exception e){
@@ -179,6 +183,7 @@ public class WXBridge implements IWXBridge {
   }
 
   private int callNative(String instanceId, JSONArray tasks, String callback){
+    L.i(TAG,"callNative3");
     long start = System.currentTimeMillis();
     WXSDKInstance instance = WXSDKManager.getInstance().getSDKInstance(instanceId);
     if (instance != null) {

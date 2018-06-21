@@ -26,7 +26,7 @@ public class MyModule extends WXModule {
     @JSMethod(uiThread = true)
     public void printLog(String message) {
         L.i(TAG,"android printLog");
-        L.printStack(TAG,"printLog");
+//        L.printStack(TAG,"printLog");
         Toast.makeText(WXApplication.getApp(), "哈哈哈哈哈xxx！！" + message, Toast.LENGTH_LONG).show();
     }
 }

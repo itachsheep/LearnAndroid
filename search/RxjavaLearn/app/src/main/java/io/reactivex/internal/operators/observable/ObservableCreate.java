@@ -34,9 +34,12 @@ public final class ObservableCreate<T> extends Observable<T> {
     @Override
     protected void subscribeActual(Observer<? super T> observer) {
         CreateEmitter<T> parent = new CreateEmitter<T>(observer);
-        observer.onSubscribe(parent);
+        observer.onSubscribe(parent);//调用MyObserver的onSubscribe回调
 
         try {
+            //source 本身是在创建Observable时候创建的匿名对象 ObservableOnSubscribe
+            //所以此处调用的还是匿名对象的ObservableOnSubscribe.subscribe
+            //参数parent则是传递进来得MyObserver包装的CreateEmitter对象
             source.subscribe(parent);
         } catch (Throwable ex) {
             Exceptions.throwIfFatal(ex);

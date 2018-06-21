@@ -1,5 +1,9 @@
 package activity;
 
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
+import android.content.ComponentName;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -32,7 +36,12 @@ public class OkhttpActivity extends AppCompatActivity {
         View decorView = getWindow().getDecorView();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        File file;
+        Bitmap bitmap;
+        JobScheduler jobScheduler;
+        JobInfo.Builder builder = new JobInfo.Builder(
+                1,new ComponentName(OkhttpActivity.this,OkhttpActivity.class));
+        
         /*File cacheFile = new File(getCacheDir().toString(),"cache");
         LogUtil.i(TAG,"cacheFile "+cacheFile.toString());
         int cacheSize = 10 * 1024 * 1024;
@@ -121,7 +130,9 @@ public class OkhttpActivity extends AppCompatActivity {
                 .build();
           Request request = new Request.Builder()
                 .url("http://192.168.5.55:8080/123.txt").build();
-          Response response1 = client.newCall(request).enqueue(new Callback() {
+        Call call = client.newCall(request);
+        call.cancel();
+        Response response1 = call.enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 LogUtil.i(TAG,"asynRequest onFailure");
