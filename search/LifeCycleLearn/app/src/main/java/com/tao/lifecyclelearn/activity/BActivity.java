@@ -1,7 +1,12 @@
-package com.tao.lifecyclelearn;
+package com.tao.lifecyclelearn.activity;
 
+import android.app.ActivityManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import com.tao.lifecyclelearn.LogUtil;
+import com.tao.lifecyclelearn.R;
 
 public class BActivity extends AppCompatActivity {
     private String TAG = BActivity.class.getSimpleName();
@@ -10,6 +15,7 @@ public class BActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         LogUtil.i(TAG,"onCreate");
         setContentView(R.layout.activity_b);
+        ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
 
     }
     @Override

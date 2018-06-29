@@ -9,17 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
+        <activity android:name=".activity.AActivity">
+=======
         <activity android:name=".AActivity">
 
         </activity>
         <activity android:name=".BActivity"></activity>
         <activity android:name=".HandlerActivity">
+>>>>>>> 848c09ba6b63dd2eb97132fb5bade1933cd3eea0
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
+        <activity android:name=".activity.BActivity"></activity>
+=======
+>>>>>>> 848c09ba6b63dd2eb97132fb5bade1933cd3eea0
     </application>
 
 
