@@ -1,5 +1,6 @@
 package com.tao.ndksearch;
 
+import android.opengl.GLSurfaceView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -26,6 +27,10 @@ public class MainActivity extends AppCompatActivity {
         int funStatic = testJni.funStatic(2, 3);
 
         LogUtils.i(TAG,"fun = "+fun+", funStatic = "+funStatic);
+
+        GLSurfaceView glSurfaceView;
+        EglHelper eglHelper;
+        GLThread glThread;
     }
 
     /**

@@ -23,9 +23,11 @@ package com.chillingvan.canvasglsample.animation;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.PointF;
+import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.chillingvan.canvasgl.glview.texture.gles.EglHelper;
 import com.chillingvan.canvasgl.textureFilter.BasicTextureFilter;
 import com.chillingvan.canvasgl.textureFilter.ContrastFilter;
 import com.chillingvan.canvasgl.textureFilter.HueFilter;
@@ -79,6 +81,9 @@ public class AnimActivity extends AppCompatActivity {
             downBubbles.add(createBubble(downFilterList));
         }
         animGLTextureView.setBubbles(bubbles);
+
+        EglHelper eglHelper;
+        GLSurfaceView glSurfaceView;
     }
 
     private void initFilterList(List<TextureFilter> filterList) {
