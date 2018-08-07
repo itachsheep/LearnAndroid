@@ -5,6 +5,7 @@ import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.nio.ByteBuffer;
@@ -15,6 +16,7 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 public class MainActivity extends AppCompatActivity {
+    private static String TAG = MainActivity.class.getSimpleName();
     /*
 
     private GLSurfaceView mGLSurfaceView;
@@ -65,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        LogUtils.i(TAG,"oncreate");
 
         if (!Utils.supportGlEs20(this)) {
             Toast.makeText(this, "GLES 2.0 not supported!", Toast.LENGTH_LONG).show();
@@ -77,7 +80,8 @@ public class MainActivity extends AppCompatActivity {
         mGLSurfaceView.setEGLContextClientVersion(2);
         mGLSurfaceView.setEGLConfigChooser(8, 8, 8, 8, 16, 0);
         mGLSurfaceView.setRenderer(new MyRenderer());
-        mGLSurfaceView.setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);
+        mGLSurfaceView.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY );
+//        mGLSurfaceView.setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);
     }
 
     @Override
@@ -105,10 +109,20 @@ public class MainActivity extends AppCompatActivity {
                         + "void main() {\n"
                         + "  gl_FragColor = vec4(0.5, 0, 0, 1);\n"
                         + "}";
+
+        /**
+         * 这里我们绘制的是一个三角形，OpenGL 坐标原点在屏幕中心，三个顶点分别是
+         *
+         * (0, 1, 0)，位于屏幕顶部中心点；
+         (-0.5f, -1, 0)，位于屏幕底部四分之一点；
+         (1, -1, 0)，位于屏幕右下角；
+
+         它们的 z 轴坐标都是 0，所以也就是上面图一的效果了。
+         */
         private static final float[] VERTEX = {   // in counterclockwise order:
                 0, 1, 0,  // top
-                -0.5f, -1, 0,  // bottom left
-                1, -1, 0,  // bottom right
+                -0.5f, -1, -1,  // bottom left
+                1, -1, 1,  // bottom right
         };
 
         private final FloatBuffer mVertexBuffer;
@@ -127,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         static int loadShader(int type, String shaderCode) {
+            LogUtils.i(TAG,"loadShader");
             int shader = GLES20.glCreateShader(type);
             GLES20.glShaderSource(shader, shaderCode);
             GLES20.glCompileShader(shader);
@@ -135,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onSurfaceCreated(GL10 unused, EGLConfig config) {
+            LogUtils.i(TAG,"onSurfaceCreated");
             GLES20.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
             mProgram = GLES20.glCreateProgram();
@@ -156,6 +172,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onSurfaceChanged(GL10 unused, int width, int height) {
+            LogUtils.i(TAG,"onSurfaceChanged");
             GLES20.glViewport(0, 0, width, height);
 
             Matrix.perspectiveM(mMVPMatrix, 0, 45, (float) width / height, 0.1f, 100f);
@@ -164,6 +181,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onDrawFrame(GL10 unused) {
+            LogUtils.i(TAG,"onDrawFrame");
             GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);
 
             GLES20.glUniformMatrix4fv(mMatrixHandle, 1, false, mMVPMatrix, 0);
