@@ -40,11 +40,17 @@
             android:id="@+id/bt_dynamic_wallpaper"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="动态壁纸壁纸"
+            android:text="动态壁纸"
             android:textSize="22sp"
             android:onClick="set_dynamic_wallpaper"/>
 
-
+        <Button
+            android:id="@+id/bt_select_system_wallpaper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="选择系统壁纸"
+            android:textSize="22sp"
+            android:onClick="onSelectSystemWallpaper"/>
 
     </LinearLayout>
 

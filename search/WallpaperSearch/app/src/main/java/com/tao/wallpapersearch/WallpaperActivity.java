@@ -25,6 +25,11 @@ public class WallpaperActivity extends Activity {
 
     WallpaperManager mWallpaperManager;
     String TAG = WallpaperActivity.class.getSimpleName();
+
+
+    private final static int REQUEST_CODE_SET_WALLPAPER = 0x001;
+    private final static int REQUEST_CODE_SELECT_SYSTEM_WALLPAPER = 0x002;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,7 +85,7 @@ public class WallpaperActivity extends Activity {
     }
 
 
-    private final static int REQUEST_CODE_SET_WALLPAPER = 0x001;
+
     public void set_dynamic_wallpaper(View view){
         Intent intent = new Intent();
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1){
@@ -107,8 +112,22 @@ public class WallpaperActivity extends Activity {
                 showToast("设置动态壁纸失败");
             }
 
-        }else {
-
+        }else if (requestCode == REQUEST_CODE_SELECT_SYSTEM_WALLPAPER) {
+            if (resultCode == RESULT_OK) {
+                showToast("设置系统壁纸成功");
+            } else {
+                showToast("取消设置系统壁纸");
+            }
         }
+    }
+
+    /**
+     * 选择系统壁纸
+     *
+     * @param view
+     */
+    public void onSelectSystemWallpaper(View view) {
+        Intent intent = new Intent(Intent.ACTION_SET_WALLPAPER);
+        startActivityForResult(Intent.createChooser(intent, "选择11壁纸"), REQUEST_CODE_SELECT_SYSTEM_WALLPAPER);
     }
 }
