@@ -2,12 +2,17 @@ package com.tao.wallpapersearch;
 
 import android.app.Activity;
 import android.app.WallpaperManager;
+import android.content.ComponentName;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.tao.wallpapersearch.service.LiveWallpaperService;
 
 import java.io.IOException;
 
@@ -72,5 +77,38 @@ public class WallpaperActivity extends Activity {
 
     private void showToast(String mes){
         Toast.makeText(this,mes,Toast.LENGTH_SHORT).show();
+    }
+
+
+    private final static int REQUEST_CODE_SET_WALLPAPER = 0x001;
+    public void set_dynamic_wallpaper(View view){
+        Intent intent = new Intent();
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1){
+            intent.setAction(WallpaperManager.ACTION_CHANGE_LIVE_WALLPAPER);
+            intent.putExtra(WallpaperManager.EXTRA_LIVE_WALLPAPER_COMPONENT,
+                    new ComponentName(getPackageName(), LiveWallpaperService.class.getCanonicalName()));
+        }else {
+            intent.setAction(WallpaperManager.ACTION_LIVE_WALLPAPER_CHOOSER);
+        }
+        //WallpaperManager.ACTION_CROP_AND_SET_WALLPAPER;
+
+        startActivityForResult(intent,REQUEST_CODE_SET_WALLPAPER);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        L.i(TAG,"onActivityResult requestCode:"+requestCode+", resultCode:"+resultCode
+        +", data:"+data);
+        if(requestCode == REQUEST_CODE_SET_WALLPAPER){
+            if(resultCode == RESULT_OK){
+                showToast("设置动态壁纸成功");
+            }else {
+                showToast("设置动态壁纸失败");
+            }
+
+        }else {
+
+        }
     }
 }
