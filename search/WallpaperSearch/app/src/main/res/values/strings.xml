@@ -2,4 +2,5 @@
     <string name="app_name">WallpaperSearch</string>
     <string name="xml_wallpaper_live">哈哈壁纸</string>
     <string name="xml_wallpaper_circle">circle wallpaper</string>
+    <string name="xml_wallpaper_gl">gl wallpaper</string>
 </resources>

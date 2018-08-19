@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.tao.wallpapersearch.L;
 import com.tao.wallpapersearch.R;
+import com.tao.wallpapersearch.opengl.MyGlWallpaperService;
 import com.tao.wallpapersearch.service.CircleWallpaperService;
 import com.tao.wallpapersearch.service.LiveWallpaperService;
 
@@ -149,6 +150,15 @@ public class WallpaperActivity extends Activity {
                 WallpaperManager.ACTION_CHANGE_LIVE_WALLPAPER);
         intent.putExtra(WallpaperManager.EXTRA_LIVE_WALLPAPER_COMPONENT,
                 new ComponentName(this, CircleWallpaperService.class));
+        startActivity(intent);
+    }
+
+
+
+    public void use_gl_wallpaper_service(View view){
+        Intent intent = new Intent(WallpaperManager.ACTION_CHANGE_LIVE_WALLPAPER);
+        intent.putExtra(WallpaperManager.EXTRA_LIVE_WALLPAPER_COMPONENT,
+                new ComponentName(this, MyGlWallpaperService.class));
         startActivity(intent);
     }
 }
