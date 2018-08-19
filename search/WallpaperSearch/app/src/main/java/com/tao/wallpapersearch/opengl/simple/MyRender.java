@@ -1,4 +1,4 @@
-package com.tao.wallpapersearch.opengl;
+package com.tao.wallpapersearch.opengl.simple;
 import android.opengl.GLSurfaceView;
 
 import com.tao.wallpapersearch.L;

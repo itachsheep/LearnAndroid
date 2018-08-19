@@ -43,20 +43,31 @@
             </intent-filter>
             <meta-data
                 android:name="android.service.wallpaper"
-                android:resource="@xml/my_wallpaper" />
+                android:resource="@xml/circle_wallpaper" />
         </service>
 
 
 
 
-        <service android:name=".opengl.MyGlWallpaperService"
+        <service android:name=".opengl.simple.MyGlWallpaperService"
             android:permission="android.permission.BIND_WALLPAPER">
             <intent-filter>
                 <action android:name="android.service.wallpaper.WallpaperService" />
             </intent-filter>
             <meta-data
                 android:name="android.service.wallpaper"
-                android:resource="@xml/my_wallpaper" />
+                android:resource="@xml/gl_wallpaper" />
+        </service>
+
+
+        <service android:name=".opengl.cube.CubeWallpaperService"
+            android:permission="android.permission.BIND_WALLPAPER">
+            <intent-filter>
+                <action android:name="android.service.wallpaper.WallpaperService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.service.wallpaper"
+                android:resource="@xml/cube_wallpaper" />
         </service>
     </application>
 

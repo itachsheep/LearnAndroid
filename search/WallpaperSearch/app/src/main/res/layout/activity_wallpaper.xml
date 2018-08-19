@@ -96,4 +96,19 @@
             android:onClick="use_gl_wallpaper_service"/>
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/bt_cube_wallpaper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="立方体壁纸opengl"
+            android:textSize="22sp"
+            android:onClick="cube_wall_paper"/>
+
+    </LinearLayout>
 </LinearLayout>

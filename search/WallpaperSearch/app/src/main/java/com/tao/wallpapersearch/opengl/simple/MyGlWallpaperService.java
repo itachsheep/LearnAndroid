@@ -1,8 +1,7 @@
-package com.tao.wallpapersearch.opengl;
-
-import android.service.wallpaper.WallpaperService;
+package com.tao.wallpapersearch.opengl.simple;
 
 import com.tao.wallpapersearch.L;
+import com.tao.wallpapersearch.opengl.GLWallpaperService;
 
 
 public class MyGlWallpaperService extends GLWallpaperService {
