@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.service.wallpaper.WallpaperService;
 import android.view.SurfaceHolder;
 
+import com.tao.wallpapersearch.L;
 import com.tao.wallpapersearch.engine.MySurfaceView;
 
 public class LiveWallpaperService extends WallpaperService {
@@ -13,11 +14,12 @@ public class LiveWallpaperService extends WallpaperService {
     private final static long REFLESH_GAP_TIME = 1000L;//如果想播放的流畅，需满足1s 16帧   62ms切换间隔时间
 
 
-
+    private String TAG = LiveWallpaperService.class.getSimpleName();
 
 
     @Override
     public Engine onCreateEngine() {
+        L.i(TAG,"onCreateEngine");
         this.context = this;
         this.myEngine = new MyEngine();
         return this.myEngine;
@@ -33,6 +35,7 @@ public class LiveWallpaperService extends WallpaperService {
 
 
         public MyEngine(){
+            L.i(TAG,"MyEngine()");
             this.surfaceHolder = getSurfaceHolder();
             this.mySurfaceView = new MySurfaceView(LiveWallpaperService.this.getBaseContext());
             this.mySurfaceView.initView(surfaceHolder);
@@ -70,6 +73,7 @@ public class LiveWallpaperService extends WallpaperService {
         @Override
         public void onSurfaceCreated(SurfaceHolder holder) {
             super.onSurfaceCreated(holder);
+            L.i(TAG,"onSurfaceCreated holder:"+holder);
             this.drawView();
             if (this.mySurfaceView != null) {
                 this.mySurfaceView.surfaceCreated(holder);
@@ -82,12 +86,14 @@ public class LiveWallpaperService extends WallpaperService {
         @Override
         public void onSurfaceChanged(SurfaceHolder holder, int format, int width, int height) {
             super.onSurfaceChanged(holder, format, width, height);
+            L.i(TAG,"onSurfaceChanged");
             this.drawView();
         }
 
         @Override
         public void onVisibilityChanged(boolean visible) {
             super.onVisibilityChanged(visible);
+            L.i(TAG,"onVisibilityChanged visible: "+visible);
             if (this.handler != null) {
                 if (visible) {
                     this.handler.post(this.viewRunnable);
@@ -102,6 +108,7 @@ public class LiveWallpaperService extends WallpaperService {
         @Override
         public void onSurfaceDestroyed(SurfaceHolder holder) {
             super.onSurfaceDestroyed(holder);
+            L.i(TAG,"onSurfaceDestroyed ");
             if (this.handler != null) {
                 this.handler.removeCallbacks(this.viewRunnable);
             } else {
@@ -117,6 +124,7 @@ public class LiveWallpaperService extends WallpaperService {
         @Override
         public void onDestroy() {
             super.onDestroy();
+            L.i(TAG,"onDestroy ");
             if (this.handler != null) {
                 this.handler.removeCallbacks(this.viewRunnable);
             } else {

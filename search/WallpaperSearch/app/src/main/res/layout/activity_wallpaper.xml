@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:paddingVertical="20dp"
     android:paddingHorizontal="20dp"
-    tools:context=".WallpaperActivity">
+    tools:context=".activity.WallpaperActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -55,5 +55,30 @@
     </LinearLayout>
 
 
+
+
+    <LinearLayout
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/bt_set_circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设置属性"
+            android:textSize="22sp"
+            android:onClick="set_circle"/>
+
+        <Button
+            android:id="@+id/bt_open_circle_wallpaper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="圆圈壁纸"
+            android:textSize="22sp"
+            android:onClick="open_cicle_wallpaper"/>
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -10,7 +10,9 @@ import android.util.LruCache;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+import com.tao.wallpapersearch.L;
 import com.tao.wallpapersearch.R;
+import com.tao.wallpapersearch.model.WallpaperModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +27,7 @@ public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback
     private LruCache<String, Bitmap> mMemoryCache;
     private Paint mPaint;
     private Bitmap mNextBitmap;
-
+    private String TAG = MySurfaceView.class.getSimpleName();
 
     public MySurfaceView(Context context) {
         super(context);
@@ -100,17 +102,21 @@ public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
+        L.i(TAG,"surfaceCreated holder:"+holder);
         holder.removeCallback(this);
         drawSurfaceView(holder);
     }
 
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+        L.i(TAG,"surfaceChanged holder:"+holder+", format:"+format
+        +",width:"+width+", height:"+height);
         drawSurfaceView(holder);
     }
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
+        L.i(TAG,"surfaceDestroyed holder:"+holder);
         this.releaseBitmap();
     }
 

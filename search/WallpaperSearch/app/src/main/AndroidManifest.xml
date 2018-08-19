@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WallpaperActivity"
+        <activity android:name=".activity.WallpaperActivity"
             android:theme="@style/my_style" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,8 +21,22 @@
             </intent-filter>
         </activity>
 
+
+
+        <activity android:name=".activity.SettingActivity"></activity>
+
         <service android:name=".service.LiveWallpaperService"
             android:enabled="true"
+            android:permission="android.permission.BIND_WALLPAPER">
+            <intent-filter>
+                <action android:name="android.service.wallpaper.WallpaperService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.service.wallpaper"
+                android:resource="@xml/my_wallpaper" />
+        </service>
+
+        <service android:name=".service.CircleWallpaperService"
             android:permission="android.permission.BIND_WALLPAPER">
             <intent-filter>
                 <action android:name="android.service.wallpaper.WallpaperService" />
