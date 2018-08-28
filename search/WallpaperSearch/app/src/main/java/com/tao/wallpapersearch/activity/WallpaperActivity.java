@@ -39,6 +39,7 @@ public class WallpaperActivity extends Activity {
         setContentView(R.layout.activity_wallpaper);
 
         mWallpaperManager = WallpaperManager.getInstance(this);
+        WallpaperManager.
     }
 
     /**

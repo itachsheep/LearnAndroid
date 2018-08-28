@@ -10,6 +10,10 @@ extern "C" {
 #endif
 
 
+//jint native_funStatic(JNIEnv *env, jclass clazz, jint a, jint b){
+//    return a + b;
+//}
+
 JNIEXPORT jstring Java_com_tao_ndksearch_MainActivity_stringFromJNI(
         JNIEnv *env, jobject /* this */) {
     std::string hello = "Hello from C++";
@@ -18,7 +22,7 @@ JNIEXPORT jstring Java_com_tao_ndksearch_MainActivity_stringFromJNI(
 
 JNIEXPORT jint JNICALL Java_com_tao_ndksearch_TestJni_funStatic
         (JNIEnv *env, jclass clazz, jint a, jint b){
-    return a+b;
+    return a+b+b;
 }
 
 
@@ -26,6 +30,11 @@ JNIEXPORT jint JNICALL Java_com_tao_ndksearch_TestJni_fun
         (JNIEnv *env, jobject object, jint a , jint b){
     return a+b;
 }
+
+//JNINativeMethod method[] = {
+//        {"funStatic","(II)I",(void*)native_funStatic},
+//};
+
 #ifdef __cplusplus
 }
 #endif
