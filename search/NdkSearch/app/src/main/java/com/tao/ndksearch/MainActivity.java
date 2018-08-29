@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
         System.loadLibrary("native-lib");
     }
 
+    TestJni testJni;
+    TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,13 +31,33 @@ public class MainActivity extends AppCompatActivity {
         int funStatic = testJni.funStatic(2, 3);
 
         LogUtils.i(TAG,"fun = "+fun+", funStatic = "+funStatic);
-
+        testJni = new TestJni();
+        textView = findViewById(R.id.show_text);
     }
 
     public void bt_funStatic(View view){
         int result = TestJni.funStatic(2, 2);
         showToast("2 + 2 = "+result);
     }
+
+    public void bt_fun__II(View view){
+        showToast("2+3 = "+testJni.fun(2,3));
+    }
+
+    public void bt_fun__FF(View view){
+        showToast("2.1+3.1 = "+testJni.fun(2.1f,3.1f));
+    }
+
+    public void bt_createObject(View view){
+        textView.setText(testJni.createObject().toString());
+    }
+
+    public void bt_createObjectAndSet(View view){
+        textView.setText(testJni.createObjectAndSet().toString());
+    }
+
+
+
 
 
 

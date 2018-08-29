@@ -20,8 +20,64 @@ JNIEXPORT jint JNICALL Java_com_tao_ndksearch_TestJni_funStatic
  * Method:    fun
  * Signature: (II)I
  */
-JNIEXPORT jint JNICALL Java_com_tao_ndksearch_TestJni_fun
+JNIEXPORT jint JNICALL Java_com_tao_ndksearch_TestJni_fun__II
   (JNIEnv *, jobject, jint, jint);
+
+/*
+ * Class:     com_tao_ndksearch_TestJni
+ * Method:    fun
+ * Signature: (FF)F
+ */
+JNIEXPORT jfloat JNICALL Java_com_tao_ndksearch_TestJni_fun__FF
+  (JNIEnv *, jobject, jfloat, jfloat);
+
+/*
+ * Class:     com_tao_ndksearch_TestJni
+ * Method:    createObject
+ * Signature: ()Lcom/tao/ndksearch/JavaObject;
+ */
+JNIEXPORT jobject JNICALL Java_com_tao_ndksearch_TestJni_createObject
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     com_tao_ndksearch_TestJni
+ * Method:    createObjectAndSet
+ * Signature: ()Lcom/tao/ndksearch/JavaObject;
+ */
+JNIEXPORT jobject JNICALL Java_com_tao_ndksearch_TestJni_createObjectAndSet
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     com_tao_ndksearch_TestJni
+ * Method:    getField
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_tao_ndksearch_TestJni_getField
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     com_tao_ndksearch_TestJni
+ * Method:    getStaticField
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_tao_ndksearch_TestJni_getStaticField
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     com_tao_ndksearch_TestJni
+ * Method:    invokeMethod
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_tao_ndksearch_TestJni_invokeMethod
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     com_tao_ndksearch_TestJni
+ * Method:    invokeStaticMethod
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_tao_ndksearch_TestJni_invokeStaticMethod
+  (JNIEnv *, jobject);
 
 #ifdef __cplusplus
 }
