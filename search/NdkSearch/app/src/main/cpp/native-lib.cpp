@@ -70,17 +70,20 @@ JNIEXPORT jobject JNICALL Java_com_tao_ndksearch_TestJni_createObject
  * Signature: ()Lcom/tao/ndksearch/JavaObject;
  */
 JNIEXPORT jobject JNICALL Java_com_tao_ndksearch_TestJni_createObjectAndSet
-        (JNIEnv *env, jobject object){
+        (JNIEnv *env, jobject thiz){
     jclass targetClass = env->FindClass("com/tao/ndksearch/JavaObject");
-    jmethodID constructId = env->GetMethodID(targetClass,"<init>","(I)V");
+    jmethodID constructId = env->GetMethodID(targetClass,"<init>","()V");
     jobject newObject = env->NewObject(targetClass,constructId);
 
 
     jfieldID fId = env->GetFieldID(targetClass,"mNum","I");
     env->SetIntField(newObject,fId,12345);
-    jfieldID fIdStatic = env->GetFieldID(targetClass,"sNum","I");
-    env->SetIntField(newObject,fIdStatic,22345);
+    jfieldID fIdStatic = env->GetStaticFieldID(targetClass,"sNum","I");
+//    env->SetIntField(newObject,fIdStatic,22345);
+    env->SetStaticIntField(targetClass,fIdStatic,22345);
     return newObject ;
+
+
 }
 
 /*

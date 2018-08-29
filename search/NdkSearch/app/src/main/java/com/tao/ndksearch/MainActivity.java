@@ -26,11 +26,8 @@ public class MainActivity extends AppCompatActivity {
         TextView tv = (TextView) findViewById(R.id.sample_text);
         tv.setText(stringFromJNI());
 
-        TestJni testJni = new TestJni();
-        int fun = testJni.fun(1, 2);
-        int funStatic = testJni.funStatic(2, 3);
 
-        LogUtils.i(TAG,"fun = "+fun+", funStatic = "+funStatic);
+
         testJni = new TestJni();
         textView = findViewById(R.id.show_text);
     }
