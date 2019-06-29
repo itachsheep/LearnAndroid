@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
           title: const Text("this appbar title"),
         ),
         body: Center(
-          //child: const Text("this is body center---Hello World"),
+          //child: const Text("Tao Love Mao"),
           //child: new Text(wordPair.asPascalCase),
           child: RandomWords(),
         ),
