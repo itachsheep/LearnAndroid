@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
+
+class RandomWords extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return new RandomWordsState();
+  }
+}
+
 class RandomWordsState extends State<RandomWords> {
   final List<WordPair> _suggestions = <WordPair>[];
   final TextStyle _biggerFont = const TextStyle(fontSize: 18.0);
+  final Set<WordPair> _saved = new Set<WordPair>;
 
   Widget _buildSuggestions() {
     return new  ListView.builder(
@@ -21,29 +30,67 @@ class RandomWordsState extends State<RandomWords> {
   }
 
   Widget _buildRow(WordPair pair){
+    final bool alreadySaved = _saved.contains(pair);
     return new ListTile(
       title: new Text(
         pair.asPascalCase,
         style: _biggerFont,
       ),
+      trailing: new Icon(
+        alreadySaved ? Icons.favorite : Icons.favorite_border,
+        color: alreadySaved ? Colors.red : null,
+      ),
+
+      onTap: (){
+        setState(() {
+          if(alreadySaved){
+            _saved.remove(pair);
+          }else {
+            _saved.add(pair);
+          }
+        });
+      },
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    //final WordPair wordPair = new WordPair.random();
+    //return new Text(wordPair.asPascalCase);
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text("Scaffold title: Startup Name Generator"),
+        actions: <Widget>[
+          new IconButton(icon: const Icon(Icons.list), onPressed: _pushSaved)
+        ],
+      ),
+      body: _buildSuggestions(),
+    );
+  }
 
-    final WordPair wordPair = new WordPair.random();
-    return new Text(wordPair.asPascalCase);
+  void _pushSaved(){
+    Navigator.of(context).push(
+      // ignore: expected_token
+      new MaterialPageRoute<void>(builder: (BuildContext context) {
+        final Iterable<ListTile> tiles = _saved.map(
+            (WordPair pair){
+              return new ListTile(title: new Text(
+                pair.asPascalCase,
+                style: _biggerFont,
+              ),
+              );
+            }
+        );
+        final List<Widget> divided = ListTile.divideTiles(
+          context: context,
+          tiles: tiles
+        ).toList();
+      },
+      ),
+    );
   }
 }
 
 
 
 
-class RandomWords extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return new RandomWordsState();
-  }
-
-}
