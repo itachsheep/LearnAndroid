@@ -11,7 +11,7 @@ class RandomWords extends StatefulWidget {
 class RandomWordsState extends State<RandomWords> {
   final List<WordPair> _suggestions = <WordPair>[];
   final TextStyle _biggerFont = const TextStyle(fontSize: 18.0);
-  final Set<WordPair> _saved = new Set<WordPair>;
+  final Set<WordPair> _saved = new Set<WordPair>();
 
   Widget _buildSuggestions() {
     return new  ListView.builder(
@@ -85,6 +85,13 @@ class RandomWordsState extends State<RandomWords> {
           context: context,
           tiles: tiles
         ).toList();
+
+        return new Scaffold(
+          appBar: new AppBar(
+            title: const Text("Saved Suggestions"),
+          ),
+          body: new ListView(children: divided),
+        );
       },
       ),
     );
