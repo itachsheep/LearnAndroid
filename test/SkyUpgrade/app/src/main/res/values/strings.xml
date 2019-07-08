@@ -1,7 +1,0 @@
-<resources>
-    <string name="app_name">Upgrade</string>
-    <string name="download_break">下载过程断电！</string>
-    <string name="download_err">下载出错！</string>
-    <string name="download_md5_err">MD5校验出错！</string>
-    <string name="download_success">下载成功！</string>
-</resources>

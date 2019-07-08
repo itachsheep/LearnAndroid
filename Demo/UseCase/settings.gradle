@@ -1,1 +1,0 @@
-include ':sample', ':adapter-lib', ':recycle-lib'

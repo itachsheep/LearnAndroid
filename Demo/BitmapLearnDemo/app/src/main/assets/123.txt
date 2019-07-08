@@ -1,1 +1,0 @@
-sdFile : /storage/emulated/0

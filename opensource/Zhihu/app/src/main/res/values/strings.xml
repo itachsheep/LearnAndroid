@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">Zhihu</string>
-
-    <string name="navigation_drawer_open">打开左侧导航栏</string>
-    <string name="navigation_drawer_close">关闭左侧导航栏</string>
-</resources>

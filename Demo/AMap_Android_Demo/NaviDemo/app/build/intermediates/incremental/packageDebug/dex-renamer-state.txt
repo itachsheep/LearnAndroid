@@ -1,7 +1,0 @@
-#Wed Sep 06 10:37:52 CST 2017
-base.0=D\:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_12ffb7b0dbd9828be1b6b826041e411f4a552672
-renamed.1=classes.dex
-renamed.0=classes2.dex
-file.1=D\:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_aa63bf1d75cff40c5dbf45a8f62bda9e9e3d6993\\classes.dex
-base.1=D\:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_aa63bf1d75cff40c5dbf45a8f62bda9e9e3d6993
-file.0=D\:\\as_workspace\\AMap_Android_Demo\\AMap_Android_API_Navi_Demo\\android_studio\\NaviDemo\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_12ffb7b0dbd9828be1b6b826041e411f4a552672\\classes.dex
