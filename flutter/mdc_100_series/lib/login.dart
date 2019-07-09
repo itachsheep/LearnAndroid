@@ -21,6 +21,9 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   // TODO: Add text editing controllers (101)
+  final _userNameController = TextEditingController();
+  final _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +47,47 @@ class _LoginPageState extends State<LoginPage> {
             // TODO: Remove filled: true values (103)
             // TODO: Wrap Password with AccentColorOverride (103)
             // TODO: Add TextField widgets (101)
+            //username
+            TextField(
+              decoration: InputDecoration(
+                filled: true,
+                labelText:'Username'
+              ),
+              controller: _userNameController,
+            ),
+            //spacer
+            SizedBox(height: 12.0),
+            //password
+            TextField(
+              decoration: InputDecoration(
+                filled: true,
+                labelText: 'Password'
+              ),
+              obscureText: true,
+              controller: _passwordController,
+            ),
             // TODO: Add button bar (101)
+            ButtonBar(
+              children: <Widget>[
+                //add button
+                FlatButton(
+                  child: Text("Cancel"),
+                  onPressed: (){
+                    //todo: clear the text fields
+                    _userNameController.clear();
+                    _passwordController.clear();
+                  },
+                ),
+
+                RaisedButton(
+                  child: Text("Next"),
+                  onPressed: (){
+                    //todo: show the next page
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
+            ),
           ],
         ),
       ),

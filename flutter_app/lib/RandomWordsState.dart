@@ -61,7 +61,13 @@ class RandomWordsState extends State<RandomWords> {
       appBar: new AppBar(
         title: new Text("Scaffold title: Startup Name Generator"),
         actions: <Widget>[
-          new IconButton(icon: const Icon(Icons.list), onPressed: _pushSaved)
+          //在 Flutter 中，导航器管理应用程序的路由栈。
+          // 将路由推入（push）到导航器的栈中，将会显示更新为该路由页面。
+          // 从导航器的栈中弹出（pop）路由，将显示返回到前一个路由。
+          new IconButton(
+              icon: const Icon(Icons.list),
+              onPressed: _pushSaved
+          ),
         ],
       ),
       body: _buildSuggestions(),
