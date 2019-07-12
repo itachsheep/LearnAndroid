@@ -93,7 +93,8 @@ class HomePage extends StatelessWidget {
                 aspectRatio: 18.0 / 11.0,
                 child: Image.asset(
                   products.assetName,
-                  package: products.assetPackage,),
+                  package: products.assetPackage,
+                    fit: BoxFit.fitWidth),
               ),
               Padding(//Padding 则使得文本从边缘向中间移动一点
                 padding: EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 8.0),
