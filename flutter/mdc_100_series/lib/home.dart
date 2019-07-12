@@ -14,6 +14,10 @@
 
 import 'package:flutter/material.dart';
 
+import 'package:intl/intl.dart';
+import 'model/product.dart';
+import 'model/products_repository.dart';
+
 class HomePage extends StatelessWidget {
   // TODO: Make a collection of cards (102)
   // TODO: Add a variable for Category (104)
@@ -64,34 +68,52 @@ class HomePage extends StatelessWidget {
         crossAxisCount: 2,
         padding: EdgeInsets.all(16.0),
         childAspectRatio: 8.0 / 9.0,
-        children: <Widget>[
-          Card(
-            child: Column(
-              //"将文本向头部对齐"
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                AspectRatio(//图片形状由 AspectRatio 决定，而不是提供的图片本身的形状
-                  aspectRatio: 18.0 / 11.0,
-                  child: Image.asset('assets/diamond.png'),
-                ),
-                Padding(//Padding 则使得文本从边缘向中间移动一点
-                  padding: EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      //两个 Text widgets 上下放置，用 SizedBox 来表示它们之间有 8 points 的距离。
-                      // 我们在 Padding 之中创建了一个 Column 来放置它们。
-                      Text('Title'),
-                      SizedBox(height: 8.0),
-                      Text('Secondary Text'),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          )],
+        children: _buildGridCards(context)
       ),
       // TODO: Set resizeToAvoidBottomInset (101)
     );
   }
+
+  List<Card> _buildGridCards(BuildContext context){
+    List<Product> products = ProductsRepository.loadProducts(Category.all);
+    if(products == null && products.isEmpty){
+      return const <Card>[];
+    }
+
+    final ThemeData theme = Theme.of(context);
+    final NumberFormat formatter = NumberFormat.simpleCurrency(
+      locale: Localizations.localeOf(context).toString());
+    return products.map((products) {
+      return Card(
+          child: Column(
+            //"将文本向头部对齐"
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              AspectRatio(//图片形状由 AspectRatio 决定，而不是提供的图片本身的形状
+                aspectRatio: 18.0 / 11.0,
+                child: Image.asset(
+                  products.assetName,
+                  package: products.assetPackage,),
+              ),
+              Padding(//Padding 则使得文本从边缘向中间移动一点
+                padding: EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    //两个 Text widgets 上下放置，用 SizedBox 来表示它们之间有 8 points 的距离。
+                    // 我们在 Padding 之中创建了一个 Column 来放置它们。
+                    Text(products.name),
+                    SizedBox(height: 8.0),
+                    Text(
+                      formatter.format(products.price),
+                      style: theme.textTheme.body2,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          )
+      );
+    }).toList();
+    }
 }
