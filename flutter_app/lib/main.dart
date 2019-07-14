@@ -3,7 +3,7 @@ import 'package:english_words/english_words.dart';
 import 'package:flutter_app/RandomWordsState.dart';
 import 'LearnLayout.dart';
 import 'Simpe.dart';
-
+import 'WigetDemo.dart';
 //void main()=> runApp(new MyApp());
 //void main() {
 //  runApp(new FlutterLayout());
@@ -15,14 +15,25 @@ import 'Simpe.dart';
   textDirection: TextDirection.ltr,
 ));*/
 
-void main() => runApp(
+/*void main() => runApp(
     new Center(
       child: new SimpleText(
         "simple Text",
         textDirection: TextDirection.ltr,
       ),
     ),
-);
+);*/
+
+/*void main() {
+  runApp(new MaterialApp(
+    title: 'My app', // used by the OS task switcher
+  ));
+}*/
+void main() {
+  runApp(new MaterialAppDemo(
+    title: "MaterialApp title",
+  ));
+}
 
 class MyApp extends StatelessWidget {
   @override
