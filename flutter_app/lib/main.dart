@@ -24,14 +24,10 @@ import 'WigetDemo.dart';
     ),
 );*/
 
-/*void main() {
-  runApp(new MaterialApp(
-    title: 'My app', // used by the OS task switcher
-  ));
-}*/
 void main() {
   runApp(new MaterialAppDemo(
-    title: "MaterialApp title",
+    "taowei",
+    new WidgetDemo()
   ));
 }
 
