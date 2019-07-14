@@ -15,9 +15,15 @@ import 'Simpe.dart';
   textDirection: TextDirection.ltr,
 ));*/
 
-void main() => runApp(new SimpleText(
-  "simple Text"
-));
+void main() => runApp(
+    new Center(
+      child: new SimpleText(
+        "simple Text",
+        textDirection: TextDirection.ltr,
+      ),
+    ),
+);
+
 class MyApp extends StatelessWidget {
   @override
 

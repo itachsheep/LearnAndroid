@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 class SimpleText extends Text {
-  SimpleText(String data) : super(data) {
-    Key key
-  }
+  final TextDirection textDirection;
+  SimpleText(String data,{this.textDirection}) : super(data) ;
 
   @override
   Widget build(BuildContext context) {
