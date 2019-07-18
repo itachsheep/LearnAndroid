@@ -35,7 +35,7 @@ public class FlutterFragmentPageActivity extends AppCompatActivity {
         setContentView(R.layout.flutter_fragment_page);
 
         mFragment = FlutterFragment.instance("hello");
-        mFragment =  new ;
+//        mFragment =  new ;
 
         getSupportFragmentManager()
                 .beginTransaction()
