@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.taobao.idlefish.flutterboost.containers.BoostFlutterFragment;
 
 import io.flutter.plugin.platform.PlatformPlugin;
 
@@ -35,7 +34,6 @@ public class FlutterFragmentPageActivity extends AppCompatActivity {
         setContentView(R.layout.flutter_fragment_page);
 
         mFragment = FlutterFragment.instance("hello");
-//        mFragment =  new ;
 
         getSupportFragmentManager()
                 .beginTransaction()
