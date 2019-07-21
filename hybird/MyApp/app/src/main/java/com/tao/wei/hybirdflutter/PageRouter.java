@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.text.TextUtils;
 
 public class PageRouter {
-
+    private static String TAG = PageRouter.class.getSimpleName();
     public static final String NATIVE_PAGE_URL = "sample://nativePage";
     public static final String FLUTTER_PAGE_URL = "sample://flutterPage";
     public static final String FLUTTER_FRAGMENT_PAGE_URL = "sample://flutterFragmentPage";
@@ -15,6 +15,7 @@ public class PageRouter {
     }
 
     public static boolean openPageByUrl(Context context, String url, int requestCode) {
+        LogUtil.d(TAG,"openPageByUrl url: "+url+", requestCode: " + requestCode);
         try {
             if (url.startsWith(FLUTTER_PAGE_URL)) {
                 context.startActivity(new Intent(context, FlutterPageActivity.class));

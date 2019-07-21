@@ -18,6 +18,7 @@ class _MyAppState extends State<MyApp> {
 
     FlutterBoost.singleton.registerPageBuilders({
       'first': (pageName, params, _) => FirstRouteWidget(),
+//      'first': new FirstRouteWidget(),
       'second': (pageName, params, _) => SecondRouteWidget(),
       'tab': (pageName, params, _) => TabRouteWidget(),
       'flutterFragment': (pageName, params, _) => FragmentRouteWidget(params),

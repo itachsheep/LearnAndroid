@@ -12,6 +12,7 @@ import java.util.Map;
 
 import io.flutter.app.FlutterApplication;
 public class MyApplication extends FlutterApplication {
+    String TAG = MyApplication.class.getSimpleName();
     @Override
     public void onCreate() {
         super.onCreate();
@@ -53,8 +54,8 @@ public class MyApplication extends FlutterApplication {
              */
             @Override
             public boolean startActivity(Context context, String url, int requestCode) {
-                Debuger.log("startActivity url="+url);
-
+                LogUtil.d(TAG,"startActivity url="+url);
+                LogUtil.printStack(TAG);
                 return PageRouter.openPageByUrl(context,url,requestCode);
             }
 
