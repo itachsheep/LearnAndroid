@@ -1,11 +1,9 @@
 package com.tao.wei.hybirdflutter;
 
-import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.taobao.idlefish.flutterboost.FlutterBoostPlugin;
@@ -13,14 +11,14 @@ import com.taobao.idlefish.flutterboost.FlutterBoostPlugin;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 
-import io.flutter.facade.Flutter;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     public static WeakReference<MainActivity> sRef;
 
     private TextView mOpenNative;
     private TextView mOpenFlutter;
     private TextView mOpenFlutterFragment;
+    private TextView mOpenMyFlutter;
+    private TextView mOpenFirst;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,15 +26,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         sRef = new WeakReference<>(this);
 
-        setContentView(R.layout.native_page);
+        setContentView(R.layout.main_activity);
 
         mOpenNative = findViewById(R.id.open_native);
         mOpenFlutter = findViewById(R.id.open_flutter);
         mOpenFlutterFragment = findViewById(R.id.open_flutter_fragment);
+        mOpenMyFlutter = findViewById(R.id.open_my_flutter);
+        mOpenFirst = findViewById(R.id.open_first);
 
         mOpenNative.setOnClickListener(this);
         mOpenFlutter.setOnClickListener(this);
         mOpenFlutterFragment.setOnClickListener(this);
+        mOpenMyFlutter.setOnClickListener(this);
+        mOpenFirst.setOnClickListener(this);
     }
 
     @Override
@@ -52,9 +54,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             PageRouter.openPageByUrl(this, PageRouter.NATIVE_PAGE_URL);
         } else if (v == mOpenFlutter) {
             PageRouter.openPageByUrl(this, PageRouter.FLUTTER_PAGE_URL);
-            FlutterBoostPlugin.onPageResult("result_id_100",new HashMap(),new HashMap());
+           // FlutterBoostPlugin.onPageResult("result_id_100",new HashMap(),new HashMap());
         } else if (v == mOpenFlutterFragment) {
             PageRouter.openPageByUrl(this, PageRouter.FLUTTER_FRAGMENT_PAGE_URL);
+        }else if(v == mOpenMyFlutter){
+            PageRouter.openPageByUrl(this,PageRouter.FLUTTER_MY_PAGE_URL);
+        }else if(v == mOpenFirst){
+            PageRouter.openPageByUrl(this,PageRouter.FLUTTER_FIRST);
         }
     }
 }
