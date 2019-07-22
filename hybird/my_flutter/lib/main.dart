@@ -10,7 +10,8 @@ import 'first_route.dart';
   runApp(MyApp());
 }*/
 
-void main() => runApp(_widgetForRoute(window.defaultRouteName));
+//void main() => runApp(_widgetForRoute(window.defaultRouteName));
+void main() => runApp(_widgetForRoute("first"));
 
 final String channelName = "com.flutterbus/demo";
 
