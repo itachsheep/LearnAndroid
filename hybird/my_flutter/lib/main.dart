@@ -1,12 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_boost/flutter_boost.dart';
 import 'simple_page_widgets.dart';
 import 'flutter_route_page.dart';
 import 'my_route.dart';
 import 'first_route.dart';
 
-void main() {
+/*void main() {
   runApp(MyApp());
+}*/
+
+void main() => runApp(_widgetForRoute(window.defaultRouteName));
+
+final String channelName = "com.flutterbus/demo";
+
+Future<Null> jumpToNativePage() async {
+  MethodChannel methodChannel = MethodChannel(channelName);
+  await methodChannel.invokeMethod("gotoNativePage");
+}
+
+Widget _widgetForRoute(String route) {
+  switch (route) {
+    case 'first':
+      return new Scaffold(
+        appBar: AppBar(
+          title: const Text("this is hybird1 flutter page"),
+        ),
+        body: Center(
+          child: RaisedButton(
+            child:Text("混合开发一 flutter 界面"),
+            onPressed: () {
+              jumpToNativePage();
+            },
+          ),
+        ),
+      );
+    case 'second':
+      return MyApp();
+    default:
+      return Center(
+        child: Text('Unknown route: $route', textDirection: TextDirection.ltr),
+      );
+  }
 }
 
 class MyApp extends StatefulWidget {

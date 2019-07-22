@@ -63,7 +63,7 @@ class MyRouteWidget extends StatelessWidget {
                 margin: const EdgeInsets.all(8.0),
                 color: Colors.yellow,
                 child: Text(
-                  'push flutter widget',
+                  'push flutter widget,open first',
                   style: TextStyle(fontSize: 22.0, color: Colors.black),
                 )),
             onTap: () {

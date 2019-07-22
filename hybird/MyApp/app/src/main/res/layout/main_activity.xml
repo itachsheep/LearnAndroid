@@ -25,6 +25,17 @@
         android:layout_margin="8.0dp"
         android:padding="8.0dp"
         android:textColor="@android:color/black"
+        android:id="@+id/hybird_no_boost"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="混合开发(没有flutter boost)" />
+    <TextView
+        android:background="@android:color/holo_orange_dark"
+        android:layout_margin="8.0dp"
+        android:padding="8.0dp"
+        android:textColor="@android:color/black"
         android:id="@+id/open_first"
         android:textAllCaps="false"
         android:textSize="16sp"

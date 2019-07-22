@@ -1,0 +1,78 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="35sp"
+        android:textColor="#f00"
+        android:layout_gravity="top"
+        android:text="hello"
+        />
+
+    <LinearLayout
+        android:id="@+id/ll1"
+        style="@style/LinearHMW"
+        android:orientation="vertical"
+        android:layout_gravity="bottom"
+        >
+
+        <Button
+            android:id="@+id/btn1"
+            style="@style/Button1"
+            android:text="TestJni 调用普通方法"
+            android:onClick="onBtn1"
+            />
+        <Button
+            android:id="@+id/btn2"
+            style="@style/Button1"
+            android:text="TestJni 调用static方法"
+            android:onClick="onBtn2"
+            />
+        <Button
+            android:id="@+id/btn3"
+            style="@style/Button1"
+            android:text="JavaObject 获取普通属性----- 10"
+            android:onClick="onBtn3"
+            />
+        <Button
+            android:id="@+id/btn4"
+            style="@style/Button1"
+            android:text="JavaObject 获取static属性 ----- 1000"
+            android:onClick="onBtn4"
+            />
+        <Button
+            android:id="@+id/btn5"
+            style="@style/Button1"
+            android:text="JavaObject 调用普通方法 ----- 20"
+            android:onClick="onBtn5"
+            />
+        <Button
+            android:id="@+id/btn6"
+            style="@style/Button1"
+            android:text="JavaObject 调用static方法 ----- 2000"
+            android:onClick="onBtn6"
+            />
+
+        <Button
+            android:id="@+id/btn7"
+            style="@style/Button1"
+            android:text="返回JavaObject 对象，带参构造方法，默认属性 999--- 1000"
+            android:onClick="onBtn7"
+            />
+        <Button
+            android:id="@+id/btn8"
+            style="@style/Button1"
+            android:text="返回 JavaObject 对象，默认构造方法，并设置普通和静态属性 30 --- 3000 "
+            android:onClick="onBtn8"
+            />
+        <Button
+            android:id="@+id/btn9"
+            style="@style/Button1"
+            android:text="调用 JniTestOther static方法 ----- 20"
+            android:onClick="onBtn9"
+            />
+    </LinearLayout>
+</FrameLayout>

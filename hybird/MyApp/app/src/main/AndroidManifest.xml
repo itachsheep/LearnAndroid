@@ -50,6 +50,16 @@
             android:theme="@style/Theme.AppCompat"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density"
             android:windowSoftInputMode="adjustResize"/>
+
+        <activity android:name="hybird1.Hybird1FlutterPageActivity"
+            android:theme="@style/Theme.AppCompat"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density"
+            android:windowSoftInputMode="adjustResize"/>
+
+        <activity android:name="hybird1.Hybird1NativeActivity"
+            android:theme="@style/Theme.AppCompat"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density"
+            android:windowSoftInputMode="adjustResize"/>
     </application>
 
 </manifest>
