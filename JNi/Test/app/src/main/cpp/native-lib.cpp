@@ -7,12 +7,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-/*Java_com_tao_wei_testjni_MainActivity_stringFromJNI(
-        JNIEnv* env,
-        jobject ) {
-    std::string hello = "Hello from C++";
-    return env->NewStringUTF(hello.c_str());
-}*/
 
 jint native_add__II(JNIEnv *env, jobject thiz, jint a, jint b){
     return a + b;
@@ -38,7 +32,8 @@ JNINativeMethod method[]={
 
 //注册相应的类以及方法
 jint registerNativeMethod(JNIEnv *env){
-    jclass cl=env->FindClass("com/skyworthauto/testjni/TestJni");
+//_Included_com_tao_wei_testjni_ShellHolderView
+    jclass cl=env->FindClass("com/tao/wei/testjni/ShellHolderView");
     if((env->RegisterNatives(cl,method,sizeof(method)/sizeof(method[0])))<0){
         return -1;
     }
