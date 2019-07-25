@@ -23,7 +23,7 @@ class WidgetDemo extends StatelessWidget {
           ),
           new Expanded(
             child: new Center(
-              child: new Text('Hello, world!'),
+              child: new Text('hello test'),
             ),
           ),
         ],

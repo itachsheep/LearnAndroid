@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter/services.dart';
 import 'package:flutter_boost/flutter_boost.dart';
 import 'simple_page_widgets.dart';
 import 'flutter_route_page.dart';
 import 'my_route.dart';
 import 'first_route.dart';
+import 'WigetDemo.dart';
 
 /*void main() {
   runApp(MyApp());
 }*/
 
 //void main() => runApp(_widgetForRoute(window.defaultRouteName));
-void main() => runApp(_widgetForRoute("first"));
+void main() => runApp(_widgetForRoute());//"first"
 
 final String channelName = "com.flutterbus/demo";
 
@@ -20,28 +22,39 @@ Future<Null> jumpToNativePage() async {
   await methodChannel.invokeMethod("gotoNativePage");
 }
 
-Widget _widgetForRoute(String route) {
-  switch (route) {
-    case 'first':
-      return new Scaffold(
-        appBar: AppBar(
-          title: const Text("this is hybird1 flutter page"),
-        ),
-        body: Center(
-          child: RaisedButton(
-            child:Text("混合开发一 flutter 界面"),
-            onPressed: () {
-              jumpToNativePage();
-            },
+Widget _widgetForRoute() {
+  return new MaterialApp(
+      title: "taowei",
+      home: new MyDemo(),
+  );
+}
+class MyDemo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Material 是UI呈现的“一张纸”
+    return new Material(
+      // Column is 垂直方向的线性布局.
+      child: new Column(
+        children: <Widget>[
+          new AppBarDemo(
+            title: new Text(
+              'Example title',
+              style: Theme.of(context).primaryTextTheme.title,
+            ),
           ),
-        ),
-      );
-    case 'second':
-      return MyApp();
-    default:
-      return Center(
-        child: Text('Unknown route: $route', textDirection: TextDirection.ltr),
-      );
+          new Expanded(
+            child: new Center(
+              child: RaisedButton(
+                child:Text("不用flutter boost,混合开发"),
+                onPressed: () {
+                  jumpToNativePage();
+                },
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
 

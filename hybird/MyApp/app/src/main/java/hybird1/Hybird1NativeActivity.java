@@ -12,6 +12,7 @@ import com.tao.wei.hybirdflutter.R;
 
 public class Hybird1NativeActivity extends AppCompatActivity implements View.OnClickListener {
     TextView mStartFlutter;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +25,7 @@ public class Hybird1NativeActivity extends AppCompatActivity implements View.OnC
 
     @Override
     public void onClick(View v) {
-        if(v == mStartFlutter) {
+        if (v == mStartFlutter) {
             Intent intent = new Intent(this, Hybird1FlutterPageActivity.class);
             Bundle bundle = new Bundle();
             bundle.putString("routeName", "first");
