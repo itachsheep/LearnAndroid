@@ -24,11 +24,17 @@ import 'WigetDemo.dart';
     ),
 );*/
 
-void main() {
+/*void main() {
   runApp(new MaterialAppDemo(
     "taowei",
     new WidgetDemo()
   ));
+}*/
+
+import 'text_demo.dart';
+void main(){
+//  runApp(new TextDemo());
+  runApp(new raiseBtDemo());
 }
 
 class MyApp extends StatelessWidget {
