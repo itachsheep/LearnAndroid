@@ -31,10 +31,17 @@ import 'WigetDemo.dart';
   ));
 }*/
 
-import 'text_demo.dart';
+/*import 'text_demo.dart';
 void main(){
 //  runApp(new TextDemo());
   runApp(new raiseBtDemo());
+}*/
+
+import 'HomePageState.dart';
+void main(){
+  runApp(new MaterialApp(
+    home:new HomePage(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -50,3 +57,5 @@ class MyApp extends StatelessWidget {
       );
   }
 }
+
+var scrollController = ScrollController();
